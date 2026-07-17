@@ -1,279 +1,800 @@
 <!DOCTYPE html>
-<html lang="de" class="dark">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entspannung - Minimalistischer Fokus-Bereich</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    colors: {
-                        accent: {
-                            50: '#f5f3ff',
-                            100: '#ede9fe',
-                            400: '#a78bfa',
-                            500: '#8b5cf6',
-                            600: '#7c3aed',
-                            900: '#4c1d95',
-                        },
-                        charcoal: {
-                            900: '#0c0a0f',
-                            800: '#14121a',
-                            700: '#1c1a24',
-                        }
-                    }
-                }
+    <title>ENTSPANNUNG &mdash; Fokus-Bereich</title>
+
+    <!-- KAVALLERIE Design Tokens -->
+    <style>
+        /* =============================================
+           KAVALLERIE DESIGN TOKENS
+        ============================================= */
+        :root {
+            --color-red: #FF003C;
+            --color-black: #1D1D1D;
+            --color-grey-light: #F2F4F7;
+            --color-white: #FFFFFF;
+            --color-yellow: #FFFF00;
+
+            --font-headline: 'PP Formula Condensed', 'Arial Narrow', Arial, sans-serif;
+            --font-base: 'Helvetica Now Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+            --space-small: 25px;
+            --space-medium: 35px;
+            --space-large: 45px;
+            --space-xlarge: 90px;
+
+            --border-radius-default: 19px;
+            --border-radius-large: 35px;
+            --border-radius-pill: 59px;
+
+            --size-header: 72px;
+            --container-padding: 24px;
+            --container-max: 1320px;
+        }
+
+        @media (min-width: 1200px) {
+            :root {
+                --space-small: 50px;
+                --space-medium: 75px;
+                --space-large: 90px;
+                --space-xlarge: 180px;
             }
         }
-    </script>
-    <style>
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(12, 10, 15, 0.5);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(139, 92, 246, 0.3);
-        }
-        
-        /* Glassmorphism utility */
-        .glass {
-            background: rgba(20, 18, 26, 0.65);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.03);
+
+        /* =============================================
+           RESET & BASE
+        ============================================= */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { font-size: 16px; }
+
+        body {
+            background-color: var(--color-grey-light);
+            color: var(--color-black);
+            font-family: var(--font-base);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .glass-highlight {
-            border: 1px solid rgba(139, 92, 246, 0.15);
-            background: rgba(20, 18, 26, 0.8);
+        /* =============================================
+           TYPOGRAPHY
+        ============================================= */
+        .dk-headline {
+            font-family: var(--font-headline);
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 0.95;
+            letter-spacing: -0.01em;
         }
 
-        /* Ambient glow background blobs */
-        .blur-blob {
-            filter: blur(120px);
-            opacity: 0.15;
-            mix-blend-mode: screen;
-            pointer-events: none;
-            transition: all 2s ease-in-out;
+        .dk-headline-xl { font-size: clamp(64px, 10vw, 140px); }
+        .dk-headline-lg { font-size: clamp(40px, 6vw, 80px); }
+        .dk-headline-md { font-size: clamp(28px, 4vw, 48px); }
+        .dk-headline-sm { font-size: clamp(20px, 2.5vw, 28px); }
+
+        .dk-label {
+            font-family: var(--font-base);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--color-black);
+            opacity: 0.45;
         }
 
-        /* Circular timer progress animation transition */
+        .dk-body {
+            font-family: var(--font-base);
+            font-size: 16px;
+            line-height: 1.55;
+            color: var(--color-black);
+        }
+
+        /* =============================================
+           LAYOUT
+        ============================================= */
+        .dk-container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding-left: var(--container-padding);
+            padding-right: var(--container-padding);
+            width: 100%;
+        }
+
+        /* =============================================
+           HEADER
+        ============================================= */
+        .dk-header {
+            height: var(--size-header);
+            background: var(--color-white);
+            border-bottom: 1px solid rgba(29, 29, 29, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+        }
+
+        .dk-header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .dk-logo {
+            font-family: var(--font-headline);
+            font-weight: 900;
+            font-size: 22px;
+            text-transform: uppercase;
+            color: var(--color-black);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+
+        .dk-logo span {
+            color: var(--color-red);
+        }
+
+        .dk-nav-link {
+            font-family: var(--font-base);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--color-black);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.55;
+            transition: opacity 0.2s;
+        }
+
+        .dk-nav-link:hover { opacity: 1; }
+
+        /* =============================================
+           BUTTONS
+        ============================================= */
+        .dk-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: var(--border-radius-pill);
+            border: 2px solid currentColor;
+            font-family: var(--font-base);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.22s, color 0.22s;
+            background: transparent;
+        }
+
+        .dk-btn-red {
+            color: var(--color-red);
+            border-color: var(--color-red);
+        }
+
+        .dk-btn-red:hover {
+            background: var(--color-red);
+            color: var(--color-white);
+        }
+
+        .dk-btn-black {
+            color: var(--color-black);
+            border-color: var(--color-black);
+        }
+
+        .dk-btn-black:hover {
+            background: var(--color-black);
+            color: var(--color-white);
+        }
+
+        .dk-btn-white {
+            color: var(--color-white);
+            border-color: var(--color-white);
+        }
+
+        .dk-btn-white:hover {
+            background: var(--color-white);
+            color: var(--color-red);
+        }
+
+        .dk-btn-sm {
+            padding: 10px 20px;
+            font-size: 11px;
+        }
+
+        .dk-btn-icon {
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            border-radius: 50%;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Arrow icon inside button */
+        .dk-btn-arrow {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+
+        /* =============================================
+           CARDS / PANELS
+        ============================================= */
+        .dk-panel {
+            background: var(--color-white);
+            border-radius: var(--border-radius-large);
+            padding: var(--space-small);
+        }
+
+        .dk-panel-red {
+            background: var(--color-red);
+            border-radius: var(--border-radius-large);
+            padding: var(--space-small);
+            color: var(--color-white);
+        }
+
+        /* =============================================
+           SECTION DIVIDER
+        ============================================= */
+        .dk-divider {
+            border: none;
+            border-top: 1px solid rgba(29, 29, 29, 0.1);
+            margin: 0;
+        }
+
+        /* =============================================
+           TIMER RING
+        ============================================= */
         circle {
-            transition: stroke-dashoffset 0.3s ease;
+            transition: stroke-dashoffset 0.35s ease;
+        }
+
+        /* =============================================
+           SOUND CARDS
+        ============================================= */
+        .sound-card {
+            background: var(--color-grey-light);
+            border-radius: var(--border-radius-default);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            border: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .sound-card.active {
+            border-color: var(--color-red);
+        }
+
+        .sound-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* =============================================
+           RANGE INPUT
+        ============================================= */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 2px;
+            background: rgba(29, 29, 29, 0.15);
+            border-radius: 2px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--color-red);
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--color-red);
+            border: none;
+            cursor: pointer;
+        }
+
+        /* =============================================
+           TASK LIST
+        ============================================= */
+        .task-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(29, 29, 29, 0.07);
+        }
+
+        .task-item:last-child { border-bottom: none; }
+
+        .task-checkbox {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            border: 2px solid rgba(29, 29, 29, 0.25);
+            background: transparent;
+            cursor: pointer;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        .task-checkbox.done {
+            background: var(--color-red);
+            border-color: var(--color-red);
+        }
+
+        .task-text {
+            font-family: var(--font-base);
+            font-size: 14px;
+            color: var(--color-black);
+            flex: 1;
+        }
+
+        .task-text.done {
+            text-decoration: line-through;
+            opacity: 0.35;
+        }
+
+        .task-delete {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--color-black);
+            opacity: 0;
+            transition: opacity 0.15s;
+            padding: 4px;
+        }
+
+        .task-item:hover .task-delete { opacity: 0.3; }
+        .task-delete:hover { opacity: 1 !important; color: var(--color-red); }
+
+        .task-input-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .dk-input {
+            flex: 1;
+            font-family: var(--font-base);
+            font-size: 14px;
+            color: var(--color-black);
+            background: var(--color-grey-light);
+            border: 2px solid transparent;
+            border-radius: var(--border-radius-pill);
+            padding: 10px 20px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .dk-input::placeholder { color: rgba(29, 29, 29, 0.35); }
+        .dk-input:focus { border-color: var(--color-red); }
+
+        /* =============================================
+           PRESET TABS
+        ============================================= */
+        .preset-tabs {
+            display: flex;
+            background: var(--color-grey-light);
+            border-radius: var(--border-radius-pill);
+            padding: 4px;
+            gap: 4px;
+        }
+
+        .preset-tab {
+            flex: 1;
+            padding: 10px 0;
+            border: none;
+            border-radius: var(--border-radius-pill);
+            font-family: var(--font-base);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            background: transparent;
+            color: var(--color-black);
+            opacity: 0.45;
+            transition: background 0.2s, color 0.2s, opacity 0.2s;
+        }
+
+        .preset-tab.active {
+            background: var(--color-red);
+            color: var(--color-white);
+            opacity: 1;
+        }
+
+        /* =============================================
+           MAIN GRID
+        ============================================= */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            padding: 40px 0 60px;
+        }
+
+        @media (min-width: 960px) {
+            .main-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+                padding: 60px 0 80px;
+            }
+        }
+
+        /* =============================================
+           TIMER DISPLAY
+        ============================================= */
+        .timer-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .timer-ring-wrap {
+            position: relative;
+            width: 260px;
+            height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timer-ring-wrap svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: rotate(-90deg);
+        }
+
+        .timer-core {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .timer-digits {
+            font-family: var(--font-headline);
+            font-weight: 900;
+            font-size: 72px;
+            line-height: 1;
+            color: var(--color-black);
+            letter-spacing: -0.02em;
+        }
+
+        .timer-phase {
+            font-family: var(--font-base);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--color-red);
+        }
+
+        .timer-controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* =============================================
+           AUDIO BADGE
+        ============================================= */
+        .audio-badge {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: var(--border-radius-pill);
+            background: var(--color-red);
+            color: var(--color-white);
+            font-family: var(--font-base);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .audio-badge.visible { display: flex; }
+
+        .audio-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--color-white);
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.75); }
+        }
+
+        /* =============================================
+           FOOTER
+        ============================================= */
+        .dk-footer {
+            background: var(--color-black);
+            color: var(--color-white);
+            padding: 28px 0;
+            margin-top: auto;
+        }
+
+        .dk-footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .dk-footer p {
+            font-family: var(--font-base);
+            font-size: 12px;
+            opacity: 0.4;
+        }
+
+        /* =============================================
+           SECTION LABEL BAR
+        ============================================= */
+        .section-label-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        /* =============================================
+           SCROLLBAR
+        ============================================= */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--color-grey-light); }
+        ::-webkit-scrollbar-thumb { background: rgba(29,29,29,0.15); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-red); }
+
+        /* =============================================
+           TASK LIST SCROLL
+        ============================================= */
+        .task-list-scroll {
+            max-height: 160px;
+            overflow-y: auto;
+            padding-right: 4px;
         }
     </style>
 </head>
-<body class="bg-charcoal-900 text-neutral-200 font-sans min-h-screen overflow-x-hidden relative flex flex-col justify-between">
-    
-    <!-- Ambient Background Blobs -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div id="blob-1" class="blur-blob absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-accent-900"></div>
-        <div id="blob-2" class="blur-blob absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-emerald-950/40"></div>
-        <div id="blob-3" class="blur-blob absolute top-[30%] left-[40%] w-[35vw] h-[35vw] rounded-full bg-indigo-950/30"></div>
-    </div>
+<body>
 
-    <!-- Header -->
-    <header class="w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center z-10 relative">
-        <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-accent-600 to-indigo-400 flex items-center justify-center shadow-lg shadow-accent-600/20">
-                <span class="font-serif text-xl font-semibold text-white">E</span>
+    <!-- HEADER -->
+    <header class="dk-header">
+        <div class="dk-container">
+            <div class="dk-header-inner">
+                <a href="../index.html" class="dk-logo">DIE<span>K</span>AVALLERIE</a>
+                <div style="display:flex;align-items:center;gap:24px;">
+                    <div id="audio-badge" class="audio-badge">
+                        <span class="audio-dot"></span>
+                        Sound aktiv
+                    </div>
+                    <a href="../index.html" class="dk-nav-link">&larr; &Uuml;bersicht</a>
+                </div>
             </div>
-            <div>
-                <h1 class="text-lg font-semibold tracking-wider text-white">ENTSPANNUNG</h1>
-                <p class="text-xs text-neutral-400">Minimalist Focus Space</p>
-            </div>
-        </div>
-        <div class="flex items-center gap-4">
-            <div id="audio-indicator" class="hidden items-center gap-2 px-3 py-1.5 rounded-full bg-accent-600/10 border border-accent-500/20 text-xs text-accent-400">
-                <span class="flex h-2 w-2 relative">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-accent-500"></span>
-                </span>
-                Soundscapes aktiv
-            </div>
-            <a href="../index.html" class="px-4 py-2 rounded-xl text-xs font-medium tracking-wide border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-300">
-                Zurueck zur Uebersicht
-            </a>
         </div>
     </header>
 
-    <!-- Main Workspace -->
-    <main class="w-full max-w-7xl mx-auto px-6 py-4 grid grid-cols-1 lg:grid-cols-12 gap-8 z-10 relative flex-grow items-center">
-        
-        <!-- Left: Interactive Focus Timer (Cols 1-7) -->
-        <section class="lg:col-span-7 flex flex-col items-center justify-center h-full py-4">
-            <div class="w-full max-w-md glass rounded-3xl p-8 flex flex-col items-center justify-center relative shadow-2xl shadow-black/40">
-                <!-- Preset Buttons -->
-                <div class="flex bg-charcoal-900/60 p-1.5 rounded-2xl w-full max-w-xs mb-8 border border-white/5">
-                    <button onclick="setTimerPreset('focus')" id="btn-preset-focus" class="flex-1 py-2 text-xs font-medium rounded-xl transition-all duration-300 bg-accent-500 text-white shadow-lg shadow-accent-500/10">
-                        Fokus
-                    </button>
-                    <button onclick="setTimerPreset('short')" id="btn-preset-short" class="flex-1 py-2 text-xs font-medium rounded-xl transition-all duration-300 text-neutral-400 hover:text-white">
-                        Pause
-                    </button>
-                    <button onclick="setTimerPreset('long')" id="btn-preset-long" class="flex-1 py-2 text-xs font-medium rounded-xl transition-all duration-300 text-neutral-400 hover:text-white">
-                        Lang
-                    </button>
-                </div>
+    <!-- HERO LABEL -->
+    <div style="background:var(--color-red);padding:12px 0;">
+        <div class="dk-container">
+            <span class="dk-label" style="color:var(--color-white);opacity:0.7;">Beispielseite &mdash; Fokus-Tool</span>
+        </div>
+    </div>
 
-                <!-- Circular Timer -->
-                <div class="relative w-72 h-72 flex items-center justify-center mb-8">
-                    <!-- Progress Circle Background -->
-                    <svg class="absolute transform -rotate-90 w-full h-full" viewBox="0 0 200 200">
-                        <circle cx="100" cy="100" r="85" stroke="rgba(255,255,255,0.02)" stroke-width="6" fill="transparent" />
-                        <circle id="timer-progress" cx="100" cy="100" r="85" stroke="url(#accentGradient)" stroke-width="6" stroke-dasharray="534" stroke-dashoffset="0" stroke-linecap="round" fill="transparent" />
-                        <defs>
-                            <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#a78bfa" />
-                                <stop offset="100%" stop-color="#7c3aed" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
+    <!-- HERO HEADLINE -->
+    <div style="background:var(--color-white);padding:40px 0 32px;border-bottom:1px solid rgba(29,29,29,0.08);">
+        <div class="dk-container">
+            <h1 class="dk-headline dk-headline-xl">ENTSPANNUNG</h1>
+            <p class="dk-body" style="margin-top:16px;max-width:520px;opacity:0.6;">
+                Dein minimalistischer Fokus-Bereich. Timer, Kl&auml;nge und Aufgaben &mdash; alles an einem Ort.
+            </p>
+        </div>
+    </div>
 
-                    <!-- Interactive Glowing core -->
-                    <div id="timer-glow" class="w-60 h-60 rounded-full flex flex-col items-center justify-center bg-[#100e16]/80 border border-white/5 shadow-inner transition-all duration-700">
-                        <span id="timer-display" class="font-serif text-5xl font-light tracking-wider text-white mb-1">25:00</span>
-                        <span id="timer-state-text" class="text-xs font-medium tracking-widest text-accent-400 uppercase">Fokus-Phase</span>
+    <!-- MAIN CONTENT -->
+    <main style="flex:1;">
+        <div class="dk-container">
+            <div class="main-grid">
+
+                <!-- LEFT: TIMER -->
+                <div class="dk-panel">
+                    <div class="section-label-bar">
+                        <span class="dk-label">Fokus-Timer</span>
+                        <span class="dk-label" id="timer-count-label" style="opacity:0.3;">Pomodoro</span>
+                    </div>
+
+                    <div class="timer-wrap">
+                        <!-- Preset Tabs -->
+                        <div class="preset-tabs" style="width:100%;max-width:320px;">
+                            <button class="preset-tab active" id="btn-preset-focus" onclick="setTimerPreset('focus')">Fokus</button>
+                            <button class="preset-tab" id="btn-preset-short" onclick="setTimerPreset('short')">Kurze Pause</button>
+                            <button class="preset-tab" id="btn-preset-long" onclick="setTimerPreset('long')">Lange Pause</button>
+                        </div>
+
+                        <!-- Ring Timer -->
+                        <div class="timer-ring-wrap">
+                            <svg width="260" height="260" viewBox="0 0 260 260">
+                                <!-- Track -->
+                                <circle cx="130" cy="130" r="110" stroke="rgba(29,29,29,0.06)" stroke-width="6" fill="transparent"/>
+                                <!-- Progress -->
+                                <circle id="timer-progress" cx="130" cy="130" r="110"
+                                    stroke="#FF003C"
+                                    stroke-width="6"
+                                    stroke-dasharray="691"
+                                    stroke-dashoffset="0"
+                                    stroke-linecap="round"
+                                    fill="transparent"/>
+                            </svg>
+                            <div class="timer-core">
+                                <span id="timer-display" class="timer-digits">25:00</span>
+                                <span id="timer-state-text" class="timer-phase">Fokus-Phase</span>
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <div class="timer-controls">
+                            <!-- Reset -->
+                            <button onclick="resetTimer()" class="dk-btn dk-btn-black dk-btn-icon" title="Zur&uuml;cksetzen">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h5M20 20v-5h-5M4.07 15a9 9 0 1 0 .29-4.29"/>
+                                </svg>
+                            </button>
+
+                            <!-- Play/Pause -->
+                            <button onclick="toggleTimer()" id="btn-timer-toggle" class="dk-btn dk-btn-red" style="padding:16px 40px;font-size:13px;">
+                                <svg id="play-icon" width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <svg id="pause-icon" width="14" height="14" fill="currentColor" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                <span id="btn-timer-label">Start</span>
+                            </button>
+
+                            <!-- Mute -->
+                            <button onclick="toggleMuteAll()" id="btn-audio-master" class="dk-btn dk-btn-black dk-btn-icon" title="Audio stummschalten">
+                                <svg id="master-sound-on" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+                                </svg>
+                                <svg id="master-sound-muted" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display:none;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zM17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Timer Controls -->
-                <div class="flex items-center gap-6">
-                    <button onclick="resetTimer()" class="w-12 h-12 rounded-2xl border border-white/5 hover:border-white/15 hover:bg-white/5 flex items-center justify-center text-neutral-400 hover:text-white transition-all duration-300" title="Zuruecksetzen">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 15H19M9 17h.01M9 13h.01M9 9h.01M13 13h.01M13 9h.01M17 13h.01M17 9h.01"></path></svg>
-                    </button>
+                <!-- RIGHT: SOUND + TASKS -->
+                <div style="display:flex;flex-direction:column;gap:24px;">
 
-                    <button onclick="toggleTimer()" id="btn-timer-toggle" class="w-20 h-20 rounded-3xl bg-white text-charcoal-900 hover:bg-accent-100 flex items-center justify-center shadow-xl shadow-white/5 transition-all duration-300" title="Start / Pause">
-                        <svg id="play-icon" class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        <svg id="pause-icon" class="w-8 h-8 fill-current hidden" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                    </button>
+                    <!-- SOUNDSCAPES -->
+                    <div class="dk-panel">
+                        <div class="section-label-bar">
+                            <span class="dk-label">Soundscapes</span>
+                            <span class="dk-label" style="opacity:0.3;font-size:10px;">Web Audio API</span>
+                        </div>
 
-                    <button onclick="toggleMuteAll()" id="btn-audio-master" class="w-12 h-12 rounded-2xl border border-white/5 hover:border-white/15 hover:bg-white/5 flex items-center justify-center text-neutral-400 hover:text-white transition-all duration-300" title="Audio stummschalten">
-                        <svg id="master-sound-on" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
-                        <svg id="master-sound-muted" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zM17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path></svg>
-                    </button>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+
+                            <!-- Rain -->
+                            <div class="sound-card" id="card-rain">
+                                <div class="sound-card-header">
+                                    <div>
+                                        <div class="dk-label" style="opacity:1;font-size:10px;">Dauerregen</div>
+                                    </div>
+                                    <button onclick="toggleSound('rain')" id="btn-sound-rain" class="dk-btn dk-btn-black dk-btn-icon dk-btn-sm" style="width:32px;height:32px;">
+                                        <svg id="icon-rain-play" width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                        <svg id="icon-rain-pause" width="12" height="12" fill="currentColor" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                    </button>
+                                </div>
+                                <input type="range" min="0" max="100" value="60" oninput="setVolume('rain', this.value)">
+                            </div>
+
+                            <!-- Wind -->
+                            <div class="sound-card" id="card-wind">
+                                <div class="sound-card-header">
+                                    <div>
+                                        <div class="dk-label" style="opacity:1;font-size:10px;">Waldwind</div>
+                                    </div>
+                                    <button onclick="toggleSound('wind')" id="btn-sound-wind" class="dk-btn dk-btn-black dk-btn-icon dk-btn-sm" style="width:32px;height:32px;">
+                                        <svg id="icon-wind-play" width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                        <svg id="icon-wind-pause" width="12" height="12" fill="currentColor" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                    </button>
+                                </div>
+                                <input type="range" min="0" max="100" value="40" oninput="setVolume('wind', this.value)">
+                            </div>
+
+                            <!-- Waves -->
+                            <div class="sound-card" id="card-waves">
+                                <div class="sound-card-header">
+                                    <div>
+                                        <div class="dk-label" style="opacity:1;font-size:10px;">Ozeanwellen</div>
+                                    </div>
+                                    <button onclick="toggleSound('waves')" id="btn-sound-waves" class="dk-btn dk-btn-black dk-btn-icon dk-btn-sm" style="width:32px;height:32px;">
+                                        <svg id="icon-waves-play" width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                        <svg id="icon-waves-pause" width="12" height="12" fill="currentColor" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                    </button>
+                                </div>
+                                <input type="range" min="0" max="100" value="50" oninput="setVolume('waves', this.value)">
+                            </div>
+
+                            <!-- Noise -->
+                            <div class="sound-card" id="card-noise">
+                                <div class="sound-card-header">
+                                    <div>
+                                        <div class="dk-label" style="opacity:1;font-size:10px;">Brown Noise</div>
+                                    </div>
+                                    <button onclick="toggleSound('noise')" id="btn-sound-noise" class="dk-btn dk-btn-black dk-btn-icon dk-btn-sm" style="width:32px;height:32px;">
+                                        <svg id="icon-noise-play" width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                        <svg id="icon-noise-pause" width="12" height="12" fill="currentColor" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                    </button>
+                                </div>
+                                <input type="range" min="0" max="100" value="30" oninput="setVolume('noise', this.value)">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- TASKS -->
+                    <div class="dk-panel">
+                        <div class="section-label-bar">
+                            <span class="dk-label">Fokus-Aufgaben</span>
+                            <span class="dk-label" id="task-count" style="opacity:0.3;">0 / 0 erledigt</span>
+                        </div>
+
+                        <div class="task-list-scroll" id="task-list">
+                            <!-- Tasks via JS -->
+                        </div>
+
+                        <div class="task-input-row">
+                            <input id="task-input" type="text" class="dk-input" placeholder="Neue Aufgabe..." onkeydown="if(event.key==='Enter') addTask()">
+                            <button onclick="addTask()" class="dk-btn dk-btn-red dk-btn-sm" style="white-space:nowrap;padding:10px 20px;">
+                                + Hinzuf&uuml;gen
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </section>
-
-        <!-- Right: Audio Mixer & Tasks (Cols 8-12) -->
-        <section class="lg:col-span-5 flex flex-col gap-6 justify-center h-full py-4">
-            
-            <!-- Soundscapes Mixer -->
-            <div class="glass rounded-3xl p-6 shadow-xl">
-                <div class="flex justify-between items-center mb-6">
-                    <div>
-                        <h2 class="text-sm font-semibold tracking-wider text-white uppercase">Synthetische Soundscapes</h2>
-                        <p class="text-xs text-neutral-400">Generiere Echtzeit-Raumklaenge</p>
-                    </div>
-                    <span class="text-[10px] text-accent-400 font-semibold tracking-widest uppercase px-2 py-1 rounded bg-accent-500/10 border border-accent-500/20">Web Audio API</span>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <!-- Sound Card 1: Rain -->
-                    <div id="card-rain" class="glass rounded-2xl p-4 transition-all duration-300 hover:border-white/10 flex flex-col justify-between h-32">
-                        <div class="flex justify-between items-start">
-                            <div class="text-neutral-400">
-                                <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707M12 5a7 7 0 100 14 7 7 0 000-14z"></path></svg>
-                                <span class="text-xs font-semibold tracking-wide text-neutral-300 block mt-2">Dauerregen</span>
-                            </div>
-                            <button onclick="toggleSound('rain')" id="btn-sound-rain" class="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center text-neutral-400 transition-all duration-300">
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                            </button>
-                        </div>
-                        <input type="range" min="0" max="100" value="60" oninput="setVolume('rain', this.value)" class="w-full h-1 rounded-full appearance-none bg-white/10 accent-accent-500 cursor-pointer">
-                    </div>
-
-                    <!-- Sound Card 2: Wind -->
-                    <div id="card-wind" class="glass rounded-2xl p-4 transition-all duration-300 hover:border-white/10 flex flex-col justify-between h-32">
-                        <div class="flex justify-between items-start">
-                            <div class="text-neutral-400">
-                                <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path></svg>
-                                <span class="text-xs font-semibold tracking-wide text-neutral-300 block mt-2">Waldwind</span>
-                            </div>
-                            <button onclick="toggleSound('wind')" id="btn-sound-wind" class="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center text-neutral-400 transition-all duration-300">
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                            </button>
-                        </div>
-                        <input type="range" min="0" max="100" value="40" oninput="setVolume('wind', this.value)" class="w-full h-1 rounded-full appearance-none bg-white/10 accent-accent-500 cursor-pointer">
-                    </div>
-
-                    <!-- Sound Card 3: Waves -->
-                    <div id="card-waves" class="glass rounded-2xl p-4 transition-all duration-300 hover:border-white/10 flex flex-col justify-between h-32">
-                        <div class="flex justify-between items-start">
-                            <div class="text-neutral-400">
-                                <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M3 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zm0 0v6"></path></svg>
-                                <span class="text-xs font-semibold tracking-wide text-neutral-300 block mt-2">Ozeanwellen</span>
-                            </div>
-                            <button onclick="toggleSound('waves')" id="btn-sound-waves" class="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center text-neutral-400 transition-all duration-300">
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                            </button>
-                        </div>
-                        <input type="range" min="0" max="100" value="50" oninput="setVolume('waves', this.value)" class="w-full h-1 rounded-full appearance-none bg-white/10 accent-accent-500 cursor-pointer">
-                    </div>
-
-                    <!-- Sound Card 4: Brown Noise -->
-                    <div id="card-noise" class="glass rounded-2xl p-4 transition-all duration-300 hover:border-white/10 flex flex-col justify-between h-32">
-                        <div class="flex justify-between items-start">
-                            <div class="text-neutral-400">
-                                <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
-                                <span class="text-xs font-semibold tracking-wide text-neutral-300 block mt-2">Brown Noise</span>
-                            </div>
-                            <button onclick="toggleSound('noise')" id="btn-sound-noise" class="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center text-neutral-400 transition-all duration-300">
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                            </button>
-                        </div>
-                        <input type="range" min="0" max="100" value="30" oninput="setVolume('noise', this.value)" class="w-full h-1 rounded-full appearance-none bg-white/10 accent-accent-500 cursor-pointer">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Task List -->
-            <div class="glass rounded-3xl p-6 shadow-xl">
-                <div class="flex justify-between items-center mb-5">
-                    <h2 class="text-sm font-semibold tracking-wider text-white uppercase">Fokus-Aufgaben</h2>
-                    <span id="task-count" class="text-[10px] text-neutral-500 font-medium">0 / 0 erledigt</span>
-                </div>
-
-                <div id="task-list" class="flex flex-col gap-2 mb-4 max-h-40 overflow-y-auto pr-1">
-                    <!-- Tasks rendered by JS -->
-                </div>
-
-                <div class="flex gap-2">
-                    <input id="task-input" type="text" placeholder="Neue Aufgabe hinzufuegen..." onkeydown="if(event.key==='Enter') addTask()" class="flex-1 bg-white/5 border border-white/5 rounded-xl px-4 py-2.5 text-xs text-neutral-200 placeholder-neutral-600 focus:outline-none focus:border-accent-500/30 focus:bg-white/8 transition-all duration-300">
-                    <button onclick="addTask()" class="px-4 py-2.5 rounded-xl bg-accent-500/20 hover:bg-accent-500/30 border border-accent-500/20 text-accent-400 text-xs font-medium transition-all duration-300">
-                        +
-                    </button>
-                </div>
-            </div>
-        </section>
+        </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="w-full max-w-7xl mx-auto px-6 py-5 flex justify-between items-center z-10 relative border-t border-white/3">
-        <p class="text-xs text-neutral-600">&copy; 2026 Entspannung Focus Space. Gefertigt mit Leidenschaft fuer maximale Klarheit.</p>
-        <div class="flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500/60"></span>
-            <span class="text-[10px] text-neutral-600">Alle Sounds werden lokal generiert</span>
+    <!-- FOOTER -->
+    <footer class="dk-footer">
+        <div class="dk-container">
+            <div class="dk-footer-inner">
+                <p>&copy; 2026 Die Kavallerie &mdash; Inspirierende Erlebnisse, die Menschen zusammenf&uuml;hren.</p>
+                <p>Alle Sounds werden lokal generiert.</p>
+            </div>
         </div>
     </footer>
 
@@ -281,12 +802,13 @@
         // =============================================
         // TIMER LOGIC
         // =============================================
-        const PRESETS = { focus: 25 * 60, short: 5 * 60, long: 15 * 60 };
-        let currentPreset = 'focus';
-        let timeLeft = PRESETS.focus;
-        let totalTime = PRESETS.focus;
-        let timerInterval = null;
-        let isRunning = false;
+        var PRESETS = { focus: 25 * 60, short: 5 * 60, long: 15 * 60 };
+        var currentPreset = 'focus';
+        var timeLeft = PRESETS.focus;
+        var totalTime = PRESETS.focus;
+        var timerInterval = null;
+        var isRunning = false;
+        var CIRCUMFERENCE = 691;
 
         function setTimerPreset(preset) {
             if (isRunning) return;
@@ -295,24 +817,23 @@
             totalTime = PRESETS[preset];
             updateTimerDisplay();
             updateProgressRing();
-            document.querySelectorAll('[id^="btn-preset-"]').forEach(btn => {
-                btn.className = 'flex-1 py-2 text-xs font-medium rounded-xl transition-all duration-300 text-neutral-400 hover:text-white';
+            document.querySelectorAll('.preset-tab').forEach(function(btn) {
+                btn.classList.remove('active');
             });
-            document.getElementById('btn-preset-' + preset).className = 'flex-1 py-2 text-xs font-medium rounded-xl transition-all duration-300 bg-accent-500 text-white shadow-lg shadow-accent-500/10';
-            const labels = { focus: 'Fokus-Phase', short: 'Kurze Pause', long: 'Lange Pause' };
+            document.getElementById('btn-preset-' + preset).classList.add('active');
+            var labels = { focus: 'Fokus-Phase', short: 'Kurze Pause', long: 'Lange Pause' };
             document.getElementById('timer-state-text').textContent = labels[preset];
         }
 
         function updateTimerDisplay() {
-            const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
-            const s = (timeLeft % 60).toString().padStart(2, '0');
+            var m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+            var s = (timeLeft % 60).toString().padStart(2, '0');
             document.getElementById('timer-display').textContent = m + ':' + s;
         }
 
         function updateProgressRing() {
-            const circumference = 534;
-            const progress = timeLeft / totalTime;
-            const offset = circumference * (1 - progress);
+            var progress = timeLeft / totalTime;
+            var offset = CIRCUMFERENCE * (1 - progress);
             document.getElementById('timer-progress').style.strokeDashoffset = offset;
         }
 
@@ -320,14 +841,14 @@
             if (isRunning) {
                 clearInterval(timerInterval);
                 isRunning = false;
-                document.getElementById('play-icon').classList.remove('hidden');
-                document.getElementById('pause-icon').classList.add('hidden');
-                document.getElementById('timer-glow').style.boxShadow = '';
+                document.getElementById('play-icon').style.display = '';
+                document.getElementById('pause-icon').style.display = 'none';
+                document.getElementById('btn-timer-label').textContent = 'Start';
             } else {
                 isRunning = true;
-                document.getElementById('play-icon').classList.add('hidden');
-                document.getElementById('pause-icon').classList.remove('hidden');
-                document.getElementById('timer-glow').style.boxShadow = '0 0 60px rgba(139, 92, 246, 0.15)';
+                document.getElementById('play-icon').style.display = 'none';
+                document.getElementById('pause-icon').style.display = '';
+                document.getElementById('btn-timer-label').textContent = 'Pause';
                 timerInterval = setInterval(function() {
                     if (timeLeft > 0) {
                         timeLeft--;
@@ -336,9 +857,9 @@
                     } else {
                         clearInterval(timerInterval);
                         isRunning = false;
-                        document.getElementById('play-icon').classList.remove('hidden');
-                        document.getElementById('pause-icon').classList.add('hidden');
-                        document.getElementById('timer-glow').style.boxShadow = '';
+                        document.getElementById('play-icon').style.display = '';
+                        document.getElementById('pause-icon').style.display = 'none';
+                        document.getElementById('btn-timer-label').textContent = 'Start';
                     }
                 }, 1000);
             }
@@ -351,19 +872,19 @@
             totalTime = PRESETS[currentPreset];
             updateTimerDisplay();
             updateProgressRing();
-            document.getElementById('play-icon').classList.remove('hidden');
-            document.getElementById('pause-icon').classList.add('hidden');
-            document.getElementById('timer-glow').style.boxShadow = '';
+            document.getElementById('play-icon').style.display = '';
+            document.getElementById('pause-icon').style.display = 'none';
+            document.getElementById('btn-timer-label').textContent = 'Start';
         }
 
         // =============================================
-        // WEB AUDIO API - SYNTHETIC SOUNDSCAPES
+        // WEB AUDIO API
         // =============================================
-        let audioCtx = null;
-        const soundNodes = {};
-        const soundVolumes = { rain: 0.6, wind: 0.4, waves: 0.5, noise: 0.3 };
-        const soundActive = { rain: false, wind: false, waves: false, noise: false };
-        let masterMuted = false;
+        var audioCtx = null;
+        var soundNodes = {};
+        var soundVolumes = { rain: 0.6, wind: 0.4, waves: 0.5, noise: 0.3 };
+        var soundActive = { rain: false, wind: false, waves: false, noise: false };
+        var masterMuted = false;
 
         function getAudioCtx() {
             if (!audioCtx) {
@@ -373,109 +894,111 @@
         }
 
         function createRainNode(ctx) {
-            const bufferSize = ctx.sampleRate * 2;
-            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-            const data = buffer.getChannelData(0);
-            for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
-            const source = ctx.createBufferSource();
+            var bufferSize = ctx.sampleRate * 2;
+            var buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            var data = buffer.getChannelData(0);
+            for (var i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+            var source = ctx.createBufferSource();
             source.buffer = buffer;
             source.loop = true;
-            const filter = ctx.createBiquadFilter();
+            var filter = ctx.createBiquadFilter();
             filter.type = 'bandpass';
             filter.frequency.value = 1200;
             filter.Q.value = 0.5;
             source.connect(filter);
-            const gain = ctx.createGain();
+            var gain = ctx.createGain();
             gain.gain.value = soundVolumes.rain * 0.4;
             filter.connect(gain);
             gain.connect(ctx.destination);
             source.start();
-            return { source, gain };
+            return { source: source, gain: gain };
         }
 
         function createWindNode(ctx) {
-            const bufferSize = ctx.sampleRate * 4;
-            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-            const data = buffer.getChannelData(0);
-            for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
-            const source = ctx.createBufferSource();
+            var bufferSize = ctx.sampleRate * 4;
+            var buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            var data = buffer.getChannelData(0);
+            for (var i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+            var source = ctx.createBufferSource();
             source.buffer = buffer;
             source.loop = true;
-            const filter = ctx.createBiquadFilter();
+            var filter = ctx.createBiquadFilter();
             filter.type = 'lowpass';
             filter.frequency.value = 400;
             source.connect(filter);
-            const gain = ctx.createGain();
+            var gain = ctx.createGain();
             gain.gain.value = soundVolumes.wind * 0.3;
             filter.connect(gain);
             gain.connect(ctx.destination);
             source.start();
-            return { source, gain };
+            return { source: source, gain: gain };
         }
 
         function createWavesNode(ctx) {
-            const bufferSize = ctx.sampleRate * 6;
-            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-            const data = buffer.getChannelData(0);
-            for (let i = 0; i < bufferSize; i++) {
-                const t = i / ctx.sampleRate;
+            var bufferSize = ctx.sampleRate * 6;
+            var buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            var data = buffer.getChannelData(0);
+            for (var i = 0; i < bufferSize; i++) {
+                var t = i / ctx.sampleRate;
                 data[i] = (Math.random() * 2 - 1) * (0.5 + 0.5 * Math.sin(2 * Math.PI * 0.1 * t));
             }
-            const source = ctx.createBufferSource();
+            var source = ctx.createBufferSource();
             source.buffer = buffer;
             source.loop = true;
-            const filter = ctx.createBiquadFilter();
+            var filter = ctx.createBiquadFilter();
             filter.type = 'lowpass';
             filter.frequency.value = 600;
             source.connect(filter);
-            const gain = ctx.createGain();
+            var gain = ctx.createGain();
             gain.gain.value = soundVolumes.waves * 0.35;
             filter.connect(gain);
             gain.connect(ctx.destination);
             source.start();
-            return { source, gain };
+            return { source: source, gain: gain };
         }
 
         function createNoiseNode(ctx) {
-            const bufferSize = ctx.sampleRate * 2;
-            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-            const data = buffer.getChannelData(0);
-            let lastOut = 0;
-            for (let i = 0; i < bufferSize; i++) {
-                const white = Math.random() * 2 - 1;
+            var bufferSize = ctx.sampleRate * 2;
+            var buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            var data = buffer.getChannelData(0);
+            var lastOut = 0;
+            for (var i = 0; i < bufferSize; i++) {
+                var white = Math.random() * 2 - 1;
                 data[i] = (lastOut + (0.02 * white)) / 1.02;
                 lastOut = data[i];
                 data[i] *= 3.5;
             }
-            const source = ctx.createBufferSource();
+            var source = ctx.createBufferSource();
             source.buffer = buffer;
             source.loop = true;
-            const gain = ctx.createGain();
+            var gain = ctx.createGain();
             gain.gain.value = soundVolumes.noise * 0.5;
             source.connect(gain);
             gain.connect(ctx.destination);
             source.start();
-            return { source, gain };
+            return { source: source, gain: gain };
         }
 
-        const soundCreators = { rain: createRainNode, wind: createWindNode, waves: createWavesNode, noise: createNoiseNode };
+        var soundCreators = { rain: createRainNode, wind: createWindNode, waves: createWavesNode, noise: createNoiseNode };
 
         function toggleSound(id) {
-            const ctx = getAudioCtx();
+            var ctx = getAudioCtx();
             if (soundActive[id]) {
                 if (soundNodes[id]) {
                     soundNodes[id].source.stop();
                     delete soundNodes[id];
                 }
                 soundActive[id] = false;
-                document.getElementById('card-' + id).classList.remove('glass-highlight');
-                document.getElementById('btn-sound-' + id).classList.remove('text-accent-400');
+                document.getElementById('card-' + id).classList.remove('active');
+                document.getElementById('icon-' + id + '-play').style.display = '';
+                document.getElementById('icon-' + id + '-pause').style.display = 'none';
                 updateAudioIndicator();
             } else {
                 soundNodes[id] = soundCreators[id](ctx);
                 soundActive[id] = true;
-                document.getElementById('card-' + id).classList.add('glass-highlight');
-                document.getElementById('btn-sound-' + id).classList.add('text-accent-400');
+                document.getElementById('card-' + id).classList.add('active');
+                document.getElementById('icon-' + id + '-play').style.display = 'none';
+                document.getElementById('icon-' + id + '-pause').style.display = '';
                 updateAudioIndicator();
             }
         }
@@ -483,36 +1006,39 @@
         function setVolume(id, value) {
             soundVolumes[id] = value / 100;
             if (soundNodes[id] && !masterMuted) {
-                const multipliers = { rain: 0.4, wind: 0.3, waves: 0.35, noise: 0.5 };
+                var multipliers = { rain: 0.4, wind: 0.3, waves: 0.35, noise: 0.5 };
                 soundNodes[id].gain.gain.value = soundVolumes[id] * multipliers[id];
             }
         }
 
         function toggleMuteAll() {
             masterMuted = !masterMuted;
-            const multipliers = { rain: 0.4, wind: 0.3, waves: 0.35, noise: 0.5 };
+            var multipliers = { rain: 0.4, wind: 0.3, waves: 0.35, noise: 0.5 };
             Object.keys(soundNodes).forEach(function(id) {
                 soundNodes[id].gain.gain.value = masterMuted ? 0 : soundVolumes[id] * multipliers[id];
             });
-            document.getElementById('master-sound-on').classList.toggle('hidden', masterMuted);
-            document.getElementById('master-sound-muted').classList.toggle('hidden', !masterMuted);
+            document.getElementById('master-sound-on').style.display = masterMuted ? 'none' : '';
+            document.getElementById('master-sound-muted').style.display = masterMuted ? '' : 'none';
         }
 
         function updateAudioIndicator() {
-            const anyActive = Object.values(soundActive).some(Boolean);
-            const indicator = document.getElementById('audio-indicator');
-            indicator.classList.toggle('hidden', !anyActive);
-            indicator.classList.toggle('flex', anyActive);
+            var anyActive = Object.values(soundActive).some(Boolean);
+            var badge = document.getElementById('audio-badge');
+            if (anyActive) {
+                badge.classList.add('visible');
+            } else {
+                badge.classList.remove('visible');
+            }
         }
 
         // =============================================
         // TASK LIST
         // =============================================
-        let tasks = [];
+        var tasks = [];
 
         function addTask() {
-            const input = document.getElementById('task-input');
-            const text = input.value.trim();
+            var input = document.getElementById('task-input');
+            var text = input.value.trim();
             if (!text) return;
             tasks.push({ text: text, done: false, id: Date.now() });
             input.value = '';
@@ -520,7 +1046,7 @@
         }
 
         function toggleTask(id) {
-            const task = tasks.find(function(t) { return t.id === id; });
+            var task = tasks.find(function(t) { return t.id === id; });
             if (task) task.done = !task.done;
             renderTasks();
         }
@@ -531,39 +1057,23 @@
         }
 
         function renderTasks() {
-            const list = document.getElementById('task-list');
-            const done = tasks.filter(function(t) { return t.done; }).length;
+            var list = document.getElementById('task-list');
+            var done = tasks.filter(function(t) { return t.done; }).length;
             document.getElementById('task-count').textContent = done + ' / ' + tasks.length + ' erledigt';
             list.innerHTML = tasks.map(function(task) {
-                return '<div class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/3 group transition-all duration-200">' +
-                    '<button onclick="toggleTask(' + task.id + ')" class="w-4 h-4 rounded-md border ' + (task.done ? 'bg-accent-500 border-accent-500' : 'border-white/20 hover:border-accent-400') + ' flex items-center justify-center flex-shrink-0 transition-all duration-200">' +
-                    (task.done ? '<svg class="w-2.5 h-2.5 text-white fill-current" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>' : '') +
+                return '<div class="task-item">' +
+                    '<button onclick="toggleTask(' + task.id + ')" class="task-checkbox ' + (task.done ? 'done' : '') + '">' +
+                    (task.done ? '<svg width="10" height="10" fill="white" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>' : '') +
                     '</button>' +
-                    '<span class="text-xs flex-1 ' + (task.done ? 'line-through text-neutral-600' : 'text-neutral-300') + '">' + task.text + '</span>' +
-                    '<button onclick="deleteTask(' + task.id + ')" class="opacity-0 group-hover:opacity-100 text-neutral-600 hover:text-red-400 transition-all duration-200">' +
-                    '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>' +
+                    '<span class="task-text ' + (task.done ? 'done' : '') + '">' + task.text + '</span>' +
+                    '<button onclick="deleteTask(' + task.id + ')" class="task-delete">' +
+                    '<svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>' +
                     '</button>' +
                     '</div>';
             }).join('');
         }
 
-        // =============================================
-        // AMBIENT BLOB ANIMATION
-        // =============================================
-        let blobAngle = 0;
-        function animateBlobs() {
-            blobAngle += 0.003;
-            const b1x = 50 + 15 * Math.sin(blobAngle);
-            const b1y = 50 + 15 * Math.cos(blobAngle * 0.7);
-            const b2x = 50 + 20 * Math.cos(blobAngle * 0.8);
-            const b2y = 50 + 20 * Math.sin(blobAngle * 1.1);
-            document.getElementById('blob-1').style.transform = 'translate(' + (b1x - 50) + 'px, ' + (b1y - 50) + 'px)';
-            document.getElementById('blob-2').style.transform = 'translate(' + (b2x - 50) + 'px, ' + (b2y - 50) + 'px)';
-            requestAnimationFrame(animateBlobs);
-        }
-        animateBlobs();
-
-        // Init display
+        // Init
         updateTimerDisplay();
         renderTasks();
     </script>
