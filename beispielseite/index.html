@@ -135,10 +135,6 @@
             letter-spacing: 0.02em;
         }
 
-        .dk-logo span {
-            color: var(--color-red);
-        }
-
         .dk-nav-link {
             font-family: var(--font-base);
             font-size: 13px;
@@ -254,7 +250,56 @@
            TIMER RING
         ============================================= */
         circle {
-            transition: stroke-dashoffset 0.35s ease;
+            transition: stroke-dashoffset 0.3s ease;
+        }
+
+        /* =============================================
+           TIMER CONTROLS
+        ============================================= */
+        .timer-controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* =============================================
+           SECTION LABEL BAR
+        ============================================= */
+        .section-label-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        /* =============================================
+           AUDIO INDICATOR
+        ============================================= */
+        .audio-indicator {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-base);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--color-red);
+        }
+
+        .audio-indicator.active { display: flex; }
+
+        .audio-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--color-red);
+            animation: pulse 1.4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.7); }
         }
 
         /* =============================================
@@ -263,135 +308,131 @@
         .sound-card {
             background: var(--color-grey-light);
             border-radius: var(--border-radius-default);
-            padding: 20px;
+            padding: 16px;
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            border: 2px solid transparent;
-            transition: border-color 0.2s;
+            gap: 12px;
+            transition: background 0.2s;
         }
 
         .sound-card.active {
-            border-color: var(--color-red);
+            background: var(--color-black);
+        }
+
+        .sound-card.active .dk-label {
+            color: var(--color-white);
+            opacity: 0.7;
         }
 
         .sound-card-header {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
 
-        /* =============================================
-           RANGE INPUT
-        ============================================= */
-        input[type="range"] {
-            -webkit-appearance: none;
-            appearance: none;
+        .sound-card input[type="range"] {
             width: 100%;
             height: 2px;
+            appearance: none;
             background: rgba(29, 29, 29, 0.15);
             border-radius: 2px;
             outline: none;
             cursor: pointer;
         }
 
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
+        .sound-card.active input[type="range"] {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .sound-card input[type="range"]::-webkit-slider-thumb {
             appearance: none;
             width: 14px;
             height: 14px;
             border-radius: 50%;
-            background: var(--color-red);
+            background: var(--color-black);
             cursor: pointer;
         }
 
-        input[type="range"]::-moz-range-thumb {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--color-red);
-            border: none;
-            cursor: pointer;
+        .sound-card.active input[type="range"]::-webkit-slider-thumb {
+            background: var(--color-white);
         }
 
         /* =============================================
-           TASK LIST
+           TASKS
         ============================================= */
+        .task-list-scroll {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-bottom: 16px;
+        }
+
         .task-item {
             display: flex;
             align-items: center;
             gap: 12px;
             padding: 10px 0;
-            border-bottom: 1px solid rgba(29, 29, 29, 0.07);
+            border-bottom: 1px solid rgba(29, 29, 29, 0.06);
         }
 
-        .task-item:last-child { border-bottom: none; }
-
-        .task-checkbox {
-            width: 18px;
-            height: 18px;
-            border-radius: 4px;
-            border: 2px solid rgba(29, 29, 29, 0.25);
-            background: transparent;
+        .task-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--color-red);
             cursor: pointer;
             flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.15s, border-color 0.15s;
         }
 
-        .task-checkbox.done {
-            background: var(--color-red);
-            border-color: var(--color-red);
-        }
-
-        .task-text {
+        .task-item label {
             font-family: var(--font-base);
             font-size: 14px;
             color: var(--color-black);
+            cursor: pointer;
             flex: 1;
         }
 
-        .task-text.done {
+        .task-item.done label {
             text-decoration: line-through;
             opacity: 0.35;
         }
 
-        .task-delete {
+        .task-item .task-delete {
             background: none;
             border: none;
             cursor: pointer;
             color: var(--color-black);
-            opacity: 0;
-            transition: opacity 0.15s;
-            padding: 4px;
+            opacity: 0.2;
+            font-size: 16px;
+            line-height: 1;
+            padding: 0 4px;
+            transition: opacity 0.2s;
         }
 
-        .task-item:hover .task-delete { opacity: 0.3; }
-        .task-delete:hover { opacity: 1 !important; color: var(--color-red); }
+        .task-item .task-delete:hover { opacity: 0.6; }
 
         .task-input-row {
             display: flex;
-            gap: 10px;
-            margin-top: 16px;
+            gap: 8px;
         }
 
         .dk-input {
             flex: 1;
+            padding: 10px 16px;
+            border: 2px solid rgba(29, 29, 29, 0.12);
+            border-radius: var(--border-radius-pill);
             font-family: var(--font-base);
-            font-size: 14px;
+            font-size: 13px;
             color: var(--color-black);
             background: var(--color-grey-light);
-            border: 2px solid transparent;
-            border-radius: var(--border-radius-pill);
-            padding: 10px 20px;
             outline: none;
             transition: border-color 0.2s;
         }
 
-        .dk-input::placeholder { color: rgba(29, 29, 29, 0.35); }
-        .dk-input:focus { border-color: var(--color-red); }
+        .dk-input:focus {
+            border-color: var(--color-red);
+        }
 
         /* =============================================
            PRESET TABS
@@ -498,95 +539,30 @@
             color: var(--color-red);
         }
 
-        .timer-controls {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        /* =============================================
-           AUDIO BADGE
-        ============================================= */
-        .audio-badge {
-            display: none;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            border-radius: var(--border-radius-pill);
-            background: var(--color-red);
-            color: var(--color-white);
-            font-family: var(--font-base);
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .audio-badge.visible { display: flex; }
-
-        .audio-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--color-white);
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.75); }
-        }
-
         /* =============================================
            FOOTER
         ============================================= */
         .dk-footer {
             background: var(--color-black);
             color: var(--color-white);
-            padding: 28px 0;
+            padding: 32px 0;
             margin-top: auto;
         }
 
         .dk-footer-inner {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
+            gap: 16px;
             flex-wrap: wrap;
-            gap: 12px;
         }
 
         .dk-footer p {
             font-family: var(--font-base);
             font-size: 12px;
-            opacity: 0.4;
+            opacity: 0.5;
         }
 
-        /* =============================================
-           SECTION LABEL BAR
-        ============================================= */
-        .section-label-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        /* =============================================
-           SCROLLBAR
-        ============================================= */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: var(--color-grey-light); }
-        ::-webkit-scrollbar-thumb { background: rgba(29,29,29,0.15); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--color-red); }
-
-        /* =============================================
-           TASK LIST SCROLL
-        ============================================= */
-        .task-list-scroll {
-            max-height: 160px;
-            overflow-y: auto;
-            padding-right: 4px;
-        }
     </style>
 </head>
 <body>
@@ -595,9 +571,9 @@
     <header class="dk-header">
         <div class="dk-container">
             <div class="dk-header-inner">
-                <a href="../index.html" class="dk-logo">DIE<span>K</span>AVALLERIE</a>
+                <a href="../index.html" class="dk-logo">Die Kavallerie</a>
                 <div style="display:flex;align-items:center;gap:24px;">
-                    <div id="audio-badge" class="audio-badge">
+                    <div class="audio-indicator" id="audio-indicator">
                         <span class="audio-dot"></span>
                         Sound aktiv
                     </div>
@@ -802,64 +778,72 @@
         // =============================================
         // TIMER LOGIC
         // =============================================
-        var PRESETS = { focus: 25 * 60, short: 5 * 60, long: 15 * 60 };
-        var currentPreset = 'focus';
-        var timeLeft = PRESETS.focus;
-        var totalTime = PRESETS.focus;
-        var timerInterval = null;
-        var isRunning = false;
-        var CIRCUMFERENCE = 691;
+        const PRESETS = {
+            focus: { duration: 25 * 60, label: 'Fokus-Phase' },
+            short: { duration: 5 * 60, label: 'Kurze Pause' },
+            long:  { duration: 15 * 60, label: 'Lange Pause' }
+        };
+
+        let currentPreset = 'focus';
+        let totalSeconds = PRESETS.focus.duration;
+        let remainingSeconds = totalSeconds;
+        let timerRunning = false;
+        let timerInterval = null;
+        let pomodoroCount = 0;
+        const CIRCUMFERENCE = 691;
 
         function setTimerPreset(preset) {
-            if (isRunning) return;
+            if (timerRunning) return;
             currentPreset = preset;
-            timeLeft = PRESETS[preset];
-            totalTime = PRESETS[preset];
+            totalSeconds = PRESETS[preset].duration;
+            remainingSeconds = totalSeconds;
+            document.getElementById('timer-state-text').textContent = PRESETS[preset].label;
             updateTimerDisplay();
-            updateProgressRing();
-            document.querySelectorAll('.preset-tab').forEach(function(btn) {
-                btn.classList.remove('active');
-            });
+            updateRing();
+            document.querySelectorAll('.preset-tab').forEach(function(b) { b.classList.remove('active'); });
             document.getElementById('btn-preset-' + preset).classList.add('active');
-            var labels = { focus: 'Fokus-Phase', short: 'Kurze Pause', long: 'Lange Pause' };
-            document.getElementById('timer-state-text').textContent = labels[preset];
         }
 
         function updateTimerDisplay() {
-            var m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
-            var s = (timeLeft % 60).toString().padStart(2, '0');
-            document.getElementById('timer-display').textContent = m + ':' + s;
+            var m = Math.floor(remainingSeconds / 60);
+            var s = remainingSeconds % 60;
+            document.getElementById('timer-display').textContent =
+                (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
         }
 
-        function updateProgressRing() {
-            var progress = timeLeft / totalTime;
+        function updateRing() {
+            var progress = remainingSeconds / totalSeconds;
             var offset = CIRCUMFERENCE * (1 - progress);
             document.getElementById('timer-progress').style.strokeDashoffset = offset;
         }
 
         function toggleTimer() {
-            if (isRunning) {
+            if (timerRunning) {
                 clearInterval(timerInterval);
-                isRunning = false;
+                timerRunning = false;
                 document.getElementById('play-icon').style.display = '';
                 document.getElementById('pause-icon').style.display = 'none';
                 document.getElementById('btn-timer-label').textContent = 'Start';
             } else {
-                isRunning = true;
+                timerRunning = true;
                 document.getElementById('play-icon').style.display = 'none';
                 document.getElementById('pause-icon').style.display = '';
                 document.getElementById('btn-timer-label').textContent = 'Pause';
                 timerInterval = setInterval(function() {
-                    if (timeLeft > 0) {
-                        timeLeft--;
+                    if (remainingSeconds > 0) {
+                        remainingSeconds--;
                         updateTimerDisplay();
-                        updateProgressRing();
+                        updateRing();
                     } else {
                         clearInterval(timerInterval);
-                        isRunning = false;
+                        timerRunning = false;
                         document.getElementById('play-icon').style.display = '';
                         document.getElementById('pause-icon').style.display = 'none';
                         document.getElementById('btn-timer-label').textContent = 'Start';
+                        if (currentPreset === 'focus') {
+                            pomodoroCount++;
+                            document.getElementById('timer-count-label').textContent = pomodoroCount + ' Pomodoro';
+                        }
                     }
                 }, 1000);
             }
@@ -867,23 +851,20 @@
 
         function resetTimer() {
             clearInterval(timerInterval);
-            isRunning = false;
-            timeLeft = PRESETS[currentPreset];
-            totalTime = PRESETS[currentPreset];
-            updateTimerDisplay();
-            updateProgressRing();
+            timerRunning = false;
+            remainingSeconds = totalSeconds;
             document.getElementById('play-icon').style.display = '';
             document.getElementById('pause-icon').style.display = 'none';
             document.getElementById('btn-timer-label').textContent = 'Start';
+            updateTimerDisplay();
+            updateRing();
         }
 
         // =============================================
-        // WEB AUDIO API
+        // AUDIO ENGINE
         // =============================================
         var audioCtx = null;
-        var soundNodes = {};
-        var soundVolumes = { rain: 0.6, wind: 0.4, waves: 0.5, noise: 0.3 };
-        var soundActive = { rain: false, wind: false, waves: false, noise: false };
+        var sounds = {};
         var masterMuted = false;
 
         function getAudioCtx() {
@@ -894,160 +875,159 @@
         }
 
         function createRainNode(ctx) {
-            var bufferSize = ctx.sampleRate * 2;
-            var buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-            var data = buffer.getChannelData(0);
-            for (var i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
-            var source = ctx.createBufferSource();
-            source.buffer = buffer;
-            source.loop = true;
+            var bufferSize = 4096;
+            var node = ctx.createScriptProcessor(bufferSize, 1, 1);
+            node.onaudioprocess = function(e) {
+                var output = e.outputBuffer.getChannelData(0);
+                for (var i = 0; i < bufferSize; i++) {
+                    output[i] = (Math.random() * 2 - 1) * 0.35;
+                }
+            };
             var filter = ctx.createBiquadFilter();
             filter.type = 'bandpass';
             filter.frequency.value = 1200;
             filter.Q.value = 0.5;
-            source.connect(filter);
-            var gain = ctx.createGain();
-            gain.gain.value = soundVolumes.rain * 0.4;
-            filter.connect(gain);
-            gain.connect(ctx.destination);
-            source.start();
-            return { source: source, gain: gain };
+            node.connect(filter);
+            return { source: node, output: filter };
         }
 
         function createWindNode(ctx) {
-            var bufferSize = ctx.sampleRate * 4;
-            var buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-            var data = buffer.getChannelData(0);
-            for (var i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
-            var source = ctx.createBufferSource();
-            source.buffer = buffer;
-            source.loop = true;
+            var bufferSize = 4096;
+            var node = ctx.createScriptProcessor(bufferSize, 1, 1);
+            var phase = 0;
+            node.onaudioprocess = function(e) {
+                var output = e.outputBuffer.getChannelData(0);
+                for (var i = 0; i < bufferSize; i++) {
+                    phase += 0.0001;
+                    var mod = Math.sin(phase) * 0.5 + 0.5;
+                    output[i] = (Math.random() * 2 - 1) * 0.2 * mod;
+                }
+            };
             var filter = ctx.createBiquadFilter();
             filter.type = 'lowpass';
             filter.frequency.value = 400;
-            source.connect(filter);
-            var gain = ctx.createGain();
-            gain.gain.value = soundVolumes.wind * 0.3;
-            filter.connect(gain);
-            gain.connect(ctx.destination);
-            source.start();
-            return { source: source, gain: gain };
+            node.connect(filter);
+            return { source: node, output: filter };
         }
 
         function createWavesNode(ctx) {
-            var bufferSize = ctx.sampleRate * 6;
-            var buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-            var data = buffer.getChannelData(0);
-            for (var i = 0; i < bufferSize; i++) {
-                var t = i / ctx.sampleRate;
-                data[i] = (Math.random() * 2 - 1) * (0.5 + 0.5 * Math.sin(2 * Math.PI * 0.1 * t));
-            }
-            var source = ctx.createBufferSource();
-            source.buffer = buffer;
-            source.loop = true;
+            var bufferSize = 4096;
+            var node = ctx.createScriptProcessor(bufferSize, 1, 1);
+            var t = 0;
+            node.onaudioprocess = function(e) {
+                var output = e.outputBuffer.getChannelData(0);
+                for (var i = 0; i < bufferSize; i++) {
+                    t++;
+                    var wave = Math.sin(t * 0.0003) * Math.sin(t * 0.00007);
+                    output[i] = (Math.random() * 2 - 1) * 0.25 * (wave * 0.5 + 0.5);
+                }
+            };
             var filter = ctx.createBiquadFilter();
             filter.type = 'lowpass';
             filter.frequency.value = 600;
-            source.connect(filter);
-            var gain = ctx.createGain();
-            gain.gain.value = soundVolumes.waves * 0.35;
-            filter.connect(gain);
-            gain.connect(ctx.destination);
-            source.start();
-            return { source: source, gain: gain };
+            node.connect(filter);
+            return { source: node, output: filter };
         }
 
         function createNoiseNode(ctx) {
-            var bufferSize = ctx.sampleRate * 2;
-            var buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-            var data = buffer.getChannelData(0);
+            var bufferSize = 4096;
+            var node = ctx.createScriptProcessor(bufferSize, 1, 1);
             var lastOut = 0;
-            for (var i = 0; i < bufferSize; i++) {
-                var white = Math.random() * 2 - 1;
-                data[i] = (lastOut + (0.02 * white)) / 1.02;
-                lastOut = data[i];
-                data[i] *= 3.5;
-            }
-            var source = ctx.createBufferSource();
-            source.buffer = buffer;
-            source.loop = true;
-            var gain = ctx.createGain();
-            gain.gain.value = soundVolumes.noise * 0.5;
-            source.connect(gain);
-            gain.connect(ctx.destination);
-            source.start();
-            return { source: source, gain: gain };
-        }
-
-        var soundCreators = { rain: createRainNode, wind: createWindNode, waves: createWavesNode, noise: createNoiseNode };
-
-        function toggleSound(id) {
-            var ctx = getAudioCtx();
-            if (soundActive[id]) {
-                if (soundNodes[id]) {
-                    soundNodes[id].source.stop();
-                    delete soundNodes[id];
+            node.onaudioprocess = function(e) {
+                var output = e.outputBuffer.getChannelData(0);
+                for (var i = 0; i < bufferSize; i++) {
+                    var white = Math.random() * 2 - 1;
+                    output[i] = (lastOut + (0.02 * white)) / 1.02;
+                    lastOut = output[i];
+                    output[i] *= 3.5;
                 }
-                soundActive[id] = false;
-                document.getElementById('card-' + id).classList.remove('active');
-                document.getElementById('icon-' + id + '-play').style.display = '';
-                document.getElementById('icon-' + id + '-pause').style.display = 'none';
-                updateAudioIndicator();
-            } else {
-                soundNodes[id] = soundCreators[id](ctx);
-                soundActive[id] = true;
-                document.getElementById('card-' + id).classList.add('active');
-                document.getElementById('icon-' + id + '-play').style.display = 'none';
-                document.getElementById('icon-' + id + '-pause').style.display = '';
-                updateAudioIndicator();
-            }
+            };
+            return { source: node, output: node };
         }
 
-        function setVolume(id, value) {
-            soundVolumes[id] = value / 100;
-            if (soundNodes[id] && !masterMuted) {
-                var multipliers = { rain: 0.4, wind: 0.3, waves: 0.35, noise: 0.5 };
-                soundNodes[id].gain.gain.value = soundVolumes[id] * multipliers[id];
+        var nodeCreators = {
+            rain: createRainNode,
+            wind: createWindNode,
+            waves: createWavesNode,
+            noise: createNoiseNode
+        };
+
+        function toggleSound(name) {
+            var ctx = getAudioCtx();
+            if (ctx.state === 'suspended') { ctx.resume(); }
+
+            if (sounds[name] && sounds[name].active) {
+                sounds[name].gainNode.gain.setTargetAtTime(0, ctx.currentTime, 0.1);
+                setTimeout(function() {
+                    if (sounds[name]) {
+                        try { sounds[name].nodes.source.disconnect(); } catch(e) {}
+                        try { sounds[name].nodes.output.disconnect(); } catch(e) {}
+                        sounds[name].gainNode.disconnect();
+                    }
+                    sounds[name] = null;
+                }, 300);
+                document.getElementById('card-' + name).classList.remove('active');
+                document.getElementById('icon-' + name + '-play').style.display = '';
+                document.getElementById('icon-' + name + '-pause').style.display = 'none';
+            } else {
+                var nodes = nodeCreators[name](ctx);
+                var gainNode = ctx.createGain();
+                var vol = document.querySelector('#card-' + name + ' input[type=range]').value / 100;
+                gainNode.gain.value = masterMuted ? 0 : vol * 0.4;
+                nodes.output.connect(gainNode);
+                gainNode.connect(ctx.destination);
+                sounds[name] = { active: true, gainNode: gainNode, nodes: nodes, baseVol: vol };
+                document.getElementById('card-' + name).classList.add('active');
+                document.getElementById('icon-' + name + '-play').style.display = 'none';
+                document.getElementById('icon-' + name + '-pause').style.display = '';
+            }
+            updateAudioIndicator();
+        }
+
+        function setVolume(name, val) {
+            if (sounds[name] && sounds[name].active) {
+                sounds[name].baseVol = val / 100;
+                if (!masterMuted) {
+                    sounds[name].gainNode.gain.value = (val / 100) * 0.4;
+                }
             }
         }
 
         function toggleMuteAll() {
             masterMuted = !masterMuted;
-            var multipliers = { rain: 0.4, wind: 0.3, waves: 0.35, noise: 0.5 };
-            Object.keys(soundNodes).forEach(function(id) {
-                soundNodes[id].gain.gain.value = masterMuted ? 0 : soundVolumes[id] * multipliers[id];
-            });
             document.getElementById('master-sound-on').style.display = masterMuted ? 'none' : '';
             document.getElementById('master-sound-muted').style.display = masterMuted ? '' : 'none';
+            Object.keys(sounds).forEach(function(name) {
+                if (sounds[name] && sounds[name].active) {
+                    sounds[name].gainNode.gain.value = masterMuted ? 0 : sounds[name].baseVol * 0.4;
+                }
+            });
         }
 
         function updateAudioIndicator() {
-            var anyActive = Object.values(soundActive).some(Boolean);
-            var badge = document.getElementById('audio-badge');
-            if (anyActive) {
-                badge.classList.add('visible');
-            } else {
-                badge.classList.remove('visible');
-            }
+            var anyActive = Object.keys(sounds).some(function(k) { return sounds[k] && sounds[k].active; });
+            var el = document.getElementById('audio-indicator');
+            if (anyActive) { el.classList.add('active'); } else { el.classList.remove('active'); }
         }
 
         // =============================================
-        // TASK LIST
+        // TASK MANAGER
         // =============================================
         var tasks = [];
+        var taskIdCounter = 0;
 
         function addTask() {
             var input = document.getElementById('task-input');
             var text = input.value.trim();
             if (!text) return;
-            tasks.push({ text: text, done: false, id: Date.now() });
+            tasks.push({ id: taskIdCounter++, text: text, done: false });
             input.value = '';
             renderTasks();
         }
 
         function toggleTask(id) {
             var task = tasks.find(function(t) { return t.id === id; });
-            if (task) task.done = !task.done;
+            if (task) { task.done = !task.done; }
             renderTasks();
         }
 
@@ -1060,22 +1040,19 @@
             var list = document.getElementById('task-list');
             var done = tasks.filter(function(t) { return t.done; }).length;
             document.getElementById('task-count').textContent = done + ' / ' + tasks.length + ' erledigt';
-            list.innerHTML = tasks.map(function(task) {
-                return '<div class="task-item">' +
-                    '<button onclick="toggleTask(' + task.id + ')" class="task-checkbox ' + (task.done ? 'done' : '') + '">' +
-                    (task.done ? '<svg width="10" height="10" fill="white" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>' : '') +
-                    '</button>' +
-                    '<span class="task-text ' + (task.done ? 'done' : '') + '">' + task.text + '</span>' +
-                    '<button onclick="deleteTask(' + task.id + ')" class="task-delete">' +
-                    '<svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>' +
-                    '</button>' +
+            list.innerHTML = tasks.map(function(t) {
+                return '<div class="task-item' + (t.done ? ' done' : '') + '">' +
+                    '<input type="checkbox" id="task-' + t.id + '" ' + (t.done ? 'checked' : '') +
+                    ' onchange="toggleTask(' + t.id + ')">' +
+                    '<label for="task-' + t.id + '">' + t.text + '</label>' +
+                    '<button class="task-delete" onclick="deleteTask(' + t.id + ')">&times;</button>' +
                     '</div>';
             }).join('');
         }
 
         // Init
         updateTimerDisplay();
-        renderTasks();
+        updateRing();
     </script>
 </body>
 </html>
