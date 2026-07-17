@@ -1,0 +1,17 @@
+/* Die Kavallerie — Color Tokens */
+
+:root {
+  /* Base palette */
+  --color-white: #FFFFFF;
+  --color-black: #1D1D1D;
+  --color-grey-light: #F2F4F7;
+  --color-red: #FF003C;
+  --color-yellow: #FFFF00;
+
+  /* Semantic aliases */
+  --color-text: var(--color-black);
+  --color-text-heading: var(--color-black);
+  --color-bg: var(--color-grey-light);
+  --color-accent: var(--color-red);
+  --color-accent-secondary: var(--color-yellow);
+}

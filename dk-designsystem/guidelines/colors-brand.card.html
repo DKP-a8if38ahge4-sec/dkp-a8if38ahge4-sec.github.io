@@ -1,0 +1,39 @@
+<!-- @dsCard group="Colors" viewport="700x140" name="Brand Colors" subtitle="#FF003C red, #FFFF00 yellow" -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body { margin: 0; background: var(--color-grey-light); font-family: var(--font-base); }
+    .swatches { display: flex; height: 140px; }
+    .swatch { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px 16px; box-sizing: border-box; }
+    .label { font-size: 11px; font-weight: 700; letter-spacing: 0.02em; }
+    .value { font-size: 11px; opacity: 0.7; }
+  </style>
+</head>
+<body>
+  <div class="swatches">
+    <div class="swatch" style="background:#FF003C;">
+      <span class="label" style="color:#fff;">Red</span>
+      <span class="value" style="color:#fff;">#FF003C</span>
+    </div>
+    <div class="swatch" style="background:#FFFF00;">
+      <span class="label" style="color:#1D1D1D;">Yellow</span>
+      <span class="value" style="color:#1D1D1D;">#FFFF00</span>
+    </div>
+    <div class="swatch" style="background:#1D1D1D;">
+      <span class="label" style="color:#fff;">Black</span>
+      <span class="value" style="color:#fff;">#1D1D1D</span>
+    </div>
+    <div class="swatch" style="background:#F2F4F7; border-right: 1px solid #e0e2e6;">
+      <span class="label" style="color:#1D1D1D;">Grey Light</span>
+      <span class="value" style="color:#1D1D1D;">#F2F4F7</span>
+    </div>
+    <div class="swatch" style="background:#FFFFFF; border-right: 1px solid #e0e2e6;">
+      <span class="label" style="color:#1D1D1D;">White</span>
+      <span class="value" style="color:#1D1D1D;">#FFFFFF</span>
+    </div>
+  </div>
+</body>
+</html>

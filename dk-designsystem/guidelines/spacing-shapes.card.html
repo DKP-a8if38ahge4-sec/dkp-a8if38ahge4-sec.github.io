@@ -1,0 +1,37 @@
+<!-- @dsCard group="Spacing" viewport="700x120" name="Shape Tokens" subtitle="Border radii: 19px default · 35px large · 59px button pill" -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body { margin: 0; background: var(--color-grey-light); padding: 24px; font-family: var(--font-base); display: flex; gap: 32px; align-items: center; height: 120px; box-sizing: border-box; }
+    .item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .box { background: var(--color-black); opacity: 0.15; }
+    .label { font-size: 11px; color: #888; text-align: center; }
+    .token { font-size: 11px; font-weight: 700; color: var(--color-black); text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="item">
+    <div class="box" style="width:56px; height:36px; border-radius: 19px;"></div>
+    <div class="token">--border-radius-default</div>
+    <div class="label">19px</div>
+  </div>
+  <div class="item">
+    <div class="box" style="width:72px; height:42px; border-radius: 35px;"></div>
+    <div class="token">--border-radius-large</div>
+    <div class="label">35px</div>
+  </div>
+  <div class="item">
+    <div class="box" style="width:120px; height:36px; border-radius: 59px;"></div>
+    <div class="token">--border-radius-button</div>
+    <div class="label">59px — pill</div>
+  </div>
+  <div class="item">
+    <div class="box" style="width:36px; height:36px; border-radius: 50%;"></div>
+    <div class="token">--border-radius-circle</div>
+    <div class="label">50%</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!-- @dsCard group="Spacing" viewport="700x180" name="Spacing Scale" subtitle="4 tokens, responsive — values double at 1200px" -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body { margin: 0; background: var(--color-grey-light); padding: 20px 24px; font-family: var(--font-base); box-sizing: border-box; }
+    .row { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+    .bar-wrap { flex: 1; height: 20px; background: rgba(0,0,0,0.06); border-radius: 4px; overflow: hidden; }
+    .bar { height: 100%; background: var(--color-red); border-radius: 4px; }
+    .label { font-size: 12px; font-weight: 700; color: var(--color-black); min-width: 120px; }
+    .val { font-size: 11px; color: #888; min-width: 90px; text-align: right; }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <div class="label">--space-small</div>
+    <div class="bar-wrap"><div class="bar" style="width: calc(25/180*100%)"></div></div>
+    <div class="val">25px → 50px</div>
+  </div>
+  <div class="row">
+    <div class="label">--space-medium</div>
+    <div class="bar-wrap"><div class="bar" style="width: calc(35/180*100%)"></div></div>
+    <div class="val">35px → 75px</div>
+  </div>
+  <div class="row">
+    <div class="label">--space-large</div>
+    <div class="bar-wrap"><div class="bar" style="width: calc(45/180*100%)"></div></div>
+    <div class="val">45px → 90px</div>
+  </div>
+  <div class="row" style="margin:0;">
+    <div class="label">--space-xlarge</div>
+    <div class="bar-wrap"><div class="bar" style="width:100%"></div></div>
+    <div class="val">90px → 180px</div>
+  </div>
+</body>
+</html>

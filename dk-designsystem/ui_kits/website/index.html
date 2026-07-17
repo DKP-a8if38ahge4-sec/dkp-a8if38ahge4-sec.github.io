@@ -1,0 +1,604 @@
+<!-- @dsCard group="Website" viewport="1280x800" name="Marketing Site" subtitle="Agency homepage — header, hero, cases, accordion, footer" -->
+<!-- @startingPoint section="Website" subtitle="Die Kavallerie agency homepage" viewport="1280x800" -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Die Kavallerie — Kommunikationsagentur</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--color-grey-light);
+      color: var(--color-black);
+      font-family: var(--font-base);
+      font-size: var(--font-size-copy);
+      line-height: var(--line-height-copy);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* Header */
+    .dk-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--size-header);
+      transition: background 0.3s;
+    }
+    .dk-header.scrolled { background: var(--color-grey-light); }
+    .dk-header-inner {
+      max-width: var(--container-size-header);
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .dk-logo-text {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      color: var(--color-black);
+      line-height: 1;
+    }
+
+    /* Burger */
+    .dk-burger {
+      background: none; border: none; cursor: pointer;
+      width: 40px; height: 40px;
+      display: flex; flex-direction: column; justify-content: center; gap: 6px;
+      padding: 0;
+    }
+    .dk-burger span {
+      display: block; width: 28px; height: 2px; background: var(--color-black);
+      transition: transform 0.3s, opacity 0.3s;
+      transform-origin: center;
+    }
+    .dk-burger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .dk-burger.open span:nth-child(2) { opacity: 0; }
+    .dk-burger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Nav overlay */
+    .dk-nav-overlay {
+      position: fixed; inset: 0; z-index: 99;
+      background: var(--color-red);
+      display: flex; flex-direction: column;
+      padding: calc(var(--size-header) + 40px) var(--container-padding) 40px;
+      transform: translateY(-100%);
+      transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    .dk-nav-overlay.open { transform: translateY(0); }
+    .dk-nav-list { list-style: none; }
+    .dk-nav-list li {
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding: 16px 0;
+    }
+    .dk-nav-list a {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: clamp(40px, 6vw, 80px);
+      text-transform: uppercase;
+      color: var(--color-white);
+      letter-spacing: 0;
+      line-height: 1;
+      transition: opacity 0.2s;
+    }
+    .dk-nav-list a:hover { opacity: 0.7; }
+    .dk-nav-footer {
+      margin-top: auto;
+      display: flex; gap: 24px; align-items: center;
+    }
+    .dk-social-link {
+      font-family: var(--font-base);
+      font-size: 14px;
+      color: var(--color-white);
+      text-decoration: underline;
+    }
+
+    /* Hero */
+    .dk-hero {
+      height: 100vh; min-height: 600px;
+      position: relative;
+      overflow: hidden;
+      background: #111;
+    }
+    .dk-hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, #1a1a1a 0%, #0d0d0d 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .dk-hero-play {
+      width: 120px; height: 120px; border-radius: 50%;
+      background: var(--color-grey-light);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .dk-hero-play:hover { transform: scale(1.05); }
+    .dk-hero-play-label {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: var(--color-red);
+      letter-spacing: 0.05em;
+    }
+    .dk-hero-content {
+      position: absolute;
+      bottom: 40px; left: 0; right: 0;
+      padding: 0 var(--container-padding);
+      max-width: var(--container-size-default);
+      margin: 0 auto;
+    }
+    .dk-hero-sub {
+      font-family: var(--font-base);
+      font-size: var(--font-size-sub-headline);
+      color: var(--color-white);
+      margin-bottom: 10px;
+    }
+    .dk-hero-title {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: clamp(50px, 8vw, 120px);
+      text-transform: uppercase;
+      color: var(--color-white);
+      line-height: 1;
+    }
+
+    /* Manifesto section */
+    .dk-manifesto {
+      background: var(--color-grey-light);
+      padding: var(--space-xlarge) var(--container-padding);
+    }
+    .dk-manifesto-inner {
+      max-width: var(--container-size-default);
+      margin: 0 auto;
+    }
+    .dk-manifesto-text {
+      font-family: var(--font-base);
+      font-size: clamp(22px, 3vw, 38px);
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--color-black);
+    }
+    .dk-manifesto-accent {
+      color: var(--color-red);
+      font-style: italic;
+    }
+
+    /* Cases teaser */
+    .dk-case-item {
+      height: 100vh; min-height: 500px;
+      position: relative;
+      overflow: hidden;
+      display: flex; align-items: flex-end;
+    }
+    .dk-case-bg {
+      position: absolute; inset: 0;
+    }
+    .dk-case-content {
+      position: relative; z-index: 2;
+      padding: 40px var(--container-padding);
+      width: 100%;
+      max-width: var(--container-size-default);
+      margin: 0 auto;
+    }
+    .dk-case-sub {
+      font-family: var(--font-base);
+      font-size: var(--font-size-sub-headline);
+      margin-bottom: 8px;
+    }
+    .dk-case-title {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: clamp(40px, 7vw, 100px);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    /* Services accordion */
+    .dk-services {
+      background: var(--color-grey-light);
+      padding: var(--space-xlarge) var(--container-padding);
+    }
+    .dk-services-inner {
+      max-width: var(--container-size-default);
+      margin: 0 auto;
+    }
+    .dk-services-header { margin-bottom: var(--space-medium); }
+    .dk-accordion-item { border-top: 1px solid rgba(0,0,0,0.15); }
+    .dk-accordion-item:last-child { border-bottom: 1px solid rgba(0,0,0,0.15); }
+    .dk-accordion-trigger {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; gap: 24px;
+      padding: 24px 0; text-align: left;
+    }
+    .dk-accordion-icon {
+      width: 50px; height: 50px; border-radius: 50%;
+      border: 2px solid var(--color-black);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+    .dk-accordion-icon.open { transform: rotate(90deg); }
+    .dk-accordion-icon svg { width: 18px; height: 18px; }
+    .dk-accordion-label {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: clamp(22px, 3.5vw, 50px);
+      text-transform: uppercase;
+      color: var(--color-black);
+      line-height: 1;
+    }
+    .dk-accordion-body {
+      padding: 0 0 28px 74px;
+      font-size: var(--font-size-copy);
+      line-height: var(--line-height-copy);
+      color: var(--color-black);
+      max-width: 700px;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.3s;
+    }
+    .dk-accordion-body.closed { max-height: 0; padding-bottom: 0; }
+    .dk-accordion-body.open { max-height: 300px; }
+
+    /* Contact / CTA section */
+    .dk-contact {
+      background: var(--color-red);
+      padding: var(--space-xlarge) var(--container-padding);
+    }
+    .dk-contact-inner {
+      max-width: var(--container-size-default);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--grid-gutter);
+      align-items: start;
+    }
+    .dk-contact-form { display: flex; flex-direction: column; gap: 12px; }
+
+    /* Footer */
+    .dk-footer {
+      background: var(--color-grey-light);
+      padding: var(--space-large) var(--container-padding);
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+    .dk-footer-inner {
+      max-width: var(--container-size-large);
+      margin: 0 auto;
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .dk-footer-social { display: flex; gap: 16px; }
+    .dk-footer-social a {
+      font-size: 13px;
+      text-decoration: underline;
+      color: var(--color-black);
+    }
+    .dk-footer-address { font-size: 14px; line-height: 1.6; color: var(--color-black); }
+    .dk-footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
+    .dk-footer-nav a { font-size: 13px; text-decoration: underline; color: var(--color-black); }
+    .dk-footer-logo {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: 18px;
+      text-transform: uppercase;
+      color: var(--color-black);
+      margin-left: auto;
+    }
+
+    @media (max-width: 768px) {
+      .dk-contact-inner { grid-template-columns: 1fr; }
+      .dk-footer-inner { flex-direction: column; }
+      .dk-footer-logo { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    // ── Inlined components (no bundle dependency) ──────────────────────
+
+    const ARROW_SVG = {
+      red:   `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17.799' height='17.799' viewBox='0 0 17.799 17.799'%3E%3Cpath d='M2.36,12.563l10.226.022L12.563,2.36h-1.91l.067,7.057L1.326,0,0,1.326,9.417,10.72,2.36,10.653Z' transform='translate(0 8.899) rotate(-45)' fill='%23ff003c'/%3E%3C/svg%3E")`,
+      white: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17.799' height='17.799' viewBox='0 0 17.799 17.799'%3E%3Cpath d='M2.36,12.563l10.226.022L12.563,2.36h-1.91l.067,7.057L1.326,0,0,1.326,9.417,10.72,2.36,10.653Z' transform='translate(0 8.899) rotate(-45)' fill='%23fff'/%3E%3C/svg%3E")`,
+      black: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17.799' height='17.799' viewBox='0 0 17.799 17.799'%3E%3Cpath d='M2.36,12.563l10.226.022L12.563,2.36h-1.91l.067,7.057L1.326,0,0,1.326,9.417,10.72,2.36,10.653Z' transform='translate(0 8.899) rotate(-45)' fill='%231d1d1d'/%3E%3C/svg%3E")`,
+    };
+
+    function Button({ children, variant = 'red', size = 'default', href, onClick, type = 'button', disabled }) {
+      const [hovered, setHovered] = React.useState(false);
+      const isLarge = size === 'large';
+      const v = {
+        red:   { border: '2px solid var(--color-red)',   color: hovered ? 'var(--color-white)' : 'var(--color-red)',   bg: hovered ? 'var(--color-red)'   : 'transparent', arrow: hovered ? 'white' : 'red'   },
+        black: { border: '2px solid var(--color-black)', color: hovered ? 'var(--color-white)' : 'var(--color-black)', bg: hovered ? 'var(--color-black)' : 'transparent', arrow: hovered ? 'white' : 'black' },
+        white: { border: '2px solid var(--color-white)', color: hovered ? 'var(--color-red)'   : 'var(--color-white)', bg: hovered ? 'var(--color-white)' : 'transparent', arrow: hovered ? 'red'   : 'white' },
+      }[variant] || {};
+      const El = href ? 'a' : 'button';
+      return (
+        <El href={href} onClick={disabled ? undefined : onClick} type={href ? undefined : type}
+          disabled={El === 'button' ? disabled : undefined}
+          onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+          style={{ fontFamily: 'var(--font-base)', fontSize: isLarge ? 'var(--font-size-button)' : 'var(--font-size-button-small)', fontWeight: 700, lineHeight: '1.056em', letterSpacing: 0, borderRadius: 'var(--border-radius-button)', textDecoration: 'none', padding: isLarge ? '38px 52px' : '28px 61px 28px 33px', minWidth: '150px', display: 'inline-flex', alignItems: 'center', gap: '12px', boxSizing: 'border-box', cursor: disabled ? 'not-allowed' : 'pointer', opacity: disabled ? 0.5 : 1, border: v.border, color: v.color, backgroundColor: v.bg, transition: 'background-color 0.2s, color 0.2s' }}>
+          {children}
+          {!isLarge && <span aria-hidden="true" style={{ display: 'inline-block', width: '17px', height: '17px', backgroundImage: ARROW_SVG[v.arrow], backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'contain', flexShrink: 0 }} />}
+        </El>
+      );
+    }
+
+    function Headline({ children, size = 'h2', tag, color, subHeadline = false, style: extraStyle }) {
+      const sizeMap = { '3xlarge': { fontSize: 'var(--font-size-3xlarge)', lineHeight: '0.950em' }, '2xlarge': { fontSize: 'var(--font-size-2xlarge)', lineHeight: '1em' }, xlarge: { fontSize: 'var(--font-size-xlarge)', lineHeight: '1' }, large: { fontSize: 'var(--font-size-large)', lineHeight: '1.200em' }, medium: { fontSize: 'var(--font-size-medium)', lineHeight: '1' }, small: { fontSize: 'var(--font-size-small)', lineHeight: '1' }, h1: { fontSize: 'var(--font-size-headline-h1)', lineHeight: '1' }, h2: { fontSize: 'var(--font-size-headline-h2)', lineHeight: '1' }, h3: { fontSize: 'var(--font-size-headline-h3)', lineHeight: '1' }, h4: { fontSize: 'var(--font-size-headline-h4)', lineHeight: '1' }, h5: { fontSize: 'var(--font-size-headline-h5)', lineHeight: '1' }, h6: { fontSize: 'var(--font-size-headline-h6)', lineHeight: '1' } };
+      if (subHeadline) {
+        const El = tag || 'p';
+        return <El style={{ fontFamily: 'var(--font-base)', fontWeight: 400, fontSize: 'var(--font-size-sub-headline)', lineHeight: '1.286em', textTransform: 'none', letterSpacing: 0, color: color || 'var(--color-black)', margin: 0, ...extraStyle }}>{children}</El>;
+      }
+      const sizeStyle = sizeMap[size] || sizeMap.h2;
+      const defaultTag = size.startsWith('h') && size.length === 2 ? size : 'h2';
+      const El = tag || defaultTag;
+      return <El style={{ fontFamily: 'var(--font-headline)', fontWeight: 900, textTransform: 'uppercase', letterSpacing: 0, color: color || 'var(--color-black)', margin: 0, ...sizeStyle, ...extraStyle }}>{children}</El>;
+    }
+
+    const CHEVRON_W = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='19.102' height='19.102' viewBox='0 0 19.102 19.102'%3E%3Cpath d='M3.117,16.595l13.507.03-.03-13.507H14.071l.089,9.322L12.439,14.16l-9.322-.089Z' transform='translate(9.551 -4.408) rotate(45)' fill='%23fff'/%3E%3C/svg%3E")`;
+    const CHEVRON_B = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='19.102' height='19.102' viewBox='0 0 19.102 19.102'%3E%3Cpath d='M3.117,16.595l13.507.03-.03-13.507H14.071l.089,9.322L12.439,14.16l-9.322-.089Z' transform='translate(9.551 -4.408) rotate(45)' fill='%23000'/%3E%3C/svg%3E")`;
+
+    function FormField({ type = 'text', label, placeholder, value, onChange, options = [], theme = 'dark', required, name, rows = 4 }) {
+      const base = { borderRadius: '15px', paddingLeft: '20px', paddingRight: '20px', paddingTop: 0, paddingBottom: 0, display: 'block', lineHeight: '2', fontSize: 'var(--font-size-copy)', fontFamily: 'var(--font-base)', boxShadow: 'none', outline: 'none', border: theme === 'dark' ? '1px solid var(--color-white)' : '1px solid var(--color-black)', backgroundColor: 'transparent', color: theme === 'dark' ? 'var(--color-white)' : 'var(--color-black)', width: '100%', boxSizing: 'border-box' };
+      if (type === 'checkbox') return (
+        <label style={{ display: 'grid', gridTemplateColumns: '21px auto', gap: '0.5em', fontSize: 'var(--font-size-copy-xsmall)', lineHeight: '1.2', cursor: 'pointer', color: theme === 'dark' ? 'var(--color-white)' : 'var(--color-black)', alignItems: 'start' }}>
+          <input type="checkbox" name={name} required={required} style={{ appearance: 'none', WebkitAppearance: 'none', width: '21px', height: '21px', border: `2px solid ${theme === 'dark' ? 'var(--color-white)' : 'var(--color-black)'}`, borderRadius: '50%', backgroundColor: 'transparent', cursor: 'pointer', flexShrink: 0 }} />
+          <span>{label}</span>
+        </label>
+      );
+      if (type === 'select') return (
+        <select name={name} value={value} onChange={onChange} required={required} style={{ ...base, height: '55px', appearance: 'none', WebkitAppearance: 'none', cursor: 'pointer', backgroundImage: theme === 'dark' ? CHEVRON_W : CHEVRON_B, backgroundPosition: 'right 20px center', backgroundRepeat: 'no-repeat', backgroundSize: '10px' }}>
+          {placeholder && <option value="">{placeholder}</option>}
+          {options.map(o => <option key={o.value ?? o} value={o.value ?? o}>{o.label ?? o}</option>)}
+        </select>
+      );
+      if (type === 'textarea') return <textarea name={name} placeholder={placeholder} value={value} onChange={onChange} required={required} rows={rows} style={{ ...base, padding: '12px 20px', lineHeight: 'var(--line-height-copy)', resize: 'vertical' }} />;
+      return <input type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} required={required} style={{ ...base, height: '55px' }} />;
+    }
+
+    // ── App ────────────────────────────────────────────────────────────
+
+    const CASES = [
+      { bg: '#1a1a1a', textColor: '#fff', client: 'Employer Branding', title: 'Wir machen\nEuch attraktiv', num: '01' },
+      { bg: '#2d1a0e', textColor: '#fff', client: 'Live Event', title: 'Eine Nacht,\ndie verbindet', num: '02' },
+      { bg: '#0a1a2e', textColor: '#fff', client: 'Digitale Kampagne', title: 'Reichweite\ndie bewegt', num: '03' },
+    ];
+
+    const SERVICES = [
+      { label: 'Employer Branding', body: 'Wir positionieren euch als Arbeitgeber, der Talente anzieht und Mitarbeiter begeistert — mit Strategien, die Haltung zeigen und Menschen bewegen.' },
+      { label: 'Live Events', body: 'Von kleinen Mitarbeiterevents bis zu großen Bühnen: Wir konzipieren und produzieren Erlebnisse, die Menschen zusammenbringen und Marken erlebbar machen.' },
+      { label: 'Digitale Kampagnen', body: 'Social Media, Content, Performance — wir entwickeln digitale Kampagnen, die Aufmerksamkeit erzeugen und echte Wirkung entfalten.' },
+      { label: 'Strategie & Beratung', body: 'Kommunikation braucht eine Grundlage. Wir entwickeln mit euch Strategien, die nachhaltig wirken und auf eure Ziele einzahlen.' },
+    ];
+
+    function Header({ scrolled }) {
+      const [open, setOpen] = React.useState(false);
+      return (
+        <>
+          <header className={`dk-header${scrolled ? ' scrolled' : ''}`}>
+            <div className="dk-header-inner">
+              <a href="#" className="dk-logo-text">Die Kavallerie</a>
+              <button
+                className={`dk-burger${open ? ' open' : ''}`}
+                onClick={() => setOpen(o => !o)}
+                aria-label="Menü"
+              >
+                <span /><span /><span />
+              </button>
+            </div>
+          </header>
+
+          <nav className={`dk-nav-overlay${open ? ' open' : ''}`} aria-hidden={!open}>
+            <ul className="dk-nav-list" onClick={() => setOpen(false)}>
+              {['Cases', 'Leistungen', 'Über uns', 'Jobs', 'Kontakt'].map(item => (
+                <li key={item}><a href="#">{item}</a></li>
+              ))}
+            </ul>
+            <div className="dk-nav-footer">
+              <a href="#" className="dk-social-link">Instagram</a>
+              <a href="#" className="dk-social-link">LinkedIn</a>
+            </div>
+          </nav>
+        </>
+      );
+    }
+
+    function HeroSection() {
+      return (
+        <section className="dk-hero">
+          <div className="dk-hero-bg">
+            <div className="dk-hero-play">
+              <span className="dk-hero-play-label">Play</span>
+            </div>
+          </div>
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%)' }} />
+          <div style={{ position: 'relative', zIndex: 2, width: '100%' }}>
+            <div className="dk-hero-content">
+              <p className="dk-hero-sub">Employer Branding · Live Events · Digitale Kampagnen</p>
+              <h1 className="dk-hero-title">Inspirierende<br/>Erlebnisse</h1>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function ManifestoSection() {
+      return (
+        <section className="dk-manifesto">
+          <div className="dk-manifesto-inner">
+            <Headline subHeadline style={{ marginBottom: 20 }}>Als Kommunikationsagentur</Headline>
+            <p className="dk-manifesto-text">
+              kreieren wir <span className="dk-manifesto-accent">inspirierende</span> Erlebnisse,<br/>
+              die Menschen zusammenführen.<br/>
+              Für eine bessere Lösung, eine neue Aufgabe<br/>
+              oder eine zukunftsweisende Idee.
+            </p>
+            <div style={{ marginTop: 40 }}>
+              <Button variant="black">Mehr erfahren</Button>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function CasesSection() {
+      return (
+        <section id="cases">
+          {CASES.map((c, i) => (
+            <article
+              key={i}
+              className="dk-case-item"
+              style={{ cursor: 'pointer' }}
+            >
+              <div className="dk-case-bg" style={{ background: c.bg }} />
+              <div style={{
+                position: 'absolute', inset: 0, zIndex: 1,
+                background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%)',
+              }} />
+              <div className="dk-case-content">
+                <p className="dk-case-sub" style={{ color: c.textColor, opacity: 0.7 }}>
+                  {c.num} — {c.client}
+                </p>
+                <h2 className="dk-case-title" style={{ color: c.textColor }}>
+                  {c.title.split('\n').map((line, j) => (
+                    <span key={j} style={{ display: 'block' }}>{line}</span>
+                  ))}
+                </h2>
+              </div>
+            </article>
+          ))}
+        </section>
+      );
+    }
+
+    function AccordionItem({ label, body }) {
+      const [open, setOpen] = React.useState(false);
+      return (
+        <div className="dk-accordion-item">
+          <button className="dk-accordion-trigger" onClick={() => setOpen(o => !o)}>
+            <div className={`dk-accordion-icon${open ? ' open' : ''}`}>
+              <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.36,12.563l10.226.022L12.563,2.36h-1.91l.067,7.057L1.326,0,0,1.326,9.417,10.72,2.36,10.653Z" transform="translate(0 8.899) rotate(-45)" fill="#1D1D1D" />
+              </svg>
+            </div>
+            <span className="dk-accordion-label">{label}</span>
+          </button>
+          <div className={`dk-accordion-body ${open ? 'open' : 'closed'}`}>
+            {body}
+          </div>
+        </div>
+      );
+    }
+
+    function ServicesSection() {
+      return (
+        <section className="dk-services" id="leistungen">
+          <div className="dk-services-inner">
+            <div className="dk-services-header">
+              <Headline subHeadline>Was wir tun</Headline>
+              <Headline size="large" style={{ marginTop: 8 }}>Unsere Leistungen</Headline>
+            </div>
+            {SERVICES.map((s, i) => (
+              <AccordionItem key={i} label={s.label} body={s.body} />
+            ))}
+          </div>
+        </section>
+      );
+    }
+
+    function ContactSection() {
+      return (
+        <section className="dk-contact" id="kontakt">
+          <div className="dk-contact-inner">
+            <div>
+              <Headline subHeadline color="rgba(255,255,255,0.7)">Sprechen wir miteinander</Headline>
+              <Headline size="large" color="var(--color-white)" style={{ marginTop: 12, marginBottom: 24 }}>
+                Jetzt Kontakt aufnehmen
+              </Headline>
+              <Button variant="white">Direkt schreiben</Button>
+            </div>
+            <div className="dk-contact-form">
+              <FormField type="text" placeholder="Ihr Name" theme="dark" />
+              <FormField type="email" placeholder="E-Mail-Adresse" theme="dark" />
+              <FormField
+                type="select"
+                placeholder="Ihr Anliegen"
+                options={['Employer Branding','Live Event','Digitale Kampagne','Strategie','Sonstiges']}
+                theme="dark"
+              />
+              <FormField type="textarea" placeholder="Ihre Nachricht..." rows={4} theme="dark" />
+              <FormField type="checkbox" label="Ich habe die Datenschutzerklärung gelesen und stimme zu." theme="dark" />
+              <div>
+                <Button variant="white" type="submit">Absenden</Button>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Footer() {
+      return (
+        <footer className="dk-footer">
+          <div className="dk-footer-inner">
+            <div>
+              <div className="dk-footer-social">
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+              </div>
+            </div>
+            <div className="dk-footer-address">
+              <strong>Die Kavallerie GmbH</strong><br/>
+              Musterstraße 1<br/>
+              10115 Berlin
+            </div>
+            <div className="dk-footer-nav">
+              <a href="#">Impressum</a>
+              <a href="#">Datenschutz</a>
+              <a href="#">Jobs</a>
+            </div>
+            <div className="dk-footer-logo">Die Kavallerie</div>
+          </div>
+        </footer>
+      );
+    }
+
+    function App() {
+      const [scrolled, setScrolled] = React.useState(false);
+
+      React.useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 20);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+      }, []);
+
+      return (
+        <>
+          <Header scrolled={scrolled} />
+          <main style={{ marginTop: 0 }}>
+            <HeroSection />
+            <ManifestoSection />
+            <CasesSection />
+            <ServicesSection />
+            <ContactSection />
+          </main>
+          <Footer />
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

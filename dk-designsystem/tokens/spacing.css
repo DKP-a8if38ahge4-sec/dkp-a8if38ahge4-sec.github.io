@@ -1,0 +1,37 @@
+/* Die Kavallerie — Spacing Tokens */
+
+:root {
+  /* Spacing scale — mobile */
+  --space-small: 25px;
+  --space-medium: 35px;
+  --space-large: 45px;
+  --space-xlarge: 90px;
+
+  /* Grid & layout */
+  --grid-gutter: 50px;
+  --grid-gutter-small: 16px;
+  --container-padding: 24px;
+  --slider-gap-right-mobile: 24px;
+  --slider-gap-right-desktop: 375px;
+
+  /* Container widths */
+  --container-size-large: 1760px;
+  --container-size-header: 1760px;
+  --container-size-medium: 1450px;
+  --container-size-default: 1320px;
+  --container-size-small: 1068px;
+  --container-size-xsmall: 700px;
+
+  /* Fixed sizes */
+  --size-header: 80px;
+}
+
+/* Spacing scale — desktop (jumps at 1200px) */
+@media screen and (min-width: 1200px) {
+  :root {
+    --space-small: 50px;
+    --space-medium: 75px;
+    --space-large: 90px;
+    --space-xlarge: 180px;
+  }
+}

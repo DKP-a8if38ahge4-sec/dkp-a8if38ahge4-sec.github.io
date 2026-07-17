@@ -1,0 +1,28 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Backgrounds in Use" subtitle="Grey-light default · Red accent section" -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body { margin: 0; font-family: var(--font-base); display: flex; height: 180px; }
+    .panel { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 24px; box-sizing: border-box; }
+    .tag { font-size: 11px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 6px; opacity: 0.6; }
+    .headline { font-family: var(--font-headline); font-weight: 900; text-transform: uppercase; font-size: 32px; line-height: 1; }
+    .body { font-size: 13px; margin-top: 6px; line-height: 1.4; }
+    .bullet { margin-top: 6px; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="panel" style="background: var(--color-grey-light);">
+    <div class="tag" style="color: var(--color-black);">DEFAULT — grey-light</div>
+    <div class="headline" style="color: var(--color-black);">Inspirierende<br>Erlebnisse</div>
+    <div class="body" style="color: var(--color-black);">Body copy in Helvetica Now Display. Red arrow bullets.</div>
+  </div>
+  <div class="panel" style="background: var(--color-red);">
+    <div class="tag" style="color: var(--color-white);">ACCENT — red</div>
+    <div class="headline" style="color: var(--color-white);">Wir machen<br>den Unterschied</div>
+    <div class="body" style="color: var(--color-white);">Copy inverts to white. Button variant: dk-button-white.</div>
+  </div>
+</body>
+</html>

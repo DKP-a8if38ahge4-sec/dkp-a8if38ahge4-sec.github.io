@@ -1,0 +1,53 @@
+<!-- @dsCard group="Components" viewport="700x440" name="FormField" subtitle="Input · textarea · select · checkbox · dark & light themes" -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../styles.css">
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="../../_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; font-family: var(--font-base); }
+    .panel { padding: 24px 28px; }
+    .lbl { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 14px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { FormField } = window.DieKavallerieDesignSystem_21d065;
+
+    function Card() {
+      return (
+        <div>
+          <div className="panel" style={{background: 'var(--color-red)'}}>
+            <div className="lbl" style={{color: 'rgba(255,255,255,0.5)'}}>Dark theme — on red</div>
+            <div className="grid">
+              <FormField type="text" placeholder="Ihr Name" theme="dark" />
+              <FormField type="email" placeholder="E-Mail-Adresse" theme="dark" />
+              <FormField type="select" placeholder="Bitte wählen" options={['Employer Branding','Live Events','Strategie']} theme="dark" />
+              <FormField type="textarea" placeholder="Ihre Nachricht..." rows={2} theme="dark" />
+            </div>
+            <div style={{marginTop: 10}}>
+              <FormField type="checkbox" label="Ich stimme der Datenschutzerklärung zu." theme="dark" />
+            </div>
+          </div>
+
+          <div className="panel" style={{background: 'var(--color-grey-light)'}}>
+            <div className="lbl" style={{color: '#aaa'}}>Light theme — on grey-light</div>
+            <div className="grid">
+              <FormField type="text" placeholder="Ihr Name" theme="light" />
+              <FormField type="email" placeholder="E-Mail-Adresse" theme="light" />
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<Card />);
+  </script>
+</body>
+</html>

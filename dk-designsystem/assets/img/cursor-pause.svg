@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rechteck_3024" data-name="Rechteck 3024" width="69.631" height="27.877" transform="translate(0 0)" fill="#ff003c"></rect>
+    </clipPath>
+  </defs>
+  <g id="Gruppe_78387" data-name="Gruppe 78387" transform="translate(-938 -198)">
+    <circle id="Ellipse_36" data-name="Ellipse 36" cx="64" cy="64" r="64" transform="translate(938 198)" fill="#f2f4f7"></circle>
+    <g id="Gruppe_78378" data-name="Gruppe 78378" transform="translate(967.185 248.401)">
+      <g id="Gruppe_78377" data-name="Gruppe 78377" clip-path="url(#clip-path)">
+        <path id="Pfad_9127" data-name="Pfad 9127" d="M0,.34H5.915C11.83.34,13.8,2.38,13.8,9.077V10.1c0,6.595-1.972,8.737-7.887,8.737v8.7H0ZM6.833,14.414c.748,0,.918-.68.918-1.563V6.323c0-.884-.17-1.563-.918-1.563H5.915v9.654Z" fill="#ff003c"></path>
+        <path id="Pfad_9128" data-name="Pfad 9128" d="M16.625.34h8.193l3.264,27.2H22.064l-.237-4.046h-2.21l-.239,4.046H13.361Zm4.9,18.222L20.84,6.7l-.068-.851h-.136l-.068.851-.679,11.864Z" fill="#ff003c"></path>
+        <path id="Pfad_9129" data-name="Pfad 9129" d="M28.628,19.888V.34H34.68V21.758c0,.884.17,1.359.884,1.359s.883-.475.883-1.359V.34H42.5V19.888c0,5.712-2.413,7.989-6.934,7.989s-6.936-2.277-6.936-7.989" fill="#ff003c"></path>
+        <path id="Pfad_9130" data-name="Pfad 9130" d="M43.689,19.582V18.018h6.052v3.74c0,1.019.238,1.359.884,1.359s.883-.34.883-1.359V19.684a3.026,3.026,0,0,0-1.325-2.72l-2.652-2.176c-2.346-1.937-3.875-3.909-3.875-7.478,0-4.59,2.413-7.31,6.969-7.31,4.284,0,6.8,2.516,6.8,6.867V9.144H51.407V6.119c0-1.019-.239-1.359-.884-1.359-.612,0-.851.34-.851,1.359V7.513A3.023,3.023,0,0,0,51,10.232l2.618,2.143c2.243,1.836,3.943,3.434,3.943,7.717,0,5.2-2.38,7.785-6.97,7.785-4.691,0-6.9-2.89-6.9-8.3" fill="#ff003c"></path>
+        <path id="Pfad_9131" data-name="Pfad 9131" d="M58.752.34H69.631V5.27H64.667v6.22H69.29v4.9H64.667v6.221h4.964v4.929H58.752Z" fill="#ff003c"></path>
+      </g>
+    </g>
+  </g>
+</svg>

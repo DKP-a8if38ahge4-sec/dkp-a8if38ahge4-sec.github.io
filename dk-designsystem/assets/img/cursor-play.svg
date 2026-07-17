@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rechteck_3023" data-name="Rechteck 3023" width="54.33" height="27.197" transform="translate(0 0)" fill="#ff003c"></rect>
+    </clipPath>
+  </defs>
+  <g id="Gruppe_78388" data-name="Gruppe 78388" transform="translate(-339 -198)">
+    <g id="Gruppe_78367" data-name="Gruppe 78367" transform="translate(7 18)">
+      <circle id="Ellipse_31" data-name="Ellipse 31" cx="64" cy="64" r="64" transform="translate(332 180)" fill="#f2f4f7"></circle>
+    </g>
+    <g id="Gruppe_78376" data-name="Gruppe 78376" transform="translate(376 248.401)">
+      <g id="Gruppe_78375" data-name="Gruppe 78375" clip-path="url(#clip-path)">
+        <path id="Pfad_9123" data-name="Pfad 9123" d="M0,0H5.915C11.831,0,13.8,2.04,13.8,8.737v1.02c0,6.595-1.971,8.737-7.887,8.737v8.7H0ZM6.833,14.074c.748,0,.918-.68.918-1.563V5.983c0-.884-.17-1.563-.918-1.563H5.915v9.654Z" fill="#ff003c"></path>
+        <path id="Pfad_9124" data-name="Pfad 9124" d="M14.96,0h5.915V22.268h5.1V27.2H14.96Z" fill="#ff003c"></path>
+        <path id="Pfad_9125" data-name="Pfad 9125" d="M29.51,0H37.7l3.264,27.2H34.95l-.238-4.046H32.5L32.264,27.2H26.247Zm4.9,18.223-.68-11.865-.068-.85h-.136l-.068.85-.68,11.865Z" fill="#ff003c"></path>
+        <path id="Pfad_9126" data-name="Pfad 9126" d="M43.757,17.678,39.1,0h6.052l1.427,9.825.068.85h.136l.068-.85L48.278,0H54.33L49.673,17.678V27.2H43.757Z" fill="#ff003c"></path>
+      </g>
+    </g>
+  </g>
+</svg>

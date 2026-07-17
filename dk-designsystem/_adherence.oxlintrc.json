@@ -1,0 +1,225 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "components/core/**",
+              "components/forms/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Helvetica Now Display|PP Formula Condensed|Manic))/i]",
+        "message": "Font not provided by the design system. Available: Helvetica Now Display, PP Formula Condensed, Manic."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|variant|size|href|onClick|type|disabled|key|ref|className|style|children)$/]",
+        "message": "<Button> doesn't accept that prop. Declared props: children, variant, size, href, onClick, type, disabled."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:red|black|white)$/]",
+        "message": "<Button> variant must be one of 'red' | 'black' | 'white'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:default|large)$/]",
+        "message": "<Button> size must be one of 'default' | 'large'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='type'] > Literal[value!=/^(?:button|submit|reset)$/]",
+        "message": "<Button> type must be one of 'button' | 'submit' | 'reset'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='FormField'] > JSXAttribute > JSXIdentifier[name!=/^(?:type|label|placeholder|value|onChange|options|theme|required|name|rows|key|ref|className|style|children)$/]",
+        "message": "<FormField> doesn't accept that prop. Declared props: type, label, placeholder, value, onChange, options, theme, required, name, rows."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='FormField'] > JSXAttribute[name.name='type'] > Literal[value!=/^(?:text|email|textarea|select|checkbox)$/]",
+        "message": "<FormField> type must be one of 'text' | 'email' | 'textarea' | 'select' | 'checkbox'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='FormField'] > JSXAttribute[name.name='theme'] > Literal[value!=/^(?:dark|light)$/]",
+        "message": "<FormField> theme must be one of 'dark' | 'light'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Headline'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|size|tag|color|subHeadline|key|ref|className|style|children)$/]",
+        "message": "<Headline> doesn't accept that prop. Declared props: children, size, tag, color, subHeadline."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Headline'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:3xlarge|2xlarge|xlarge|large|medium|small|h1|h2|h3|h4|h5|h6)$/]",
+        "message": "<Headline> size must be one of '3xlarge' | '2xlarge' | 'xlarge' | 'large' | 'medium' | 'small' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "Button": {
+        "replaces": []
+      },
+      "FormField": {
+        "replaces": []
+      },
+      "Headline": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--border-radius-button",
+      "--border-radius-circle",
+      "--border-radius-default",
+      "--border-radius-large",
+      "--color-accent",
+      "--color-accent-secondary",
+      "--color-bg",
+      "--color-black",
+      "--color-grey-light",
+      "--color-red",
+      "--color-text",
+      "--color-text-heading",
+      "--color-white",
+      "--color-yellow",
+      "--container-padding",
+      "--container-size-default",
+      "--container-size-header",
+      "--container-size-large",
+      "--container-size-medium",
+      "--container-size-small",
+      "--container-size-xsmall",
+      "--font-base",
+      "--font-headline",
+      "--font-manic",
+      "--font-size-2xlarge",
+      "--font-size-3xlarge",
+      "--font-size-button",
+      "--font-size-button-small",
+      "--font-size-copy",
+      "--font-size-copy-2xsmall",
+      "--font-size-copy-small",
+      "--font-size-copy-xsmall",
+      "--font-size-headline-h1",
+      "--font-size-headline-h2",
+      "--font-size-headline-h3",
+      "--font-size-headline-h4",
+      "--font-size-headline-h5",
+      "--font-size-headline-h6",
+      "--font-size-large",
+      "--font-size-medium",
+      "--font-size-small",
+      "--font-size-sub-headline",
+      "--font-size-tab-title",
+      "--font-size-xlarge",
+      "--grid-gutter",
+      "--grid-gutter-small",
+      "--line-height-copy",
+      "--line-height-copy-2xsmall",
+      "--line-height-copy-small",
+      "--line-height-copy-xsmall",
+      "--size-header",
+      "--slider-gap-right-desktop",
+      "--slider-gap-right-mobile",
+      "--space-large",
+      "--space-medium",
+      "--space-small",
+      "--space-xlarge"
+    ],
+    "tokenKinds": {
+      "--font-headline": "font",
+      "--font-base": "font",
+      "--font-manic": "font",
+      "--font-size-3xlarge": "font",
+      "--font-size-2xlarge": "font",
+      "--font-size-xlarge": "font",
+      "--font-size-large": "font",
+      "--font-size-medium": "font",
+      "--font-size-small": "font",
+      "--font-size-headline-h1": "font",
+      "--font-size-headline-h2": "font",
+      "--font-size-headline-h3": "font",
+      "--font-size-headline-h4": "font",
+      "--font-size-headline-h5": "font",
+      "--font-size-headline-h6": "font",
+      "--font-size-sub-headline": "font",
+      "--font-size-copy": "font",
+      "--font-size-copy-small": "font",
+      "--font-size-copy-xsmall": "font",
+      "--font-size-copy-2xsmall": "font",
+      "--font-size-tab-title": "font",
+      "--font-size-button": "font",
+      "--font-size-button-small": "font",
+      "--line-height-copy": "font",
+      "--line-height-copy-small": "font",
+      "--line-height-copy-xsmall": "font",
+      "--line-height-copy-2xsmall": "font",
+      "--color-white": "color",
+      "--color-black": "color",
+      "--color-grey-light": "color",
+      "--color-red": "color",
+      "--color-yellow": "color",
+      "--color-text": "font",
+      "--color-text-heading": "font",
+      "--color-bg": "color",
+      "--color-accent": "color",
+      "--color-accent-secondary": "color",
+      "--space-small": "spacing",
+      "--space-medium": "spacing",
+      "--space-large": "spacing",
+      "--space-xlarge": "spacing",
+      "--grid-gutter": "spacing",
+      "--grid-gutter-small": "spacing",
+      "--container-padding": "spacing",
+      "--slider-gap-right-mobile": "spacing",
+      "--slider-gap-right-desktop": "spacing",
+      "--container-size-large": "spacing",
+      "--container-size-header": "spacing",
+      "--container-size-medium": "spacing",
+      "--container-size-default": "spacing",
+      "--container-size-small": "spacing",
+      "--container-size-xsmall": "spacing",
+      "--size-header": "spacing",
+      "--border-radius-default": "radius",
+      "--border-radius-large": "radius",
+      "--border-radius-button": "radius",
+      "--border-radius-circle": "radius"
+    },
+    "fontFamilies": [
+      "Helvetica Now Display",
+      "Manic",
+      "PP Formula Condensed"
+    ]
+  }
+}

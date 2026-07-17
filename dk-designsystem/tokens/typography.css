@@ -1,0 +1,108 @@
+/* Die Kavallerie — Typography Tokens */
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/HelveticaNowDisplay-Regular.woff2') format('woff2'),
+       url('../assets/fonts/HelveticaNowDisplay-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/DK_HelveticaNow_Text_55_Regular_Italic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/DK_HelveticaNow_Text_75_Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/DK_HelveticaNow_Text_75_Bold_Italic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'PP Formula Condensed';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('../assets/fonts/DK_PPFormula_93_Black.woff2') format('woff2'),
+       url('../assets/fonts/DK_PPFormula_93_Black.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Manic';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/DK_Manic-Regular.woff2') format('woff2'),
+       url('../assets/fonts/DK_Manic-Regular.woff') format('woff');
+}
+
+:root {
+  /* Font families */
+  --font-headline: 'PP Formula Condensed', 'Helvetica Neue', sans-serif;
+  --font-base: 'Helvetica Now Display', 'Helvetica Neue', sans-serif;
+  --font-manic: 'Manic', cursive;
+
+  /* Font sizes — mobile */
+  --font-size-3xlarge: 95px;
+  --font-size-2xlarge: 75px;
+  --font-size-xlarge: 55px;
+  --font-size-large: 50px;
+  --font-size-medium: 30px;
+  --font-size-small: 20px;
+  --font-size-headline-h1: 50px;
+  --font-size-headline-h2: 40px;
+  --font-size-headline-h3: 30px;
+  --font-size-headline-h4: 25px;
+  --font-size-headline-h5: 20px;
+  --font-size-headline-h6: 18px;
+  --font-size-sub-headline: 14px;
+  --font-size-copy: 18px;
+  --font-size-copy-small: 20px;
+  --font-size-copy-xsmall: 17px;
+  --font-size-copy-2xsmall: 14px;
+  --font-size-tab-title: 35px;
+  --font-size-button: 18px;
+  --font-size-button-small: 14px;
+
+  /* Line heights */
+  --line-height-copy: 1.2em;
+  --line-height-copy-small: 1.250em;
+  --line-height-copy-xsmall: 1.118em;
+  --line-height-copy-2xsmall: 1.071em;
+}
+
+/* Desktop: font sizes scale up at 640px */
+@media screen and (min-width: 640px) {
+  :root {
+    --font-size-3xlarge: 200px;
+    --font-size-2xlarge: 150px;
+    --font-size-xlarge: 120px;
+    --font-size-large: 100px;
+    --font-size-medium: 60px;
+    --font-size-small: 34px;
+    --font-size-headline-h1: 100px;
+    --font-size-headline-h2: 80px;
+    --font-size-headline-h3: 60px;
+    --font-size-headline-h4: 50px;
+    --font-size-headline-h5: 40px;
+    --font-size-headline-h6: 30px;
+    --font-size-sub-headline: 24px;
+    --font-size-copy: 22px;
+    --font-size-tab-title: 46px;
+  }
+}

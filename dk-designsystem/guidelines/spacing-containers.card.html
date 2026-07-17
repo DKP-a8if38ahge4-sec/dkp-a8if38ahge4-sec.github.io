@@ -1,0 +1,23 @@
+<!-- @dsCard group="Spacing" viewport="700x130" name="Containers" subtitle="5 max-width breakpoints for layout containers" -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body { margin: 0; background: var(--color-grey-light); padding: 20px 24px; font-family: var(--font-base); box-sizing: border-box; }
+    .row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+    .name { font-size: 12px; font-weight: 700; min-width: 160px; color: var(--color-black); }
+    .bar-wrap { flex: 1; height: 14px; background: rgba(0,0,0,0.06); border-radius: 3px; overflow: hidden; }
+    .bar { height: 100%; background: var(--color-black); border-radius: 3px; }
+    .px { font-size: 11px; color: #888; min-width: 50px; text-align: right; }
+  </style>
+</head>
+<body>
+  <div class="row"><div class="name">--container-size-large</div><div class="bar-wrap"><div class="bar" style="width:100%"></div></div><div class="px">1760px</div></div>
+  <div class="row"><div class="name">--container-size-medium</div><div class="bar-wrap"><div class="bar" style="width:82%"></div></div><div class="px">1450px</div></div>
+  <div class="row"><div class="name">--container-size-default</div><div class="bar-wrap"><div class="bar" style="width:75%"></div></div><div class="px">1320px</div></div>
+  <div class="row"><div class="name">--container-size-small</div><div class="bar-wrap"><div class="bar" style="width:61%"></div></div><div class="px">1068px</div></div>
+  <div class="row" style="margin:0;"><div class="name">--container-size-xsmall</div><div class="bar-wrap"><div class="bar" style="width:40%"></div></div><div class="px">700px</div></div>
+</body>
+</html>

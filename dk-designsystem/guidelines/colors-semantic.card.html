@@ -1,0 +1,25 @@
+<!-- @dsCard group="Colors" viewport="700x120" name="Semantic Tokens" subtitle="--color-text, --color-bg, --color-accent" -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body { margin: 0; background: var(--color-grey-light); font-family: var(--font-base); padding: 20px 24px; box-sizing: border-box; }
+    .row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .chip { display: flex; align-items: center; gap: 10px; padding: 8px 14px; background: white; border-radius: 8px; border: 1px solid #e0e2e6; }
+    .dot { width: 20px; height: 20px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); flex-shrink: 0; }
+    .name { font-size: 12px; font-weight: 700; color: #1D1D1D; }
+    .val  { font-size: 11px; color: #888; }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <div class="chip"><div class="dot" style="background:#1D1D1D;"></div><div><div class="name">--color-text</div><div class="val">var(--color-black)</div></div></div>
+    <div class="chip"><div class="dot" style="background:#1D1D1D;"></div><div><div class="name">--color-text-heading</div><div class="val">var(--color-black)</div></div></div>
+    <div class="chip"><div class="dot" style="background:#F2F4F7; border: 1px solid #ddd;"></div><div><div class="name">--color-bg</div><div class="val">var(--color-grey-light)</div></div></div>
+    <div class="chip"><div class="dot" style="background:#FF003C;"></div><div><div class="name">--color-accent</div><div class="val">var(--color-red)</div></div></div>
+    <div class="chip"><div class="dot" style="background:#FFFF00; border: 1px solid #ddd;"></div><div><div class="name">--color-accent-secondary</div><div class="val">var(--color-yellow)</div></div></div>
+  </div>
+</body>
+</html>
