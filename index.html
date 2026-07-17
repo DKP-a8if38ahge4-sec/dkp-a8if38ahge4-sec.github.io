@@ -1,21 +1,152 @@
 <!DOCTYPE html>
-<html lang="en">
-<meta charset="UTF-8">
-<title>Page Title</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="">
-<style>
-</style>
-<script src=""></script>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meine Projekte</title>
+  <style>
+    /* Reset & Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f5f7fa;
+      color: #1a1a2e;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      background-color: #1a1a2e;
+      color: #ffffff;
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #a0aec0;
+    }
+
+    /* Main */
+    main {
+      flex: 1;
+      max-width: 860px;
+      width: 100%;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #718096;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Project Grid */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* Project Card */
+    .project-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .project-card .card-icon {
+      font-size: 1.75rem;
+      line-height: 1;
+    }
+
+    .project-card .card-name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #1a1a2e;
+    }
+
+    .project-card .card-url {
+      font-size: 0.8rem;
+      color: #718096;
+      font-family: 'Courier New', monospace;
+    }
+
+    .project-card .card-arrow {
+      margin-top: auto;
+      font-size: 1.1rem;
+      color: #4a90d9;
+      align-self: flex-end;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: #a0aec0;
+      border-top: 1px solid #e2e8f0;
+    }
+  </style>
+</head>
 <body>
 
-<img src="img_la.jpg" alt="LA" style="width:100%">
+  <header>
+    <h1>&#128187; Meine Projekte</h1>
+    <p>Eine &Uuml;bersicht aller ver&ouml;ffentlichten Seiten</p>
+  </header>
 
-<div class="">
- <h1>This is a Heading</h1>
- <p>This is a paragraph.</p>
- <p>This is another paragraph.</p>
-</div>
+  <main>
+    <p class="section-title">Alle Projekte</p>
+
+    <div class="project-grid">
+
+      <!-- Beispielseite -->
+      <a href="./beispielseite/" class="project-card">
+        <span class="card-icon">&#127760;</span>
+        <span class="card-name">Beispielseite</span>
+        <span class="card-url">/beispielseite/</span>
+        <span class="card-arrow">&#8594;</span>
+      </a>
+
+      <!-- Weitere Projekte werden hier ergaenzt -->
+
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 &mdash; GitHub Pages Projekte
+  </footer>
 
 </body>
 </html>
