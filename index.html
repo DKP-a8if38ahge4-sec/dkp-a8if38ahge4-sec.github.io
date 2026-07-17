@@ -3,9 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meine Projekte</title>
+  <title>Projekte &mdash; Die Kavallerie</title>
+
+  <!-- Kava Design System Tokens -->
+  <link rel="stylesheet" href="./dk-designsystem/styles.css" />
+
   <style>
-    /* Reset & Base */
+    /* Reset */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -13,9 +17,9 @@
     }
 
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background-color: #f5f7fa;
-      color: #1a1a2e;
+      font-family: var(--font-base, 'Helvetica Neue', sans-serif);
+      background-color: var(--color-bg, #F2F4F7);
+      color: var(--color-text, #1D1D1D);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -23,120 +27,155 @@
 
     /* Header */
     header {
-      background-color: #1a1a2e;
-      color: #ffffff;
-      padding: 2.5rem 2rem 2rem;
-      text-align: center;
+      background-color: var(--color-accent, #FF003C);
+      color: var(--color-white, #FFFFFF);
+      padding: 3rem 2rem 2.5rem;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
     header h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-
-    header p {
-      margin-top: 0.5rem;
-      font-size: 1rem;
-      color: #a0aec0;
+      font-family: var(--font-headline, 'Helvetica Neue', sans-serif);
+      font-size: var(--font-size-headline-h2, 80px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.95;
+      color: var(--color-white, #FFFFFF);
+      letter-spacing: -0.01em;
     }
 
     /* Main */
     main {
       flex: 1;
-      max-width: 860px;
+      max-width: 1100px;
       width: 100%;
       margin: 3rem auto;
-      padding: 0 1.5rem;
+      padding: 0 2rem;
     }
 
-    .section-title {
-      font-size: 0.75rem;
+    .section-label {
+      font-family: var(--font-base, 'Helvetica Neue', sans-serif);
+      font-size: var(--font-size-sub-headline, 14px);
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #718096;
-      margin-bottom: 1.25rem;
+      color: var(--color-text, #1D1D1D);
+      opacity: 0.4;
+      margin-bottom: 1.5rem;
     }
 
-    /* Project Grid */
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1.25rem;
-    }
-
-    /* Project Card */
-    .project-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 1.5rem;
-      text-decoration: none;
-      color: inherit;
+    /* Project List */
+    .project-list {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
-      transition: box-shadow 0.2s ease, transform 0.2s ease;
+      gap: 0;
+      border-top: 1px solid var(--color-black, #1D1D1D);
     }
 
-    .project-card:hover {
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-      transform: translateY(-2px);
+    /* Project Row */
+    .project-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1rem;
+      margin-left: -1rem;
+      margin-right: -1rem;
+      border-bottom: 1px solid var(--color-black, #1D1D1D);
+      text-decoration: none;
+      color: var(--color-text, #1D1D1D);
+      transition: background-color 0.15s ease;
+      gap: 1rem;
     }
 
-    .project-card .card-icon {
-      font-size: 1.75rem;
+    .project-row:hover {
+      background-color: var(--color-accent, #FF003C);
+      color: var(--color-white, #FFFFFF);
+    }
+
+    .project-row:hover .project-url {
+      color: rgba(255, 255, 255, 0.65);
+      opacity: 1;
+    }
+
+    .project-row:hover .project-arrow {
+      color: var(--color-white, #FFFFFF);
+    }
+
+    .project-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .project-name {
+      font-family: var(--font-headline, 'Helvetica Neue', sans-serif);
+      font-size: var(--font-size-headline-h5, 40px);
+      font-weight: 900;
+      text-transform: uppercase;
       line-height: 1;
     }
 
-    .project-card .card-name {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #1a1a2e;
+    .project-url {
+      font-family: var(--font-base, 'Helvetica Neue', sans-serif);
+      font-size: var(--font-size-copy-2xsmall, 14px);
+      color: var(--color-text, #1D1D1D);
+      opacity: 0.5;
+      transition: color 0.15s ease, opacity 0.15s ease;
     }
 
-    .project-card .card-url {
-      font-size: 0.8rem;
-      color: #718096;
-      font-family: 'Courier New', monospace;
-    }
-
-    .project-card .card-arrow {
-      margin-top: auto;
-      font-size: 1.1rem;
-      color: #4a90d9;
-      align-self: flex-end;
+    .project-arrow {
+      font-size: 1.75rem;
+      color: var(--color-accent, #FF003C);
+      flex-shrink: 0;
+      transition: color 0.15s ease;
     }
 
     /* Footer */
     footer {
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.8rem;
-      color: #a0aec0;
-      border-top: 1px solid #e2e8f0;
+      padding: 2rem;
+      font-size: var(--font-size-copy-2xsmall, 14px);
+      color: var(--color-text, #1D1D1D);
+      opacity: 0.4;
+      border-top: 1px solid var(--color-black, #1D1D1D);
+      text-align: left;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 640px) {
+      header h1 {
+        font-size: var(--font-size-headline-h2, 40px);
+      }
+      .project-name {
+        font-size: var(--font-size-headline-h5, 20px);
+      }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>&#128187; Meine Projekte</h1>
-    <p>Eine &Uuml;bersicht aller ver&ouml;ffentlichten Seiten</p>
+    <div class="header-inner">
+      <h1>Projekte</h1>
+    </div>
   </header>
 
   <main>
-    <p class="section-title">Alle Projekte</p>
+    <p class="section-label">Alle Projekte</p>
 
-    <div class="project-grid">
+    <div class="project-list">
 
       <!-- Beispielseite -->
-      <a href="./beispielseite/" class="project-card">
-        <span class="card-icon">&#127760;</span>
-        <span class="card-name">Beispielseite</span>
-        <span class="card-url">/beispielseite/</span>
-        <span class="card-arrow">&#8594;</span>
+      <a href="./beispielseite/" class="project-row">
+        <div class="project-info">
+          <span class="project-name">Beispielseite</span>
+          <span class="project-url">/beispielseite/</span>
+        </div>
+        <span class="project-arrow">&#8594;</span>
       </a>
 
       <!-- Weitere Projekte werden hier ergaenzt -->
@@ -145,7 +184,7 @@
   </main>
 
   <footer>
-    &copy; 2026 &mdash; GitHub Pages Projekte
+    &copy; 2026 Die Kavallerie
   </footer>
 
 </body>
