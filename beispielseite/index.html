@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura - Minimalistischer Fokus-Bereich</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        accent: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            900: '#4c1d95',
+                        },
+                        charcoal: {
+                            900: '#0c0a0f',
+                            800: '#14121a',
+                            700: '#1c1a24',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(12, 10, 15, 0.5);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(139, 92, 246, 0.3);
+        }
+        
+        /* Glassmorphism utility */
+        .glass {
+            background: rgba(20, 18, 26, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .glass-highlight {
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            background: rgba(20, 18, 26, 0.8);
+        }
+
+        /* Ambient glow background blobs */
+        .blur-blob {
+            filter: blur(120px);
+            opacity: 0.15;
+            mix-blend-mode: screen;
+            pointer-events: none;
+            transition: all 2s ease-in-out;
+        }
+
+        /* Circular timer progress animation transition */
+        circle {
+            transition: stroke-dashoffset 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-charcoal-900 text-neutral-200 font-sans min-h-screen overflow-x-hidden relative flex flex-col justify-between">
+    
+    <!-- Ambient Background Blobs -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div id="blob-1" class="blur-blob absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-accent-900"></div>
+        <div id="blob-2" class="blur-blob absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-emerald-950/40"></div>
+        <div id="blob-3" class="blur-blob absolute top-[30%] left-[40%] w-[35vw] h-[35vw] rounded-full bg-indigo-950/30"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center z-10 relative">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-accent-600 to-indigo-400 flex items-center justify-center shadow-lg shadow-accent-600/20">
+                <span class="font-serif text-xl font-semibold text-white">A</span>
+            </div>
+            <div>
+                <h1 class="text-lg font-semibold tracking-wider text-white">AURA</h1>
+                <p class="text-xs text-neutral-400">Minimalist Focus Space</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div id="audio-indicator" class="hidden items-center gap-2 px-3 py-1.5 rounded-full bg-accent-600/10 border border-accent-500/20 text-xs text-accent-400">
+                <span class="flex h-2 w-2 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-accent-500"></span>
+                </span>
+                Soundscapes aktiv
+            </div>
+            <a href="../index.html" class="px-4 py-2 rounded-xl text-xs font-medium tracking-wide border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-300">
+                Zurueck zur Uebersicht
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="w-full max-w-7xl mx-auto px-6 py-4 grid grid-cols-1 lg:grid-cols-12 gap-8 z-10 relative flex-grow items-center">
+        
+        <!-- Left: Interactive Focus Timer (Cols 1-7) -->
+        <section class="lg:col-span-7 flex flex-col items-center justify-center h-full py-4">
+            <div class="w-full max-w-md glass rounded-3xl p-8 flex flex-col items-center justify-center relative shadow-2xl shadow-black/40">
+                <!-- Preset Buttons -->
+                <div class="flex bg-charcoal-900/60 p-1.5 rounded-2xl w-full max-w-xs mb-8 border border-white/5">
+                    <button onclick="setTimerPreset('focus')" id="btn-preset-focus" class="flex-1 py-2 text-xs font-medium rounded-xl transition-all duration-300 bg-accent-500 text-white shadow-lg shadow-accent-500/10">
+                        Fokus
+                    </button>
+                    <button onclick="setTimerPreset('short')" id="btn-preset-short" class="flex-1 py-2 text-xs font-medium rounded-xl transition-all duration-300 text-neutral-400 hover:text-white">
+                        Pause
+                    </button>
+                    <button onclick="setTimerPreset('long')" id="btn-preset-long" class="flex-1 py-2 text-xs font-medium rounded-xl transition-all duration-300 text-neutral-400 hover:text-white">
+                        Lang
+                    </button>
+                </div>
+
+                <!-- Circular Timer -->
+                <div class="relative w-72 h-72 flex items-center justify-center mb-8">
+                    <!-- Progress Circle Background -->
+                    <svg class="absolute transform -rotate-90 w-full h-full" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="85" stroke="rgba(255,255,255,0.02)" stroke-width="6" fill="transparent" />
+                        <circle id="timer-progress" cx="100" cy="100" r="85" stroke="url(#accentGradient)" stroke-width="6" stroke-dasharray="534" stroke-dashoffset="0" stroke-linecap="round" fill="transparent" />
+                        <defs>
+                            <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#a78bfa" />
+                                <stop offset="100%" stop-color="#7c3aed" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+
+                    <!-- Interactive Glowing core -->
+                    <div id="timer-glow" class="w-60 h-60 rounded-full flex flex-col items-center justify-center bg-[#100e16]/80 border border-white/5 shadow-inner transition-all duration-700">
+                        <span id="timer-display" class="font-serif text-5xl font-light tracking-wider text-white mb-1">25:00</span>
+                        <span id="timer-state-text" class="text-xs font-medium tracking-widest text-accent-400 uppercase">Fokus-Phase</span>
+                    </div>
+                </div>
+
+                <!-- Timer Controls -->
+                <div class="flex items-center gap-6">
+                    <button onclick="resetTimer()" class="w-12 h-12 rounded-2xl border border-white/5 hover:border-white/15 hover:bg-white/5 flex items-center justify-center text-neutral-400 hover:text-white transition-all duration-300" title="Zuruecksetzen">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 15H19M9 17h.01M9 13h.01M9 9h.01M13 13h.01M13 9h.01M17 13h.01M17 9h.01"></path></svg>
+                    </button>
+
+                    <button onclick="toggleTimer()" id="btn-timer-toggle" class="w-20 h-20 rounded-3xl bg-white text-charcoal-900 hover:bg-accent-100 flex items-center justify-center shadow-xl shadow-white/5 transition-all duration-300" title="Start / Pause">
+                        <svg id="play-icon" class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <svg id="pause-icon" class="w-8 h-8 fill-current hidden" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                    </button>
+
+                    <button onclick="toggleMuteAll()" id="btn-audio-master" class="w-12 h-12 rounded-2xl border border-white/5 hover:border-white/15 hover:bg-white/5 flex items-center justify-center text-neutral-400 hover:text-white transition-all duration-300" title="Audio stummschalten">
+                        <svg id="master-sound-on" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        <svg id="master-sound-muted" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zM17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right: Audio Mixer & Tasks (Cols 8-12) -->
+        <section class="lg:col-span-5 flex flex-col gap-6 justify-center h-full py-4">
+            
+            <!-- Soundscapes Mixer -->
+            <div class="glass rounded-3xl p-6 shadow-xl">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h2 class="text-sm font-semibold tracking-wider text-white uppercase">Synthetische Soundscapes</h2>
+                        <p class="text-xs text-neutral-400">Generiere Echtzeit-Raumklaenge</p>
+                    </div>
+                    <span class="text-[10px] text-accent-400 font-semibold tracking-widest uppercase px-2 py-1 rounded bg-accent-500/10 border border-accent-500/20">Web Audio API</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Sound Card 1: Rain -->
+                    <div id="card-rain" class="glass rounded-2xl p-4 transition-all duration-300 hover:border-white/10 flex flex-col justify-between h-32">
+                        <div class="flex justify-between items-start">
+                            <div class="text-neutral-400">
+                                <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707M12 5a7 7 0 100 14 7 7 0 000-14z"></path></svg>
+                                <span class="text-xs font-semibold tracking-wide text-neutral-300 block mt-2">Dauerregen</span>
+                            </div>
+                            <button onclick="toggleSound('rain')" id="btn-sound-rain" class="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center text-neutral-400 transition-all duration-300">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                        </div>
+                        <input type="range" id="volume-rain" min="0" max="1" step="0.01" value="0.5" oninput="adjustVolume('rain', this.value)" class="w-full accent-accent-400 opacity-60 hover:opacity-100 transition-opacity bg-white/10 rounded-lg appearance-none h-1 cursor-pointer">
+                    </div>
+
+                    <!-- Sound Card 2: Kosmos -->
+                    <div id="card-cosmic" class="glass rounded-2xl p-4 transition-all duration-300 hover:border-white/10 flex flex-col justify-between h-32">
+                        <div class="flex justify-between items-start">
+                            <div class="text-neutral-400">
+                                <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.286L13 21l-2.286-6.857L5 12l5.714-2.286L13 3z"></path></svg>
+                                <span class="text-xs font-semibold tracking-wide text-neutral-300 block mt-2">Deep Space Synth</span>
+                            </div>
+                            <button onclick="toggleSound('cosmic')" id="btn-sound-cosmic" class="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center text-neutral-400 transition-all duration-300">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                        </div>
+                        <input type="range" id="volume-cosmic" min="0" max="1" step="0.01" value="0.3" oninput="adjustVolume('cosmic', this.value)" class="w-full accent-accent-400 opacity-60 hover:opacity-100 transition-opacity bg-white/10 rounded-lg appearance-none h-1 cursor-pointer">
+                    </div>
+
+                    <!-- Sound Card 3: Wellen -->
+                    <div id="card-waves" class="glass rounded-2xl p-4 transition-all duration-300 hover:border-white/10 flex flex-col justify-between h-32">
+                        <div class="flex justify-between items-start">
+                            <div class="text-neutral-400">
+                                <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M3 10h18M3 14h18m-9-9v14"></path></svg>
+                                <span class="text-xs font-semibold tracking-wide text-neutral-300 block mt-2">Meeresrauschen</span>
+                            </div>
+                            <button onclick="toggleSound('waves')" id="btn-sound-waves" class="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center text-neutral-400 transition-all duration-300">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                        </div>
+                        <input type="range" id="volume-waves" min="0" max="1" step="0.01" value="0.4" oninput="adjustVolume('waves', this.value)" class="w-full accent-accent-400 opacity-60 hover:opacity-100 transition-opacity bg-white/10 rounded-lg appearance-none h-1 cursor-pointer">
+                    </div>
+
+                    <!-- Sound Card 4: Kaminfeuer -->
+                    <div id="card-fire" class="glass rounded-2xl p-4 transition-all duration-300 hover:border-white/10 flex flex-col justify-between h-32">
+                        <div class="flex justify-between items-start">
+                            <div class="text-neutral-400">
+                                <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path></svg>
+                                <span class="text-xs font-semibold tracking-wide text-neutral-300 block mt-2">Kaminfeuer</span>
+                            </div>
+                            <button onclick="toggleSound('fire')" id="btn-sound-fire" class="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center text-neutral-400 transition-all duration-300">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                        </div>
+                        <input type="range" id="volume-fire" min="0" max="1" step="0.01" value="0.4" oninput="adjustVolume('fire', this.value)" class="w-full accent-accent-400 opacity-60 hover:opacity-100 transition-opacity bg-white/10 rounded-lg appearance-none h-1 cursor-pointer">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simple Task List -->
+            <div class="glass rounded-3xl p-6 shadow-xl">
+                <h2 class="text-sm font-semibold tracking-wider text-white uppercase mb-4">Heutige Absichten</h2>
+                
+                <!-- Task input -->
+                <form id="todo-form" onsubmit="addTodo(event)" class="flex gap-2 mb-4">
+                    <input type="text" id="todo-input" placeholder="Was moechtest du fokussieren?" required class="flex-grow bg-charcoal-900/60 border border-white/5 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-accent-500 transition-colors">
+                    <button type="submit" class="px-4 py-2.5 bg-accent-600 hover:bg-accent-500 text-white font-medium rounded-xl text-xs transition-colors shadow-lg shadow-accent-600/15 flex items-center justify-center">
+                        Hinzufuegen
+                    </button>
+                </form>
+
+                <!-- Tasks scrollable container -->
+                <div id="todo-list" class="space-y-2 max-h-40 overflow-y-auto pr-1">
+                    <!-- Dynamic Items loaded via JavaScript -->
+                    <p id="todo-empty" class="text-xs text-neutral-500 text-center py-4 italic">Noch keine Ziele fuer heute festgelegt. Schreib eines auf!</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full max-w-7xl mx-auto px-6 py-6 text-center text-xs text-neutral-500 z-10 relative border-t border-white/5">
+        <p>&copy; 2026 Aura Focus Space. Gefertigt mit Leidenschaft fuer maximale Klarheit.</p>
+    </footer>
+
+    <!-- Web Audio Synthesizer and Timer Script -->
+    <script>
+        // Timer state
+        var timerDuration = 25 * 60;
+        var timeLeft = timerDuration;
+        var timerInterval = null;
+        var isRunning = false;
+        var currentPreset = 'focus';
+
+        var presets = {
+            focus: 25 * 60,
+            short: 5 * 60,
+            long: 15 * 60
+        };
+
+        var timerDisplay = document.getElementById('timer-display');
+        var timerProgress = document.getElementById('timer-progress');
+        var timerStateText = document.getElementById('timer-state-text');
+        var playIcon = document.getElementById('play-icon');
+        var pauseIcon = document.getElementById('pause-icon');
+        var btnTimerToggle = document.getElementById('btn-timer-toggle');
+
+        function updateTimerDisplay() {
+            var minutes = Math.floor(timeLeft / 60);
+            var seconds = timeLeft % 60;
+            var minStr = minutes < 10 ? '0' + minutes : minutes;
+            var secStr = seconds < 10 ? '0' + seconds : seconds;
+            timerDisplay.textContent = minStr + ':' + secStr;
+            
+            var progress = (timerDuration - timeLeft) / timerDuration;
+            var offset = 534 - (progress * 534);
+            timerProgress.style.strokeDashoffset = offset;
+        }
+
+        function toggleTimer() {
+            if (isRunning) {
+                clearInterval(timerInterval);
+                isRunning = false;
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+                document.getElementById('timer-glow').classList.remove('glass-highlight');
+                adjustBlobSpeeds(false);
+            } else {
+                initAudioContext();
+                isRunning = true;
+                playIcon.classList.add('hidden');
+                pauseIcon.classList.remove('hidden');
+                document.getElementById('timer-glow').classList.add('glass-highlight');
+                adjustBlobSpeeds(true);
+
+                timerInterval = setInterval(function() {
+                    if (timeLeft > 0) {
+                        timeLeft--;
+                        updateTimerDisplay();
+                    } else {
+                        clearInterval(timerInterval);
+                        isRunning = false;
+                        playIcon.classList.remove('hidden');
+                        pauseIcon.classList.add('hidden');
+                        alert('Zeit abgelaufen! Atme tief durch.');
+                        resetTimer();
+                    }
+                }, 1000);
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            timeLeft = timerDuration;
+            playIcon.classList.remove('hidden');
+            pauseIcon.classList.add('hidden');
+            document.getElementById('timer-glow').classList.remove('glass-highlight');
+            adjustBlobSpeeds(false);
+            updateTimerDisplay();
+        }
+
+        function setTimerPreset(preset) {
+            currentPreset = preset;
+            timerDuration = presets[preset];
+            
+            var buttons = document.querySelectorAll('[id^="btn-preset-"]');
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].className = 'flex-1 py-2 text-xs font-medium rounded-xl transition-all duration-300 text-neutral-400 hover:text-white';
+            }
+            
+            var activeBtn = document.getElementById('btn-preset-' + preset);
+            activeBtn.className = 'flex-1 py-2 text-xs font-medium rounded-xl transition-all duration-300 bg-accent-500 text-white shadow-lg shadow-accent-500/10';
+
+            if (preset === 'focus') {
+                timerStateText.textContent = 'Fokus-Phase';
+                timerStateText.className = 'text-xs font-medium tracking-widest text-accent-400 uppercase';
+            } else if (preset === 'short') {
+                timerStateText.textContent = 'Kurze Pause';
+                timerStateText.className = 'text-xs font-medium tracking-widest text-emerald-400 uppercase';
+            } else {
+                timerStateText.textContent = 'Lange Pause';
+                timerStateText.className = 'text-xs font-medium tracking-widest text-indigo-400 uppercase';
+            }
+
+            resetTimer();
+        }
+
+
+        // --- AUDIO SYNTHESIS ---
+        var audioCtx = null;
+        var isMasterMuted = false;
+        
+        var synthSources = {
+            rain: null,
+            cosmic: null,
+            waves: null,
+            fire: null
+        };
+        var synthGains = {
+            rain: null,
+            cosmic: null,
+            waves: null,
+            fire: null
+        };
+        var soundStates = {
+            rain: false,
+            cosmic: false,
+            waves: false,
+            fire: false
+        };
+
+        function initAudioContext() {
+            if (audioCtx) return;
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+
+        function generateNoiseBuffer() {
+            var bufferSize = 2 * audioCtx.sampleRate;
+            var noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            var output = noiseBuffer.getChannelData(0);
+            for (var i = 0; i < bufferSize; i++) {
+                output[i] = Math.random() * 2 - 1;
+            }
+            return noiseBuffer;
+        }
+
+        function toggleSound(soundKey) {
+            initAudioContext();
+            
+            var card = document.getElementById('card-' + soundKey);
+            var btn = document.getElementById('btn-sound-' + soundKey);
+
+            if (soundStates[soundKey]) {
+                stopSynthesizer(soundKey);
+                soundStates[soundKey] = false;
+                
+                card.classList.remove('glass-highlight');
+                btn.className = 'w-8 h-8 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center text-neutral-400 transition-all duration-300';
+                btn.innerHTML = '<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+            } else {
+                startSynthesizer(soundKey);
+                soundStates[soundKey] = true;
+
+                card.classList.add('glass-highlight');
+                btn.className = 'w-8 h-8 rounded-xl bg-accent-500 flex items-center justify-center text-white shadow-lg shadow-accent-500/10 transition-all duration-300';
+                btn.innerHTML = '<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+            }
+
+            updateIndicators();
+        }
+
+        function startSynthesizer(soundKey) {
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            synthGains[soundKey] = audioCtx.createGain();
+            var volumeVal = parseFloat(document.getElementById('volume-' + soundKey).value);
+            synthGains[soundKey].gain.setValueAtTime(isMasterMuted ? 0 : volumeVal * 0.15, audioCtx.currentTime);
+
+            if (soundKey === 'rain') {
+                var noiseNode = audioCtx.createBufferSource();
+                noiseNode.buffer = generateNoiseBuffer();
+                noiseNode.loop = true;
+
+                var filter = audioCtx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(1000, audioCtx.currentTime);
+
+                var filter2 = audioCtx.createBiquadFilter();
+                filter2.type = 'highpass';
+                filter2.frequency.setValueAtTime(120, audioCtx.currentTime);
+
+                var lfo = audioCtx.createOscillator();
+                lfo.frequency.setValueAtTime(0.1, audioCtx.currentTime);
+                var lfoGain = audioCtx.createGain();
+                lfoGain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+
+                lfo.connect(lfoGain);
+                lfoGain.connect(synthGains[soundKey].gain);
+                noiseNode.connect(filter);
+                filter.connect(filter2);
+                filter2.connect(synthGains[soundKey]);
+                
+                synthGains[soundKey].connect(audioCtx.destination);
+                
+                lfo.start();
+                noiseNode.start();
+                
+                synthSources[soundKey] = { noiseNode: noiseNode, lfo: lfo, filter: filter };
+            } 
+            else if (soundKey === 'cosmic') {
+                var osc1 = audioCtx.createOscillator();
+                var osc2 = audioCtx.createOscillator();
+                
+                osc1.type = 'sawtooth';
+                osc2.type = 'triangle';
+                
+                osc1.frequency.setValueAtTime(73.42, audioCtx.currentTime);
+                osc2.frequency.setValueAtTime(110.00, audioCtx.currentTime);
+
+                var filterNode = audioCtx.createBiquadFilter();
+                filterNode.type = 'lowpass';
+                filterNode.frequency.setValueAtTime(300, audioCtx.currentTime);
+                filterNode.Q.setValueAtTime(5, audioCtx.currentTime);
+
+                var filterLfo = audioCtx.createOscillator();
+                filterLfo.frequency.setValueAtTime(0.08, audioCtx.currentTime);
+                var filterLfoGain = audioCtx.createGain();
+                filterLfoGain.gain.setValueAtTime(180, audioCtx.currentTime);
+
+                filterLfo.connect(filterLfoGain);
+                filterLfoGain.connect(filterNode.frequency);
+
+                osc1.connect(filterNode);
+                osc2.connect(filterNode);
+                filterNode.connect(synthGains[soundKey]);
+                synthGains[soundKey].connect(audioCtx.destination);
+
+                filterLfo.start();
+                osc1.start();
+                osc2.start();
+
+                synthSources[soundKey] = { osc1: osc1, osc2: osc2, filterLfo: filterLfo, filter: filterNode };
+            }
+            else if (soundKey === 'waves') {
+                var noiseNodeWaves = audioCtx.createBufferSource();
+                noiseNodeWaves.buffer = generateNoiseBuffer();
+                noiseNodeWaves.loop = true;
+
+                var filterWaves = audioCtx.createBiquadFilter();
+                filterWaves.type = 'lowpass';
+                filterWaves.frequency.setValueAtTime(450, audioCtx.currentTime);
+
+                var volumeLfo = audioCtx.createOscillator();
+                volumeLfo.frequency.setValueAtTime(0.09, audioCtx.currentTime);
+
+                var volumeLfoGain = audioCtx.createGain();
+                volumeLfoGain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+
+                volumeLfo.connect(volumeLfoGain);
+                volumeLfoGain.connect(synthGains[soundKey].gain);
+
+                noiseNodeWaves.connect(filterWaves);
+                filterWaves.connect(synthGains[soundKey]);
+                synthGains[soundKey].connect(audioCtx.destination);
+
+                volumeLfo.start();
+                noiseNodeWaves.start();
+
+                synthSources[soundKey] = { noiseNode: noiseNodeWaves, volumeLfo: volumeLfo };
+            }
+            else if (soundKey === 'fire') {
+                var rumbleNode = audioCtx.createBufferSource();
+                rumbleNode.buffer = generateNoiseBuffer();
+                rumbleNode.loop = true;
+
+                var filterLow = audioCtx.createBiquadFilter();
+                filterLow.type = 'lowpass';
+                filterLow.frequency.setValueAtTime(150, audioCtx.currentTime);
+
+                var crackleNode = audioCtx.createBufferSource();
+                crackleNode.buffer = generateNoiseBuffer();
+                crackleNode.loop = true;
+
+                var filterHigh = audioCtx.createBiquadFilter();
+                filterHigh.type = 'highpass';
+                filterHigh.frequency.setValueAtTime(4000, audioCtx.currentTime);
+
+                var crackleLfo = audioCtx.createOscillator();
+                crackleLfo.frequency.setValueAtTime(18, audioCtx.currentTime);
+                var crackleLfoGain = audioCtx.createGain();
+                crackleLfoGain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+
+                crackleLfo.connect(crackleLfoGain);
+                crackleLfoGain.connect(synthGains[soundKey].gain);
+
+                rumbleNode.connect(filterLow);
+                crackleNode.connect(filterHigh);
+                
+                filterLow.connect(synthGains[soundKey]);
+                filterHigh.connect(synthGains[soundKey]);
+                
+                synthGains[soundKey].connect(audioCtx.destination);
+
+                rumbleNode.start();
+                crackleNode.start();
+                crackleLfo.start();
+
+                synthSources[soundKey] = { rumbleNode: rumbleNode, crackleNode: crackleNode, crackleLfo: crackleLfo };
+            }
+        }
+
+        function stopSynthesizer(soundKey) {
+            var sources = synthSources[soundKey];
+            if (!sources) return;
+
+            try {
+                var keys = Object.keys(sources);
+                for (var i = 0; i < keys.length; i++) {
+                    sources[keys[i]].stop();
+                }
+            } catch(e) {}
+
+            if (synthGains[soundKey]) {
+                synthGains[soundKey].disconnect();
+            }
+
+            synthSources[soundKey] = null;
+            synthGains[soundKey] = null;
+        }
+
+        function adjustVolume(soundKey, val) {
+            var scaledVal = parseFloat(val);
+            if (synthGains[soundKey] && !isMasterMuted) {
+                synthGains[soundKey].gain.exponentialRampToValueAtTime(
+                    Math.max(0.001, scaledVal * 0.15), 
+                    audioCtx.currentTime + 0.1
+                );
+            }
+        }
+
+        function toggleMuteAll() {
+            initAudioContext();
+            isMasterMuted = !isMasterMuted;
+            
+            var btn = document.getElementById('btn-audio-master');
+            var iconOn = document.getElementById('master-sound-on');
+            var iconMuted = document.getElementById('master-sound-muted');
+
+            if (isMasterMuted) {
+                iconOn.classList.add('hidden');
+                iconMuted.classList.remove('hidden');
+                btn.className = 'w-12 h-12 rounded-2xl border border-accent-500/20 bg-accent-500/10 flex items-center justify-center text-accent-400 transition-all duration-300';
+                
+                var keys = Object.keys(synthGains);
+                for (var i = 0; i < keys.length; i++) {
+                    var soundKey = keys[i];
+                    if (synthGains[soundKey]) {
+                        synthGains[soundKey].gain.setValueAtTime(0, audioCtx.currentTime);
+                    }
+                }
+            } else {
+                iconOn.classList.remove('hidden');
+                iconMuted.classList.add('hidden');
+                btn.className = 'w-12 h-12 rounded-2xl border border-white/5 hover:border-white/15 hover:bg-white/5 flex items-center justify-center text-neutral-400 hover:text-white transition-all duration-300';
+                
+                var keys = Object.keys(synthGains);
+                for (var i = 0; i < keys.length; i++) {
+                    var soundKey = keys[i];
+                    if (synthGains[soundKey]) {
+                        var val = parseFloat(document.getElementById('volume-' + soundKey).value);
+                        synthGains[soundKey].gain.setValueAtTime(val * 0.15, audioCtx.currentTime);
+                    }
+                }
+            }
+        }
+
+        function updateIndicators() {
+            var keys = Object.keys(soundStates);
+            var hasActiveSound = false;
+            for (var i = 0; i < keys.length; i++) {
+                if (soundStates[keys[i]]) {
+                    hasActiveSound = true;
+                    break;
+                }
+            }
+
+            var audioIndicator = document.getElementById('audio-indicator');
+            if (hasActiveSound) {
+                audioIndicator.classList.remove('hidden');
+                audioIndicator.classList.add('flex');
+            } else {
+                audioIndicator.classList.add('hidden');
+                audioIndicator.classList.remove('flex');
+            }
+        }
+
+
+        // --- BACKGROUND MOTION ---
+        function adjustBlobSpeeds(fastMode) {
+            var blob1 = document.getElementById('blob-1');
+            var blob2 = document.getElementById('blob-2');
+            var blob3 = document.getElementById('blob-3');
+
+            if (fastMode) {
+                blob1.style.transform = 'translate(10vw, 15vh) scale(1.15)';
+                blob1.style.backgroundColor = 'rgba(124, 58, 237, 0.25)';
+                
+                blob2.style.transform = 'translate(-12vw, -10vh) scale(1.1)';
+                blob2.style.backgroundColor = 'rgba(16, 185, 129, 0.2)';
+
+                blob3.style.transform = 'translate(-5vw, 12vh) scale(1.2)';
+            } else {
+                blob1.style.transform = 'none';
+                blob1.style.backgroundColor = '';
+                
+                blob2.style.transform = 'none';
+                blob2.style.backgroundColor = '';
+
+                blob3.style.transform = 'none';
+            }
+        }
+
+
+        // --- TODO MANAGEMENT ---
+        var todos = [];
+
+        function safeGetTodos() {
+            try {
+                var stored = localStorage.getItem('aura_todos');
+                return stored ? JSON.parse(stored) : [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function safeSaveTodos() {
+            try {
+                localStorage.setItem('aura_todos', JSON.stringify(todos));
+            } catch (e) {}
+        }
+
+        function loadTodos() {
+            todos = safeGetTodos();
+            renderTodos();
+        }
+
+        function renderTodos() {
+            var list = document.getElementById('todo-list');
+            var emptyMsg = document.getElementById('todo-empty');
+
+            var items = list.querySelectorAll('.todo-item');
+            for (var i = 0; i < items.length; i++) {
+                items[i].remove();
+            }
+
+            if (todos.length === 0) {
+                emptyMsg.classList.remove('hidden');
+            } else {
+                emptyMsg.classList.add('hidden');
+                
+                for (var idx = 0; idx < todos.length; idx++) {
+                    var todo = todos[idx];
+                    var todoEl = document.createElement('div');
+                    todoEl.className = 'todo-item flex justify-between items-center bg-charcoal-900/40 border border-white/5 px-4 py-3 rounded-xl transition-all duration-300 hover:border-white/10';
+                    
+                    var completedClass = todo.completed ? 'bg-accent-500 border-accent-400 text-white' : 'border-white/20 hover:border-accent-400';
+                    var checkIcon = todo.completed ? '<svg class="w-3 h-3 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>' : '';
+                    var textClass = todo.completed ? 'line-through text-neutral-500' : 'text-neutral-300';
+                    
+                    todoEl.innerHTML = '<div class="flex items-center gap-3">' +
+                        '<button onclick="toggleTodo(' + idx + ')" class="w-5 h-5 rounded-md border ' + completedClass + ' flex items-center justify-center transition-colors">' +
+                            checkIcon +
+                        '</button>' +
+                        '<span class="text-xs ' + textClass + '">' + todo.text + '</span>' +
+                    '</div>' +
+                    '<button onclick="deleteTodo(' + idx + ')" class="text-neutral-500 hover:text-red-400 transition-colors">' +
+                        '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>' +
+                    '</button>';
+                    
+                    list.appendChild(todoEl);
+                }
+            }
+        }
+
+        function addTodo(e) {
+            e.preventDefault();
+            var input = document.getElementById('todo-input');
+            var text = input.value.trim();
+            if (!text) return;
+
+            todos.push({ text: text, completed: false });
+            input.value = '';
+            
+            safeSaveTodos();
+            renderTodos();
+        }
+
+        function toggleTodo(idx) {
+            todos[idx].completed = !todos[idx].completed;
+            safeSaveTodos();
+            renderTodos();
+        }
+
+        function deleteTodo(idx) {
+            todos.splice(idx, 1);
+            safeSaveTodos();
+            renderTodos();
+        }
+
+
+        // --- INITIALIZATION ---
+        window.addEventListener('DOMContentLoaded', function() {
+            updateTimerDisplay();
+            loadTodos();
+
+            var angle = 0;
+            setInterval(function() {
+                angle += 0.002;
+                if (!isRunning) {
+                    var b1 = document.getElementById('blob-1');
+                    var b2 = document.getElementById('blob-2');
+                    
+                    if (b1 && b2) {
+                        b1.style.transform = 'translate(' + (Math.sin(angle) * 3) + 'vw, ' + (Math.cos(angle * 0.8) * 3) + 'vh)';
+                        b2.style.transform = 'translate(' + (Math.cos(angle * 1.2) * 4) + 'vw, ' + (Math.sin(angle * 0.7) * 4) + 'vh)';
+                    }
+                }
+            }, 30);
+        });
+    </script>
+</body>
+</html>
