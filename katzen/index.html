@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Katzen &mdash; Die Kavallerie</title>
+
+  <link rel="stylesheet" href="../dk-designsystem/styles.css" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-base, 'Helvetica Neue', sans-serif);
+      background-color: var(--color-bg, #F2F4F7);
+      color: var(--color-text, #1D1D1D);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--color-accent, #FF003C);
+      color: #fff;
+      padding: 3rem 2rem 2.5rem;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .back-link:hover {
+      color: #fff;
+    }
+
+    header h1 {
+      font-family: var(--font-headline, 'Helvetica Neue', sans-serif);
+      font-size: clamp(60px, 10vw, 120px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    header p.tagline {
+      margin-top: 1.25rem;
+      font-size: 18px;
+      color: rgba(255,255,255,0.8);
+      max-width: 520px;
+      line-height: 1.5;
+    }
+
+    /* Main */
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    /* Section label */
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.4;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Fakten-Grid */
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1px;
+      background-color: #1D1D1D;
+      border: 1px solid #1D1D1D;
+      margin-bottom: 4rem;
+    }
+
+    .fact-card {
+      background-color: var(--color-bg, #F2F4F7);
+      padding: 2rem 1.5rem;
+    }
+
+    .fact-number {
+      font-family: var(--font-headline, 'Helvetica Neue', sans-serif);
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--color-accent, #FF003C);
+    }
+
+    .fact-label {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.5rem;
+      opacity: 0.6;
+    }
+
+    /* Rassen-Liste */
+    .rassen-list {
+      border-top: 1px solid #1D1D1D;
+      margin-bottom: 4rem;
+    }
+
+    .rasse-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #1D1D1D;
+      gap: 2rem;
+    }
+
+    .rasse-name {
+      font-family: var(--font-headline, 'Helvetica Neue', sans-serif);
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .rasse-desc {
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 480px;
+      opacity: 0.65;
+      flex-shrink: 0;
+      width: 50%;
+    }
+
+    /* Emoji-Banner */
+    .emoji-banner {
+      text-align: center;
+      font-size: clamp(40px, 8vw, 80px);
+      letter-spacing: 0.1em;
+      margin-bottom: 4rem;
+      line-height: 1.2;
+    }
+
+    /* Tipp-Box */
+    .tipp-box {
+      background-color: #1D1D1D;
+      color: #fff;
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .tipp-box h2 {
+      font-family: var(--font-headline, 'Helvetica Neue', sans-serif);
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      line-height: 1;
+    }
+
+    .tipp-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .tipp-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 15px;
+      line-height: 1.5;
+      opacity: 0.85;
+    }
+
+    .tipp-list li::before {
+      content: '\2192';
+      color: var(--color-accent, #FF003C);
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 2rem;
+      font-size: 13px;
+      opacity: 0.4;
+      border-top: 1px solid #1D1D1D;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 640px) {
+      .rasse-row {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .rasse-desc {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a href="../" class="back-link">&#8592; Alle Projekte</a>
+      <h1>Katzen</h1>
+      <p class="tagline">Alles &uuml;ber die faszinierendsten Mitbewohner der Welt &mdash; Fakten, Rassen &amp; Tipps.</p>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Fakten -->
+    <p class="section-label">Zahlen &amp; Fakten</p>
+    <div class="facts-grid">
+      <div class="fact-card">
+        <div class="fact-number">600M</div>
+        <div class="fact-label">Hauskatzen weltweit</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-number">70</div>
+        <div class="fact-label">Anerkannte Rassen</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-number">16h</div>
+        <div class="fact-label">Schlaf pro Tag</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-number">48km/h</div>
+        <div class="fact-label">Spitzengeschwindigkeit</div>
+      </div>
+    </div>
+
+    <!-- Emoji -->
+    <div class="emoji-banner">
+      &#128049; &#128008; &#128049; &#128008; &#128049;
+    </div>
+
+    <!-- Rassen -->
+    <p class="section-label">Beliebte Rassen</p>
+    <div class="rassen-list">
+
+      <div class="rasse-row">
+        <span class="rasse-name">Maine Coon</span>
+        <span class="rasse-desc">Eine der gr&ouml;&szlig;ten Hauskatzenrassen. Bekannt f&uuml;r ihr seidiges Fell, ihre Geselligkeit und ihren sanften Charakter.</span>
+      </div>
+
+      <div class="rasse-row">
+        <span class="rasse-name">Britisch Kurzhaar</span>
+        <span class="rasse-desc">Ruhig, anpassungsf&auml;hig und unglaublich pl&uuml;schig. Perfekt f&uuml;r Wohnungshaltung &mdash; liebt Komfort.</span>
+      </div>
+
+      <div class="rasse-row">
+        <span class="rasse-name">Siamkatze</span>
+        <span class="rasse-desc">Sehr kommunikativ und anh&auml;nglich. Die Siamkatze ist eine der &auml;ltesten und bekanntesten Rassen der Welt.</span>
+      </div>
+
+      <div class="rasse-row">
+        <span class="rasse-name">Norwegische Waldkatze</span>
+        <span class="rasse-desc">Robust, kletterfreudig und mit dichtem Winterfell. Stammt aus den W&auml;ldern Skandinaviens.</span>
+      </div>
+
+      <div class="rasse-row">
+        <span class="rasse-name">Sphynx</span>
+        <span class="rasse-desc">Haarlos, aber alles andere als k&uuml;hl. Die Sphynx ist extrem anh&auml;nglich und liebt W&auml;rme &mdash; am liebsten deine.</span>
+      </div>
+
+    </div>
+
+    <!-- Tipps -->
+    <div class="tipp-box">
+      <h2>Tipps f&uuml;r Katzenhalter</h2>
+      <ul class="tipp-list">
+        <li>Frisches Wasser immer verf&uuml;gbar halten &mdash; Katzen trinken selten genug.</li>
+        <li>Regelm&auml;&szlig;ige Tierarztbesuche, auch wenn die Katze gesund wirkt.</li>
+        <li>Kratzbaumh&ouml;he mindestens so gro&szlig; wie die Katze im Strecken.</li>
+        <li>Spielzeit ist Jagdzeit &mdash; t&auml;glich mindestens 15 Minuten aktives Spiel.</li>
+        <li>Zwei Katzen sind oft gl&uuml;cklicher als eine &mdash; sie halten sich gegenseitig Gesellschaft.</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2026 Die Kavallerie
+  </footer>
+
+</body>
+</html>
