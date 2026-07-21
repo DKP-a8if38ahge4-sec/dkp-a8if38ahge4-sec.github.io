@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Katzen &mdash; Die Kavallerie</title>
-
-  <link rel="stylesheet" href="../dk-designsystem/styles.css" />
+  <title>Katzen &mdash; Die Welt der Samtpfoten</title>
 
   <style>
     *, *::before, *::after {
@@ -14,300 +12,496 @@
       padding: 0;
     }
 
+    :root {
+      --cream: #FAF7F2;
+      --dark: #1A1A1A;
+      --accent: #E8603C;
+      --muted: #8C8070;
+      --card-bg: #FFFFFF;
+      --border: #E5DDD5;
+    }
+
     body {
-      font-family: var(--font-base, 'Helvetica Neue', sans-serif);
-      background-color: var(--color-bg, #F2F4F7);
-      color: var(--color-text, #1D1D1D);
+      font-family: 'Georgia', serif;
+      background-color: var(--cream);
+      color: var(--dark);
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
 
-    /* Header */
-    header {
-      background-color: var(--color-accent, #FF003C);
-      color: #fff;
-      padding: 3rem 2rem 2.5rem;
+    /* HERO */
+    .hero {
+      background-color: var(--dark);
+      color: var(--cream);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    .header-inner {
-      max-width: 1100px;
+    .hero-emoji {
+      font-size: 5rem;
+      display: block;
+      margin-bottom: 1.5rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .hero h1 {
+      font-family: 'Georgia', serif;
+      font-size: clamp(2.5rem, 8vw, 6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(250, 247, 242, 0.65);
+      max-width: 480px;
       margin: 0 auto;
+      line-height: 1.7;
     }
 
-    .back-link {
+    /* NAV */
+    nav {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+
+    nav a {
       display: inline-block;
-      font-size: 13px;
+      padding: 1rem 1.5rem;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
       text-decoration: none;
-      margin-bottom: 1.5rem;
+      color: var(--muted);
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
     }
 
-    .back-link:hover {
-      color: #fff;
+    nav a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
     }
 
-    header h1 {
-      font-family: var(--font-headline, 'Helvetica Neue', sans-serif);
-      font-size: clamp(60px, 10vw, 120px);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 0.9;
-      letter-spacing: -0.02em;
-      color: #fff;
-    }
-
-    header p.tagline {
-      margin-top: 1.25rem;
-      font-size: 18px;
-      color: rgba(255,255,255,0.8);
-      max-width: 520px;
-      line-height: 1.5;
-    }
-
-    /* Main */
+    /* MAIN */
     main {
-      flex: 1;
       max-width: 1100px;
-      width: 100%;
-      margin: 3rem auto;
-      padding: 0 2rem;
+      margin: 0 auto;
+      padding: 4rem 2rem;
     }
 
-    /* Section label */
+    /* SECTION LABEL */
     .section-label {
-      font-size: 12px;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      opacity: 0.4;
-      margin-bottom: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
     }
 
-    /* Fakten-Grid */
-    .facts-grid {
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 3rem;
+    }
+
+    /* RASSEN GRID */
+    .rassen-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1px;
-      background-color: #1D1D1D;
-      border: 1px solid #1D1D1D;
-      margin-bottom: 4rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 5rem;
     }
 
-    .fact-card {
-      background-color: var(--color-bg, #F2F4F7);
-      padding: 2rem 1.5rem;
+    .rasse-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .fact-number {
-      font-family: var(--font-headline, 'Helvetica Neue', sans-serif);
-      font-size: clamp(48px, 6vw, 80px);
-      font-weight: 900;
-      line-height: 1;
-      color: var(--color-accent, #FF003C);
+    .rasse-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
     }
 
-    .fact-label {
-      font-size: 14px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-top: 0.5rem;
-      opacity: 0.6;
-    }
-
-    /* Rassen-Liste */
-    .rassen-list {
-      border-top: 1px solid #1D1D1D;
-      margin-bottom: 4rem;
-    }
-
-    .rasse-row {
+    .rasse-emoji {
+      font-size: 4rem;
       display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      padding: 1.5rem 0;
-      border-bottom: 1px solid #1D1D1D;
-      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1rem;
+      background-color: var(--cream);
+    }
+
+    .rasse-body {
+      padding: 1.25rem 1.5rem 1.5rem;
     }
 
     .rasse-name {
-      font-family: var(--font-headline, 'Helvetica Neue', sans-serif);
-      font-size: clamp(22px, 3vw, 36px);
-      font-weight: 900;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .rasse-herkunft {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      line-height: 1;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
     }
 
     .rasse-desc {
-      font-size: 15px;
-      line-height: 1.6;
-      max-width: 480px;
-      opacity: 0.65;
-      flex-shrink: 0;
-      width: 50%;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: #4A4540;
     }
 
-    /* Emoji-Banner */
-    .emoji-banner {
-      text-align: center;
-      font-size: clamp(40px, 8vw, 80px);
-      letter-spacing: 0.1em;
-      margin-bottom: 4rem;
-      line-height: 1.2;
+    .rasse-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
     }
 
-    /* Tipp-Box */
-    .tipp-box {
-      background-color: #1D1D1D;
-      color: #fff;
-      padding: 2.5rem;
-      margin-bottom: 4rem;
-    }
-
-    .tipp-box h2 {
-      font-family: var(--font-headline, 'Helvetica Neue', sans-serif);
-      font-size: clamp(28px, 4vw, 48px);
-      font-weight: 900;
+    .tag {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      line-height: 1;
+      padding: 0.25rem 0.6rem;
+      background-color: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--muted);
     }
 
-    .tipp-list {
-      list-style: none;
+    /* FAKTEN */
+    .fakten-section {
+      margin-bottom: 5rem;
+    }
+
+    .fakten-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1px;
+      background-color: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .fakt {
+      background: var(--card-bg);
+      padding: 2rem 1.5rem;
+    }
+
+    .fakt-zahl {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .fakt-label {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .fakt-desc {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #4A4540;
+    }
+
+    /* TIPPS */
+    .tipps-section {
+      margin-bottom: 5rem;
+    }
+
+    .tipps-list {
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
+      gap: 0;
+      border-top: 1px solid var(--border);
     }
 
-    .tipp-list li {
+    .tipp {
       display: flex;
+      gap: 2rem;
       align-items: flex-start;
-      gap: 0.75rem;
-      font-size: 15px;
-      line-height: 1.5;
-      opacity: 0.85;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
     }
 
-    .tipp-list li::before {
-      content: '\2192';
-      color: var(--color-accent, #FF003C);
-      font-size: 18px;
-      flex-shrink: 0;
-      margin-top: 1px;
+    .tipp-num {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      min-width: 2rem;
+      padding-top: 0.2rem;
     }
 
-    /* Footer */
+    .tipp-content h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .tipp-content p {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: #4A4540;
+    }
+
+    /* FOOTER */
     footer {
-      padding: 2rem;
-      font-size: 13px;
-      opacity: 0.4;
-      border-top: 1px solid #1D1D1D;
-      max-width: 1100px;
-      width: 100%;
-      margin: 0 auto;
+      background-color: var(--dark);
+      color: rgba(250, 247, 242, 0.4);
+      text-align: center;
+      padding: 2.5rem 2rem;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
     }
 
-    @media (max-width: 640px) {
-      .rasse-row {
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+      .tipp {
         flex-direction: column;
         gap: 0.5rem;
-      }
-      .rasse-desc {
-        width: 100%;
       }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="header-inner">
-      <a href="../" class="back-link">&#8592; Alle Projekte</a>
-      <h1>Katzen</h1>
-      <p class="tagline">Alles &uuml;ber die faszinierendsten Mitbewohner der Welt &mdash; Fakten, Rassen &amp; Tipps.</p>
-    </div>
+  <header class="hero">
+    <span class="hero-emoji">&#128049;</span>
+    <h1>Die Welt der <span>Katzen</span></h1>
+    <p>Alles &uuml;ber unsere felinen Mitbewohner &mdash; Rassen, Fakten und Pflegetipps.</p>
   </header>
+
+  <nav>
+    <a href="#rassen">Rassen</a>
+    <a href="#fakten">Fakten</a>
+    <a href="#tipps">Tipps</a>
+  </nav>
 
   <main>
 
-    <!-- Fakten -->
-    <p class="section-label">Zahlen &amp; Fakten</p>
-    <div class="facts-grid">
-      <div class="fact-card">
-        <div class="fact-number">600M</div>
-        <div class="fact-label">Hauskatzen weltweit</div>
-      </div>
-      <div class="fact-card">
-        <div class="fact-number">70</div>
-        <div class="fact-label">Anerkannte Rassen</div>
-      </div>
-      <div class="fact-card">
-        <div class="fact-number">16h</div>
-        <div class="fact-label">Schlaf pro Tag</div>
-      </div>
-      <div class="fact-card">
-        <div class="fact-number">48km/h</div>
-        <div class="fact-label">Spitzengeschwindigkeit</div>
-      </div>
-    </div>
+    <!-- RASSEN -->
+    <section id="rassen">
+      <p class="section-label">Beliebte Rassen</p>
+      <h2 class="section-title">Welche Katze passt zu dir?</h2>
 
-    <!-- Emoji -->
-    <div class="emoji-banner">
-      &#128049; &#128008; &#128049; &#128008; &#128049;
-    </div>
+      <div class="rassen-grid">
 
-    <!-- Rassen -->
-    <p class="section-label">Beliebte Rassen</p>
-    <div class="rassen-list">
+        <div class="rasse-card">
+          <div class="rasse-emoji">&#128049;</div>
+          <div class="rasse-body">
+            <div class="rasse-name">Maine Coon</div>
+            <div class="rasse-herkunft">USA &mdash; 19. Jahrhundert</div>
+            <p class="rasse-desc">Eine der gr&ouml;&szlig;ten Hauskatzenrassen der Welt. Bekannt f&uuml;r ihr seidiges, langes Fell und ihr freundliches, hundeartiges Wesen.</p>
+            <div class="rasse-tags">
+              <span class="tag">Gro&szlig;</span>
+              <span class="tag">Familienfreundlich</span>
+              <span class="tag">Langhaar</span>
+            </div>
+          </div>
+        </div>
 
-      <div class="rasse-row">
-        <span class="rasse-name">Maine Coon</span>
-        <span class="rasse-desc">Eine der gr&ouml;&szlig;ten Hauskatzenrassen. Bekannt f&uuml;r ihr seidiges Fell, ihre Geselligkeit und ihren sanften Charakter.</span>
+        <div class="rasse-card">
+          <div class="rasse-emoji">&#128008;</div>
+          <div class="rasse-body">
+            <div class="rasse-name">Siamkatze</div>
+            <div class="rasse-herkunft">Thailand &mdash; Antike</div>
+            <p class="rasse-desc">Eine der &auml;ltesten und bekanntesten Rassen. Sehr kommunikativ, intelligent und anh&auml;nglich &mdash; liebt Gespr&auml;che mit ihrem Menschen.</p>
+            <div class="rasse-tags">
+              <span class="tag">Kommunikativ</span>
+              <span class="tag">Kurzhaar</span>
+              <span class="tag">Sozial</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rasse-card">
+          <div class="rasse-emoji">&#128062;</div>
+          <div class="rasse-body">
+            <div class="rasse-name">Britisch Kurzhaar</div>
+            <div class="rasse-herkunft">Gro&szlig;britannien &mdash; 19. Jh.</div>
+            <p class="rasse-desc">Ruhig, geduldig und unabh&auml;ngig. Mit ihrem runden Gesicht und dem pl&uuml;schigen Fell ist sie eine der beliebtesten Rassen Europas.</p>
+            <div class="rasse-tags">
+              <span class="tag">Ruhig</span>
+              <span class="tag">Kurzhaar</span>
+              <span class="tag">Anf&auml;nger</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rasse-card">
+          <div class="rasse-emoji">&#128049;</div>
+          <div class="rasse-body">
+            <div class="rasse-name">Perserkatze</div>
+            <div class="rasse-herkunft">Iran &mdash; 17. Jahrhundert</div>
+            <p class="rasse-desc">Die Diva unter den Katzen. Ihr langes, luxuri&ouml;ses Fell und ihr sanftes Temperament machen sie zu einer eleganten Wohnungskatze.</p>
+            <div class="rasse-tags">
+              <span class="tag">Elegant</span>
+              <span class="tag">Langhaar</span>
+              <span class="tag">Ruhig</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rasse-card">
+          <div class="rasse-emoji">&#128008;</div>
+          <div class="rasse-body">
+            <div class="rasse-name">Bengalkatze</div>
+            <div class="rasse-herkunft">USA &mdash; 1960er Jahre</div>
+            <p class="rasse-desc">Wildkatzen-Optik im Wohnzimmer. Aktiv, neugierig und sehr verspielt &mdash; die Bengalkatze braucht viel Besch&auml;ftigung und Raum.</p>
+            <div class="rasse-tags">
+              <span class="tag">Aktiv</span>
+              <span class="tag">Exotisch</span>
+              <span class="tag">Kurzhaar</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rasse-card">
+          <div class="rasse-emoji">&#128062;</div>
+          <div class="rasse-body">
+            <div class="rasse-name">Ragdoll</div>
+            <div class="rasse-herkunft">USA &mdash; 1960er Jahre</div>
+            <p class="rasse-desc">Sanft wie ein Kuscheltier. Ragdolls werden beim Hochheben schlaff &mdash; daher ihr Name. Ideal f&uuml;r Familien mit Kindern.</p>
+            <div class="rasse-tags">
+              <span class="tag">Sanft</span>
+              <span class="tag">Langhaar</span>
+              <span class="tag">Familienfreundlich</span>
+            </div>
+          </div>
+        </div>
+
       </div>
+    </section>
 
-      <div class="rasse-row">
-        <span class="rasse-name">Britisch Kurzhaar</span>
-        <span class="rasse-desc">Ruhig, anpassungsf&auml;hig und unglaublich pl&uuml;schig. Perfekt f&uuml;r Wohnungshaltung &mdash; liebt Komfort.</span>
+    <!-- FAKTEN -->
+    <section id="fakten" class="fakten-section">
+      <p class="section-label">Wusstest du das?</p>
+      <h2 class="section-title">Katzen in Zahlen</h2>
+
+      <div class="fakten-grid">
+        <div class="fakt">
+          <div class="fakt-zahl">16&ndash;18</div>
+          <div class="fakt-label">Stunden Schlaf</div>
+          <p class="fakt-desc">Katzen schlafen bis zu 18 Stunden am Tag &mdash; sie sind geborene Energiesparer.</p>
+        </div>
+        <div class="fakt">
+          <div class="fakt-zahl">500+</div>
+          <div class="fakt-label">Muskeln im Ohr</div>
+          <p class="fakt-desc">Jedes Katzenohr hat &uuml;ber 30 Muskeln und kann sich um 180 Grad drehen.</p>
+        </div>
+        <div class="fakt">
+          <div class="fakt-zahl">48 km/h</div>
+          <div class="fakt-label">Spitzengeschwindigkeit</div>
+          <p class="fakt-desc">Hauskatzen k&ouml;nnen kurzzeitig bis zu 48 km/h erreichen.</p>
+        </div>
+        <div class="fakt">
+          <div class="fakt-zahl">100+</div>
+          <div class="fakt-label">Lautarten</div>
+          <p class="fakt-desc">Katzen kommunizieren mit &uuml;ber 100 verschiedenen Lauten &mdash; Hunde nur mit etwa 10.</p>
+        </div>
       </div>
+    </section>
 
-      <div class="rasse-row">
-        <span class="rasse-name">Siamkatze</span>
-        <span class="rasse-desc">Sehr kommunikativ und anh&auml;nglich. Die Siamkatze ist eine der &auml;ltesten und bekanntesten Rassen der Welt.</span>
+    <!-- TIPPS -->
+    <section id="tipps" class="tipps-section">
+      <p class="section-label">Pflege &amp; Haltung</p>
+      <h2 class="section-title">Tipps f&uuml;r Katzenhalter</h2>
+
+      <div class="tipps-list">
+        <div class="tipp">
+          <span class="tipp-num">01</span>
+          <div class="tipp-content">
+            <h3>Regelm&auml;&szlig;ige Tier&auml;rztliche Kontrollen</h3>
+            <p>Mindestens einmal j&auml;hrlich zum Tierarzt &mdash; auch wenn die Katze gesund wirkt. Fr&uuml;hzeitige Vorsorge spart sp&auml;ter Kosten und Leid.</p>
+          </div>
+        </div>
+        <div class="tipp">
+          <span class="tipp-num">02</span>
+          <div class="tipp-content">
+            <h3>Frisches Wasser immer verf&uuml;gbar</h3>
+            <p>Katzen trinken von Natur aus wenig. Ein Trinkbrunnen kann helfen, die Wasseraufnahme zu erh&ouml;hen und Nierenprobleme vorzubeugen.</p>
+          </div>
+        </div>
+        <div class="tipp">
+          <span class="tipp-num">03</span>
+          <div class="tipp-content">
+            <h3>Besch&auml;ftigung und Spielzeit</h3>
+            <p>Besonders Wohnungskatzen brauchen t&auml;gliche Spieleinheiten. Angelruten, Tunnels und Kletterbäume halten K&ouml;rper und Geist fit.</p>
+          </div>
+        </div>
+        <div class="tipp">
+          <span class="tipp-num">04</span>
+          <div class="tipp-content">
+            <h3>Katzenstreu sauber halten</h3>
+            <p>Die Katzentoilette sollte t&auml;glich gereinigt werden. Faustregel: eine Toilette pro Katze, plus eine extra.</p>
+          </div>
+        </div>
+        <div class="tipp">
+          <span class="tipp-num">05</span>
+          <div class="tipp-content">
+            <h3>Kastrieren lassen</h3>
+            <p>Kastrierte Katzen leben l&auml;nger und gesünder. Es verhindert zudem unkontrollierte Vermehrung und reduziert aggressives Verhalten.</p>
+          </div>
+        </div>
       </div>
-
-      <div class="rasse-row">
-        <span class="rasse-name">Norwegische Waldkatze</span>
-        <span class="rasse-desc">Robust, kletterfreudig und mit dichtem Winterfell. Stammt aus den W&auml;ldern Skandinaviens.</span>
-      </div>
-
-      <div class="rasse-row">
-        <span class="rasse-name">Sphynx</span>
-        <span class="rasse-desc">Haarlos, aber alles andere als k&uuml;hl. Die Sphynx ist extrem anh&auml;nglich und liebt W&auml;rme &mdash; am liebsten deine.</span>
-      </div>
-
-    </div>
-
-    <!-- Tipps -->
-    <div class="tipp-box">
-      <h2>Tipps f&uuml;r Katzenhalter</h2>
-      <ul class="tipp-list">
-        <li>Frisches Wasser immer verf&uuml;gbar halten &mdash; Katzen trinken selten genug.</li>
-        <li>Regelm&auml;&szlig;ige Tierarztbesuche, auch wenn die Katze gesund wirkt.</li>
-        <li>Kratzbaumh&ouml;he mindestens so gro&szlig; wie die Katze im Strecken.</li>
-        <li>Spielzeit ist Jagdzeit &mdash; t&auml;glich mindestens 15 Minuten aktives Spiel.</li>
-        <li>Zwei Katzen sind oft gl&uuml;cklicher als eine &mdash; sie halten sich gegenseitig Gesellschaft.</li>
-      </ul>
-    </div>
+    </section>
 
   </main>
 
   <footer>
-    &copy; 2026 Die Kavallerie
+    <p>&#128049; Katzen &mdash; Die Welt der Samtpfoten &nbsp;&middot;&nbsp; <a href="../">Zur&uuml;ck zur &Uuml;bersicht</a></p>
+    <p style="margin-top: 0.5rem;">&copy; 2026 Die Kavallerie</p>
   </footer>
 
 </body>
