@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Angebot &mdash; Klett Sprachen &times; THE UNKNOWN BEAST</title>
+  <title>AI-L&ouml;sungen f&uuml;r Ernst Klett Sprachen &mdash; THE UNKNOWN BEAST</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,900;1,14..32,300&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     /* === RESET === */
     *, *::before, *::after {
@@ -17,155 +17,202 @@
 
     /* === TOKENS === */
     :root {
-      --black:   #0A0A0A;
-      --white:   #F5F5F0;
-      --accent:  #E8FF00;
-      --muted:   #3A3A3A;
-      --border:  #222222;
-      --font:    'Inter', 'Helvetica Neue', sans-serif;
+      --black:      #0C0C0C;
+      --white:      #FAFAF8;
+      --grey-100:   #F2F1EE;
+      --grey-200:   #E0DED9;
+      --grey-400:   #9E9B94;
+      --grey-600:   #5C5A55;
+      --accent:     #D4FF3C;
+      --accent-dim: #B8E030;
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+
+      --radius: 4px;
+      --max-w:  1100px;
     }
 
     /* === BASE === */
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: var(--font);
-      background-color: var(--black);
+      background: var(--black);
       color: var(--white);
-      min-height: 100vh;
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* === NAV === */
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.5rem 2.5rem;
-      border-bottom: 1px solid var(--border);
+    a { color: inherit; text-decoration: none; }
+
+    /* === LAYOUT === */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* === HEADER === */
+    header {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 0;
       position: sticky;
       top: 0;
-      background-color: var(--black);
+      background: rgba(12,12,12,0.92);
+      backdrop-filter: blur(12px);
       z-index: 100;
     }
 
-    .nav-logo {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--white);
-      text-decoration: none;
-      opacity: 0.6;
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
     }
 
-    .nav-badge {
-      font-size: 0.65rem;
+    .header-logo {
+      font-family: var(--font-body);
       font-weight: 700;
-      letter-spacing: 0.14em;
+      font-size: 13px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
-      border: 1px solid var(--accent);
-      padding: 0.3rem 0.75rem;
-      border-radius: 2px;
     }
+
+    .header-client {
+      font-size: 12px;
+      color: var(--grey-400);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .header-cta {
+      background: var(--accent);
+      color: var(--black);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .header-cta:hover { background: var(--accent-dim); }
 
     /* === HERO === */
     .hero {
-      padding: 5rem 2.5rem 4rem;
-      border-bottom: 1px solid var(--border);
-      max-width: 1200px;
-      margin: 0 auto;
+      padding: 100px 0 80px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
     .hero-eyebrow {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 2rem;
+      margin-bottom: 24px;
     }
 
     .hero-title {
-      font-size: clamp(2.8rem, 7vw, 6.5rem);
-      font-weight: 900;
-      line-height: 0.92;
-      text-transform: uppercase;
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 80px);
+      font-weight: 700;
+      line-height: 1.05;
       letter-spacing: -0.02em;
       color: var(--white);
-      margin-bottom: 2.5rem;
+      max-width: 800px;
+      margin-bottom: 28px;
     }
 
-    .hero-title span {
+    .hero-title em {
+      font-style: italic;
       color: var(--accent);
     }
 
-    .hero-meta {
-      display: flex;
-      gap: 3rem;
-      flex-wrap: wrap;
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--grey-400);
+      max-width: 560px;
+      line-height: 1.65;
+      font-weight: 300;
     }
 
-    .hero-meta-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
+    /* === SECTION HEADER === */
+    .section {
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
-    .hero-meta-label {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--white);
-      opacity: 0.35;
+      color: var(--grey-400);
+      margin-bottom: 48px;
     }
 
-    .hero-meta-value {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--white);
-      opacity: 0.75;
-    }
-
-    /* === SECTION WRAPPER === */
-    .section-wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2.5rem;
+    .section-label-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
     }
 
     /* === MODULE CARD === */
-    .module {
-      border-bottom: 1px solid var(--border);
-      padding: 4rem 0;
+    .module-card {
+      background: #141414;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      transition: border-color 0.2s;
     }
 
-    .module-header {
+    .module-card:hover {
+      border-color: rgba(212,255,60,0.25);
+    }
+
+    .module-card-header {
+      padding: 36px 40px 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
       display: grid;
       grid-template-columns: 1fr auto;
+      gap: 24px;
       align-items: start;
-      gap: 2rem;
-      margin-bottom: 2.5rem;
     }
 
     .module-tag {
-      font-size: 0.6rem;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
+      color: var(--grey-600);
+      margin-bottom: 12px;
     }
 
     .module-title {
-      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 1;
-      letter-spacing: -0.01em;
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 700;
+      line-height: 1.15;
       color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .module-subtitle {
+      font-size: 13px;
+      color: var(--grey-400);
+      letter-spacing: 0.04em;
     }
 
     .module-price-block {
@@ -174,469 +221,444 @@
     }
 
     .module-price-label {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
+      font-size: 11px;
+      color: var(--grey-600);
       text-transform: uppercase;
-      color: var(--white);
-      opacity: 0.35;
-      margin-bottom: 0.4rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
     }
 
-    .module-price {
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 900;
+    .module-price-from {
+      font-size: 11px;
+      color: var(--grey-400);
+      margin-bottom: 2px;
+    }
+
+    .module-price-value {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700;
       color: var(--accent);
       line-height: 1;
-      white-space: nowrap;
     }
 
-    .module-price-sub {
-      font-size: 0.7rem;
-      font-weight: 500;
-      color: var(--white);
-      opacity: 0.4;
-      margin-top: 0.3rem;
+    .module-price-unit {
+      font-size: 13px;
+      color: var(--grey-400);
+      margin-top: 4px;
     }
 
-    /* === MODULE BODY === */
-    .module-body {
+    .module-card-body {
+      padding: 32px 40px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
+      gap: 40px;
+      align-items: start;
     }
 
-    .module-desc {
-      font-size: 0.95rem;
-      line-height: 1.65;
-      color: var(--white);
-      opacity: 0.65;
-      grid-column: 1 / -1;
+    .module-description {
+      font-size: 15px;
+      color: var(--grey-400);
+      line-height: 1.7;
+      font-weight: 300;
     }
 
-    /* === DETAIL ROWS === */
-    .detail-rows {
-      grid-column: 1 / -1;
+    .module-specs {
       display: flex;
       flex-direction: column;
       gap: 0;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
     }
 
-    .detail-row {
+    .spec-row {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      padding: 1rem 1.25rem;
-      border-bottom: 1px solid var(--border);
-      gap: 1rem;
+      align-items: baseline;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 13px;
     }
 
-    .detail-row:last-child {
-      border-bottom: none;
+    .spec-row:last-child { border-bottom: none; }
+
+    .spec-key {
+      color: var(--grey-600);
+      flex-shrink: 0;
     }
 
-    .detail-row-label {
-      font-size: 0.8rem;
+    .spec-val {
+      color: var(--white);
       font-weight: 500;
-      color: var(--white);
-      opacity: 0.55;
-    }
-
-    .detail-row-value {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--white);
       text-align: right;
     }
 
-    .detail-row-value.accent {
-      color: var(--accent);
-    }
-
-    /* === NOTE BOX === */
-    .note-box {
-      grid-column: 1 / -1;
-      background-color: #111111;
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--accent);
-      padding: 1rem 1.25rem;
-      border-radius: 0 4px 4px 0;
-    }
-
-    .note-box p {
-      font-size: 0.78rem;
-      line-height: 1.6;
-      color: var(--white);
-      opacity: 0.45;
-    }
-
     /* === SUMMARY === */
-    .summary {
-      padding: 4rem 0 5rem;
-    }
-
-    .summary-label {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--white);
-      opacity: 0.35;
-      margin-bottom: 2rem;
+    .summary-section {
+      padding: 80px 0 100px;
     }
 
     .summary-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1px;
-      background-color: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 4px;
+      gap: 2px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 8px;
       overflow: hidden;
-      margin-bottom: 2.5rem;
+      margin-bottom: 64px;
     }
 
-    .summary-cell {
-      background-color: var(--black);
-      padding: 1.75rem 1.5rem;
+    .summary-item {
+      background: #141414;
+      padding: 32px 28px;
     }
 
-    .summary-cell-label {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
+    .summary-item-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--white);
-      opacity: 0.35;
-      margin-bottom: 0.6rem;
+      color: var(--grey-600);
+      margin-bottom: 12px;
     }
 
-    .summary-cell-value {
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: var(--white);
-      line-height: 1;
-    }
-
-    .summary-cell-value.accent {
+    .summary-item-price {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 700;
       color: var(--accent);
+      line-height: 1;
+      margin-bottom: 6px;
     }
 
-    .summary-cell-note {
-      font-size: 0.7rem;
-      color: var(--white);
-      opacity: 0.35;
-      margin-top: 0.4rem;
+    .summary-item-note {
+      font-size: 12px;
+      color: var(--grey-400);
     }
 
-    /* === CTA === */
+    /* === CTA BLOCK === */
     .cta-block {
+      background: #141414;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      padding: 56px 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 2rem;
+      gap: 32px;
       flex-wrap: wrap;
-      padding: 2rem;
-      background-color: #111;
-      border: 1px solid var(--border);
-      border-radius: 4px;
     }
 
-    .cta-text {
-      font-size: 0.85rem;
+    .cta-block-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
       color: var(--white);
-      opacity: 0.5;
-      max-width: 500px;
-      line-height: 1.6;
+      margin-bottom: 8px;
     }
 
-    .cta-link {
-      display: inline-block;
-      background-color: var(--accent);
+    .cta-block-sub {
+      font-size: 15px;
+      color: var(--grey-400);
+      font-weight: 300;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
       color: var(--black);
-      font-size: 0.7rem;
-      font-weight: 900;
-      letter-spacing: 0.14em;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      text-decoration: none;
-      padding: 0.9rem 1.75rem;
-      border-radius: 2px;
+      padding: 16px 32px;
+      border-radius: var(--radius);
+      transition: background 0.2s, transform 0.15s;
       white-space: nowrap;
-      transition: opacity 0.15s ease;
     }
 
-    .cta-link:hover {
-      opacity: 0.85;
+    .cta-btn:hover {
+      background: var(--accent-dim);
+      transform: translateY(-1px);
     }
 
     /* === FOOTER === */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 32px 0;
+    }
+
+    .footer-inner {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 1rem;
+      justify-content: space-between;
+      gap: 16px;
       flex-wrap: wrap;
     }
 
-    .footer-copy {
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--white);
-      opacity: 0.2;
-    }
-
-    .footer-brand {
-      font-size: 0.65rem;
+    .footer-logo {
       font-weight: 700;
-      letter-spacing: 0.16em;
+      font-size: 12px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--accent);
-      opacity: 0.6;
     }
 
-    /* === DIVIDER === */
-    .slash-divider {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--white);
-      opacity: 0.12;
-      padding: 1.25rem 2.5rem;
-      border-bottom: 1px solid var(--border);
-      max-width: 1200px;
-      margin: 0 auto;
+    .footer-note {
+      font-size: 12px;
+      color: var(--grey-600);
+    }
+
+    /* === FOOTNOTE === */
+    .footnote {
+      font-size: 12px;
+      color: var(--grey-600);
+      line-height: 1.6;
+      margin-top: 0;
+      padding: 16px 40px 28px;
+      border-top: 1px solid rgba(255,255,255,0.05);
     }
 
     /* === RESPONSIVE === */
-    @media (max-width: 700px) {
-      nav { padding: 1.25rem 1.25rem; }
-      .hero { padding: 3rem 1.25rem 2.5rem; }
-      .section-wrapper { padding: 0 1.25rem; }
-      .module-header { grid-template-columns: 1fr; }
+    @media (max-width: 720px) {
+      .module-card-header {
+        grid-template-columns: 1fr;
+        padding: 28px 24px 20px;
+      }
       .module-price-block { text-align: left; }
-      .module-body { grid-template-columns: 1fr; }
-      footer { padding: 1.5rem 1.25rem; }
+      .module-card-body {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 28px;
+      }
+      .footnote { padding: 16px 24px 24px; }
+      .cta-block { padding: 36px 28px; }
+      .header-client { display: none; }
+    }
+
+    /* === ANIMATIONS === */
+    @media (prefers-reduced-motion: no-preference) {
+      .module-card {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeUp 0.5s ease forwards;
+      }
+      .module-card:nth-child(1) { animation-delay: 0.05s; }
+      .module-card:nth-child(2) { animation-delay: 0.15s; }
+      .module-card:nth-child(3) { animation-delay: 0.25s; }
+
+      @keyframes fadeUp {
+        to { opacity: 1; transform: translateY(0); }
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="https://theunknownbeast.de" class="nav-logo">THE UNKNOWN BEAST</a>
-    <span class="nav-badge">Angebot</span>
-  </nav>
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <span class="header-logo">THE UNKNOWN BEAST</span>
+        <span class="header-client">Ernst Klett Sprachen</span>
+        <a href="mailto:michi@theunknownbeast.com" class="header-cta">Kontakt aufnehmen</a>
+      </div>
+    </div>
+  </header>
 
   <!-- HERO -->
-  <div style="border-bottom: 1px solid var(--border);">
-    <div class="hero">
-      <p class="hero-eyebrow">Angebot &mdash; Klett Sprachen</p>
-      <h1 class="hero-title">
-        AI-L&ouml;sungen<br />
-        f&uuml;r<br />
-        <span>Klett</span>
-      </h1>
-      <div class="hero-meta">
-        <div class="hero-meta-item">
-          <span class="hero-meta-label">Erstellt von</span>
-          <span class="hero-meta-value">THE UNKNOWN BEAST</span>
-        </div>
-        <div class="hero-meta-item">
-          <span class="hero-meta-label">Erstellt am</span>
-          <span class="hero-meta-value">Juli 2026</span>
-        </div>
-        <div class="hero-meta-item">
-          <span class="hero-meta-label">Module</span>
-          <span class="hero-meta-value">3 Leistungsbereiche</span>
-        </div>
-      </div>
+  <section class="hero">
+    <div class="container">
+      <p class="hero-eyebrow">Angebot &mdash; Juli 2026</p>
+      <h1 class="hero-title">AI-L&ouml;sungen<br />f&uuml;r <em>Ernst Klett Sprachen</em></h1>
+      <p class="hero-subtitle">Drei skalierbare Module &mdash; von der Bildproduktion &uuml;ber den Imagefilm bis zum animierten Avatar. On-brand, produktifiziert und sofort einsetzbar.</p>
     </div>
-  </div>
+  </section>
 
-  <!-- MODULE 01: COVER GENERATOR -->
-  <div class="slash-divider">BEAST/ASSETS &mdash; 01</div>
-  <div class="section-wrapper">
-    <div class="module">
-      <div class="module-header">
-        <div>
-          <p class="module-tag">Modul 01 &mdash; Bildproduktion</p>
-          <h2 class="module-title">Cover Generator<br />Klett Sprachen</h2>
-        </div>
-        <div class="module-price-block">
-          <p class="module-price-label">Monatliche Nutzung</p>
-          <p class="module-price">5.000 &euro;</p>
-          <p class="module-price-sub">pro Monat</p>
-        </div>
+  <!-- MODULES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">
+        <span class="section-label-dot"></span>
+        Module im &Uuml;berblick
       </div>
-      <div class="module-body">
-        <p class="module-desc">
-          Bildgenerierung f&uuml;r 5 Themenbereiche von Klett &mdash; on-brand, skalierbar und auf Knopfdruck.
-          Der Generator arbeitet mit vordefinierten visuellen Stilen, Szenen und Bildsprachen, die exakt auf
-          die Klett-Markenwelt abgestimmt sind. Ohne Textsetzung.
-        </p>
-        <div class="detail-rows">
-          <div class="detail-row">
-            <span class="detail-row-label">Themenbereiche</span>
-            <span class="detail-row-value">5 Bereiche</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-row-label">Textsetzung</span>
-            <span class="detail-row-value">Nicht enthalten</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-row-label">Abrechnung</span>
-            <span class="detail-row-value accent">5.000 &euro; / Monat</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- MODULE 02: ROM REFERENZ FILM -->
-  <div class="slash-divider">BEAST/FILM &mdash; 02</div>
-  <div class="section-wrapper">
-    <div class="module">
-      <div class="module-header">
-        <div>
-          <p class="module-tag">Modul 02 &mdash; AI Imagefilm</p>
-          <h2 class="module-title">Rom Referenz<br />Film</h2>
-        </div>
-        <div class="module-price-block">
-          <p class="module-price-label">Ab</p>
-          <p class="module-price">5.000 &euro;</p>
-          <p class="module-price-sub">+ 3.000 &euro; / Min.</p>
-        </div>
-      </div>
-      <div class="module-body">
-        <p class="module-desc">
-          AI-on-brand Imagefilm in Referenzqualit&auml;t &mdash; visuell, atmosph&auml;risch, markenstark.
-          Inklusive Story, Konzept, Umsetzung und Abstimmungsrunden. Produktion auf Basis der
-          Rom-Referenz&auml;sthetik.
-        </p>
-        <div class="detail-rows">
-          <div class="detail-row">
-            <span class="detail-row-label">L&auml;nge</span>
-            <span class="detail-row-value">ca. 60 Sekunden</span>
+      <!-- MODUL 01 -->
+      <div class="module-card">
+        <div class="module-card-header">
+          <div>
+            <p class="module-tag">Modul 01 &mdash; Bildproduktion</p>
+            <h2 class="module-title">Cover Generator</h2>
+            <p class="module-subtitle">Klett Sprachen &mdash; Monatliche Nutzung</p>
           </div>
-          <div class="detail-row">
-            <span class="detail-row-label">Inkl. Story &amp; Konzept</span>
-            <span class="detail-row-value">Ja</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-row-label">Inkl. Umsetzung &amp; Abstimmung</span>
-            <span class="detail-row-value">Ja</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-row-label">Pauschale (60 Sek.)</span>
-            <span class="detail-row-value accent">5.000 &euro;</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-row-label">Produktion pro Minute</span>
-            <span class="detail-row-value accent">3.000 &euro;</span>
+          <div class="module-price-block">
+            <p class="module-price-label">Monatlich</p>
+            <p class="module-price-value">5.000 &euro;</p>
+            <p class="module-price-unit">pro Monat</p>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODULE 03: AVATAR -->
-  <div class="slash-divider">BEAST/AVATAR &mdash; 03</div>
-  <div class="section-wrapper">
-    <div class="module">
-      <div class="module-header">
-        <div>
-          <p class="module-tag">Modul 03 &mdash; AI Avatar</p>
-          <h2 class="module-title">Avatar<br />Horst</h2>
-        </div>
-        <div class="module-price-block">
-          <p class="module-price-label">Setup (einmalig)</p>
-          <p class="module-price">10.000 &euro;</p>
-          <p class="module-price-sub">+ 400 &euro; / Monat</p>
-        </div>
-      </div>
-      <div class="module-body">
-        <p class="module-desc">
-          Horst als Referenz &mdash; links/rechts Vermarktung, produktifiziert als animierter AI-Avatar.
-          Konzeption, Gestaltung und Training des Avatars als eigenst&auml;ndiges, skalierbares Markenwerkzeug.
-          Monatliche Nutzungsgebühr beinhaltet Chatbase-Chatbot inklusive Token-Budget.
-        </p>
-        <div class="detail-rows">
-          <div class="detail-row">
-            <span class="detail-row-label">Konzeption, Gestaltung &amp; Training</span>
-            <span class="detail-row-value accent">10.000 &euro; (einmalig)</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-row-label">Nutzungsgeb&uuml;hr</span>
-            <span class="detail-row-value accent">400 &euro; / Monat</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-row-label">Chatbase Chatbot + Tokens</span>
-            <span class="detail-row-value">Inklusive</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-row-label">Messages pro Monat</span>
-            <span class="detail-row-value">3.000 Messages</span>
-          </div>
-        </div>
-        <div class="note-box">
-          <p>
-            Die Preise orientieren sich an den aktuellen Chatbase-Preisen und k&ouml;nnen bei Bedarf
-            angepasst werden. &Auml;nderungen werden rechtzeitig kommuniziert.
+        <div class="module-card-body">
+          <p class="module-description">
+            Bildgenerierung f&uuml;r 5 Themenbereiche von Klett &mdash; on-brand, skalierbar und auf Knopfdruck. Der Generator arbeitet mit vordefinierten visuellen Stilen, Szenen und Bildsprachen, die exakt auf die Klett-Markenwelt abgestimmt sind. Ohne Textsetzung.
           </p>
+          <div class="module-specs">
+            <div class="spec-row">
+              <span class="spec-key">Themenbereiche</span>
+              <span class="spec-val">5 Bereiche</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Textsetzung</span>
+              <span class="spec-val">Nicht enthalten</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Abrechnung</span>
+              <span class="spec-val">5.000 &euro; / Monat</span>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- MODUL 02 -->
+      <div class="module-card">
+        <div class="module-card-header">
+          <div>
+            <p class="module-tag">BEAST/FILM &mdash; 02 &mdash; AI Imagefilm</p>
+            <h2 class="module-title">Rom Referenz</h2>
+            <p class="module-subtitle">Film &mdash; Produktion</p>
+          </div>
+          <div class="module-price-block">
+            <p class="module-price-label">Pauschale</p>
+            <p class="module-price-from">Ab</p>
+            <p class="module-price-value">5.000 &euro;</p>
+            <p class="module-price-unit">+ 3.000 &euro; / Min.</p>
+          </div>
+        </div>
+        <div class="module-card-body">
+          <p class="module-description">
+            AI-on-brand Imagefilm in Referenzqualit&auml;t &mdash; visuell, atmosph&auml;risch, markenstark. Inklusive Story, Konzept, Umsetzung und Abstimmungsrunden. Produktion auf Basis der Rom-Referenz&auml;sthetik.
+          </p>
+          <div class="module-specs">
+            <div class="spec-row">
+              <span class="spec-key">L&auml;nge</span>
+              <span class="spec-val">ca. 60 Sekunden</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Inkl. Story &amp; Konzept</span>
+              <span class="spec-val">Ja</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Inkl. Umsetzung &amp; Abstimmung</span>
+              <span class="spec-val">Ja</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Pauschale (60 Sek.)</span>
+              <span class="spec-val">5.000 &euro;</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Produktion pro Minute</span>
+              <span class="spec-val">3.000 &euro;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODUL 03 -->
+      <div class="module-card">
+        <div class="module-card-header">
+          <div>
+            <p class="module-tag">BEAST/AVATAR &mdash; 03 &mdash; AI Avatar</p>
+            <h2 class="module-title">Avatar Horst</h2>
+            <p class="module-subtitle">Setup (einmalig) + monatliche Nutzung</p>
+          </div>
+          <div class="module-price-block">
+            <p class="module-price-label">Setup (einmalig)</p>
+            <p class="module-price-value">10.000 &euro;</p>
+            <p class="module-price-unit">+ 400 &euro; / Monat</p>
+          </div>
+        </div>
+        <div class="module-card-body">
+          <p class="module-description">
+            Horst als Referenz &mdash; links/rechts Vermarktung, produktifiziert als animierter AI-Avatar. Konzeption, Gestaltung und Training des Avatars als eigenst&auml;ndiges, skalierbares Markenwerkzeug. Monatliche Nutzungsgeb&uuml;hr beinhaltet Chatbase-Chatbot inklusive Token-Budget.
+          </p>
+          <div class="module-specs">
+            <div class="spec-row">
+              <span class="spec-key">Konzeption, Gestaltung &amp; Training</span>
+              <span class="spec-val">10.000 &euro; (einmalig)</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Nutzungsgeb&uuml;hr</span>
+              <span class="spec-val">400 &euro; / Monat</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Chatbase Chatbot + Tokens</span>
+              <span class="spec-val">Inklusive</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Messages pro Monat</span>
+              <span class="spec-val">3.000 Messages</span>
+            </div>
+          </div>
+        </div>
+        <p class="footnote">Die Preise orientieren sich an den aktuellen Chatbase-Preisen und k&ouml;nnen bei Bedarf angepasst werden. &Auml;nderungen werden rechtzeitig kommuniziert.</p>
+      </div>
+
     </div>
-  </div>
+  </section>
 
   <!-- SUMMARY -->
-  <div class="slash-divider">Zusammenfassung</div>
-  <div class="section-wrapper">
-    <div class="summary">
-      <p class="summary-label">Kostenübersicht</p>
+  <section class="summary-section">
+    <div class="container">
+      <div class="section-label">
+        <span class="section-label-dot"></span>
+        Zusammenfassung &mdash; Kosten&uuml;bersicht
+      </div>
+
       <div class="summary-grid">
-        <div class="summary-cell">
-          <p class="summary-cell-label">Cover Generator</p>
-          <p class="summary-cell-value accent">5.000 &euro;</p>
-          <p class="summary-cell-note">monatlich</p>
+        <div class="summary-item">
+          <p class="summary-item-label">Cover Generator</p>
+          <p class="summary-item-price">5.000 &euro;</p>
+          <p class="summary-item-note">monatlich</p>
         </div>
-        <div class="summary-cell">
-          <p class="summary-cell-label">Imagefilm (60 Sek.)</p>
-          <p class="summary-cell-value accent">5.000 &euro;</p>
-          <p class="summary-cell-note">Pauschale + 3.000 &euro; / Min.</p>
+        <div class="summary-item">
+          <p class="summary-item-label">Imagefilm (60 Sek.)</p>
+          <p class="summary-item-price">5.000 &euro;</p>
+          <p class="summary-item-note">Pauschale + 3.000 &euro; / Min.</p>
         </div>
-        <div class="summary-cell">
-          <p class="summary-cell-label">Avatar Setup</p>
-          <p class="summary-cell-value accent">10.000 &euro;</p>
-          <p class="summary-cell-note">einmalig</p>
+        <div class="summary-item">
+          <p class="summary-item-label">Avatar Setup</p>
+          <p class="summary-item-price">10.000 &euro;</p>
+          <p class="summary-item-note">einmalig</p>
         </div>
-        <div class="summary-cell">
-          <p class="summary-cell-label">Avatar Nutzung</p>
-          <p class="summary-cell-value accent">400 &euro;</p>
-          <p class="summary-cell-note">monatlich</p>
+        <div class="summary-item">
+          <p class="summary-item-label">Avatar Nutzung</p>
+          <p class="summary-item-price">400 &euro;</p>
+          <p class="summary-item-note">monatlich</p>
         </div>
       </div>
 
+      <!-- CTA -->
       <div class="cta-block">
-        <p class="cta-text">
-          Fragen zum Angebot oder bereit loszulegen? Michi Friz und das Beast-Team freuen sich auf das Gespr&auml;ch.
-        </p>
-        <a href="mailto:unleash@theunknownbeast.io" class="cta-link">Jetzt Kontakt aufnehmen &rarr;</a>
+        <div class="cta-block-text">
+          <p class="cta-block-title">Bereit loszulegen?</p>
+          <p class="cta-block-sub">Fragen zum Angebot? Michi Friz und das Beast-Team freuen sich auf das Gespr&auml;ch.</p>
+        </div>
+        <a href="mailto:michi@theunknownbeast.com" class="cta-btn">
+          Jetzt Kontakt aufnehmen &rarr;
+        </a>
       </div>
+
     </div>
-  </div>
+  </section>
 
   <!-- FOOTER -->
   <footer>
-    <span class="footer-copy">&copy; 2026 THE UNKNOWN BEAST &mdash; Ein Angebot f&uuml;r Klett Sprachen</span>
-    <span class="footer-brand">theunknownbeast.de</span>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">THE UNKNOWN BEAST</span>
+        <span class="footer-note">&copy; 2026 &mdash; Angebot f&uuml;r Ernst Klett Sprachen</span>
+      </div>
+    </div>
   </footer>
 
 </body>
