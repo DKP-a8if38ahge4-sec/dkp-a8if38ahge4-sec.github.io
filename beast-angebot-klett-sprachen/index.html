@@ -105,6 +105,7 @@
       display: flex;
       gap: 3rem;
       flex-wrap: wrap;
+      margin-bottom: 3rem;
     }
 
     .hero-meta-item {
@@ -127,6 +128,31 @@
       font-weight: 500;
       color: var(--white);
       opacity: 0.75;
+    }
+
+    /* === INTRO === */
+    .hero-intro {
+      border-top: 1px solid var(--border);
+      padding-top: 2.5rem;
+      max-width: 780px;
+    }
+
+    .hero-intro-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0.3;
+      margin-bottom: 1rem;
+    }
+
+    .hero-intro-text {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--white);
+      opacity: 0.65;
+      font-weight: 400;
     }
 
     /* === SECTION WRAPPER === */
@@ -475,20 +501,27 @@
           <span class="hero-meta-value">Juli 2026</span>
         </div>
         <div class="hero-meta-item">
-          <span class="hero-meta-label">Module</span>
+          <span class="hero-meta-label">Produkte</span>
           <span class="hero-meta-value">3 Leistungsbereiche</span>
         </div>
+      </div>
+
+      <div class="hero-intro">
+        <p class="hero-intro-label">Einleitung</p>
+        <p class="hero-intro-text">
+          Ernst Klett Sprachen m&ouml;chte den Einsatz von KI-gest&uuml;tzten L&ouml;sungen entlang zentraler Kommunikations- und Produktionsprozesse erproben und skalieren. Im Fokus stehen drei Bereiche: die automatisierte Bildgenerierung f&uuml;r Buchcover, die KI-gest&uuml;tzte Filmproduktion sowie der Aufbau eines animierten AI-Avatars f&uuml;r die Vermarktung. Die L&ouml;sungen sollen on-brand, effizient und dauerhaft nutzbar sein &mdash; als produktifizierte Bausteine, die intern betrieben und weiterentwickelt werden k&ouml;nnen.
+        </p>
       </div>
     </div>
   </div>
 
-  <!-- MODULE 01: COVER GENERATOR -->
+  <!-- PRODUKT 01: COVER GENERATOR -->
   <div class="slash-divider">BEAST/ASSETS &mdash; 01</div>
   <div class="section-wrapper">
     <div class="module">
       <div class="module-header">
         <div>
-          <p class="module-tag">Modul 01 &mdash; Bildproduktion</p>
+          <p class="module-tag">Produkt 01 &mdash; Bildproduktion</p>
           <h2 class="module-title">Cover Generator</h2>
           <p class="module-subtitle">Klett Sprachen &mdash; Monatliche Nutzung</p>
         </div>
@@ -507,7 +540,7 @@
         <div class="detail-rows">
           <div class="detail-row">
             <span class="detail-row-label">Themenbereiche</span>
-            <span class="detail-row-value">5 Bereiche</span>
+            <span class="detail-row-value">5 Bereiche (Cover)</span>
           </div>
           <div class="detail-row">
             <span class="detail-row-label">Textsetzung</span>
@@ -522,15 +555,15 @@
     </div>
   </div>
 
-  <!-- MODULE 02: IMAGEFILM -->
+  <!-- PRODUKT 02: IMAGEFILM -->
   <div class="slash-divider">BEAST/FILM &mdash; 02</div>
   <div class="section-wrapper">
     <div class="module">
       <div class="module-header">
         <div>
-          <p class="module-tag">Modul 02 &mdash; AI Imagefilm</p>
+          <p class="module-tag">Produkt 02 &mdash; AI Imagefilm</p>
           <h2 class="module-title">Rom Referenz</h2>
-          <p class="module-subtitle">Film &mdash; Produktion</p>
+          <p class="module-subtitle">AI-on-brand Imagefilm in Referenzqualit&auml;t</p>
         </div>
         <div class="module-price-block">
           <p class="module-price-label">Pauschale</p>
@@ -542,8 +575,8 @@
       <div class="module-body">
         <p class="module-desc">
           AI-on-brand Imagefilm in Referenzqualit&auml;t &mdash; visuell, atmosph&auml;risch, markenstark.
-          Inklusive Story, Konzept, Umsetzung und Abstimmungsrunden. Produktion auf Basis der
-          Rom-Referenz&auml;sthetik.
+          Produktion auf Basis der Rom-Film-Referenz&auml;sthetik. Inklusive Story, Konzept, Umsetzung
+          und Abstimmungsrunden.
         </p>
         <div class="detail-rows">
           <div class="detail-row">
@@ -571,15 +604,15 @@
     </div>
   </div>
 
-  <!-- MODULE 03: AVATAR -->
+  <!-- PRODUKT 03: AVATAR -->
   <div class="slash-divider">BEAST/AVATAR &mdash; 03</div>
   <div class="section-wrapper">
     <div class="module">
       <div class="module-header">
         <div>
-          <p class="module-tag">Modul 03 &mdash; AI Avatar</p>
+          <p class="module-tag">Produkt 03 &mdash; AI Avatar</p>
           <h2 class="module-title">Avatar Horst</h2>
-          <p class="module-subtitle">Setup (einmalig) + monatliche Nutzung</p>
+          <p class="module-subtitle">Produktifizierung &mdash; Setup (einmalig) + monatliche Nutzung</p>
         </div>
         <div class="module-price-block">
           <p class="module-price-label">Setup (einmalig)</p>
@@ -591,7 +624,7 @@
         <p class="module-desc">
           Horst als Referenz &mdash; links/rechts Vermarktung, produktifiziert als animierter AI-Avatar.
           Konzeption, Gestaltung und Training des Avatars als eigenst&auml;ndiges, skalierbares Markenwerkzeug.
-          Monatliche Nutzungsgeb&uuml;hr beinhaltet Chatbase-Chatbot inklusive Token-Budget.
+          Die monatliche Nutzungsgeb&uuml;hr beinhaltet den Chatbase-Chatbot inklusive Token-Budget.
         </p>
         <div class="detail-rows">
           <div class="detail-row">
