@@ -59,25 +59,6 @@
       opacity: 0.6;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--white);
-      text-decoration: none;
-      opacity: 0.35;
-      transition: opacity 0.15s;
-    }
-
-    .nav-links a:hover { opacity: 0.8; }
-
     .nav-badge {
       font-size: 0.65rem;
       font-weight: 700;
@@ -87,10 +68,6 @@
       border: 1px solid var(--accent);
       padding: 0.3rem 0.75rem;
       border-radius: 2px;
-    }
-
-    @media (max-width: 700px) {
-      .nav-links { display: none; }
     }
 
     /* === HERO === */
@@ -120,7 +97,9 @@
       margin-bottom: 2.5rem;
     }
 
-    .hero-title span { color: var(--accent); }
+    .hero-title span {
+      color: var(--accent);
+    }
 
     .hero-meta {
       display: flex;
@@ -155,11 +134,11 @@
       color: var(--accent);
       opacity: 1;
       font-weight: 900;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       line-height: 1;
     }
 
-    /* === INTRO TEXT === */
+    /* === INTRO === */
     .hero-intro {
       border-top: 1px solid var(--border);
       padding-top: 2.5rem;
@@ -191,21 +170,7 @@
       padding: 0 2.5rem;
     }
 
-    /* === SLASH DIVIDER === */
-    .slash-divider {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--white);
-      opacity: 0.12;
-      padding: 1.25rem 2.5rem;
-      border-bottom: 1px solid var(--border);
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* === MODULE === */
+    /* === MODULE CARD === */
     .module {
       border-bottom: 1px solid var(--border);
       padding: 4rem 0;
@@ -262,6 +227,16 @@
       margin-bottom: 0.4rem;
     }
 
+    .module-price-from {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0.3;
+      margin-bottom: 0.2rem;
+    }
+
     .module-price {
       font-size: clamp(1.6rem, 3vw, 2.4rem);
       font-weight: 900;
@@ -313,7 +288,9 @@
       gap: 1rem;
     }
 
-    .detail-row:last-child { border-bottom: none; }
+    .detail-row:last-child {
+      border-bottom: none;
+    }
 
     .detail-row-label {
       font-size: 0.8rem;
@@ -329,7 +306,9 @@
       text-align: right;
     }
 
-    .detail-row-value.accent { color: var(--accent); }
+    .detail-row-value.accent {
+      color: var(--accent);
+    }
 
     /* === NOTE BOX === */
     .note-box {
@@ -348,90 +327,24 @@
       opacity: 0.45;
     }
 
-    /* === STUFEN CARDS === */
-    .stufen-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1px;
-      background-color: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 2rem;
+    /* === SUMMARY === */
+    .summary {
+      padding: 4rem 0 5rem;
     }
 
-    .stufe-cell {
-      background-color: var(--black);
-      padding: 1.75rem 1.5rem;
-      position: relative;
-    }
-
-    .stufe-cell--highlight {
-      background-color: #111800;
-    }
-
-    .stufe-cell__badge {
+    .summary-label {
       font-size: 0.6rem;
       font-weight: 700;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--white);
       opacity: 0.35;
-      margin-bottom: 0.6rem;
+      margin-bottom: 2rem;
     }
 
-    .stufe-cell--highlight .stufe-cell__badge {
-      color: var(--accent);
-      opacity: 1;
-    }
-
-    .stufe-cell__invest {
-      font-size: 0.7rem;
-      color: var(--white);
-      opacity: 0.4;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .stufe-cell__umsatz {
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: 0.4rem;
-    }
-
-    .stufe-cell--highlight .stufe-cell__umsatz {
-      color: var(--accent);
-    }
-
-    .stufe-cell__ebit {
-      font-size: 0.75rem;
-      font-weight: 700;
-      margin-bottom: 0.8rem;
-    }
-
-    .stufe-cell__ebit--pos { color: var(--accent); }
-    .stufe-cell__ebit--neg { color: var(--white); opacity: 0.35; }
-
-    .stufe-cell__contacts {
-      font-size: 0.7rem;
-      color: var(--white);
-      opacity: 0.3;
-      border-top: 1px solid var(--border);
-      padding-top: 0.75rem;
-      margin-top: 0.5rem;
-    }
-
-    .stufe-cell--highlight .stufe-cell__contacts {
-      border-color: rgba(232,255,0,0.15);
-    }
-
-    /* === SUMMARY GRID === */
     .summary-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1px;
       background-color: var(--border);
       border: 1px solid var(--border);
@@ -462,7 +375,9 @@
       line-height: 1;
     }
 
-    .summary-cell-value.accent { color: var(--accent); }
+    .summary-cell-value.accent {
+      color: var(--accent);
+    }
 
     .summary-cell-note {
       font-size: 0.7rem;
@@ -471,260 +386,7 @@
       margin-top: 0.4rem;
     }
 
-    /* === MONAT TABLE === */
-    .monat-table-wrap {
-      overflow-x: auto;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      margin-top: 1.5rem;
-    }
-
-    .monat-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.75rem;
-      min-width: 700px;
-    }
-
-    .monat-table th {
-      padding: 0.75rem 0.75rem;
-      text-align: center;
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--white);
-      opacity: 0.35;
-      border-bottom: 1px solid var(--border);
-      background: #0f0f0f;
-    }
-
-    .monat-table th:first-child { text-align: left; }
-
-    .monat-table td {
-      padding: 0.85rem 0.75rem;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-      color: var(--white);
-      opacity: 0.5;
-    }
-
-    .monat-table tr:last-child td { border-bottom: none; }
-    .monat-table td:first-child { text-align: left; opacity: 0.4; }
-    .monat-table td.zero { opacity: 0.2; }
-    .monat-table td.active { color: var(--accent); opacity: 1; font-weight: 700; }
-
-    /* === ZIELE GRID === */
-    .ziele-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1px;
-      background-color: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .ziel-cell {
-      background-color: var(--black);
-      padding: 1.75rem 1.5rem;
-    }
-
-    .ziel-cell__label {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-
-    .ziel-cell__value {
-      font-size: 1.8rem;
-      font-weight: 900;
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: 0.4rem;
-    }
-
-    .ziel-cell__desc {
-      font-size: 0.7rem;
-      color: var(--white);
-      opacity: 0.35;
-      line-height: 1.5;
-    }
-
-    /* === ANNAHMEN === */
-    .annahmen-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .annahmen-list li {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      padding: 1rem 1.25rem;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.82rem;
-      line-height: 1.6;
-      color: var(--white);
-      opacity: 0.6;
-    }
-
-    .annahmen-list li:last-child { border-bottom: none; }
-
-    .annahmen-list li::before {
-      content: '';
-      display: block;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-      margin-top: 7px;
-    }
-
-    /* === ROADMAP === */
-    .roadmap-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1px;
-      background-color: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .roadmap-cell {
-      background-color: var(--black);
-      padding: 2rem 1.5rem;
-    }
-
-    .roadmap-cell__q {
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: 0.3rem;
-    }
-
-    .roadmap-cell__focus {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--white);
-      opacity: 0.3;
-      margin-bottom: 1.25rem;
-    }
-
-    .roadmap-cell__items {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-
-    .roadmap-cell__items li {
-      font-size: 0.8rem;
-      line-height: 1.5;
-      color: var(--white);
-      opacity: 0.55;
-      padding-left: 12px;
-      position: relative;
-    }
-
-    .roadmap-cell__items li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 8px;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--accent);
-      opacity: 0.6;
-    }
-
-    /* === MIX BAR === */
-    .mix-bar {
-      display: flex;
-      height: 8px;
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 1rem;
-    }
-
-    .mix-bar__seg { height: 100%; }
-
-    .mix-legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .mix-legend__item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--white);
-      opacity: 0.5;
-    }
-
-    .mix-legend__dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    /* === SECTION HEADING === */
-    .section-heading {
-      padding: 4rem 0 2.5rem;
-    }
-
-    .section-heading-label {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--white);
-      opacity: 0.35;
-      margin-bottom: 1rem;
-    }
-
-    .section-heading-title {
-      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 1;
-      letter-spacing: -0.01em;
-      color: var(--white);
-      margin-bottom: 1rem;
-    }
-
-    .section-heading-title span { color: var(--accent); }
-
-    .section-heading-text {
-      font-size: 0.9rem;
-      line-height: 1.7;
-      color: var(--white);
-      opacity: 0.5;
-      max-width: 640px;
-    }
-
-    /* === CTA BLOCK === */
+    /* === CTA === */
     .cta-block {
       display: flex;
       align-items: center;
@@ -735,7 +397,6 @@
       background-color: #111;
       border: 1px solid var(--border);
       border-radius: 4px;
-      margin-top: 2rem;
     }
 
     .cta-text {
@@ -761,7 +422,9 @@
       transition: opacity 0.15s ease;
     }
 
-    .cta-link:hover { opacity: 0.85; }
+    .cta-link:hover {
+      opacity: 0.85;
+    }
 
     /* === FOOTER === */
     footer {
@@ -792,6 +455,64 @@
       opacity: 0.6;
     }
 
+    /* === DIVIDER === */
+    .slash-divider {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0.12;
+      padding: 1.25rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* === MONAT TABLE === */
+    .monat-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .monat-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.75rem;
+      min-width: 700px;
+    }
+
+    .monat-table th {
+      padding: 0.75rem;
+      text-align: center;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0.35;
+      border-bottom: 1px solid var(--border);
+      background: #0f0f0f;
+    }
+
+    .monat-table th:first-child { text-align: left; }
+
+    .monat-table td {
+      padding: 0.85rem 0.75rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      color: var(--white);
+      opacity: 0.5;
+    }
+
+    .monat-table tr:last-child td { border-bottom: none; }
+    .monat-table td:first-child { text-align: left; opacity: 0.4; }
+    .monat-table td.zero { opacity: 0.2; }
+    .monat-table td.active { color: var(--accent); opacity: 1; font-weight: 700; }
+
     /* === RESPONSIVE === */
     @media (max-width: 700px) {
       nav { padding: 1.25rem 1.25rem; }
@@ -810,12 +531,6 @@
   <!-- NAV -->
   <nav>
     <a href="https://theunknownbeast.de" class="nav-logo">THE UNKNOWN BEAST</a>
-    <ul class="nav-links">
-      <li><a href="#produkte">Produkte</a></li>
-      <li><a href="#vertrieb">Vertrieb</a></li>
-      <li><a href="#ziele">Ziele</a></li>
-      <li><a href="#annahmen">Annahmen</a></li>
-    </ul>
     <span class="nav-badge">Businessplan Jahr 1</span>
   </nav>
 
@@ -867,8 +582,7 @@
     </div>
   </div>
 
-  <!-- PRODUKTE -->
-  <div id="produkte"></div>
+  <!-- PRODUKT 01 -->
   <div class="slash-divider">BEAST/ASSETS &mdash; 01</div>
   <div class="section-wrapper">
     <div class="module">
@@ -880,8 +594,9 @@
         </div>
         <div class="module-price-block">
           <p class="module-price-label">Projektpreis</p>
-          <p class="module-price">30.000 &euro;</p>
-          <p class="module-price-sub">ab 25.000 &euro; / Projekt</p>
+          <p class="module-price-from">Ab</p>
+          <p class="module-price">25.000 &euro;</p>
+          <p class="module-price-sub">&Oslash; 30.000 &euro; / Projekt</p>
         </div>
       </div>
       <div class="module-body">
@@ -911,6 +626,7 @@
     </div>
   </div>
 
+  <!-- PRODUKT 02 -->
   <div class="slash-divider">BEAST/ENGAGE &mdash; 02</div>
   <div class="section-wrapper">
     <div class="module">
@@ -921,9 +637,9 @@
           <p class="module-subtitle">Trainiert auf Kundeninhalten, in Markensprache</p>
         </div>
         <div class="module-price-block">
-          <p class="module-price-label">Festpreis</p>
+          <p class="module-price-label">Festpreis individuell</p>
           <p class="module-price">6.500 &euro;</p>
-          <p class="module-price-sub">einfach: 3.500 &euro;</p>
+          <p class="module-price-sub">einfacher Chatbot: 3.500 &euro;</p>
         </div>
       </div>
       <div class="module-body">
@@ -957,6 +673,7 @@
     </div>
   </div>
 
+  <!-- PRODUKT 03 -->
   <div class="slash-divider">BEAST/TRANSFORM &mdash; 03</div>
   <div class="section-wrapper">
     <div class="module">
@@ -975,8 +692,8 @@
       <div class="module-body">
         <p class="module-desc">
           Per Touch von KI verwandelt, automatisch gedruckt, digital geteilt &mdash;
-          ein Markenerlebnis f&uuml;r echte Reichweite. Das Umsatzstabilste Produkt im Portfolio
-          und mit 39&nbsp;% der gr&ouml;&szlig;te Einzelbeitrag zum Vollpotenzial.
+          ein Markenerlebnis f&uuml;r echte Reichweite. Mit 39&nbsp;% der gr&ouml;&szlig;te
+          Einzelbeitrag zum Vollpotenzial.
         </p>
         <div class="detail-rows">
           <div class="detail-row">
@@ -1000,6 +717,7 @@
     </div>
   </div>
 
+  <!-- PRODUKT 04 -->
   <div class="slash-divider">BEAST/WORKOUT &mdash; 04</div>
   <div class="section-wrapper">
     <div class="module">
@@ -1046,112 +764,91 @@
     </div>
   </div>
 
-  <!-- UMSATZPOTENZIAL GESAMT -->
+  <!-- UMSATZ VOLLPOTENZIAL -->
   <div class="slash-divider">Vollpotenzial &mdash; Umsatz-Mix</div>
   <div class="section-wrapper">
-    <div class="section-heading">
-      <p class="section-heading-label">Bei voller Auslastung</p>
-      <h2 class="section-heading-title">Vollpotenzial: <span>385.800 &euro;</span></h2>
-      <p class="section-heading-text">
-        Gut gestreut &mdash; kein Produkt tr&auml;gt allein das Risiko.
-        Die tats&auml;chlich realisierte H&ouml;he h&auml;ngt an der Vertriebsstufe.
-      </p>
-    </div>
-
-    <div class="mix-bar">
-      <div class="mix-bar__seg" style="width:39%; background:#E8FF00;"></div>
-      <div class="mix-bar__seg" style="width:31%; background:rgba(232,255,0,0.5);"></div>
-      <div class="mix-bar__seg" style="width:14%; background:rgba(232,255,0,0.25);"></div>
-      <div class="mix-bar__seg" style="width:16%; background:rgba(232,255,0,0.12);"></div>
-    </div>
-    <div class="mix-legend">
-      <div class="mix-legend__item"><div class="mix-legend__dot" style="background:#E8FF00;"></div>TRANSFORM 39&nbsp;%</div>
-      <div class="mix-legend__item"><div class="mix-legend__dot" style="background:rgba(232,255,0,0.5);"></div>ASSETS 31&nbsp;%</div>
-      <div class="mix-legend__item"><div class="mix-legend__dot" style="background:rgba(232,255,0,0.25);"></div>ENGAGE 14&nbsp;%</div>
-      <div class="mix-legend__item"><div class="mix-legend__dot" style="background:rgba(232,255,0,0.12);"></div>WORKOUT 16&nbsp;%</div>
-    </div>
-
-    <div class="detail-rows" style="margin-bottom: 4rem;">
-      <div class="detail-row">
-        <span class="detail-row-label">BEAST/TRANSFORM &mdash; 42 Miettage</span>
-        <span class="detail-row-value accent">151.800 &euro;</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-row-label">BEAST/ASSETS &mdash; 4 Projekte &agrave; &Oslash; 30.000 &euro;</span>
-        <span class="detail-row-value accent">120.000 &euro;</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-row-label">BEAST/ENGAGE &mdash; 12 Projekte</span>
-        <span class="detail-row-value accent">54.000 &euro;</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-row-label">BEAST/WORKOUT &mdash; 10 Audits + 5 Schulungen</span>
-        <span class="detail-row-value accent">60.000 &euro;</span>
-      </div>
-      <div class="detail-row" style="background:#0f0f0f;">
-        <span class="detail-row-label" style="font-weight:700; opacity:0.9; color: var(--white);">Vollpotenzial gesamt</span>
-        <span class="detail-row-value accent" style="font-size:1.1rem;">385.800 &euro;</span>
+    <div class="summary">
+      <p class="summary-label">Bei voller Auslastung &mdash; Umsatz je Produkt</p>
+      <div class="summary-grid">
+        <div class="summary-cell">
+          <div class="summary-cell-label">BEAST/TRANSFORM</div>
+          <div class="summary-cell-value accent">151.800 &euro;</div>
+          <div class="summary-cell-note">42 Miettage &middot; 39&nbsp;%</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-cell-label">BEAST/ASSETS</div>
+          <div class="summary-cell-value accent">120.000 &euro;</div>
+          <div class="summary-cell-note">4 Projekte &agrave; &Oslash; 30k &middot; 31&nbsp;%</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-cell-label">BEAST/ENGAGE</div>
+          <div class="summary-cell-value accent">54.000 &euro;</div>
+          <div class="summary-cell-note">12 Projekte &middot; 14&nbsp;%</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-cell-label">BEAST/WORKOUT</div>
+          <div class="summary-cell-value accent">60.000 &euro;</div>
+          <div class="summary-cell-note">10 Audits + 5 Schulungen &middot; 16&nbsp;%</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-cell-label">Vollpotenzial gesamt</div>
+          <div class="summary-cell-value accent">385.800 &euro;</div>
+          <div class="summary-cell-note">Gut gestreut &mdash; kein Produkt &uuml;ber 39&nbsp;%</div>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- VERTRIEB SZENARIEN -->
-  <div id="vertrieb"></div>
   <div class="slash-divider">Vertriebsinvest &mdash; Szenarien</div>
   <div class="section-wrapper">
-    <div class="section-heading">
-      <p class="section-heading-label">Die entscheidende Stellschraube</p>
-      <h2 class="section-heading-title">Vertrieb <span>entscheidet.</span></h2>
-      <p class="section-heading-text">
-        Das Umsatzniveau ist keine Frage der Produktqualit&auml;t &mdash; die Produkte stehen.
-        Es ist eine Investitionsentscheidung in Vertriebszeit.
-        KI-Automation erh&ouml;ht die Kontaktmenge pro Personenstunde um ~60&nbsp;% ohne mehr Personenzeit.
-        Abschlussquote konservativ: 18&nbsp;% (schwache Wirtschaftslage). Vorlauf: ~2 Monate.
-      </p>
-    </div>
-
-    <div class="stufen-grid">
-      <div class="stufe-cell">
-        <div class="stufe-cell__badge">Stufe 0 &mdash; Heute</div>
-        <div class="stufe-cell__invest">Ohne Automation</div>
-        <div class="stufe-cell__umsatz">~105k &euro;</div>
-        <div class="stufe-cell__ebit stufe-cell__ebit--neg">&minus;167.000 &euro; EBIT</div>
-        <div class="stufe-cell__contacts">~99 Erstkontakte / Jahr &middot; ~18 Auftr&auml;ge</div>
+    <div class="module" style="border-bottom: none;">
+      <div class="module-header">
+        <div>
+          <p class="module-tag">Die entscheidende Stellschraube</p>
+          <h2 class="module-title">Vertrieb entscheidet.</h2>
+          <p class="module-subtitle">Investitionsentscheidung in Vertriebszeit</p>
+        </div>
       </div>
-      <div class="stufe-cell">
-        <div class="stufe-cell__badge">Stufe 1</div>
-        <div class="stufe-cell__invest">30&nbsp;% + Automation</div>
-        <div class="stufe-cell__umsatz">~166k &euro;</div>
-        <div class="stufe-cell__ebit stufe-cell__ebit--neg">&minus;117.000 &euro; EBIT</div>
-        <div class="stufe-cell__contacts">~157 Erstkontakte / Jahr &middot; ~28 Auftr&auml;ge</div>
-      </div>
-      <div class="stufe-cell">
-        <div class="stufe-cell__badge">Stufe 2</div>
-        <div class="stufe-cell__invest">45&nbsp;% + Automation</div>
-        <div class="stufe-cell__umsatz">~248k &euro;</div>
-        <div class="stufe-cell__ebit stufe-cell__ebit--neg">&minus;42.000 &euro; EBIT</div>
-        <div class="stufe-cell__contacts">~236 Erstkontakte / Jahr &middot; ~42 Auftr&auml;ge</div>
-      </div>
-      <div class="stufe-cell stufe-cell--highlight">
-        <div class="stufe-cell__badge">&#9733; Stufe 3 &mdash; Empfohlen</div>
-        <div class="stufe-cell__invest">60&nbsp;% + Automation</div>
-        <div class="stufe-cell__umsatz">~331k &euro;</div>
-        <div class="stufe-cell__ebit stufe-cell__ebit--pos">+37.000 &euro; EBIT</div>
-        <div class="stufe-cell__contacts">~315 Erstkontakte / Jahr &middot; ~57 Auftr&auml;ge</div>
-      </div>
-      <div class="stufe-cell">
-        <div class="stufe-cell__badge">Vollpotenzial</div>
-        <div class="stufe-cell__invest">Ded. 0,5 Vertriebskraft</div>
-        <div class="stufe-cell__umsatz">~386k &euro;</div>
-        <div class="stufe-cell__ebit stufe-cell__ebit--pos">+88.000 &euro; EBIT</div>
-        <div class="stufe-cell__contacts">~271 Erstkontakte / Jahr &middot; ~49 Auftr&auml;ge</div>
+      <div class="module-body">
+        <p class="module-desc">
+          Das Umsatzniveau ist keine Frage der Produktqualit&auml;t &mdash; die Produkte stehen.
+          Es ist eine Investitionsentscheidung in Vertriebszeit. KI-Automation erh&ouml;ht die
+          Kontaktmenge pro Personenstunde um ~60&nbsp;% ohne mehr Personenzeit.
+          Abschlussquote konservativ: 18&nbsp;% (schwache Wirtschaftslage). Vorlauf: ~2 Monate.
+        </p>
       </div>
     </div>
 
-    <!-- Monatsverlauf Stufe 3 -->
-    <p style="font-size:0.65rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--white); opacity:0.3; margin-bottom:0.5rem;">
-      Monatsverlauf Stufe 3 &mdash; Umsatz ab Monat 3 (2 Monate Pipeline-Aufbau)
-    </p>
+    <div class="summary-grid">
+      <div class="summary-cell">
+        <div class="summary-cell-label">Stufe 0 &mdash; Heute</div>
+        <div class="summary-cell-value">~105.000 &euro;</div>
+        <div class="summary-cell-note">Ohne Automation &middot; &minus;167k EBIT</div>
+      </div>
+      <div class="summary-cell">
+        <div class="summary-cell-label">Stufe 1 &mdash; 30&nbsp;% + Automation</div>
+        <div class="summary-cell-value">~166.000 &euro;</div>
+        <div class="summary-cell-note">~157 Kontakte / Jahr &middot; &minus;117k EBIT</div>
+      </div>
+      <div class="summary-cell">
+        <div class="summary-cell-label">Stufe 2 &mdash; 45&nbsp;% + Automation</div>
+        <div class="summary-cell-value">~248.000 &euro;</div>
+        <div class="summary-cell-note">~236 Kontakte / Jahr &middot; &minus;42k EBIT</div>
+      </div>
+      <div class="summary-cell" style="background-color: #111800;">
+        <div class="summary-cell-label" style="color: var(--accent); opacity: 1;">&#9733; Stufe 3 &mdash; Empfohlen &mdash; 60&nbsp;% + Automation</div>
+        <div class="summary-cell-value accent">~331.000 &euro;</div>
+        <div class="summary-cell-note" style="color: var(--accent); opacity: 0.7;">~315 Kontakte / Jahr &middot; +37k EBIT</div>
+      </div>
+      <div class="summary-cell">
+        <div class="summary-cell-label">Vollpotenzial &mdash; Ded. Vertriebskraft</div>
+        <div class="summary-cell-value">~386.000 &euro;</div>
+        <div class="summary-cell-note">~271 Kontakte / Jahr &middot; +88k EBIT</div>
+      </div>
+    </div>
+
+    <p class="summary-label" style="margin-top: 2.5rem;">Monatsverlauf Stufe 3 &mdash; Umsatz startet ab Monat 3 (2 Monate Pipeline-Aufbau)</p>
     <div class="monat-table-wrap">
       <table class="monat-table">
         <thead>
@@ -1187,54 +884,47 @@
       </table>
     </div>
 
-    <div class="note-box" style="margin-top:1.5rem; margin-bottom:4rem;">
-      <p>~20 qualifizierte Erstkontakte im Monat (ab Q3 ~32) sind das operative Vertriebsziel. Das ist die eine Zahl, die BEAST w&ouml;chentlich verfolgen muss &mdash; alles andere folgt daraus. Ohne Automation ist diese Kontaktmenge bei nur 60&nbsp;% Personenzeit nicht darstellbar.</p>
+    <div class="note-box" style="margin-bottom: 5rem;">
+      <p>~20 qualifizierte Erstkontakte im Monat (ab Q3 ~32) sind das operative Vertriebsziel. Das ist die eine Zahl, die BEAST w&ouml;chentlich verfolgen muss &mdash; alles andere folgt daraus. Automation und Vertriebsinvest sind ein Paket, kein Entweder-oder.</p>
     </div>
   </div>
 
   <!-- ZIELE -->
-  <div id="ziele"></div>
   <div class="slash-divider">SMART-Ziele &mdash; Jahr 1</div>
   <div class="section-wrapper">
-    <div class="section-heading">
-      <p class="section-heading-label">Operative Zielgr&ouml;&szlig;en</p>
-      <h2 class="section-heading-title">Messen. <span>Verfolgen.</span></h2>
-      <p class="section-heading-text">
-        Diese Ziele gelten stufenunabh&auml;ngig. Nicht-Ziele Jahr 1: eigenes B&uuml;ro, internationaler Vertrieb.
-        Fokus liegt auf Produktreife, Vertriebsaufbau und wiederkehrenden Ums&auml;tzen.
-      </p>
-    </div>
-
-    <div class="ziele-grid" style="margin-bottom:4rem;">
-      <div class="ziel-cell">
-        <div class="ziel-cell__label">Erstkontakte / Monat</div>
-        <div class="ziel-cell__value">&ge; 20</div>
-        <div class="ziel-cell__desc">Ab Q3 &ge; 32 durch zus&auml;tzliche technische Stelle</div>
-      </div>
-      <div class="ziel-cell">
-        <div class="ziel-cell__label">Stele Miettage</div>
-        <div class="ziel-cell__value">&ge; 40</div>
-        <div class="ziel-cell__desc">BEAST/TRANSFORM Auslastungsziel im Jahr</div>
-      </div>
-      <div class="ziel-cell">
-        <div class="ziel-cell__label">Aktive Chatbots</div>
-        <div class="ziel-cell__value">&ge; 8</div>
-        <div class="ziel-cell__desc">BEAST/ENGAGE &mdash; wiederkehrendes Gesch&auml;ft</div>
-      </div>
-      <div class="ziel-cell">
-        <div class="ziel-cell__label">ASSETS-Projekte</div>
-        <div class="ziel-cell__value">&ge; 4</div>
-        <div class="ziel-cell__desc">Abgeschlossene Bildgenerator-Projekte</div>
-      </div>
-      <div class="ziel-cell">
-        <div class="ziel-cell__label">CEO AI Audits</div>
-        <div class="ziel-cell__value">&ge; 10</div>
-        <div class="ziel-cell__desc">Halbtages-Audits &mdash; erkl&auml;rtes Wachstumsfeld</div>
-      </div>
-      <div class="ziel-cell">
-        <div class="ziel-cell__label">EBIT</div>
-        <div class="ziel-cell__value">positiv</div>
-        <div class="ziel-cell__desc">Ab Stufe 3 &mdash; +37.000 &euro; angestrebt</div>
+    <div class="summary">
+      <p class="summary-label">Operative Zielgr&ouml;&szlig;en &mdash; stufenunabh&auml;ngig</p>
+      <div class="summary-grid">
+        <div class="summary-cell">
+          <div class="summary-cell-label">Erstkontakte / Monat</div>
+          <div class="summary-cell-value">&ge; 20</div>
+          <div class="summary-cell-note">Ab Q3 &ge; 32 durch tech. Stelle</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-cell-label">Stele Miettage</div>
+          <div class="summary-cell-value">&ge; 40</div>
+          <div class="summary-cell-note">BEAST/TRANSFORM Auslastungsziel</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-cell-label">Aktive Chatbots</div>
+          <div class="summary-cell-value">&ge; 8</div>
+          <div class="summary-cell-note">BEAST/ENGAGE &mdash; wiederkehrend</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-cell-label">ASSETS-Projekte</div>
+          <div class="summary-cell-value">&ge; 4</div>
+          <div class="summary-cell-note">Abgeschlossene Bildgeneratoren</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-cell-label">CEO AI Audits</div>
+          <div class="summary-cell-value">&ge; 10</div>
+          <div class="summary-cell-note">Halbtages-Audits &mdash; Wachstumsfeld</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-cell-label">EBIT</div>
+          <div class="summary-cell-value accent">positiv</div>
+          <div class="summary-cell-note">Ab Stufe 3 &mdash; +37.000 &euro; Ziel</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1242,129 +932,138 @@
   <!-- ROADMAP -->
   <div class="slash-divider">Quartals-Roadmap &mdash; Jahr 1</div>
   <div class="section-wrapper">
-    <div class="section-heading">
-      <p class="section-heading-label">Der Plan</p>
-      <h2 class="section-heading-title">Vier Quartale. <span>Ein Ziel.</span></h2>
-    </div>
-
-    <div class="roadmap-grid" style="margin-bottom:4rem;">
-      <div class="roadmap-cell">
-        <div class="roadmap-cell__q">Q1</div>
-        <div class="roadmap-cell__focus">Markteintritt &amp; Referenzen</div>
-        <ul class="roadmap-cell__items">
-          <li>Erste TRANSFORM-Buchungen</li>
-          <li>Erstes ASSETS-Projekt</li>
-          <li>Erste ENGAGE-Bots live</li>
-          <li>Erste CEO AI Audits</li>
-          <li>Sales-Cases produzieren</li>
-        </ul>
-      </div>
-      <div class="roadmap-cell">
-        <div class="roadmap-cell__q">Q2</div>
-        <div class="roadmap-cell__focus">Produktreife</div>
-        <ul class="roadmap-cell__items">
-          <li>ASSETS- &amp; ENGAGE-Prozesse standardisieren</li>
-          <li>CEO-AI-Audit-Format sch&auml;rfen</li>
-          <li>Stele-Auslastung erh&ouml;hen</li>
-        </ul>
-      </div>
-      <div class="roadmap-cell">
-        <div class="roadmap-cell__q">Q3</div>
-        <div class="roadmap-cell__focus">Skalierung</div>
-        <ul class="roadmap-cell__items">
-          <li>Technische Stelle einstellen</li>
-          <li>CEO-AI-Audit-Nachfrage ausbauen</li>
-          <li>ENGAGE-Volumen steigern</li>
-        </ul>
-      </div>
-      <div class="roadmap-cell">
-        <div class="roadmap-cell__q">Q4</div>
-        <div class="roadmap-cell__focus">Konsolidierung</div>
-        <ul class="roadmap-cell__items">
-          <li>CEO AI Audits als Wachstumsmotor</li>
-          <li>ASSETS als wiederkehrendes Format</li>
-          <li>Planung Jahr 2</li>
-        </ul>
+    <div class="summary">
+      <p class="summary-label">Vier Quartale &mdash; Ein Ziel</p>
+      <div class="summary-grid">
+        <div class="summary-cell">
+          <div class="summary-cell-label" style="color: var(--accent); opacity: 1; font-size: 1.2rem; font-weight: 900; letter-spacing: 0; margin-bottom: 0.4rem;">Q1</div>
+          <div class="summary-cell-note" style="font-weight: 700; opacity: 0.5; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.6rem;">Markteintritt &amp; Referenzen</div>
+          <div class="summary-cell-note">Erste TRANSFORM-Buchungen &middot; Erstes ASSETS-Projekt &middot; Erste ENGAGE-Bots live &middot; Erste CEO AI Audits &middot; Sales-Cases produzieren</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-cell-label" style="color: var(--accent); opacity: 1; font-size: 1.2rem; font-weight: 900; letter-spacing: 0; margin-bottom: 0.4rem;">Q2</div>
+          <div class="summary-cell-note" style="font-weight: 700; opacity: 0.5; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.6rem;">Produktreife</div>
+          <div class="summary-cell-note">ASSETS- &amp; ENGAGE-Prozesse standardisieren &middot; CEO-AI-Audit-Format sch&auml;rfen &middot; Stele-Auslastung erh&ouml;hen</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-cell-label" style="color: var(--accent); opacity: 1; font-size: 1.2rem; font-weight: 900; letter-spacing: 0; margin-bottom: 0.4rem;">Q3</div>
+          <div class="summary-cell-note" style="font-weight: 700; opacity: 0.5; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.6rem;">Skalierung</div>
+          <div class="summary-cell-note">Technische Stelle einstellen &middot; CEO-AI-Audit-Nachfrage ausbauen &middot; ENGAGE-Volumen steigern</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-cell-label" style="color: var(--accent); opacity: 1; font-size: 1.2rem; font-weight: 900; letter-spacing: 0; margin-bottom: 0.4rem;">Q4</div>
+          <div class="summary-cell-note" style="font-weight: 700; opacity: 0.5; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.6rem;">Konsolidierung</div>
+          <div class="summary-cell-note">CEO AI Audits als Wachstumsmotor &middot; ASSETS als wiederkehrendes Format &middot; Planung Jahr 2</div>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- ANNAHMEN -->
-  <div id="annahmen"></div>
   <div class="slash-divider">Annahmen &amp; Kalkulation &mdash; Transparenz</div>
   <div class="section-wrapper">
-    <div class="section-heading">
-      <p class="section-heading-label">Transparenz</p>
-      <h2 class="section-heading-title">Konservativ. <span>Ehrlich.</span></h2>
-      <p class="section-heading-text">
-        Alle Mengenger&uuml;ste sind bewusst konservativ. Abschlussquote 18&nbsp;% (schwache Wirtschaftslage).
-        Vorlauf ~2 Monate vom Erstkontakt bis Auftrag.
-      </p>
-    </div>
-
-    <ul class="annahmen-list" style="margin-bottom:4rem;">
-      <li>Personal: &Oslash; 65.000 &euro; brutto/FTE + 21&nbsp;% LNK &mdash; Start 1,8 FTE, +1 technische Stelle ab Monat 7</li>
-      <li>ASSETS: Ticket &Oslash; 30.000 &euro; (Preis ab 25.000 &euro;), 4 Projekte im Jahr</li>
-      <li>ENGAGE: individuell 6.500 &euro; (4 Projekte) + einfach 3.500 &euro; (8 Projekte) &mdash; reine Festpreise, kein Retainer</li>
-      <li>TRANSFORM: 42 Miettage, ca. 30&nbsp;% als Mehrtages-Events</li>
-      <li>WORKOUT: CEO AI Audit Halbtag 3.500 &euro; (Tagesaudit 6.000 &euro; als Upside), 10 Audits + 5 Schulungen &agrave; 5.000 &euro;</li>
-      <li>COGS ~18&nbsp;% vom Umsatz (Cloud/GPU, API-Credits, Freelancer, Verbrauch je Auftrag)</li>
-      <li>Overhead-Umlage an DIE KAVALLERIE: 12.000 &euro;/Jahr (anteiliger Beitrag f&uuml;r B&uuml;ro, Backoffice, Tools)</li>
-      <li>Marketing &amp; Neugesch&auml;ft: 15.000 &euro; / Software &amp; KI-Lizenzen: 9.000 &euro; / Hardware-Abschreibung: 6.000 &euro;</li>
-      <li>Automation erh&ouml;ht qualifizierte Erstkontakte pro Personenstunde um ~60&nbsp;% &mdash; kein Entweder-oder</li>
-      <li>Break-even: ~290.000 &euro; Umsatz &mdash; Gesamtkosten Stufe 3: ~294.000 &euro;</li>
-    </ul>
-
-    <!-- Kostenblock Summary -->
-    <p style="font-size:0.65rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--white); opacity:0.3; margin-bottom:0.75rem;">Kostenplan Jahr 1</p>
-    <div class="summary-grid" style="margin-bottom:4rem;">
-      <div class="summary-cell">
-        <div class="summary-cell-label">Personal</div>
-        <div class="summary-cell-value">180.895 &euro;</div>
-        <div class="summary-cell-note">1,8 FTE Start + tech. Stelle ab M7</div>
+    <div class="module">
+      <div class="module-header">
+        <div>
+          <p class="module-tag">Transparenz</p>
+          <h2 class="module-title">Konservativ. Ehrlich.</h2>
+          <p class="module-subtitle">Alle Mengenger&uuml;ste bewusst konservativ &mdash; Abschlussquote 18&nbsp;%</p>
+        </div>
       </div>
-      <div class="summary-cell">
-        <div class="summary-cell-label">COGS variabel (~18&nbsp;%)</div>
-        <div class="summary-cell-value">69.444 &euro;</div>
-        <div class="summary-cell-note">GPU, API-Credits, Freelancer</div>
-      </div>
-      <div class="summary-cell">
-        <div class="summary-cell-label">Overhead-Umlage DK</div>
-        <div class="summary-cell-value">12.000 &euro;</div>
-        <div class="summary-cell-note">B&uuml;ro, Backoffice, Tools</div>
-      </div>
-      <div class="summary-cell">
-        <div class="summary-cell-label">Marketing &amp; Neugesch&auml;ft</div>
-        <div class="summary-cell-value">15.000 &euro;</div>
-        <div class="summary-cell-note">Vertrieb, Cases, Messen</div>
-      </div>
-      <div class="summary-cell">
-        <div class="summary-cell-label">Software &amp; KI-Lizenzen</div>
-        <div class="summary-cell-value">9.000 &euro;</div>
-        <div class="summary-cell-note">Modell-Abos, Tools</div>
-      </div>
-      <div class="summary-cell">
-        <div class="summary-cell-label">Gesamtkosten</div>
-        <div class="summary-cell-value accent">297.339 &euro;</div>
-        <div class="summary-cell-note">inkl. Hardware-Abschr. + Puffer</div>
+      <div class="module-body">
+        <div class="detail-rows">
+          <div class="detail-row">
+            <span class="detail-row-label">Personal</span>
+            <span class="detail-row-value">&Oslash; 65.000 &euro; brutto/FTE + 21&nbsp;% LNK &mdash; Start 1,8 FTE, +1 tech. Stelle ab Monat 7</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-row-label">ASSETS</span>
+            <span class="detail-row-value">Ticket &Oslash; 30.000 &euro; (ab 25.000 &euro;), 4 Projekte</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-row-label">ENGAGE</span>
+            <span class="detail-row-value">Individuell 6.500 &euro; (4 Proj.) + Einfach 3.500 &euro; (8 Proj.) &mdash; Festpreise, kein Retainer</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-row-label">TRANSFORM</span>
+            <span class="detail-row-value">42 Miettage, ca. 30&nbsp;% als Mehrtages-Events</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-row-label">WORKOUT</span>
+            <span class="detail-row-value">Audit Halbtag 3.500 &euro; (Tagesaudit 6.000 &euro; Upside), 10 Audits + 5 Schulungen &agrave; 5.000 &euro;</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-row-label">COGS variabel</span>
+            <span class="detail-row-value">~18&nbsp;% vom Umsatz (Cloud/GPU, API-Credits, Freelancer)</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-row-label">Overhead-Umlage DIE KAVALLERIE</span>
+            <span class="detail-row-value">12.000 &euro;/Jahr</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-row-label">Automation-Effekt</span>
+            <span class="detail-row-value">+60&nbsp;% Erstkontakte pro Personenstunde</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-row-label">Break-even</span>
+            <span class="detail-row-value accent">~290.000 &euro; Umsatz &mdash; Gesamtkosten Stufe 3: ~294.000 &euro;</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- CTA -->
-  <div class="section-wrapper" style="padding-bottom:5rem;">
-    <div class="cta-block">
-      <p class="cta-text">
-        BEAST ist ab Tag 1 profitabel &mdash; die entscheidende Stellschraube ist wie viel Arbeitskraft
-        wir in aktiven Vertrieb investieren. Stufe 3 anstreben, Vertriebszeit so fr&uuml;h wie m&ouml;glich hochfahren.
-      </p>
-      <a href="mailto:leo@diekavallerie.de" class="cta-link">Entscheidung treffen &rarr;</a>
+  <!-- KOSTENPLAN -->
+  <div class="slash-divider">Kostenplan &mdash; Jahr 1</div>
+  <div class="section-wrapper">
+    <div class="summary">
+      <p class="summary-label">Kostenbl&ouml;cke &mdash; Gesamtkosten 297.339 &euro;</p>
+      <div class="summary-grid">
+        <div class="summary-cell">
+          <div class="summary-cell-label">Personal</div>
+          <div class="summary-cell-value">180.895 &euro;</div>
+          <div class="summary-cell-note">1,8 FTE Start + tech. Stelle ab M7</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-cell-label">COGS variabel (~18&nbsp;%)</div>
+          <div class="summary-cell-value">69.444 &euro;</div>
+          <div class="summary-cell-note">GPU, API-Credits, Freelancer</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-cell-label">Overhead-Umlage DK</div>
+          <div class="summary-cell-value">12.000 &euro;</div>
+          <div class="summary-cell-note">B&uuml;ro, Backoffice, Tools</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-cell-label">Marketing &amp; Neugesch&auml;ft</div>
+          <div class="summary-cell-value">15.000 &euro;</div>
+          <div class="summary-cell-note">Vertrieb, Cases, Messen</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-cell-label">Software &amp; KI-Lizenzen</div>
+          <div class="summary-cell-value">9.000 &euro;</div>
+          <div class="summary-cell-note">Modell-Abos, Tools</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-cell-label">Gesamtkosten</div>
+          <div class="summary-cell-value accent">297.339 &euro;</div>
+          <div class="summary-cell-note">inkl. Hardware-Abschr. + Puffer</div>
+        </div>
+      </div>
+
+      <div class="cta-block">
+        <p class="cta-text">
+          BEAST ist ab Tag 1 profitabel &mdash; die entscheidende Stellschraube ist wie viel Arbeitskraft
+          wir in aktiven Vertrieb investieren. Stufe 3 anstreben, Vertriebszeit so fr&uuml;h wie m&ouml;glich hochfahren.
+        </p>
+        <a href="mailto:leo@diekavallerie.de" class="cta-link">Entscheidung treffen &rarr;</a>
+      </div>
     </div>
   </div>
 
   <!-- FOOTER -->
   <footer>
-    <span class="footer-copy">&copy; 2026 Die Kavallerie &mdash; Businessplan Jahr 1 &mdash; Intern / GF</span>
+    <span class="footer-copy">&copy; 2026 &mdash; Businessplan Jahr 1 &mdash; Intern / GF</span>
     <span class="footer-brand">THE UNKNOWN BEAST</span>
   </footer>
 
