@@ -386,89 +386,6 @@
       margin-top: 0.4rem;
     }
 
-    /* === MONAT TABLE === */
-    .monat-table-wrap {
-      overflow-x: auto;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      margin-top: 1.5rem;
-    }
-
-    .monat-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.75rem;
-      min-width: 700px;
-    }
-
-    .monat-table th {
-      padding: 0.75rem 0.75rem;
-      text-align: center;
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--white);
-      opacity: 0.35;
-      border-bottom: 1px solid var(--border);
-      background: #0f0f0f;
-    }
-
-    .monat-table th:first-child { text-align: left; }
-
-    .monat-table td {
-      padding: 0.85rem 0.75rem;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-      color: var(--white);
-      opacity: 0.5;
-    }
-
-    .monat-table tr:last-child td { border-bottom: none; }
-    .monat-table td:first-child { text-align: left; opacity: 0.4; }
-    .monat-table td.zero { opacity: 0.2; }
-    .monat-table td.active { color: var(--accent); opacity: 1; font-weight: 700; }
-
-    /* === ZIELE GRID === */
-    .ziele-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1px;
-      background-color: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .ziel-cell {
-      background-color: var(--black);
-      padding: 1.75rem 1.5rem;
-    }
-
-    .ziel-cell__label {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--white);
-      opacity: 0.35;
-      margin-bottom: 0.6rem;
-    }
-
-    .ziel-cell__value {
-      font-size: 1.4rem;
-      font-weight: 900;
-      color: var(--white);
-      line-height: 1;
-    }
-
-    .ziel-cell__note {
-      font-size: 0.68rem;
-      color: var(--white);
-      opacity: 0.3;
-      margin-top: 0.4rem;
-    }
-
     /* === CTA === */
     .cta-block {
       display: flex;
@@ -743,8 +660,8 @@
       <div class="module-body">
         <p class="module-desc">
           KI-Chatbots, die in der Markensprache antworten &mdash; trainiert auf Kundeninhalten.
-          Zwei Varianten: individuell (Case &bdquo;Teckla&ldquo;-Typ) und einfacher Standard-Chatbot.
-          Abrechnung als Festpreis, kein laufender Retainer eingeplant.
+          Zwei Varianten: individuell und einfacher Standard-Chatbot.
+          Abrechnung als Festpreis, kein laufender Retainer eingeplant &mdash; Hosting-Lizenz als Upside.
         </p>
         <div class="detail-rows">
           <div class="detail-row">
@@ -765,7 +682,7 @@
           </div>
         </div>
         <div class="note-box">
-          <p>Wenn ENGAGE zus&auml;tzlich einen monatlichen Retainer bekommen soll, steigt das Potenzial deutlich &mdash; aktuell konservativ ohne Retainer kalkuliert.</p>
+          <p>Wenn ENGAGE zus&auml;tzlich einen monatlichen Retainer oder Hosting-Lizenz bekommt, steigt das Potenzial deutlich &mdash; aktuell konservativ ohne Retainer kalkuliert.</p>
         </div>
       </div>
     </div>
@@ -902,41 +819,142 @@
     </div>
   </div>
 
-  <!-- ZIELGR&Ouml;SSEN -->
-  <div class="slash-divider">Zielgr&ouml;&szlig;en Jahr 1 &mdash; Nicht-finanzielle KPIs</div>
+  <!-- AKQUISE MIX -->
+  <div class="slash-divider">Akquise-Mix &mdash; Neu vs. Bestand</div>
+  <div class="section-wrapper">
+    <div class="module">
+      <div class="module-header">
+        <div>
+          <p class="module-tag">Vertriebsstrategie</p>
+          <h2 class="module-title">Neu vs. Bestand</h2>
+          <p class="module-subtitle">Zielverh&auml;ltnis &mdash; entwickelt sich im Jahresverlauf</p>
+        </div>
+        <div class="module-price-block">
+          <p class="module-price-label">Jahresschnitt Ziel</p>
+          <p class="module-price">70 / 30</p>
+          <p class="module-price-sub">Neu / Bestand</p>
+        </div>
+      </div>
+      <div class="module-body">
+        <p class="module-desc">
+          BEAST ist jung &mdash; der Bestandskundenpool w&auml;chst erst. Jeder neue Kunde ist auch ein Case f&uuml;r den n&auml;chsten.
+          Im Jahresverlauf verschiebt sich das Verh&auml;ltnis automatisch, wenn die Erstprojekte gut laufen.
+        </p>
+        <div class="detail-rows">
+          <div class="detail-row">
+            <span class="detail-row-label" style="font-weight: 700; opacity: 0.8;">Q1 &ndash; Q2</span>
+            <span class="detail-row-value">85&nbsp;% Neu &mdash; 15&nbsp;% Bestand</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-row-label" style="font-weight: 700; opacity: 0.8;">Q3</span>
+            <span class="detail-row-value">70&nbsp;% Neu &mdash; 30&nbsp;% Bestand</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-row-label" style="font-weight: 700; opacity: 0.8;">Q4</span>
+            <span class="detail-row-value accent">60&nbsp;% Neu &mdash; 40&nbsp;% Bestand</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-row-label">Bestandskunden-Ziel</span>
+            <span class="detail-row-value">&ge; 1 Folgeprojekt pro Bestandskunde / Jahr</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-row-label">Aktuelles Beispiel</span>
+            <span class="detail-row-value">Rampf &mdash; Juli + August (Folgeprojekt)</span>
+          </div>
+        </div>
+        <div class="note-box">
+          <p>Bestandskunden sind g&uuml;nstiger zu halten als neue zu gewinnen. ENGAGE-Retainer, ASSETS-Erweiterungen und Folge-Audits (WORKOUT) sind die nat&uuml;rlichen Hebel &mdash; aktiv ansprechen, nicht abwarten.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIZENZGEBUEHREN -->
+  <div class="slash-divider">Lizenzgeb&uuml;hren &mdash; Wiederkehrender Umsatz</div>
+  <div class="section-wrapper">
+    <div class="module">
+      <div class="module-header">
+        <div>
+          <p class="module-tag">Recurring Revenue &mdash; Upside</p>
+          <h2 class="module-title">Lizenzen &amp; Retainer</h2>
+          <p class="module-subtitle">Noch nicht in der Basisplanung &mdash; gezielter Upside</p>
+        </div>
+        <div class="module-price-block">
+          <p class="module-price-label">Potenzial / Jahr</p>
+          <p class="module-price">+42.000 &euro;</p>
+          <p class="module-price-sub">bei 8 aktiven Lizenzen</p>
+        </div>
+      </div>
+      <div class="module-body">
+        <p class="module-desc">
+          Chatbots und Bildgeneratoren laufen nach dem Setup weiter &mdash; auf Kundeninfrastruktur oder gehostet durch BEAST.
+          Eine monatliche Lizenz- oder Hosting-Geb&uuml;hr ist der nat&uuml;rliche n&auml;chste Schritt
+          und noch nicht in der Basisplanung enthalten.
+        </p>
+        <div class="detail-rows">
+          <div class="detail-row">
+            <span class="detail-row-label">BEAST/ENGAGE &mdash; Chatbot Hosting</span>
+            <span class="detail-row-value">250 &ndash; 500 &euro; / Monat / Kunde</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-row-label">BEAST/ASSETS &mdash; Generator-Lizenz</span>
+            <span class="detail-row-value">300 &ndash; 800 &euro; / Monat / Kunde</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-row-label">Potenzial bei 8 aktiven Lizenzen</span>
+            <span class="detail-row-value accent">~3.500 &euro; / Monat &rarr; 42.000 &euro; / Jahr</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-row-label">Marge auf Lizenzen</span>
+            <span class="detail-row-value">Hoch &mdash; kaum Mehraufwand nach Setup</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-row-label">Status</span>
+            <span class="detail-row-value">Noch nicht in Basisplanung &mdash; gezielter Upside</span>
+          </div>
+        </div>
+        <div class="note-box">
+          <p>Empfehlung: Ab Q2 aktiv in jeden ENGAGE- und ASSETS-Vertrag eine Hosting-Option einbauen. Selbst bei 50&nbsp;% Akzeptanz entsteht ein stabiler Recurring-Anteil, der BEAST unabh&auml;ngiger von Neuakquise macht.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZIELGROESSEN -->
+  <div class="slash-divider">Zielgr&ouml;&szlig;en Jahr 1 &mdash; Operative KPIs</div>
   <div class="section-wrapper">
     <div class="summary">
       <p class="summary-label">Operative Ziele</p>
-      <div class="ziele-grid">
-        <div class="ziel-cell">
-          <div class="ziel-cell__label">Erstkontakte / Monat</div>
-          <div class="ziel-cell__value">&ge; 20</div>
-          <div class="ziel-cell__note">Ab Q3 &ge; 32 durch tech. Stelle</div>
+      <div class="summary-grid">
+        <div class="summary-cell">
+          <div class="summary-cell-label">Erstkontakte / Monat</div>
+          <div class="summary-cell-value">&ge; 20</div>
+          <div class="summary-cell-note">Ab Q3 &ge; 32 durch tech. Stelle</div>
         </div>
-        <div class="ziel-cell">
-          <div class="ziel-cell__label">Stele Miettage</div>
-          <div class="ziel-cell__value">&ge; 40</div>
-          <div class="ziel-cell__note">BEAST/TRANSFORM Auslastungsziel</div>
+        <div class="summary-cell">
+          <div class="summary-cell-label">Stele Miettage</div>
+          <div class="summary-cell-value">&ge; 40</div>
+          <div class="summary-cell-note">BEAST/TRANSFORM Auslastungsziel</div>
         </div>
-        <div class="ziel-cell">
-          <div class="ziel-cell__label">Aktive Chatbots</div>
-          <div class="ziel-cell__value">&ge; 8</div>
-          <div class="ziel-cell__note">BEAST/ENGAGE &mdash; wiederkehrend</div>
+        <div class="summary-cell">
+          <div class="summary-cell-label">Aktive Chatbots</div>
+          <div class="summary-cell-value">&ge; 8</div>
+          <div class="summary-cell-note">BEAST/ENGAGE &mdash; wiederkehrend</div>
         </div>
-        <div class="ziel-cell">
-          <div class="ziel-cell__label">ASSETS-Projekte</div>
-          <div class="ziel-cell__value">&ge; 4</div>
-          <div class="ziel-cell__note">Abgeschlossene Bildgeneratoren</div>
+        <div class="summary-cell">
+          <div class="summary-cell-label">ASSETS-Projekte</div>
+          <div class="summary-cell-value">&ge; 4</div>
+          <div class="summary-cell-note">Abgeschlossene Bildgeneratoren</div>
         </div>
-        <div class="ziel-cell">
-          <div class="ziel-cell__label">CEO AI Audits</div>
-          <div class="ziel-cell__value">&ge; 10</div>
-          <div class="ziel-cell__note">Halbtages-Audits &mdash; Wachstumsfeld</div>
+        <div class="summary-cell">
+          <div class="summary-cell-label">CEO AI Audits</div>
+          <div class="summary-cell-value">&ge; 10</div>
+          <div class="summary-cell-note">Halbtages-Audits &mdash; Wachstumsfeld</div>
         </div>
-        <div class="ziel-cell">
-          <div class="ziel-cell__label">EBIT</div>
-          <div class="ziel-cell__value" style="color: var(--accent);">positiv</div>
-          <div class="ziel-cell__note">Ab Stufe 3 &mdash; +37.000 &euro; Ziel</div>
+        <div class="summary-cell">
+          <div class="summary-cell-label">EBIT</div>
+          <div class="summary-cell-value" style="color: var(--accent);">positiv</div>
+          <div class="summary-cell-note">Ab Stufe 3 &mdash; +37.000 &euro; Ziel</div>
         </div>
       </div>
     </div>
@@ -956,17 +974,17 @@
         <div class="summary-cell">
           <div class="summary-cell-label" style="color: var(--accent); opacity: 1; font-size: 1.2rem; font-weight: 900; letter-spacing: 0; margin-bottom: 0.4rem;">Q2</div>
           <div class="summary-cell-note" style="font-weight: 700; opacity: 0.5; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.6rem;">Produktreife</div>
-          <div class="summary-cell-note">ASSETS- &amp; ENGAGE-Prozesse standardisieren &middot; CEO-AI-Audit-Format sch&auml;rfen &middot; Stele-Auslastung erh&ouml;hen</div>
+          <div class="summary-cell-note">ASSETS- &amp; ENGAGE-Prozesse standardisieren &middot; CEO-AI-Audit-Format sch&auml;rfen &middot; Stele-Auslastung erh&ouml;hen &middot; Erste Hosting-Lizenzen einf&uuml;hren</div>
         </div>
         <div class="summary-cell">
           <div class="summary-cell-label" style="color: var(--accent); opacity: 1; font-size: 1.2rem; font-weight: 900; letter-spacing: 0; margin-bottom: 0.4rem;">Q3</div>
           <div class="summary-cell-note" style="font-weight: 700; opacity: 0.5; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.6rem;">Skalierung</div>
-          <div class="summary-cell-note">Technische Stelle einstellen &middot; CEO-AI-Audit-Nachfrage ausbauen &middot; ENGAGE-Volumen steigern</div>
+          <div class="summary-cell-note">Technische Stelle einstellen &middot; CEO-AI-Audit-Nachfrage ausbauen &middot; ENGAGE-Volumen steigern &middot; Bestandskundenanteil auf 30&nbsp;% erh&ouml;hen</div>
         </div>
         <div class="summary-cell">
           <div class="summary-cell-label" style="color: var(--accent); opacity: 1; font-size: 1.2rem; font-weight: 900; letter-spacing: 0; margin-bottom: 0.4rem;">Q4</div>
           <div class="summary-cell-note" style="font-weight: 700; opacity: 0.5; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.6rem;">Konsolidierung</div>
-          <div class="summary-cell-note">CEO AI Audits als Wachstumsmotor &middot; ASSETS als wiederkehrendes Format &middot; Planung Jahr 2</div>
+          <div class="summary-cell-note">CEO AI Audits als Wachstumsmotor &middot; ASSETS als wiederkehrendes Format &middot; Lizenz-Recurring aufbauen &middot; Planung Jahr 2</div>
         </div>
       </div>
     </div>
@@ -1004,6 +1022,10 @@
           <div class="detail-row">
             <span class="detail-row-label">WORKOUT</span>
             <span class="detail-row-value">Audit Halbtag 3.500 &euro; (Tagesaudit 6.000 &euro; Upside), 10 Audits + 5 Schulungen &agrave; 5.000 &euro;</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-row-label">Lizenzgeb&uuml;hren</span>
+            <span class="detail-row-value">Noch nicht in Basisplanung &mdash; Upside bei 8 Lizenzen: +42.000 &euro; / Jahr</span>
           </div>
           <div class="detail-row">
             <span class="detail-row-label">COGS variabel</span>
