@@ -3,23 +3,110 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stadtwerke T&uuml;bingen Angebot DIE KAVALLERIE</title>
+  <title>Angebot Stadtwerke T&uuml;bingen &mdash; DIE KAVALLERIE</title>
   <style>
-    /* === TOKENS === */
+
+    /* =============================================
+       FONTS
+    ============================================= */
+    @font-face {
+      font-family: 'Helvetica Now Display';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('../dk-designsystem/assets/fonts/HelveticaNowDisplay-Regular.woff2') format('woff2'),
+           url('../dk-designsystem/assets/fonts/HelveticaNowDisplay-Regular.woff') format('woff');
+    }
+    @font-face {
+      font-family: 'Helvetica Now Display';
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+      src: url('../dk-designsystem/assets/fonts/DK_HelveticaNow_Text_55_Regular_Italic.otf') format('opentype');
+    }
+    @font-face {
+      font-family: 'Helvetica Now Display';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('../dk-designsystem/assets/fonts/DK_HelveticaNow_Text_75_Bold.otf') format('opentype');
+    }
+    @font-face {
+      font-family: 'Helvetica Now Display';
+      font-style: italic;
+      font-weight: 700;
+      font-display: swap;
+      src: url('../dk-designsystem/assets/fonts/DK_HelveticaNow_Text_75_Bold_Italic.otf') format('opentype');
+    }
+    @font-face {
+      font-family: 'PP Formula Condensed';
+      font-style: normal;
+      font-weight: 900;
+      font-display: swap;
+      src: url('../dk-designsystem/assets/fonts/DK_PPFormula_93_Black.woff2') format('woff2'),
+           url('../dk-designsystem/assets/fonts/DK_PPFormula_93_Black.woff') format('woff');
+    }
+    @font-face {
+      font-family: 'Manic';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('../dk-designsystem/assets/fonts/DK_Manic-Regular.woff2') format('woff2'),
+           url('../dk-designsystem/assets/fonts/DK_Manic-Regular.woff') format('woff');
+    }
+
+    /* =============================================
+       TOKENS
+    ============================================= */
     :root {
-      --color-red: #FF003C;
+      /* Colors */
+      --color-white: #FFFFFF;
       --color-black: #1D1D1D;
       --color-grey-light: #F2F4F7;
-      --color-white: #FFFFFF;
+      --color-red: #FF003C;
       --color-yellow: #FFFF00;
+      --color-text: var(--color-black);
+      --color-bg: var(--color-grey-light);
+      --color-accent: var(--color-red);
+
+      /* Fonts */
       --font-headline: 'PP Formula Condensed', 'Arial Narrow', Arial, sans-serif;
       --font-base: 'Helvetica Now Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --font-manic: 'Manic', cursive;
+
+      /* Spacing - mobile */
       --space-small: 25px;
       --space-medium: 35px;
       --space-large: 45px;
       --space-xlarge: 90px;
+
+      /* Layout */
+      --container-padding: 24px;
+      --container-size-default: 1320px;
+      --size-header: 80px;
+
+      /* Shapes */
       --border-radius-default: 19px;
+      --border-radius-large: 35px;
       --border-radius-pill: 59px;
+
+      /* Type sizes - mobile */
+      --font-size-h1: 50px;
+      --font-size-h2: 40px;
+      --font-size-h3: 30px;
+      --font-size-sub-headline: 14px;
+      --font-size-copy: 18px;
+      --font-size-button: 18px;
+    }
+
+    @media (min-width: 640px) {
+      :root {
+        --font-size-h1: 100px;
+        --font-size-h2: 80px;
+        --font-size-h3: 60px;
+        --font-size-sub-headline: 24px;
+        --font-size-copy: 22px;
+      }
     }
 
     @media (min-width: 1200px) {
@@ -31,407 +118,529 @@
       }
     }
 
-    /* === RESET === */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    /* =============================================
+       RESET
+    ============================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background: var(--color-grey-light);
       color: var(--color-black);
       font-family: var(--font-base);
-      font-size: 18px;
-      line-height: 1.6;
+      font-size: var(--font-size-copy);
+      line-height: 1.4;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* === HEADER === */
-    header {
+    a {
+      color: var(--color-text);
+      text-decoration: underline;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    /* =============================================
+       HEADER
+    ============================================= */
+    .dk-header {
       position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 80px;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--size-header);
       background: var(--color-grey-light);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 24px;
+      padding: 0 var(--container-padding);
       z-index: 100;
-      border-bottom: 1px solid rgba(29,29,29,0.1);
+      border-bottom: 1px solid rgba(29,29,29,0.08);
     }
 
-    .header-logo {
+    .dk-header-logo {
       font-family: var(--font-headline);
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
       color: var(--color-black);
       text-decoration: none;
     }
 
-    .header-logo span {
-      color: var(--color-red);
-    }
-
-    .header-tag {
-      font-size: 13px;
-      color: var(--color-black);
-      opacity: 0.5;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    /* === MAIN === */
-    main {
-      margin-top: 80px;
-    }
-
-    /* === CONTAINER === */
-    .container {
-      max-width: 1320px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* === SECTIONS === */
-    .section {
-      padding: var(--space-xlarge) 0;
-    }
-
-    .section--red {
-      background: var(--color-red);
-      color: var(--color-white);
-    }
-
-    .section--dark {
-      background: var(--color-black);
-      color: var(--color-white);
-    }
-
-    /* === HERO === */
-    .hero {
-      padding: var(--space-xlarge) 0;
-      padding-top: calc(var(--space-xlarge) + 20px);
-    }
-
-    .hero-eyebrow {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--color-red);
-      margin-bottom: 24px;
-      display: block;
-    }
-
-    .hero-headline {
-      font-family: var(--font-headline);
-      font-size: clamp(64px, 10vw, 160px);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 0.9;
-      letter-spacing: -0.01em;
-      color: var(--color-black);
-      margin-bottom: 40px;
-    }
-
-    .hero-headline em {
+    .dk-header-logo em {
       color: var(--color-red);
       font-style: normal;
     }
 
-    .hero-sub {
-      font-size: 20px;
-      line-height: 1.5;
-      max-width: 600px;
-      margin-bottom: 48px;
-      opacity: 0.75;
-    }
-
-    .hero-meta {
-      display: flex;
-      gap: 48px;
-      flex-wrap: wrap;
-      margin-top: 60px;
-      padding-top: 40px;
-      border-top: 1px solid rgba(29,29,29,0.15);
-    }
-
-    .hero-meta-item {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .hero-meta-label {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
+    .dk-header-tag {
+      font-family: var(--font-base);
+      font-size: 13px;
+      color: var(--color-black);
       opacity: 0.45;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
-    .hero-meta-value {
-      font-size: 16px;
-      font-weight: 700;
+    /* =============================================
+       MAIN
+    ============================================= */
+    main {
+      margin-top: var(--size-header);
     }
 
-    /* === BUTTONS === */
-    .btn {
+    /* =============================================
+       CONTAINER
+    ============================================= */
+    .dk-container {
+      max-width: var(--container-size-default);
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+    }
+
+    /* =============================================
+       SECTIONS
+    ============================================= */
+    .dk-section {
+      padding: var(--space-xlarge) 0;
+    }
+
+    .dk-section--red {
+      background: var(--color-red);
+      color: var(--color-white);
+    }
+
+    .dk-section--red a {
+      color: var(--color-white);
+    }
+
+    /* =============================================
+       SECTION LABEL (eyebrow)
+    ============================================= */
+    .dk-label {
+      display: block;
+      font-family: var(--font-base);
+      font-size: 13px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      opacity: 0.45;
+      margin-bottom: var(--space-small);
+    }
+
+    .dk-section--red .dk-label {
+      opacity: 0.65;
+      color: var(--color-white);
+    }
+
+    /* =============================================
+       HEADLINES
+    ============================================= */
+    .dk-h1 {
+      font-family: var(--font-headline);
+      font-size: var(--font-size-h1);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      color: var(--color-black);
+    }
+
+    .dk-h2 {
+      font-family: var(--font-headline);
+      font-size: var(--font-size-h2);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+    }
+
+    .dk-h3 {
+      font-family: var(--font-headline);
+      font-size: var(--font-size-h3);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.95;
+    }
+
+    .dk-h1 em,
+    .dk-h2 em {
+      color: var(--color-red);
+      font-style: normal;
+    }
+
+    .dk-section--red .dk-h2 {
+      color: var(--color-white);
+    }
+
+    .dk-section--red .dk-h2 em {
+      color: var(--color-yellow);
+    }
+
+    /* =============================================
+       BODY TEXT
+    ============================================= */
+    .dk-body {
+      font-family: var(--font-base);
+      font-size: var(--font-size-copy);
+      line-height: 1.5;
+      max-width: 640px;
+    }
+
+    .dk-body--wide {
+      max-width: 860px;
+    }
+
+    .dk-section--red .dk-body {
+      color: var(--color-white);
+      opacity: 0.9;
+    }
+
+    /* =============================================
+       BUTTONS
+    ============================================= */
+    .dk-btn {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 16px 32px;
+      padding: 16px 28px;
       border-radius: var(--border-radius-pill);
       border: 2px solid var(--color-red);
       color: var(--color-red);
       background: transparent;
       font-family: var(--font-base);
-      font-size: 16px;
-      font-weight: 700;
+      font-size: var(--font-size-button);
+      font-weight: 400;
       text-decoration: none;
       cursor: pointer;
       transition: background 0.2s ease, color 0.2s ease;
+      white-space: nowrap;
     }
 
-    .btn:hover {
+    .dk-btn:hover {
       background: var(--color-red);
+      color: var(--color-white);
+      text-decoration: none;
+    }
+
+    .dk-btn--white {
+      border-color: var(--color-white);
       color: var(--color-white);
     }
 
-    /* === SECTION LABEL === */
-    .section-label {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      opacity: 0.45;
-      margin-bottom: 24px;
-      display: block;
+    .dk-btn--white:hover {
+      background: var(--color-white);
+      color: var(--color-red);
     }
 
-    .section--red .section-label,
-    .section--dark .section-label {
-      opacity: 0.6;
+    /* Arrow icon inside button */
+    .dk-btn-arrow {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='none'%3E%3Cpath d='M3.5 9h11M10 4.5l4.5 4.5L10 13.5' stroke='%23FF003C' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
+      flex-shrink: 0;
+      transition: background-image 0.2s ease;
     }
 
-    /* === SECTION HEADLINE === */
-    .section-headline {
-      font-family: var(--font-headline);
-      font-size: clamp(40px, 6vw, 90px);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 0.95;
-      letter-spacing: -0.01em;
+    .dk-btn:hover .dk-btn-arrow {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='none'%3E%3Cpath d='M3.5 9h11M10 4.5l4.5 4.5L10 13.5' stroke='%23FFFFFF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+
+    .dk-btn--white .dk-btn-arrow {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='none'%3E%3Cpath d='M3.5 9h11M10 4.5l4.5 4.5L10 13.5' stroke='%23FFFFFF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+
+    .dk-btn--white:hover .dk-btn-arrow {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='none'%3E%3Cpath d='M3.5 9h11M10 4.5l4.5 4.5L10 13.5' stroke='%23FF003C' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .dk-hero {
+      padding: var(--space-xlarge) 0;
+      padding-top: calc(var(--space-xlarge) + 20px);
+    }
+
+    .dk-hero-headline {
       margin-bottom: var(--space-medium);
     }
 
-    /* === INTRO TEXT === */
-    .intro-text {
-      font-size: 22px;
-      line-height: 1.55;
-      max-width: 680px;
+    .dk-hero-body {
+      margin-bottom: var(--space-medium);
     }
 
-    /* === LEISTUNGEN GRID === */
-    .leistungen-grid {
+    .dk-hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      margin-top: var(--space-medium);
+      border-top: 1px solid rgba(29,29,29,0.12);
+    }
+
+    .dk-hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: var(--space-small) var(--space-small) var(--space-small) 0;
+      padding-right: var(--space-medium);
+    }
+
+    .dk-hero-meta-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.4;
+    }
+
+    .dk-hero-meta-value {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    /* =============================================
+       DIVIDER
+    ============================================= */
+    .dk-divider {
+      border: none;
+      border-top: 1px solid rgba(29,29,29,0.1);
+      margin: 0;
+    }
+
+    .dk-section--red .dk-divider {
+      border-top-color: rgba(255,255,255,0.2);
+    }
+
+    /* =============================================
+       LEISTUNGEN LIST
+    ============================================= */
+    .dk-leistungen {
+      margin-top: var(--space-medium);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dk-leistung-row {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2px;
-      margin-top: var(--space-medium);
+      gap: 0;
+      border-top: 1px solid rgba(29,29,29,0.1);
+      padding: var(--space-small) 0;
+    }
+
+    .dk-leistung-row:last-child {
+      border-bottom: 1px solid rgba(29,29,29,0.1);
     }
 
     @media (min-width: 768px) {
-      .leistungen-grid {
-        grid-template-columns: 1fr 1fr;
+      .dk-leistung-row {
+        grid-template-columns: 280px 1fr;
+        align-items: start;
+        gap: var(--space-medium);
       }
     }
 
-    @media (min-width: 1100px) {
-      .leistungen-grid {
-        grid-template-columns: 1fr 1fr 1fr;
+    .dk-leistung-title {
+      font-family: var(--font-headline);
+      font-size: 28px;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+      padding-bottom: 8px;
+    }
+
+    @media (min-width: 640px) {
+      .dk-leistung-title {
+        font-size: 38px;
       }
     }
 
-    .leistung-item {
-      background: var(--color-white);
-      padding: 32px;
-      border-radius: var(--border-radius-default);
+    .dk-leistung-desc {
+      font-size: 16px;
+      line-height: 1.55;
+      opacity: 0.65;
+      padding-top: 4px;
+    }
+
+    /* Arrow bullet for list items */
+    .dk-list {
+      list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      transition: transform 0.2s ease;
+      gap: 10px;
+      margin-top: var(--space-small);
     }
 
-    .leistung-item:hover {
-      transform: translateY(-3px);
-    }
-
-    .leistung-icon {
-      width: 36px;
-      height: 36px;
-      background: var(--color-red);
-      border-radius: 50%;
+    .dk-list li {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 16px;
+      line-height: 1.45;
     }
 
-    .leistung-icon svg {
-      width: 16px;
-      height: 16px;
-      fill: none;
-      stroke: white;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+    .dk-list li::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      margin-top: 2px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='none'%3E%3Cpath d='M3.5 9h11M10 4.5l4.5 4.5L10 13.5' stroke='%23FF003C' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
     }
 
-    .leistung-title {
-      font-size: 17px;
-      font-weight: 700;
-      line-height: 1.3;
+    .dk-section--red .dk-list li::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='none'%3E%3Cpath d='M3.5 9h11M10 4.5l4.5 4.5L10 13.5' stroke='%23FFFFFF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     }
 
-    .leistung-desc {
-      font-size: 14px;
-      opacity: 0.6;
-      line-height: 1.5;
-    }
-
-    /* === KONDITIONEN === */
-    .konditionen-layout {
+    /* =============================================
+       KONDITIONEN (red section)
+    ============================================= */
+    .dk-konditionen-layout {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 40px;
+      gap: var(--space-large);
       margin-top: var(--space-medium);
     }
 
     @media (min-width: 900px) {
-      .konditionen-layout {
+      .dk-konditionen-layout {
         grid-template-columns: 1fr 1fr;
         align-items: start;
       }
     }
 
-    .kondition-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: var(--border-radius-default);
-      padding: 40px;
+    .dk-price-block {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-small);
     }
 
-    .kondition-price {
+    .dk-price-number {
       font-family: var(--font-headline);
-      font-size: clamp(60px, 8vw, 110px);
+      font-size: clamp(80px, 12vw, 160px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.88;
+      color: var(--color-white);
+    }
+
+    .dk-price-sub {
+      font-size: 16px;
+      opacity: 0.7;
+      max-width: 340px;
+      line-height: 1.45;
+    }
+
+    .dk-info-blocks {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-small);
+    }
+
+    .dk-info-block {
+      border-top: 1px solid rgba(255,255,255,0.2);
+      padding-top: var(--space-small);
+    }
+
+    .dk-info-block-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.55;
+      margin-bottom: 8px;
+    }
+
+    .dk-info-block-value {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--color-white);
+    }
+
+    /* =============================================
+       TIMELINE
+    ============================================= */
+    .dk-timeline {
+      margin-top: var(--space-medium);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dk-timeline-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: var(--space-small) 0;
+      border-top: 1px solid rgba(29,29,29,0.1);
+    }
+
+    .dk-timeline-item:last-child {
+      border-bottom: 1px solid rgba(29,29,29,0.1);
+    }
+
+    @media (min-width: 768px) {
+      .dk-timeline-item {
+        grid-template-columns: 220px 1fr;
+        gap: var(--space-medium);
+        align-items: start;
+      }
+    }
+
+    .dk-timeline-date {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.4;
+      padding-top: 4px;
+    }
+
+    .dk-timeline-date--done {
+      color: var(--color-red);
+      opacity: 1;
+      font-weight: 700;
+    }
+
+    .dk-timeline-title {
+      font-family: var(--font-headline);
+      font-size: 26px;
       font-weight: 900;
       text-transform: uppercase;
       line-height: 1;
       margin-bottom: 8px;
     }
 
-    .kondition-price-sub {
-      font-size: 14px;
-      opacity: 0.7;
-      margin-bottom: 32px;
+    @media (min-width: 640px) {
+      .dk-timeline-title {
+        font-size: 36px;
+      }
     }
 
-    .kondition-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .kondition-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
+    .dk-timeline-desc {
       font-size: 16px;
-      line-height: 1.4;
+      opacity: 0.6;
+      line-height: 1.55;
     }
 
-    .kondition-list li::before {
-      content: '';
-      display: inline-block;
-      width: 18px;
-      height: 18px;
-      min-width: 18px;
-      background: var(--color-yellow);
-      border-radius: 50%;
-      margin-top: 2px;
-    }
-
-    .kondition-info {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .kondition-info-block {
-      border-left: 3px solid rgba(255,255,255,0.3);
-      padding-left: 20px;
-    }
-
-    .kondition-info-label {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      opacity: 0.55;
-      margin-bottom: 6px;
-    }
-
-    .kondition-info-value {
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 1.4;
-    }
-
-    /* === TIMELINE === */
-    .timeline {
-      margin-top: var(--space-medium);
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 32px;
-      padding: 32px 0;
-      border-bottom: 1px solid rgba(29,29,29,0.1);
-      align-items: start;
-    }
-
-    .timeline-item:last-child {
-      border-bottom: none;
-    }
-
-    .timeline-date {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      opacity: 0.45;
-      padding-top: 4px;
-    }
-
-    .timeline-date--done {
-      color: var(--color-red);
-      opacity: 1;
-      font-weight: 700;
-    }
-
-    .timeline-content-title {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .timeline-content-desc {
-      font-size: 15px;
-      opacity: 0.65;
-      line-height: 1.5;
-    }
-
-    /* === PERSPEKTIVE === */
-    .perspektive-grid {
+    /* =============================================
+       PERSPEKTIVE (red section)
+    ============================================= */
+    .dk-perspektive-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 2px;
@@ -439,107 +648,84 @@
     }
 
     @media (min-width: 768px) {
-      .perspektive-grid {
+      .dk-perspektive-grid {
         grid-template-columns: 1fr 1fr;
       }
     }
 
-    .perspektive-item {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: var(--border-radius-default);
-      padding: 36px;
+    .dk-perspektive-item {
+      background: rgba(255,255,255,0.1);
+      padding: var(--space-medium);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-small);
     }
 
-    .perspektive-item-label {
-      font-size: 12px;
+    .dk-perspektive-label {
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      opacity: 0.5;
-      margin-bottom: 16px;
+      opacity: 0.6;
     }
 
-    .perspektive-item-title {
+    .dk-perspektive-title {
       font-family: var(--font-headline);
-      font-size: 36px;
+      font-size: clamp(40px, 6vw, 80px);
       font-weight: 900;
       text-transform: uppercase;
-      line-height: 1;
-      margin-bottom: 12px;
+      line-height: 0.92;
+      color: var(--color-white);
     }
 
-    .perspektive-item-desc {
-      font-size: 15px;
-      opacity: 0.7;
+    .dk-perspektive-desc {
+      font-size: 16px;
+      opacity: 0.8;
       line-height: 1.55;
+      max-width: 480px;
     }
 
-    /* === PROOF OF STYLE === */
-    .proof-box {
-      margin-top: 28px;
-      background: rgba(255,255,255,0.06);
+    /* Proof-of-style highlight box */
+    .dk-highlight-box {
       border: 1px solid var(--color-yellow);
-      border-radius: var(--border-radius-default);
-      padding: 24px 28px;
+      padding: var(--space-small);
       display: flex;
-      gap: 16px;
-      align-items: flex-start;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    .proof-box-icon {
-      width: 32px;
-      height: 32px;
-      min-width: 32px;
-      background: var(--color-yellow);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 2px;
-    }
-
-    .proof-box-icon svg {
-      width: 14px;
-      height: 14px;
-      fill: none;
-      stroke: var(--color-black);
-      stroke-width: 2.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .proof-box-label {
-      font-size: 11px;
+    .dk-highlight-box-label {
+      font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
       color: var(--color-yellow);
-      margin-bottom: 6px;
     }
 
-    .proof-box-text {
+    .dk-highlight-box-text {
       font-size: 15px;
       line-height: 1.55;
       opacity: 0.9;
     }
 
-    /* === FOOTER === */
-    footer {
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .dk-footer {
       background: var(--color-black);
       color: var(--color-white);
-      padding: 48px 24px;
+      padding: var(--space-medium) var(--container-padding);
     }
 
-    .footer-inner {
-      max-width: 1320px;
+    .dk-footer-inner {
+      max-width: var(--container-size-default);
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 24px;
+      gap: var(--space-small);
     }
 
-    .footer-logo {
+    .dk-footer-logo {
       font-family: var(--font-headline);
       font-size: 20px;
       font-weight: 900;
@@ -548,298 +734,305 @@
       text-decoration: none;
     }
 
-    .footer-logo span { color: var(--color-red); }
-
-    .footer-copy {
-      font-size: 13px;
-      opacity: 0.4;
+    .dk-footer-logo em {
+      color: var(--color-red);
+      font-style: normal;
     }
 
-    /* === SCROLL REVEAL === */
+    .dk-footer-copy {
+      font-size: 13px;
+      opacity: 0.35;
+    }
+
+    /* =============================================
+       SCROLL REVEAL
+    ============================================= */
     .reveal {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
     }
 
     .reveal.visible {
       opacity: 1;
       transform: none;
     }
+
+    /* =============================================
+       UTILITY
+    ============================================= */
+    .mt-small  { margin-top: var(--space-small); }
+    .mt-medium { margin-top: var(--space-medium); }
+    .mt-large  { margin-top: var(--space-large); }
+
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <a href="/" class="header-logo">DIE <span>KAVALLERIE</span></a>
-    <span class="header-tag">Angebot Stadtwerke T&uuml;bingen</span>
+  <!-- ==================== HEADER ==================== -->
+  <header class="dk-header">
+    <a href="/" class="dk-header-logo">DIE <em>KAVALLERIE</em></a>
+    <span class="dk-header-tag">Angebot Stadtwerke T&uuml;bingen</span>
   </header>
 
   <main>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <span class="hero-eyebrow reveal">Angebot Juli 2026</span>
-        <h1 class="hero-headline reveal">
-          Grafik &amp; Print<br>f&uuml;r <em>Stadtwerke</em><br>T&uuml;bingen.
+    <!-- ==================== HERO ==================== -->
+    <section class="dk-hero">
+      <div class="dk-container">
+
+        <span class="dk-label reveal">Angebot &mdash; Juli 2026</span>
+
+        <h1 class="dk-h1 dk-hero-headline reveal">
+          Grafik &amp; Print<br>
+          f&uuml;r <em>Stadtwerke</em><br>
+          T&uuml;bingen.
         </h1>
-        <p class="hero-sub reveal">
+
+        <p class="dk-body dk-hero-body reveal">
           Wir kennen T&uuml;bingen. Wir leben T&uuml;bingen. Als lokale Kommunikationsagentur
           f&uuml;hren wir euren Markenauftritt sorgf&auml;ltig, zuverl&auml;ssig und mit
           h&ouml;chstem Qualit&auml;tsanspruch fort.
         </p>
-        <a href="#konditionen" class="btn reveal">
+
+        <a href="#konditionen" class="dk-btn reveal">
           Zum Angebot
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <span class="dk-btn-arrow"></span>
         </a>
 
-        <div class="hero-meta reveal">
-          <div class="hero-meta-item">
-            <span class="hero-meta-label">Standort</span>
-            <span class="hero-meta-value">T&uuml;bingen</span>
+        <div class="dk-hero-meta reveal">
+          <div class="dk-hero-meta-item">
+            <span class="dk-hero-meta-label">Standort</span>
+            <span class="dk-hero-meta-value">T&uuml;bingen</span>
           </div>
-          <div class="hero-meta-item">
-            <span class="hero-meta-label">Projektstart</span>
-            <span class="hero-meta-value">Herbst 2026</span>
+          <div class="dk-hero-meta-item">
+            <span class="dk-hero-meta-label">Projektstart</span>
+            <span class="dk-hero-meta-value">Herbst 2026</span>
           </div>
-          <div class="hero-meta-item">
-            <span class="hero-meta-label">Abrechnung</span>
-            <span class="hero-meta-value">95 EUR netto / Std. monatlich</span>
+          <div class="dk-hero-meta-item">
+            <span class="dk-hero-meta-label">Stundensatz</span>
+            <span class="dk-hero-meta-value">95 EUR netto</span>
           </div>
-          <div class="hero-meta-item">
-            <span class="hero-meta-label">Kommunikation</span>
-            <span class="hero-meta-value">MS Teams</span>
+          <div class="dk-hero-meta-item">
+            <span class="dk-hero-meta-label">Kommunikation</span>
+            <span class="dk-hero-meta-value">MS Teams</span>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- LEISTUNGEN -->
-    <section class="section">
-      <div class="container">
-        <span class="section-label reveal">Was wir machen</span>
-        <h2 class="section-headline reveal">Leistungen</h2>
-        <p class="intro-text reveal">
+    <!-- ==================== LEISTUNGEN ==================== -->
+    <section class="dk-section" style="padding-top: 0;">
+      <div class="dk-container">
+
+        <span class="dk-label reveal">Was wir machen</span>
+        <h2 class="dk-h2 reveal">Leistungen</h2>
+        <p class="dk-body mt-small reveal">
           Von der Visitenkarte bis zur Gro&szlig;fl&auml;che: wir &uuml;bernehmen
           die gesamte grafische Produktion und halten euren Markenauftritt
           konsistent und hochwertig.
         </p>
 
-        <div class="leistungen-grid">
+        <div class="dk-leistungen mt-medium">
 
-          <div class="leistung-item reveal">
-            <div class="leistung-icon">
-              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </div>
-            <div class="leistung-title">Flyer, Broschueren &amp; Folder</div>
-            <div class="leistung-desc">Printmaterialien in eurer Corporate Identity. Sauber, schnell, druckfertig.</div>
+          <div class="dk-leistung-row reveal">
+            <div class="dk-leistung-title">Flyer, Broschueren &amp; Folder</div>
+            <div class="dk-leistung-desc">Printmaterialien in eurer Corporate Identity. Sauber, schnell, druckfertig.</div>
           </div>
 
-          <div class="leistung-item reveal">
-            <div class="leistung-icon">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-            </div>
-            <div class="leistung-title">Anzeigen</div>
-            <div class="leistung-desc">Print- und Digitalanzeigen f&uuml;r regionale und &uuml;berregionale Medien.</div>
+          <div class="dk-leistung-row reveal">
+            <div class="dk-leistung-title">Anzeigen</div>
+            <div class="dk-leistung-desc">Print- und Digitalanzeigen f&uuml;r regionale und &uuml;berregionale Medien.</div>
           </div>
 
-          <div class="leistung-item reveal">
-            <div class="leistung-icon">
-              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-            </div>
-            <div class="leistung-title">Plakate &amp; Gro&szlig;fl&auml;chen</div>
-            <div class="leistung-desc">Aufmerksamkeitsstarke Motive f&uuml;r den Au&szlig;enauftritt in T&uuml;bingen und der Region.</div>
+          <div class="dk-leistung-row reveal">
+            <div class="dk-leistung-title">Plakate &amp; Gro&szlig;fl&auml;chen</div>
+            <div class="dk-leistung-desc">Aufmerksamkeitsstarke Motive f&uuml;r den Au&szlig;enauftritt in T&uuml;bingen und der Region.</div>
           </div>
 
-          <div class="leistung-item reveal">
-            <div class="leistung-icon">
-              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </div>
-            <div class="leistung-title">Schilder &amp; Beschilderung</div>
-            <div class="leistung-desc">Orientierungssysteme und Leitsysteme im Stadtwerke-Design.</div>
+          <div class="dk-leistung-row reveal">
+            <div class="dk-leistung-title">Schilder &amp; Beschilderung</div>
+            <div class="dk-leistung-desc">Orientierungssysteme und Leitsysteme im Stadtwerke-Design.</div>
           </div>
 
-          <div class="leistung-item reveal">
-            <div class="leistung-icon">
-              <svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-            </div>
-            <div class="leistung-title">Ausstellungen &amp; Tafeln</div>
-            <div class="leistung-desc">Ausstellungsdesign und Informationstafeln f&uuml;r Events und &ouml;ffentliche R&auml;ume.</div>
+          <div class="dk-leistung-row reveal">
+            <div class="dk-leistung-title">Ausstellungen &amp; Tafeln</div>
+            <div class="dk-leistung-desc">Ausstellungsdesign und Informationstafeln f&uuml;r Events und &ouml;ffentliche R&auml;ume.</div>
           </div>
 
-          <div class="leistung-item reveal">
-            <div class="leistung-icon">
-              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            </div>
-            <div class="leistung-title">Gesch&auml;ftsausstattung</div>
-            <div class="leistung-desc">Visitenkarten, Briefpapier, E-Mail-Signaturen. Alles aus einem Guss.</div>
+          <div class="dk-leistung-row reveal">
+            <div class="dk-leistung-title">Gesch&auml;ftsausstattung</div>
+            <div class="dk-leistung-desc">Visitenkarten, Briefpapier, E-Mail-Signaturen. Alles aus einem Guss.</div>
           </div>
 
-          <div class="leistung-item reveal">
-            <div class="leistung-icon">
-              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <div class="leistung-title">Messe &amp; Veranstaltung</div>
-            <div class="leistung-desc">Messeauftritte, Roll-ups, Give-aways und Eventmaterialien.</div>
+          <div class="dk-leistung-row reveal">
+            <div class="dk-leistung-title">Messe &amp; Veranstaltung</div>
+            <div class="dk-leistung-desc">Messeauftritte, Roll-ups, Give-aways und Eventmaterialien.</div>
           </div>
 
-          <div class="leistung-item reveal">
-            <div class="leistung-icon">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            </div>
-            <div class="leistung-title">Infografiken &amp; Illustrationen</div>
-            <div class="leistung-desc">Komplexe Inhalte visuell aufbereitet: verst&auml;ndlich und markenkonform.</div>
+          <div class="dk-leistung-row reveal">
+            <div class="dk-leistung-title">Infografiken &amp; Illustrationen</div>
+            <div class="dk-leistung-desc">Komplexe Inhalte visuell aufbereitet: verst&auml;ndlich und markenkonform.</div>
           </div>
 
-          <div class="leistung-item reveal">
-            <div class="leistung-icon">
-              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <div class="leistung-title">Sonderprojekte</div>
-            <div class="leistung-desc">Alles, was sich nicht in eine Schublade stecken l&auml;sst. Wir finden eine L&ouml;sung.</div>
+          <div class="dk-leistung-row reveal">
+            <div class="dk-leistung-title">Sonderprojekte</div>
+            <div class="dk-leistung-desc">Alles, was sich nicht in eine Schublade stecken l&auml;sst. Wir finden eine L&ouml;sung.</div>
           </div>
 
         </div>
       </div>
     </section>
 
-    <!-- KONDITIONEN -->
-    <section class="section section--red" id="konditionen">
-      <div class="container">
-        <span class="section-label reveal">Was es kostet</span>
-        <h2 class="section-headline reveal">Konditionen</h2>
+    <!-- ==================== KONDITIONEN ==================== -->
+    <section class="dk-section dk-section--red" id="konditionen">
+      <div class="dk-container">
 
-        <div class="konditionen-layout">
-          <div class="kondition-card reveal">
-            <div class="kondition-price">95&thinsp;&euro;</div>
-            <div class="kondition-price-sub">pro Stunde (netto), monatliche Abrechnung nach Aufwand</div>
-            <ul class="kondition-list">
+        <span class="dk-label reveal">Was es kostet</span>
+        <h2 class="dk-h2 reveal">Konditionen</h2>
+
+        <div class="dk-konditionen-layout">
+
+          <div class="dk-price-block reveal">
+            <div class="dk-price-number">95&thinsp;&euro;</div>
+            <div class="dk-price-sub">pro Stunde (netto) &mdash; monatliche Abrechnung nach Aufwand</div>
+            <ul class="dk-list mt-small">
               <li>Abrechnung nach Projekt- und Produktstelle</li>
               <li>Monatliche &Uuml;bersicht aller geleisteten Stunden</li>
               <li>Kein Retainer: ihr zahlt nur, was wir wirklich leisten</li>
               <li>Projektabwicklung &uuml;ber MS Teams</li>
               <li>Kurze Reaktionszeiten auch bei kurzfristigen Aufgaben</li>
             </ul>
+            <div class="mt-medium">
+              <a href="mailto:david.c@diekavallerie.de" class="dk-btn dk-btn--white reveal">
+                Angebot annehmen
+                <span class="dk-btn-arrow"></span>
+              </a>
+            </div>
           </div>
 
-          <div class="kondition-info reveal">
-            <div class="kondition-info-block">
-              <div class="kondition-info-label">Hauptverantwortung</div>
-              <div class="kondition-info-value">Eine dedizierte Hauptgrafikerin als feste Ansprechpartnerin</div>
+          <div class="dk-info-blocks reveal">
+            <div class="dk-info-block">
+              <div class="dk-info-block-label">Hauptverantwortung</div>
+              <div class="dk-info-block-value">Eine dedizierte Hauptgrafikerin als feste Ansprechpartnerin</div>
             </div>
-            <div class="kondition-info-block">
-              <div class="kondition-info-label">Unterst&uuml;tzung</div>
-              <div class="kondition-info-value">Bei Bedarf: Projektmanagement und Konzept aus unserem Team</div>
+            <div class="dk-info-block">
+              <div class="dk-info-block-label">Unterst&uuml;tzung</div>
+              <div class="dk-info-block-value">Bei Bedarf: Projektmanagement und Konzept aus unserem Team</div>
             </div>
-            <div class="kondition-info-block">
-              <div class="kondition-info-label">&Uuml;bergabe</div>
-              <div class="kondition-info-value">Strukturierte &Uuml;bergabe von Hemmerich Design ab Herbst 2026</div>
+            <div class="dk-info-block">
+              <div class="dk-info-block-label">&Uuml;bergabe</div>
+              <div class="dk-info-block-value">Strukturierte &Uuml;bernahme von Hemmerich Design ab Herbst 2026</div>
             </div>
-            <div class="kondition-info-block">
-              <div class="kondition-info-label">Briefing</div>
-              <div class="kondition-info-value">Inhaltliche Steuerung durch euer Marketingteam. Wir setzen um.</div>
+            <div class="dk-info-block">
+              <div class="dk-info-block-label">Briefing</div>
+              <div class="dk-info-block-value">Inhaltliche Steuerung durch euer Marketingteam. Wir setzen um.</div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- TIMELINE -->
-    <section class="section">
-      <div class="container">
-        <span class="section-label reveal">Wie es l&auml;uft</span>
-        <h2 class="section-headline reveal">Fahrplan</h2>
+    <!-- ==================== FAHRPLAN ==================== -->
+    <section class="dk-section">
+      <div class="dk-container">
 
-        <div class="timeline">
-          <div class="timeline-item reveal">
-            <div class="timeline-date timeline-date--done">Juli 2026 &#10003;</div>
+        <span class="dk-label reveal">Wie es l&auml;uft</span>
+        <h2 class="dk-h2 reveal">Fahrplan</h2>
+
+        <div class="dk-timeline">
+
+          <div class="dk-timeline-item reveal">
+            <div class="dk-timeline-date dk-timeline-date--done">Juli 2026 &#10003;</div>
             <div>
-              <div class="timeline-content-title">Kennenlernen erledigt</div>
-              <div class="timeline-content-desc">Erstes Gespr&auml;ch hat stattgefunden. Wir kennen die Anforderungen, den Kontext und die Erwartungen der Stadtwerke T&uuml;bingen.</div>
+              <div class="dk-timeline-title">Kennenlernen erledigt</div>
+              <div class="dk-timeline-desc">Erstes Gespr&auml;ch hat stattgefunden. Wir kennen die Anforderungen, den Kontext und die Erwartungen der Stadtwerke T&uuml;bingen.</div>
             </div>
           </div>
-          <div class="timeline-item reveal">
-            <div class="timeline-date">September 2026</div>
+
+          <div class="dk-timeline-item reveal">
+            <div class="dk-timeline-date">September 2026</div>
             <div>
-              <div class="timeline-content-title">R&uuml;ckmeldung der Stadtwerke</div>
-              <div class="timeline-content-desc">Die Stadtwerke T&uuml;bingen entscheiden im September, ob DIE KAVALLERIE als Grafikagentur an Bord kommt.</div>
+              <div class="dk-timeline-title">R&uuml;ckmeldung der Stadtwerke</div>
+              <div class="dk-timeline-desc">Die Stadtwerke T&uuml;bingen entscheiden im September, ob DIE KAVALLERIE als Grafikagentur an Bord kommt.</div>
             </div>
           </div>
-          <div class="timeline-item reveal">
-            <div class="timeline-date">Herbst 2026</div>
+
+          <div class="dk-timeline-item reveal">
+            <div class="dk-timeline-date">Herbst 2026</div>
             <div>
-              <div class="timeline-content-title">&Uuml;bergabe von Hemmerich Design</div>
-              <div class="timeline-content-desc">Strukturierte &Uuml;bernahme aller Vorlagen, Dateien und laufenden Projekte. Parallel zum Ausstieg von Frau Hemmerich bis Ende 2026.</div>
+              <div class="dk-timeline-title">&Uuml;bergabe von Hemmerich Design</div>
+              <div class="dk-timeline-desc">Strukturierte &Uuml;bernahme aller Vorlagen, Dateien und laufenden Projekte. Parallel zum Ausstieg von Frau Hemmerich bis Ende 2026.</div>
             </div>
           </div>
-          <div class="timeline-item reveal">
-            <div class="timeline-date">Herbst 2026 bis Fr&uuml;hjahr 2027</div>
+
+          <div class="dk-timeline-item reveal">
+            <div class="dk-timeline-date">Herbst 2026 &ndash; Fr&uuml;hjahr 2027</div>
             <div>
-              <div class="timeline-content-title">Probezeit: 6 Monate</div>
-              <div class="timeline-content-desc">Wir starten mit einer vereinbarten Probezeit von 6 Monaten. Zeit, um Vertrauen aufzubauen, Prozesse einzuspielen und gemeinsam zu wachsen.</div>
+              <div class="dk-timeline-title">Probezeit: 6 Monate</div>
+              <div class="dk-timeline-desc">Wir starten mit einer vereinbarten Probezeit von 6 Monaten. Zeit, um Vertrauen aufzubauen, Prozesse einzuspielen und gemeinsam zu wachsen.</div>
             </div>
           </div>
-          <div class="timeline-item reveal">
-            <div class="timeline-date">Perspektive</div>
+
+          <div class="dk-timeline-item reveal">
+            <div class="dk-timeline-date">Perspektive</div>
             <div>
-              <div class="timeline-content-title">Langfristige Partnerschaft</div>
-              <div class="timeline-content-desc">Nach der Probezeit: volle Kapazit&auml;t, eingespieltes Team und strategische Weiterentwicklung der Marke.</div>
+              <div class="dk-timeline-title">Langfristige Partnerschaft</div>
+              <div class="dk-timeline-desc">Nach der Probezeit: volle Kapazit&auml;t, eingespieltes Team und strategische Weiterentwicklung der Marke.</div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- PERSPEKTIVE -->
-    <section class="section section--dark">
-      <div class="container">
-        <span class="section-label reveal">Was noch m&ouml;glich ist</span>
-        <h2 class="section-headline reveal">Perspektive</h2>
+    <!-- ==================== PERSPEKTIVE ==================== -->
+    <section class="dk-section dk-section--red">
+      <div class="dk-container">
 
-        <div class="perspektive-grid">
-          <div class="perspektive-item reveal">
-            <div class="perspektive-item-label">Kundenmagazin</div>
-            <div class="perspektive-item-title">T&uuml;Welt</div>
-            <div class="perspektive-item-desc">
+        <span class="dk-label reveal">Was noch m&ouml;glich ist</span>
+        <h2 class="dk-h2 reveal">Perspektive</h2>
+
+        <div class="dk-perspektive-grid">
+
+          <div class="dk-perspektive-item reveal">
+            <span class="dk-perspektive-label">Kundenmagazin</span>
+            <div class="dk-perspektive-title">T&uuml;Welt</div>
+            <p class="dk-perspektive-desc">
               Sollte die grafische Betreuung des T&uuml;Welt-Magazins k&uuml;nftig geb&uuml;ndelt werden,
               sind wir bereit, auch diesen Bereich zu &uuml;bernehmen. Nahtlos und aus einer Hand.
-            </div>
-            <div class="proof-box reveal">
-              <div class="proof-box-icon">
-                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <div>
-                <div class="proof-box-label">Proof of Style</div>
-                <div class="proof-box-text">
-                  Wir gestalten 3 Doppelseiten der n&auml;chsten Ausgabe kostenfrei und unverbindlich frei
-                  als Stilprobe. So k&ouml;nnt ihr sehen, wie wir euren Auftritt denken, bevor ihr euch entscheidet.
-                </div>
+            </p>
+            <div class="dk-highlight-box">
+              <div class="dk-highlight-box-label">Proof of Style</div>
+              <div class="dk-highlight-box-text">
+                Wir gestalten 3 Doppelseiten der n&auml;chsten Ausgabe kostenfrei und unverbindlich
+                als Stilprobe. So k&ouml;nnt ihr sehen, wie wir euren Auftritt denken, bevor ihr euch entscheidet.
               </div>
             </div>
           </div>
-          <div class="perspektive-item reveal">
-            <div class="perspektive-item-label">Digital &amp; Redaktion</div>
-            <div class="perspektive-item-title">Blog &amp; KI-Radar</div>
-            <div class="perspektive-item-desc">
+
+          <div class="dk-perspektive-item reveal">
+            <span class="dk-perspektive-label">Digital &amp; Redaktion</span>
+            <div class="dk-perspektive-title">Blog &amp; KI-Radar</div>
+            <p class="dk-perspektive-desc">
               Themenradar, redaktionelle Unterst&uuml;tzung und KI-gest&uuml;tzte Inhaltsformate.
               Wenn ihr in die digitale Kommunikation einsteigen wollt, sind wir dabei.
-            </div>
+            </p>
           </div>
+
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <a href="/" class="footer-logo">DIE <span>KAVALLERIE</span></a>
-      <span class="footer-copy">&copy; 2026 DIE KAVALLERIE</span>
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="dk-footer">
+    <div class="dk-footer-inner">
+      <a href="/" class="dk-footer-logo">DIE <em>KAVALLERIE</em></a>
+      <span class="dk-footer-copy">&copy; 2026 DIE KAVALLERIE</span>
     </div>
   </footer>
 
@@ -851,7 +1044,7 @@
           entry.target.classList.add('visible');
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08 });
     reveals.forEach(function(el) { observer.observe(el); });
   </script>
 
