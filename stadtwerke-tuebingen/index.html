@@ -465,7 +465,7 @@
 
     .timeline-item {
       display: grid;
-      grid-template-columns: 120px 1fr;
+      grid-template-columns: 160px 1fr;
       gap: 32px;
       padding: 32px 0;
       border-bottom: 1px solid rgba(29,29,29,0.1);
@@ -482,6 +482,12 @@
       letter-spacing: 0.1em;
       opacity: 0.45;
       padding-top: 4px;
+    }
+
+    .timeline-date--done {
+      color: var(--color-red);
+      opacity: 1;
+      font-weight: 700;
     }
 
     .timeline-content-title {
@@ -626,7 +632,7 @@
       <div class="container">
         <span class="hero-eyebrow reveal">Angebot &mdash; Juli 2026</span>
         <h1 class="hero-headline reveal">
-          Grafik &amp;<br><em>Print</em><br>f&uuml;r T&uuml;bingen.
+          Grafik &amp; Print<br>f&uuml;r <em>Stadtwerke</em><br>T&uuml;bingen.
         </h1>
         <p class="hero-sub reveal">
           Wir kennen T&uuml;bingen. Wir leben T&uuml;bingen. Als lokale Kommunikationsagentur
@@ -651,7 +657,7 @@
           </div>
           <div class="hero-meta-item">
             <span class="hero-meta-label">Abrechnung</span>
-            <span class="hero-meta-value">95 EUR / Std. monatlich</span>
+            <span class="hero-meta-value">95 EUR netto / Std. monatlich</span>
           </div>
           <div class="hero-meta-item">
             <span class="hero-meta-label">Kommunikation</span>
@@ -759,7 +765,7 @@
         <div class="konditionen-layout">
           <div class="kondition-card reveal">
             <div class="kondition-price">95&thinsp;&euro;</div>
-            <div class="kondition-price-sub">pro Stunde &mdash; monatliche Abrechnung nach Aufwand</div>
+            <div class="kondition-price-sub">pro Stunde (netto) &mdash; monatliche Abrechnung nach Aufwand</div>
             <ul class="kondition-list">
               <li>Abrechnung nach Projekt- und Produktstelle</li>
               <li>Monatliche &Uuml;bersicht aller geleisteten Stunden</li>
@@ -799,31 +805,38 @@
 
         <div class="timeline">
           <div class="timeline-item reveal">
-            <div class="timeline-date">Jetzt</div>
+            <div class="timeline-date timeline-date--done">Juli 2026 &#10003;</div>
             <div>
-              <div class="timeline-content-title">Kennenlernen &amp; Briefing</div>
-              <div class="timeline-content-desc">Pers&ouml;nliches Gespr&auml;ch, Einblick in bestehende Materialien und Markenrichtlinien von Hemmerich.</div>
+              <div class="timeline-content-title">Kennenlernen &mdash; erledigt</div>
+              <div class="timeline-content-desc">Erstes Gespr&auml;ch hat stattgefunden. Wir kennen die Anforderungen, den Kontext und die Erwartungen der Stadtwerke T&uuml;bingen.</div>
             </div>
           </div>
           <div class="timeline-item reveal">
-            <div class="timeline-date">Sommer 2026</div>
+            <div class="timeline-date">September 2026</div>
             <div>
-              <div class="timeline-content-title">Vorbereitung &amp; &Uuml;bergabe</div>
-              <div class="timeline-content-desc">Strukturierte &Uuml;bernahme aller Vorlagen, Dateien und laufenden Projekte von Hemmerich Design.</div>
+              <div class="timeline-content-title">R&uuml;ckmeldung der Stadtwerke</div>
+              <div class="timeline-content-desc">Die Stadtwerke T&uuml;bingen entscheiden im September, ob die Kavallerie als Grafikagentur an Bord kommt.</div>
             </div>
           </div>
           <div class="timeline-item reveal">
             <div class="timeline-date">Herbst 2026</div>
             <div>
-              <div class="timeline-content-title">Produktionsstart</div>
-              <div class="timeline-content-desc">Volle Kapazit&auml;t ab Herbst &mdash; eure Grafikerin ist eingespielt, die Prozesse stehen, es kann losgehen.</div>
+              <div class="timeline-content-title">&Uuml;bergabe von Hemmerich Design</div>
+              <div class="timeline-content-desc">Strukturierte &Uuml;bernahme aller Vorlagen, Dateien und laufenden Projekte &mdash; parallel zum Ausstieg von Frau Hemmerich bis Ende 2026.</div>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-date">Herbst 2026 &ndash; Fr&uuml;hjahr 2027</div>
+            <div>
+              <div class="timeline-content-title">Probezeit &mdash; 6 Monate</div>
+              <div class="timeline-content-desc">Wir starten mit einer vereinbarten Probezeit von 6 Monaten &mdash; Zeit, um Vertrauen aufzubauen, Prozesse einzuspielen und gemeinsam zu wachsen.</div>
             </div>
           </div>
           <div class="timeline-item reveal">
             <div class="timeline-date">Perspektive</div>
             <div>
-              <div class="timeline-content-title">Strategische Weiterentwicklung</div>
-              <div class="timeline-content-desc">Wenn der Zeitpunkt kommt, begleiten wir auch die Weiterentwicklung eurer Marke &mdash; von der Analyse bis zur Umsetzung.</div>
+              <div class="timeline-content-title">Langfristige Partnerschaft</div>
+              <div class="timeline-content-desc">Nach der Probezeit: volle Kapazit&auml;t, eingespieltes Team und &mdash; wenn der Zeitpunkt kommt &mdash; strategische Weiterentwicklung der Marke.</div>
             </div>
           </div>
         </div>
@@ -890,7 +903,6 @@
   </footer>
 
   <script>
-    // Scroll reveal
     var reveals = document.querySelectorAll('.reveal');
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
