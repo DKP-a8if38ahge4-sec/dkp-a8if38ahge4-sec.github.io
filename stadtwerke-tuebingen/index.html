@@ -152,7 +152,7 @@
       border-bottom: 1px solid rgba(29,29,29,0.08);
     }
 
-    /* Logo: PP Formula Condensed, weight 900, uppercase, all black, letter-spacing 0 */
+    /* Logo: PP Formula Condensed, weight 900, uppercase, all black */
     .dk-logo {
       font-family: var(--font-headline);
       font-size: 20px;
@@ -218,13 +218,15 @@
 
     /* =============================================
        HEADLINES
+       line-height 1.05 gives diacritics (umlauts)
+       enough vertical clearance in PP Formula Condensed
     ============================================= */
     .dk-h1 {
       font-family: var(--font-headline);
       font-size: var(--font-size-h1);
       font-weight: 900;
       text-transform: uppercase;
-      line-height: 0.92;
+      line-height: 1.05;
       letter-spacing: -0.01em;
       color: var(--color-black);
     }
@@ -233,7 +235,7 @@
       font-size: var(--font-size-h2);
       font-weight: 900;
       text-transform: uppercase;
-      line-height: 0.92;
+      line-height: 1.05;
       letter-spacing: -0.01em;
     }
     .dk-h1 em, .dk-h2 em {
@@ -335,6 +337,7 @@
     .dk-hero-meta {
       display: flex;
       flex-wrap: wrap;
+      gap: 0;
       margin-top: var(--space-medium);
       border-top: 1px solid rgba(29,29,29,0.12);
     }
@@ -356,6 +359,18 @@
     }
 
     /* =============================================
+       DIVIDER
+    ============================================= */
+    .dk-divider {
+      border: none;
+      border-top: 1px solid rgba(29,29,29,0.1);
+      margin: 0;
+    }
+    .dk-section--red .dk-divider {
+      border-top-color: rgba(255,255,255,0.2);
+    }
+
+    /* =============================================
        LEISTUNGEN LIST
     ============================================= */
     .dk-leistungen {
@@ -366,7 +381,7 @@
     .dk-leistung-row {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 8px;
+      gap: 0;
       border-top: 1px solid rgba(29,29,29,0.1);
       padding: var(--space-small) 0;
     }
@@ -385,7 +400,8 @@
       font-size: 28px;
       font-weight: 900;
       text-transform: uppercase;
-      line-height: 1;
+      line-height: 1.05;
+      padding-bottom: 8px;
     }
     @media (min-width: 640px) {
       .dk-leistung-title { font-size: 38px; }
@@ -415,74 +431,58 @@
     .dk-list li::before {
       content: '';
       display: inline-block;
-      width: 17px;
-      height: 17px;
-      min-width: 17px;
-      margin-top: 3px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17.799' height='17.799' viewBox='0 0 17.799 17.799'%3E%3Cpath d='M2.36,12.563l10.226.022L12.563,2.36h-1.91l.067,7.057L1.326,0,0,1.326,9.417,10.72,2.36,10.653Z' transform='translate(0 8.899) rotate(-45)' fill='%23FF003C'/%3E%3C/svg%3E");
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      margin-top: 2px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 17.799 17.799'%3E%3Cpath d='M2.36,12.563l10.226.022L12.563,2.36h-1.91l.067,7.057L1.326,0,0,1.326,9.417,10.72,2.36,10.653Z' transform='translate(0 8.899) rotate(-45)' fill='%23FF003C'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-size: contain;
     }
     .dk-section--red .dk-list li::before {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17.799' height='17.799' viewBox='0 0 17.799 17.799'%3E%3Cpath d='M2.36,12.563l10.226.022L12.563,2.36h-1.91l.067,7.057L1.326,0,0,1.326,9.417,10.72,2.36,10.653Z' transform='translate(0 8.899) rotate(-45)' fill='%23ffffff'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 17.799 17.799'%3E%3Cpath d='M2.36,12.563l10.226.022L12.563,2.36h-1.91l.067,7.057L1.326,0,0,1.326,9.417,10.72,2.36,10.653Z' transform='translate(0 8.899) rotate(-45)' fill='%23FFFF00'/%3E%3C/svg%3E");
     }
 
     /* =============================================
-       KONDITIONEN
+       KONDITIONEN TABLE
     ============================================= */
-    .dk-konditionen-layout {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-large);
+    .dk-konditionen {
       margin-top: var(--space-medium);
-    }
-    @media (min-width: 900px) {
-      .dk-konditionen-layout {
-        grid-template-columns: 1fr 1fr;
-        align-items: start;
-      }
-    }
-    .dk-price-number {
-      font-family: var(--font-headline);
-      font-size: clamp(80px, 12vw, 160px);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 0.88;
-      color: var(--color-white);
-      margin-bottom: 16px;
-    }
-    .dk-price-sub {
-      font-size: 16px;
-      opacity: 0.7;
-      max-width: 340px;
-      line-height: 1.45;
-      margin-bottom: var(--space-small);
-    }
-
-    .dk-info-blocks {
       display: flex;
       flex-direction: column;
-      gap: 0;
     }
-    .dk-info-block {
-      border-top: 1px solid rgba(255,255,255,0.2);
-      padding: var(--space-small) 0;
+    .dk-kondition-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid rgba(29,29,29,0.1);
+      padding: 20px 0;
+      gap: var(--space-small);
     }
-    .dk-info-block:last-child {
-      border-bottom: 1px solid rgba(255,255,255,0.2);
+    .dk-kondition-row:last-child {
+      border-bottom: 1px solid rgba(29,29,29,0.1);
     }
-    .dk-info-block-label {
-      font-size: 12px;
+    .dk-kondition-label {
+      font-size: 13px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      opacity: 0.55;
-      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+      opacity: 0.45;
+      padding-top: 3px;
     }
-    .dk-info-block-value {
-      font-size: 18px;
-      font-weight: 700;
+    .dk-kondition-value {
+      font-family: var(--font-headline);
+      font-size: clamp(28px, 4vw, 55px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--color-red);
+    }
+    .dk-kondition-note {
+      font-size: 14px;
+      opacity: 0.5;
+      margin-top: 6px;
+      font-family: var(--font-base);
+      font-weight: 400;
       line-height: 1.4;
-      color: var(--color-white);
     }
 
     /* =============================================
@@ -497,16 +497,15 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 8px;
-      padding: var(--space-small) 0;
       border-top: 1px solid rgba(29,29,29,0.1);
+      padding: var(--space-small) 0;
     }
     .dk-timeline-item:last-child {
       border-bottom: 1px solid rgba(29,29,29,0.1);
     }
-    @media (min-width: 768px) {
+    @media (min-width: 640px) {
       .dk-timeline-item {
-        grid-template-columns: 220px 1fr;
-        gap: var(--space-medium);
+        grid-template-columns: 160px 1fr;
         align-items: start;
       }
     }
@@ -515,7 +514,7 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       opacity: 0.4;
-      padding-top: 6px;
+      padding-top: 4px;
     }
     .dk-timeline-date--done {
       color: var(--color-red);
@@ -527,7 +526,7 @@
       font-size: 26px;
       font-weight: 900;
       text-transform: uppercase;
-      line-height: 1;
+      line-height: 1.05;
       margin-bottom: 8px;
     }
     @media (min-width: 640px) {
@@ -540,7 +539,7 @@
     }
 
     /* =============================================
-       PERSPEKTIVE
+       PERSPEKTIVE (red section)
     ============================================= */
     .dk-perspektive-grid {
       display: grid;
@@ -569,7 +568,7 @@
       font-size: clamp(40px, 6vw, 80px);
       font-weight: 900;
       text-transform: uppercase;
-      line-height: 0.92;
+      line-height: 1.05;
       color: var(--color-white);
     }
     .dk-perspektive-desc {
@@ -578,6 +577,8 @@
       line-height: 1.55;
       max-width: 480px;
     }
+
+    /* Proof-of-style highlight box */
     .dk-highlight-box {
       border: 1px solid var(--color-yellow);
       padding: var(--space-small);
@@ -614,19 +615,16 @@
       flex-wrap: wrap;
       gap: var(--space-small);
     }
-
-    /* Footer logo: same as header logo but white */
     .dk-logo--footer {
       font-family: var(--font-headline);
       font-size: 20px;
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0;
-      line-height: 1;
       color: var(--color-white);
       text-decoration: none;
+      letter-spacing: 0;
+      line-height: 1;
     }
-
     .dk-footer-copy {
       font-size: 13px;
       opacity: 0.35;
@@ -650,12 +648,13 @@
     ============================================= */
     .mt-small  { margin-top: var(--space-small); }
     .mt-medium { margin-top: var(--space-medium); }
+    .mt-large  { margin-top: var(--space-large); }
 
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- ==================== HEADER ==================== -->
   <header class="dk-header">
     <a href="/" class="dk-logo">Die Kavallerie</a>
     <span class="dk-header-tag">Angebot Stadtwerke T&uuml;bingen</span>
@@ -663,7 +662,7 @@
 
   <main>
 
-    <!-- HERO -->
+    <!-- ==================== HERO ==================== -->
     <section class="dk-hero">
       <div class="dk-container">
 
@@ -687,233 +686,270 @@
 
         <div class="dk-hero-meta reveal">
           <div class="dk-hero-meta-item">
+            <span class="dk-hero-meta-label">Agentur</span>
+            <span class="dk-hero-meta-value">Die Kavallerie</span>
+          </div>
+          <div class="dk-hero-meta-item">
             <span class="dk-hero-meta-label">Standort</span>
             <span class="dk-hero-meta-value">T&uuml;bingen</span>
           </div>
           <div class="dk-hero-meta-item">
-            <span class="dk-hero-meta-label">Projektstart</span>
-            <span class="dk-hero-meta-value">Herbst 2026</span>
+            <span class="dk-hero-meta-label">Leistung</span>
+            <span class="dk-hero-meta-value">Grafik &amp; Print</span>
           </div>
           <div class="dk-hero-meta-item">
-            <span class="dk-hero-meta-label">Stundensatz</span>
-            <span class="dk-hero-meta-value">95 EUR netto</span>
-          </div>
-          <div class="dk-hero-meta-item">
-            <span class="dk-hero-meta-label">Kommunikation</span>
-            <span class="dk-hero-meta-value">MS Teams</span>
+            <span class="dk-hero-meta-label">Angebotsdatum</span>
+            <span class="dk-hero-meta-value">Juli 2026</span>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- LEISTUNGEN -->
-    <section class="dk-section" style="padding-top: 0;">
+    <hr class="dk-divider">
+
+    <!-- ==================== LEISTUNGEN ==================== -->
+    <section class="dk-section" id="leistungen">
       <div class="dk-container">
 
-        <span class="dk-label reveal">Was wir machen</span>
-        <h2 class="dk-h2 reveal">Leistungen</h2>
-        <p class="dk-body mt-small reveal">
-          Von der Visitenkarte bis zur Gro&szlig;fl&auml;che: wir &uuml;bernehmen
-          die gesamte grafische Produktion und halten euren Markenauftritt
-          konsistent und hochwertig.
+        <span class="dk-label reveal">Leistungen</span>
+        <h2 class="dk-h2 reveal">Was wir<br>f&uuml;r euch tun.</h2>
+
+        <div class="dk-leistungen reveal">
+
+          <div class="dk-leistung-row">
+            <div class="dk-leistung-title">Grafik&shy;design</div>
+            <div>
+              <p class="dk-leistung-desc">
+                Konzeption und Gestaltung aller Printmaterialien &mdash; von der Visitenkarte
+                bis zur Gesch&auml;ftsausstattung. Konsistent, markenstark, druckfertig.
+              </p>
+              <ul class="dk-list">
+                <li>Corporate Design Pflege &amp; Weiterentwicklung</li>
+                <li>Gesch&auml;ftsausstattung (Briefpapier, Kuverts, Visitenkarten)</li>
+                <li>Vorlagen f&uuml;r interne Kommunikation</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="dk-leistung-row">
+            <div class="dk-leistung-title">Print&shy;produktion</div>
+            <div>
+              <p class="dk-leistung-desc">
+                Druckdatenerstellung, Druckerkoordination und Qualit&auml;tskontrolle.
+                Wir &uuml;bernehmen den gesamten Produktionsprozess.
+              </p>
+              <ul class="dk-list">
+                <li>Druckfertige PDF-Erstellung nach Druckerspezifikation</li>
+                <li>Angebots&shy;einholung &amp; Druckerkoordination</li>
+                <li>Korrekturabzug &amp; Freigabeprozess</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="dk-leistung-row">
+            <div class="dk-leistung-title">Kampagnen&shy;material</div>
+            <div>
+              <p class="dk-leistung-desc">
+                Werbemittel f&uuml;r Aktionen, Messen und Kundenkommunikation.
+                Schnell, flexibel, immer on-brand.
+              </p>
+              <ul class="dk-list">
+                <li>Flyer, Plakate, Roll-ups, Banner</li>
+                <li>Anzeigengestaltung f&uuml;r Print &amp; Digital</li>
+                <li>Saisonale Kommunikationsmittel</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="dk-leistung-row">
+            <div class="dk-leistung-title">Redaktions&shy;planung</div>
+            <div>
+              <p class="dk-leistung-desc">
+                Strukturierte Jahresplanung aller Drucksachen &mdash; damit nichts vergessen
+                wird und Produktionen rechtzeitig starten.
+              </p>
+              <ul class="dk-list">
+                <li>Jahreskalender aller Printma&szlig;nahmen</li>
+                <li>Vorlaufzeiten &amp; Deadlines im Blick</li>
+                <li>Abstimmung mit euren internen Abteilungen</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <hr class="dk-divider">
+
+    <!-- ==================== KONDITIONEN ==================== -->
+    <section class="dk-section" id="konditionen">
+      <div class="dk-container">
+
+        <span class="dk-label reveal">Konditionen</span>
+        <h2 class="dk-h2 reveal">Transparent.<br>Fair. Lokal.</h2>
+
+        <div class="dk-konditionen reveal">
+          <div class="dk-kondition-row">
+            <div class="dk-kondition-label">Stundensatz</div>
+            <div>
+              <div class="dk-kondition-value">95 &euro;</div>
+              <div class="dk-kondition-note">Netto zzgl. MwSt. &mdash; f&uuml;r alle Gestaltungsleistungen</div>
+            </div>
+          </div>
+          <div class="dk-kondition-row">
+            <div class="dk-kondition-label">Monatliches Kontingent</div>
+            <div>
+              <div class="dk-kondition-value">20 Std.</div>
+              <div class="dk-kondition-note">Flexibel abrufbar, nicht verbrauchte Stunden &uuml;bertragbar</div>
+            </div>
+          </div>
+          <div class="dk-kondition-row">
+            <div class="dk-kondition-label">Laufzeit</div>
+            <div>
+              <div class="dk-kondition-value">12 Mon.</div>
+              <div class="dk-kondition-note">Jahresvertrag mit monatlicher K&uuml;ndigungsoption nach 6 Monaten</div>
+            </div>
+          </div>
+          <div class="dk-kondition-row">
+            <div class="dk-kondition-label">Reaktionszeit</div>
+            <div>
+              <div class="dk-kondition-value">24 Std.</div>
+              <div class="dk-kondition-note">Garantierte R&uuml;ckmeldung an Werktagen</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="dk-body mt-medium reveal">
+          Alle Druckkosten werden separat nach Aufwand abgerechnet. Wir holen mindestens
+          zwei Vergleichsangebote ein und entscheiden gemeinsam mit euch.
         </p>
 
-        <div class="dk-leistungen mt-medium">
-          <div class="dk-leistung-row reveal">
-            <div class="dk-leistung-title">Flyer, Broschueren &amp; Folder</div>
-            <div class="dk-leistung-desc">Printmaterialien in eurer Corporate Identity. Sauber, schnell, druckfertig.</div>
+        <a href="mailto:david.c@diekavallerie.de" class="dk-btn dk-btn--red mt-medium reveal">
+          Angebot annehmen
+        </a>
+
+      </div>
+    </section>
+
+    <hr class="dk-divider">
+
+    <!-- ==================== TIMELINE ==================== -->
+    <section class="dk-section" id="ablauf">
+      <div class="dk-container">
+
+        <span class="dk-label reveal">Ablauf</span>
+        <h2 class="dk-h2 reveal">So starten<br>wir zusammen.</h2>
+
+        <div class="dk-timeline reveal">
+
+          <div class="dk-timeline-item">
+            <div class="dk-timeline-date dk-timeline-date--done">Woche 1</div>
+            <div>
+              <div class="dk-timeline-title">Kick-off</div>
+              <p class="dk-timeline-desc">
+                Pers&ouml;nliches Kennenlernen, Bestandsaufnahme aller laufenden Drucksachen,
+                Zugang zu Markenassets und Vorlagen.
+              </p>
+            </div>
           </div>
-          <div class="dk-leistung-row reveal">
-            <div class="dk-leistung-title">Anzeigen</div>
-            <div class="dk-leistung-desc">Print- und Digitalanzeigen f&uuml;r regionale und &uuml;berregionale Medien.</div>
+
+          <div class="dk-timeline-item">
+            <div class="dk-timeline-date">Woche 2&ndash;3</div>
+            <div>
+              <div class="dk-timeline-title">Audit &amp; Plan</div>
+              <p class="dk-timeline-desc">
+                Analyse des bestehenden Printportfolios, Identifikation von
+                Optimierungspotenzialen, Erstellung des Jahresredaktionsplans.
+              </p>
+            </div>
           </div>
-          <div class="dk-leistung-row reveal">
-            <div class="dk-leistung-title">Plakate &amp; Gro&szlig;fl&auml;chen</div>
-            <div class="dk-leistung-desc">Aufmerksamkeitsstarke Motive f&uuml;r den Au&szlig;enauftritt in T&uuml;bingen und der Region.</div>
+
+          <div class="dk-timeline-item">
+            <div class="dk-timeline-date">Ab Woche 4</div>
+            <div>
+              <div class="dk-timeline-title">Laufender Betrieb</div>
+              <p class="dk-timeline-desc">
+                Regelm&auml;&szlig;ige Abstimmung, schnelle Umsetzung, transparente
+                Stundenabrechnung am Monatsende.
+              </p>
+            </div>
           </div>
-          <div class="dk-leistung-row reveal">
-            <div class="dk-leistung-title">Schilder &amp; Beschilderung</div>
-            <div class="dk-leistung-desc">Orientierungssysteme und Leitsysteme im Stadtwerke-Design.</div>
-          </div>
-          <div class="dk-leistung-row reveal">
-            <div class="dk-leistung-title">Ausstellungen &amp; Tafeln</div>
-            <div class="dk-leistung-desc">Ausstellungsdesign und Informationstafeln f&uuml;r Events und &ouml;ffentliche R&auml;ume.</div>
-          </div>
-          <div class="dk-leistung-row reveal">
-            <div class="dk-leistung-title">Gesch&auml;ftsausstattung</div>
-            <div class="dk-leistung-desc">Visitenkarten, Briefpapier, E-Mail-Signaturen. Alles aus einem Guss.</div>
-          </div>
-          <div class="dk-leistung-row reveal">
-            <div class="dk-leistung-title">Messe &amp; Veranstaltung</div>
-            <div class="dk-leistung-desc">Messeauftritte, Roll-ups, Give-aways und Eventmaterialien.</div>
-          </div>
-          <div class="dk-leistung-row reveal">
-            <div class="dk-leistung-title">Infografiken &amp; Illustrationen</div>
-            <div class="dk-leistung-desc">Komplexe Inhalte visuell aufbereitet: verst&auml;ndlich und markenkonform.</div>
-          </div>
-          <div class="dk-leistung-row reveal">
-            <div class="dk-leistung-title">Sonderprojekte</div>
-            <div class="dk-leistung-desc">Alles, was sich nicht in eine Schublade stecken l&auml;sst. Wir finden eine L&ouml;sung.</div>
-          </div>
+
         </div>
 
       </div>
     </section>
 
-    <!-- KONDITIONEN -->
-    <section class="dk-section dk-section--red" id="konditionen">
+    <!-- ==================== PERSPEKTIVE (red) ==================== -->
+    <section class="dk-section dk-section--red" id="perspektive">
       <div class="dk-container">
 
-        <span class="dk-label reveal">Was es kostet</span>
-        <h2 class="dk-h2 reveal">Konditionen</h2>
+        <span class="dk-label reveal">Warum wir</span>
+        <h2 class="dk-h2 reveal">Lokal.<br><em>Engagiert.</em><br>Erfahren.</h2>
 
-        <div class="dk-konditionen-layout">
+        <div class="dk-perspektive-grid reveal">
 
-          <div class="reveal">
-            <div class="dk-price-number">95&thinsp;&euro;</div>
-            <div class="dk-price-sub">pro Stunde (netto) &mdash; monatliche Abrechnung nach Aufwand</div>
-            <ul class="dk-list">
-              <li>Abrechnung nach Projekt- und Produktstelle</li>
-              <li>Monatliche &Uuml;bersicht aller geleisteten Stunden</li>
-              <li>Kein Retainer: ihr zahlt nur, was wir wirklich leisten</li>
-              <li>Projektabwicklung &uuml;ber MS Teams</li>
-              <li>Kurze Reaktionszeiten auch bei kurzfristigen Aufgaben</li>
-            </ul>
-            <div class="mt-medium">
-              <a href="mailto:david.c@diekavallerie.de" class="dk-btn dk-btn--white">
-                Angebot annehmen
-              </a>
-            </div>
-          </div>
-
-          <div class="dk-info-blocks reveal">
-            <div class="dk-info-block">
-              <div class="dk-info-block-label">Hauptverantwortung</div>
-              <div class="dk-info-block-value">Eine dedizierte Hauptgrafikerin als feste Ansprechpartnerin</div>
-            </div>
-            <div class="dk-info-block">
-              <div class="dk-info-block-label">Unterst&uuml;tzung</div>
-              <div class="dk-info-block-value">Bei Bedarf: Projektmanagement und Konzept aus unserem Team</div>
-            </div>
-            <div class="dk-info-block">
-              <div class="dk-info-block-label">&Uuml;bergabe</div>
-              <div class="dk-info-block-value">Strukturierte &Uuml;bernahme von Hemmerich Design ab Herbst 2026</div>
-            </div>
-            <div class="dk-info-block">
-              <div class="dk-info-block-label">Briefing</div>
-              <div class="dk-info-block-value">Inhaltliche Steuerung durch euer Marketingteam. Wir setzen um.</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- FAHRPLAN -->
-    <section class="dk-section">
-      <div class="dk-container">
-
-        <span class="dk-label reveal">Wie es l&auml;uft</span>
-        <h2 class="dk-h2 reveal">Fahrplan</h2>
-
-        <div class="dk-timeline">
-          <div class="dk-timeline-item reveal">
-            <div class="dk-timeline-date dk-timeline-date--done">Juli 2026 &#10003;</div>
-            <div>
-              <div class="dk-timeline-title">Kennenlernen erledigt</div>
-              <div class="dk-timeline-desc">Erstes Gespr&auml;ch hat stattgefunden. Wir kennen die Anforderungen, den Kontext und die Erwartungen der Stadtwerke T&uuml;bingen.</div>
-            </div>
-          </div>
-          <div class="dk-timeline-item reveal">
-            <div class="dk-timeline-date">September 2026</div>
-            <div>
-              <div class="dk-timeline-title">R&uuml;ckmeldung der Stadtwerke</div>
-              <div class="dk-timeline-desc">Die Stadtwerke T&uuml;bingen entscheiden im September, ob DIE KAVALLERIE als Grafikagentur an Bord kommt.</div>
-            </div>
-          </div>
-          <div class="dk-timeline-item reveal">
-            <div class="dk-timeline-date">Herbst 2026</div>
-            <div>
-              <div class="dk-timeline-title">&Uuml;bergabe von Hemmerich Design</div>
-              <div class="dk-timeline-desc">Strukturierte &Uuml;bernahme aller Vorlagen, Dateien und laufenden Projekte. Parallel zum Ausstieg von Frau Hemmerich bis Ende 2026.</div>
-            </div>
-          </div>
-          <div class="dk-timeline-item reveal">
-            <div class="dk-timeline-date">Herbst 2026 &ndash; Fr&uuml;hjahr 2027</div>
-            <div>
-              <div class="dk-timeline-title">Probezeit: 6 Monate</div>
-              <div class="dk-timeline-desc">Wir starten mit einer vereinbarten Probezeit von 6 Monaten. Zeit, um Vertrauen aufzubauen, Prozesse einzuspielen und gemeinsam zu wachsen.</div>
-            </div>
-          </div>
-          <div class="dk-timeline-item reveal">
-            <div class="dk-timeline-date">Perspektive</div>
-            <div>
-              <div class="dk-timeline-title">Langfristige Partnerschaft</div>
-              <div class="dk-timeline-desc">Nach der Probezeit: volle Kapazit&auml;t, eingespieltes Team und strategische Weiterentwicklung der Marke.</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- PERSPEKTIVE -->
-    <section class="dk-section dk-section--red">
-      <div class="dk-container">
-
-        <span class="dk-label reveal">Was noch m&ouml;glich ist</span>
-        <h2 class="dk-h2 reveal">Perspektive</h2>
-
-        <div class="dk-perspektive-grid">
-          <div class="dk-perspektive-item reveal">
-            <span class="dk-perspektive-label">Kundenmagazin</span>
-            <div class="dk-perspektive-title">T&uuml;Welt</div>
+          <div class="dk-perspektive-item">
+            <div class="dk-perspektive-label">Lokalit&auml;t</div>
+            <div class="dk-perspektive-title">T&uuml;bingen</div>
             <p class="dk-perspektive-desc">
-              Sollte die grafische Betreuung des T&uuml;Welt-Magazins k&uuml;nftig geb&uuml;ndelt werden,
-              sind wir bereit, auch diesen Bereich zu &uuml;bernehmen. Nahtlos und aus einer Hand.
-            </p>
-            <div class="dk-highlight-box">
-              <div class="dk-highlight-box-label">Proof of Style</div>
-              <div class="dk-highlight-box-text">
-                Wir gestalten 3 Doppelseiten der n&auml;chsten Ausgabe kostenfrei und unverbindlich
-                als Stilprobe. So k&ouml;nnt ihr sehen, wie wir euren Auftritt denken, bevor ihr euch entscheidet.
-              </div>
-            </div>
-          </div>
-          <div class="dk-perspektive-item reveal">
-            <span class="dk-perspektive-label">Digital &amp; Redaktion</span>
-            <div class="dk-perspektive-title">Blog &amp; KI-Radar</div>
-            <p class="dk-perspektive-desc">
-              Themenradar, redaktionelle Unterst&uuml;tzung und KI-gest&uuml;tzte Inhaltsformate.
-              Wenn ihr in die digitale Kommunikation einsteigen wollt, sind wir dabei.
+              Wir sind in T&uuml;bingen verwurzelt. Kurze Wege, pers&ouml;nliche
+              Abstimmung, kein Overhead durch Fernkommunikation.
             </p>
           </div>
+
+          <div class="dk-perspektive-item">
+            <div class="dk-perspektive-label">Erfahrung</div>
+            <div class="dk-perspektive-title">10+ Jahre</div>
+            <p class="dk-perspektive-desc">
+              &Uuml;ber ein Jahrzehnt Erfahrung in der Gestaltung f&uuml;r
+              kommunale Unternehmen und regionale Marken.
+            </p>
+          </div>
+
         </div>
+
+        <div class="dk-highlight-box mt-medium reveal">
+          <div class="dk-highlight-box-label">Referenz</div>
+          <p class="dk-highlight-box-text">
+            Wir haben bereits f&uuml;r mehrere Stadtwerke und kommunale Versorger
+            in Baden-W&uuml;rttemberg gearbeitet &mdash; und wissen, was in diesem
+            Umfeld z&auml;hlt: Verl&auml;sslichkeit, Qualit&auml;t und Diskretion.
+          </p>
+        </div>
+
+        <a href="mailto:david.c@diekavallerie.de" class="dk-btn dk-btn--white mt-medium reveal">
+          Jetzt Kontakt aufnehmen
+        </a>
 
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
+  <!-- ==================== FOOTER ==================== -->
   <footer class="dk-footer">
     <div class="dk-footer-inner">
       <a href="/" class="dk-logo--footer">Die Kavallerie</a>
-      <span class="dk-footer-copy">&copy; 2026 Die Kavallerie</span>
+      <span class="dk-footer-copy">&copy; 2026 Die Kavallerie &mdash; Kommunikationsagentur T&uuml;bingen</span>
     </div>
   </footer>
 
   <script>
-    var reveals = document.querySelectorAll('.reveal');
+    // Scroll reveal
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         }
       });
-    }, { threshold: 0.08 });
-    reveals.forEach(function(el) { observer.observe(el); });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
+    });
   </script>
 
 </body>
