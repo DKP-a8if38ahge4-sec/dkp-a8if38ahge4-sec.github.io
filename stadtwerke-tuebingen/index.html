@@ -131,27 +131,10 @@
       padding: var(--space-xl) 0;
     }
 
-    /* Light section (default) */
-    .section--light {
-      background: var(--color-grey-light);
-    }
-
-    /* White section */
-    .section--white {
-      background: var(--color-white);
-    }
-
-    /* Dark section: near-black bg, white text */
-    .section--dark {
-      background: var(--color-black);
-      color: var(--color-white);
-    }
-
-    /* Red section: red bg, white text only */
-    .section--red {
-      background: var(--color-red);
-      color: var(--color-white);
-    }
+    .section--light  { background: var(--color-grey-light); }
+    .section--white  { background: var(--color-white); }
+    .section--dark   { background: var(--color-black); color: var(--color-white); }
+    .section--red    { background: var(--color-red);   color: var(--color-white); }
 
     hr.divider {
       border: none;
@@ -205,14 +188,10 @@
       line-height: 1.05;
     }
 
-    /* Accent color on light backgrounds */
     .h1 em, .h2 em { color: var(--color-red); font-style: normal; }
 
-    /* On red bg: headlines are white, no em accent needed */
-    .section--red .h2 { color: var(--color-white); }
+    .section--red .h2  { color: var(--color-white); }
     .section--red .h2 em { color: var(--color-white); }
-
-    /* On dark bg: headlines are white */
     .section--dark .h2 { color: var(--color-white); }
 
     /* =============================================
@@ -225,7 +204,7 @@
     }
     .body--wide { max-width: 820px; }
 
-    .section--red .body { color: rgba(255,255,255,0.88); }
+    .section--red .body  { color: rgba(255,255,255,0.88); }
     .section--dark .body { color: rgba(255,255,255,0.75); }
 
     /* =============================================
@@ -248,7 +227,6 @@
       transition: background 0.18s, color 0.18s;
       white-space: nowrap;
     }
-    /* Default: red outline on light bg */
     .btn--red {
       border-color: var(--color-red);
       color: var(--color-red);
@@ -258,17 +236,6 @@
       background: var(--color-red);
       color: var(--color-white);
     }
-    /* Solid red */
-    .btn--red-solid {
-      border-color: var(--color-red);
-      color: var(--color-white);
-      background: var(--color-red);
-    }
-    .btn--red-solid:hover {
-      background: transparent;
-      color: var(--color-red);
-    }
-    /* White outline: on dark/red backgrounds */
     .btn--white {
       border-color: var(--color-white);
       color: var(--color-white);
@@ -278,7 +245,6 @@
       background: var(--color-white);
       color: var(--color-black);
     }
-    /* Arrow icon */
     .btn-arrow {
       width: 16px;
       height: 16px;
@@ -316,11 +282,9 @@
     }
 
     /* =============================================
-       LEISTUNGEN (list rows)
+       LEISTUNGEN
     ============================================= */
-    .leistungen {
-      margin-top: var(--space-m);
-    }
+    .leistungen { margin-top: var(--space-m); }
     .leistung-row {
       display: grid;
       grid-template-columns: 1fr;
@@ -328,9 +292,7 @@
       border-top: 1px solid rgba(29,29,29,0.1);
       padding: var(--space-m) 0;
     }
-    .leistung-row:last-child {
-      border-bottom: 1px solid rgba(29,29,29,0.1);
-    }
+    .leistung-row:last-child { border-bottom: 1px solid rgba(29,29,29,0.1); }
     @media (min-width: 768px) {
       .leistung-row {
         grid-template-columns: 260px 1fr;
@@ -352,7 +314,6 @@
       color: rgba(29,29,29,0.6);
     }
 
-    /* Arrow bullet list */
     .list {
       list-style: none;
       display: flex;
@@ -382,7 +343,7 @@
     }
 
     /* =============================================
-       KONDITIONEN (big number table)
+       KONDITIONEN
     ============================================= */
     .konditionen {
       margin-top: var(--space-m);
@@ -391,9 +352,7 @@
       gap: 2px;
     }
     @media (min-width: 768px) {
-      .konditionen {
-        grid-template-columns: repeat(4, 1fr);
-      }
+      .konditionen { grid-template-columns: repeat(4, 1fr); }
     }
     .kondition-cell {
       background: var(--color-white);
@@ -424,7 +383,7 @@
     }
 
     /* =============================================
-       INFO BLOCKS (on dark section)
+       INFO BLOCKS (dark section)
     ============================================= */
     .info-blocks {
       margin-top: var(--space-m);
@@ -438,9 +397,7 @@
       border-top: 1px solid rgba(255,255,255,0.15);
       padding: var(--space-s) 0;
     }
-    .info-block:last-child {
-      border-bottom: 1px solid rgba(255,255,255,0.15);
-    }
+    .info-block:last-child { border-bottom: 1px solid rgba(255,255,255,0.15); }
     @media (min-width: 640px) {
       .info-block {
         grid-template-columns: 200px 1fr;
@@ -479,9 +436,7 @@
       border-top: 1px solid rgba(29,29,29,0.1);
       padding: var(--space-s) 0;
     }
-    .timeline-item:last-child {
-      border-bottom: 1px solid rgba(29,29,29,0.1);
-    }
+    .timeline-item:last-child { border-bottom: 1px solid rgba(29,29,29,0.1); }
     @media (min-width: 640px) {
       .timeline-item {
         grid-template-columns: 140px 1fr;
@@ -517,8 +472,7 @@
 
     /* =============================================
        PERSPEKTIVE (red section)
-       Rule: on red, use white only. No yellow accents.
-       Big PP Formula numbers/words carry the weight.
+       White only on red. No yellow, no red-on-red.
     ============================================= */
     .perspektive-grid {
       display: grid;
@@ -557,7 +511,7 @@
       max-width: 420px;
     }
 
-    /* Proof-of-style box: white bg on red = maximum contrast */
+    /* White box on red: maximum contrast */
     .proof-box {
       margin-top: var(--space-m);
       background: var(--color-white);
@@ -632,11 +586,11 @@
     }
 
     /* =============================================
-       SPACING UTILITIES
+       UTILITIES
     ============================================= */
-    .mt-s  { margin-top: var(--space-s); }
-    .mt-m  { margin-top: var(--space-m); }
-    .mt-l  { margin-top: var(--space-l); }
+    .mt-s { margin-top: var(--space-s); }
+    .mt-m { margin-top: var(--space-m); }
+    .mt-l { margin-top: var(--space-l); }
 
   </style>
 </head>
@@ -650,7 +604,7 @@
 
   <main>
 
-    <!-- ==================== HERO ==================== -->
+    <!-- HERO -->
     <section class="hero section--light">
       <div class="wrap">
 
@@ -699,7 +653,7 @@
 
     <hr class="divider">
 
-    <!-- ==================== LEISTUNGEN ==================== -->
+    <!-- LEISTUNGEN -->
     <section class="section section--light" id="leistungen">
       <div class="wrap">
 
@@ -772,7 +726,7 @@
       </div>
     </section>
 
-    <!-- ==================== KONDITIONEN ==================== -->
+    <!-- KONDITIONEN -->
     <section class="section section--white" id="konditionen">
       <div class="wrap">
 
@@ -807,7 +761,7 @@
           zwei Vergleichsangebote ein und entscheiden gemeinsam mit euch.
         </p>
 
-        <a href="mailto:david.c@diekavallerie.de" class="btn btn--red mt-m reveal">
+        <a href="mailto:leo@diekavallerie.de?subject=Angebot%20Stadtwerke%20T%C3%BCbingen%20%E2%80%94%20Wir%20nehmen%20an&body=Hallo%20Leo%2C%0A%0Awir%20haben%20euer%20Angebot%20f%C3%BCr%20die%20grafische%20Betreuung%20der%20Stadtwerke%20T%C3%BCbingen%20erhalten%20und%20m%C3%B6chten%20es%20annehmen.%0A%0ABitte%20meldet%20euch%2C%20damit%20wir%20die%20n%C3%A4chsten%20Schritte%20besprechen%20k%C3%B6nnen.%0A%0AViele%20Gr%C3%BC%C3%9Fe%2C%0AStadtwerke%20T%C3%BCbingen" class="btn btn--red mt-m reveal">
           Angebot annehmen
           <svg class="btn-arrow" viewBox="0 0 17.8 17.8" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M2.36 12.563l10.226.022L12.563 2.36h-1.91l.067 7.057L1.326 0 0 1.326l9.417 9.394-7.057-.067z" transform="translate(0 8.899) rotate(-45)" fill="currentColor"/>
@@ -817,7 +771,7 @@
       </div>
     </section>
 
-    <!-- ==================== TEAM (dark section) ==================== -->
+    <!-- TEAM (dark section) -->
     <section class="section section--dark" id="team">
       <div class="wrap">
 
@@ -851,7 +805,7 @@
       </div>
     </section>
 
-    <!-- ==================== TIMELINE ==================== -->
+    <!-- TIMELINE -->
     <section class="section section--light" id="ablauf">
       <div class="wrap">
 
@@ -898,7 +852,7 @@
       </div>
     </section>
 
-    <!-- ==================== PERSPEKTIVE (red) ==================== -->
+    <!-- PERSPEKTIVE (red) -->
     <section class="section section--red" id="perspektive">
       <div class="wrap">
 
@@ -927,7 +881,6 @@
 
         </div>
 
-        <!-- White box on red: maximum contrast, no yellow border -->
         <div class="proof-box reveal">
           <div class="proof-box-label">Proof of Style</div>
           <div class="proof-box-title">T&uuml;Welt &mdash; Kundenmagazin</div>
@@ -938,7 +891,7 @@
           </p>
         </div>
 
-        <a href="mailto:david.c@diekavallerie.de" class="btn btn--white mt-m reveal">
+        <a href="mailto:leo@diekavallerie.de?subject=Anfrage%20Stadtwerke%20T%C3%BCbingen%20%E2%80%94%20Grafik%20%26%20Print&body=Hallo%20Leo%2C%0A%0Awir%20haben%20euer%20Angebot%20gesehen%20und%20haben%20R%C3%BCckfragen%20bzw.%20m%C3%B6chten%20einen%20Termin%20vereinbaren.%0A%0ABitte%20meldet%20euch%20bei%20uns.%0A%0AViele%20Gr%C3%BC%C3%9Fe%2C%0AStadtwerke%20T%C3%BCbingen" class="btn btn--white mt-m reveal">
           Jetzt Kontakt aufnehmen
           <svg class="btn-arrow" viewBox="0 0 17.8 17.8" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M2.36 12.563l10.226.022L12.563 2.36h-1.91l.067 7.057L1.326 0 0 1.326l9.417 9.394-7.057-.067z" transform="translate(0 8.899) rotate(-45)" fill="currentColor"/>
