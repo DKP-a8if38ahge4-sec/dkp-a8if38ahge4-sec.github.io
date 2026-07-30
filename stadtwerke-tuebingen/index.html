@@ -1,1 +1,816 @@
-<?python3 open('/home/user/stadtwerke_contrast.html').read() ?>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Angebot Stadtwerke T&uuml;bingen &mdash; Die Kavallerie</title>
+  <style>
+
+    /* =============================================
+       FONTS
+    ============================================= */
+    @font-face {
+      font-family: 'Helvetica Now Display';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('../dk-designsystem/assets/fonts/HelveticaNowDisplay-Regular.woff2') format('woff2'),
+           url('../dk-designsystem/assets/fonts/HelveticaNowDisplay-Regular.woff') format('woff');
+    }
+    @font-face {
+      font-family: 'Helvetica Now Display';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('../dk-designsystem/assets/fonts/DK_HelveticaNow_Text_75_Bold.otf') format('opentype');
+    }
+    @font-face {
+      font-family: 'PP Formula Condensed';
+      font-style: normal;
+      font-weight: 900;
+      font-display: swap;
+      src: url('../dk-designsystem/assets/fonts/DK_PPFormula_93_Black.woff2') format('woff2'),
+           url('../dk-designsystem/assets/fonts/DK_PPFormula_93_Black.woff') format('woff');
+    }
+
+    /* =============================================
+       TOKENS
+    ============================================= */
+    :root {
+      --color-white:      #FFFFFF;
+      --color-black:      #1D1D1D;
+      --color-grey-light: #F2F4F7;
+      --color-grey-mid:   #E0E3E9;
+      --color-red:        #FF003C;
+
+      --font-headline: 'PP Formula Condensed', 'Arial Narrow', Arial, sans-serif;
+      --font-base:     'Helvetica Now Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+      --space-xs:  16px;
+      --space-s:   24px;
+      --space-m:   40px;
+      --space-l:   64px;
+      --space-xl:  96px;
+      --space-2xl: 160px;
+
+      --container-max: 1280px;
+      --container-pad: 24px;
+      --header-h:      72px;
+
+      --radius-pill: 59px;
+    }
+
+    @media (min-width: 768px) {
+      :root {
+        --container-pad: 48px;
+        --space-xl:  120px;
+        --space-2xl: 200px;
+      }
+    }
+
+    /* =============================================
+       RESET
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--color-grey-light);
+      color: var(--color-black);
+      font-family: var(--font-base);
+      font-size: 18px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* =============================================
+       HEADER
+    ============================================= */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      background: var(--color-grey-light);
+      border-bottom: 1px solid rgba(29,29,29,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--container-pad);
+      z-index: 200;
+    }
+    .header-logo {
+      font-family: var(--font-headline);
+      font-size: 18px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      color: var(--color-black);
+      line-height: 1;
+    }
+    .header-tag {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-black);
+      opacity: 0.4;
+    }
+
+    /* =============================================
+       LAYOUT HELPERS
+    ============================================= */
+    main { margin-top: var(--header-h); }
+
+    .wrap {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--container-pad);
+    }
+
+    .section {
+      padding: var(--space-xl) 0;
+    }
+
+    .section--light  { background: var(--color-grey-light); }
+    .section--white  { background: var(--color-white); }
+    .section--dark   { background: var(--color-black); color: var(--color-white); }
+    .section--red    { background: var(--color-red);   color: var(--color-white); }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid rgba(29,29,29,0.1);
+    }
+
+    /* =============================================
+       EYEBROW LABEL
+    ============================================= */
+    .label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--color-black);
+      opacity: 0.4;
+      margin-bottom: var(--space-s);
+    }
+    .section--dark .label,
+    .section--red .label {
+      color: var(--color-white);
+      opacity: 0.75;
+    }
+
+    /* =============================================
+       HEADLINES
+    ============================================= */
+    .h1 {
+      font-family: var(--font-headline);
+      font-size: clamp(56px, 10vw, 130px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: var(--color-black);
+    }
+    .h2 {
+      font-family: var(--font-headline);
+      font-size: clamp(40px, 6vw, 90px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+    }
+    .h3 {
+      font-family: var(--font-headline);
+      font-size: clamp(28px, 4vw, 50px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.05;
+    }
+
+    .h1 em, .h2 em { color: var(--color-red); font-style: normal; }
+
+    .section--red .h2  { color: var(--color-white); }
+    .section--red .h2 em { color: var(--color-white); }
+    .section--dark .h2 { color: var(--color-white); }
+
+    /* =============================================
+       BODY TEXT
+    ============================================= */
+    .body {
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 640px;
+    }
+    .body--wide { max-width: 820px; }
+    .section--red .body  { color: var(--color-white); opacity: 1; }
+    .section--dark .body { color: rgba(255,255,255,0.75); }
+
+    /* =============================================
+       DIVIDER ROW
+    ============================================= */
+    .row-divider {
+      border-top: 1px solid rgba(29,29,29,0.1);
+    }
+    .section--red .row-divider,
+    .section--dark .row-divider {
+      border-top-color: rgba(255,255,255,0.15);
+    }
+
+    /* =============================================
+       LEISTUNGEN
+    ============================================= */
+    .leistungen {
+      margin-top: var(--space-m);
+      display: flex;
+      flex-direction: column;
+    }
+    .leistung-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-s);
+      border-top: 1px solid rgba(29,29,29,0.1);
+      padding: var(--space-m) 0;
+    }
+    @media (min-width: 768px) {
+      .leistung-row {
+        grid-template-columns: 280px 1fr;
+        gap: var(--space-l);
+        align-items: start;
+      }
+    }
+    .leistung-title {
+      font-family: var(--font-headline);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.05;
+      color: var(--color-black);
+    }
+    .leistung-desc {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--color-black);
+      opacity: 0.7;
+      margin-bottom: var(--space-s);
+    }
+
+    /* =============================================
+       LIST
+    ============================================= */
+    .list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .list li {
+      font-size: 15px;
+      line-height: 1.5;
+      padding-left: 20px;
+      position: relative;
+      opacity: 0.7;
+    }
+    .list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-red);
+    }
+
+    /* =============================================
+       ANGEBOT / DETAILS TABLE
+    ============================================= */
+    .details-grid {
+      margin-top: var(--space-m);
+      display: flex;
+      flex-direction: column;
+    }
+    .info-block {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding: var(--space-s) 0;
+    }
+    .info-block:last-child { border-bottom: 1px solid rgba(255,255,255,0.15); }
+    @media (min-width: 640px) {
+      .info-block {
+        grid-template-columns: 200px 1fr;
+        align-items: baseline;
+        gap: var(--space-m);
+      }
+    }
+    .info-block-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.75);
+      padding-top: 4px;
+    }
+    .info-block-value {
+      font-family: var(--font-headline);
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.1;
+      color: var(--color-white);
+    }
+
+    /* =============================================
+       BUTTON
+    ============================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-base);
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      text-decoration: none;
+    }
+    .btn--red {
+      background: var(--color-red);
+      color: var(--color-white);
+      border-color: var(--color-red);
+    }
+    .btn--red:hover {
+      background: transparent;
+      color: var(--color-red);
+    }
+    .btn--outline {
+      background: transparent;
+      color: var(--color-black);
+      border-color: var(--color-black);
+    }
+    .btn--outline:hover {
+      background: var(--color-black);
+      color: var(--color-white);
+    }
+    .btn--white {
+      background: var(--color-white);
+      color: var(--color-black);
+      border-color: var(--color-white);
+    }
+    .btn--white:hover {
+      background: transparent;
+      color: var(--color-white);
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+    }
+    .hero-meta {
+      margin-top: var(--space-l);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-m);
+    }
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .hero-meta-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      opacity: 0.4;
+    }
+    .hero-meta-value {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    /* =============================================
+       TIMELINE
+    ============================================= */
+    .timeline {
+      margin-top: var(--space-m);
+      display: flex;
+      flex-direction: column;
+    }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      border-top: 1px solid rgba(29,29,29,0.1);
+      padding: var(--space-s) 0;
+    }
+    @media (min-width: 640px) {
+      .timeline-item {
+        grid-template-columns: 140px 1fr;
+        align-items: start;
+      }
+    }
+    .timeline-date {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.4;
+      padding-top: 4px;
+    }
+    .timeline-date--done {
+      color: var(--color-red);
+      opacity: 1;
+      font-weight: 700;
+    }
+    .timeline-title {
+      font-family: var(--font-headline);
+      font-size: 26px;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    @media (min-width: 640px) {
+      .timeline-title {
+        font-size: 36px;
+      }
+    }
+    .timeline-desc {
+      font-size: 16px;
+      opacity: 0.6;
+      line-height: 1.55;
+    }
+
+    /* =============================================
+       PERSPEKTIVE (red section)
+    ============================================= */
+    .perspektive-rows {
+      margin-top: var(--space-m);
+      display: flex;
+      flex-direction: column;
+    }
+    .perspektive-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-s);
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding: var(--space-m) 0;
+    }
+    @media (min-width: 640px) {
+      .perspektive-row {
+        grid-template-columns: 280px 1fr;
+        gap: var(--space-l);
+        align-items: baseline;
+      }
+    }
+    .perspektive-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.75);
+    }
+    .perspektive-title {
+      font-family: var(--font-headline);
+      font-size: clamp(48px, 7vw, 96px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.0;
+      color: var(--color-white);
+    }
+    .perspektive-desc {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--color-white);
+      max-width: 420px;
+    }
+
+    /* White box on red: maximum contrast */
+    .proof-box {
+      margin-top: var(--space-m);
+      background: var(--color-white);
+      padding: var(--space-m);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-s);
+    }
+    .proof-box-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--color-black);
+      opacity: 0.4;
+    }
+    .proof-box-text {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--color-black);
+      max-width: 720px;
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .footer {
+      background: var(--color-black);
+      color: var(--color-white);
+      padding: var(--space-l) 0;
+    }
+    .footer-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--container-pad);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-s);
+    }
+    .footer-logo {
+      font-family: var(--font-headline);
+      font-size: 18px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--color-white);
+      letter-spacing: 0.01em;
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* =============================================
+       SCROLL REVEAL
+    ============================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* =============================================
+       UTILITIES
+    ============================================= */
+    .mt-s { margin-top: var(--space-s); }
+    .mt-m { margin-top: var(--space-m); }
+    .mt-l { margin-top: var(--space-l); }
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <span class="header-logo">Die Kavallerie</span>
+    <span class="header-tag">Angebot Stadtwerke T&uuml;bingen</span>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero section--light">
+      <div class="wrap">
+
+        <span class="label reveal">Angebot &mdash; Juli 2026</span>
+
+        <h1 class="h1 reveal">
+          Grafik &amp; Print<br>
+          f&uuml;r <em>Stadtwerke</em><br>
+          T&uuml;bingen.
+        </h1>
+
+        <p class="body mt-m reveal">
+          Wir kennen T&uuml;bingen. Wir leben T&uuml;bingen. Als lokale Kommunikationsagentur
+          gestalten wir Print und Grafik f&uuml;r Unternehmen, die in dieser Stadt verwurzelt sind
+          &mdash; mit dem Anspruch, dass jedes Druckst&uuml;ck die Qualit&auml;t eurer Marke widerspiegelt.
+        </p>
+
+        <div class="hero-meta reveal">
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Auftraggeber</span>
+            <span class="hero-meta-value">Stadtwerke T&uuml;bingen GmbH</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Agentur</span>
+            <span class="hero-meta-value">Die Kavallerie, T&uuml;bingen</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Angebotsdatum</span>
+            <span class="hero-meta-value">Juli 2026</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- LEISTUNGEN -->
+    <section class="section section--white" id="leistungen">
+      <div class="wrap">
+
+        <span class="label reveal">Leistungen</span>
+        <h2 class="h2 reveal">Was wir<br>f&uuml;r euch tun.</h2>
+
+        <div class="leistungen reveal">
+
+          <div class="leistung-row">
+            <div class="leistung-title">Grafik&shy;design</div>
+            <div>
+              <p class="leistung-desc">
+                Konzeption und Gestaltung aller Printmaterialien &mdash; von der Visitenkarte
+                bis zur Gesch&auml;ftsausstattung. Konsistent, markenstark, druckfertig.
+              </p>
+              <ul class="list">
+                <li>Corporate Design Pflege &amp; Weiterentwicklung</li>
+                <li>Gesch&auml;ftsausstattung (Briefpapier, Kuverts, Visitenkarten)</li>
+                <li>Vorlagen f&uuml;r interne Kommunikation</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="leistung-row">
+            <div class="leistung-title">Print&shy;produktion</div>
+            <div>
+              <p class="leistung-desc">
+                Druckdatenerstellung, Druckerkoordination und Qualit&auml;tskontrolle.
+                Wir &uuml;bernehmen den gesamten Produktionsprozess.
+              </p>
+              <ul class="list">
+                <li>Druckfertige PDF-Erstellung nach Druckerspezifikation</li>
+                <li>Angebots&shy;einholung &amp; Druckerkoordination</li>
+                <li>Qualit&auml;tskontrolle vor Auslieferung</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="leistung-row">
+            <div class="leistung-title">Redak&shy;tionelle Unter&shy;st&uuml;tzung</div>
+            <div>
+              <p class="leistung-desc">
+                Texterstellung und -lektorat f&uuml;r Printmedien &mdash; klar, zielgruppengerecht
+                und im Ton eurer Marke.
+              </p>
+              <ul class="list">
+                <li>Texterstellung f&uuml;r Brosch&uuml;ren, Flyer und Magazine</li>
+                <li>Lektorat und Korrektorat</li>
+                <li>Abstimmung mit eurer Pressestelle</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ABLAUF -->
+    <section class="section section--light" id="ablauf">
+      <div class="wrap">
+
+        <span class="label reveal">Ablauf</span>
+        <h2 class="h2 reveal">So arbeiten<br>wir zusammen.</h2>
+
+        <div class="timeline reveal">
+
+          <div class="timeline-item">
+            <div class="timeline-date timeline-date--done">Woche 1</div>
+            <div>
+              <div class="timeline-title">Kick-off &amp; Briefing</div>
+              <p class="timeline-desc">
+                Gemeinsames Onboarding: Wir lernen eure Marke, eure Prozesse
+                und eure Druckpartner kennen.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">Woche 2&ndash;3</div>
+            <div>
+              <div class="timeline-title">Konzeption &amp; Entwurf</div>
+              <p class="timeline-desc">
+                Erste Gestaltungsentwurfe, Abstimmungsrunde, Freigabe.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">Woche 4</div>
+            <div>
+              <div class="timeline-title">Produktion &amp; Druck</div>
+              <p class="timeline-desc">
+                Druckdatenerstellung, Beauftragung der Druckerei, Qualit&auml;tskontrolle.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">Laufend</div>
+            <div>
+              <div class="timeline-title">Partnerschaft</div>
+              <p class="timeline-desc">
+                Kontinuierliche Betreuung, schnelle Reaktionszeiten, direkter Draht
+                zu eurem Ansprechpartner bei Die Kavallerie.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PERSPEKTIVE -->
+    <section class="section section--red" id="perspektive">
+      <div class="wrap">
+
+        <span class="label reveal">Warum wir</span>
+        <h2 class="h2 reveal">
+          Lokal.<br>
+          Engagiert.<br>
+          Erfahren.
+        </h2>
+
+        <div class="perspektive-rows reveal">
+
+          <div class="perspektive-row">
+            <div>
+              <div class="perspektive-label">T&uuml;bingen</div>
+              <div class="perspektive-title">Lokal</div>
+            </div>
+            <p class="perspektive-desc">
+              Wir sind in T&uuml;bingen verwurzelt. Kurze Wege, pers&ouml;nliche Abstimmung,
+              kein Overhead durch Fernkommunikation.
+            </p>
+          </div>
+
+          <div class="perspektive-row">
+            <div>
+              <div class="perspektive-label">Erfahrung</div>
+              <div class="perspektive-title">10+ Jahre</div>
+            </div>
+            <p class="perspektive-desc">
+              &Uuml;ber ein Jahrzehnt Erfahrung in der Gestaltung f&uuml;r
+              kommunale Unternehmen und regionale Marken.
+            </p>
+          </div>
+
+          <div class="perspektive-row">
+            <div>
+              <div class="perspektive-label">Angebot</div>
+              <div class="perspektive-title">Proof of Style</div>
+            </div>
+            <p class="perspektive-desc">
+              Wir gestalten 3 Doppelseiten der n&auml;chsten T&uuml;Welt-Ausgabe kostenfrei
+              und unverbindlich als Stilprobe &mdash; damit ihr sehen k&ouml;nnt, wie wir euren
+              Auftritt denken, bevor ihr euch entscheidet.
+            </p>
+          </div>
+
+        </div>
+
+        <a href="mailto:leo@diekavallerie.de?subject=Angebot%20Stadtwerke%20T%C3%BCbingen%20%E2%80%93%20R%C3%BCckmeldung&body=Hallo%20Leo%2C%0A%0Awir%20haben%20das%20Angebot%20von%20Die%20Kavallerie%20f%C3%BCr%20Grafik%20%26%20Print%20erhalten%20und%20m%C3%B6chten%20gerne%20das%20n%C3%A4chste%20Gespr%C3%A4ch%20vereinbaren.%0A%0AViele%20Gr%C3%BC%C3%9Fe%2C%0A%5BIhr%20Name%5D" class="btn btn--white mt-m reveal">
+          Jetzt Kontakt aufnehmen &#8594;
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-logo">Die Kavallerie</span>
+      <span class="footer-copy">&copy; 2026 Die Kavallerie &mdash; Kommunikationsagentur T&uuml;bingen</span>
+    </div>
+  </footer>
+
+  <script>
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
