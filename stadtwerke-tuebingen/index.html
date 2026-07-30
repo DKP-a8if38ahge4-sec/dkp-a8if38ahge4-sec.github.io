@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stadtwerke T&uuml;bingen &mdash; Angebot Die Kavallerie</title>
+  <style>
+    /* === TOKENS === */
+    :root {
+      --color-red: #FF003C;
+      --color-black: #1D1D1D;
+      --color-grey-light: #F2F4F7;
+      --color-white: #FFFFFF;
+      --color-yellow: #FFFF00;
+      --font-headline: 'PP Formula Condensed', 'Arial Narrow', Arial, sans-serif;
+      --font-base: 'Helvetica Now Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --space-small: 25px;
+      --space-medium: 35px;
+      --space-large: 45px;
+      --space-xlarge: 90px;
+      --border-radius-default: 19px;
+      --border-radius-pill: 59px;
+    }
+
+    @media (min-width: 1200px) {
+      :root {
+        --space-small: 50px;
+        --space-medium: 75px;
+        --space-large: 90px;
+        --space-xlarge: 180px;
+      }
+    }
+
+    /* === RESET === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--color-grey-light);
+      color: var(--color-black);
+      font-family: var(--font-base);
+      font-size: 18px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* === HEADER === */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 80px;
+      background: var(--color-grey-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 100;
+      border-bottom: 1px solid rgba(29,29,29,0.1);
+    }
+
+    .header-logo {
+      font-family: var(--font-headline);
+      font-size: 22px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--color-black);
+      text-decoration: none;
+    }
+
+    .header-logo span {
+      color: var(--color-red);
+    }
+
+    .header-tag {
+      font-size: 13px;
+      color: var(--color-black);
+      opacity: 0.5;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* === MAIN === */
+    main {
+      margin-top: 80px;
+    }
+
+    /* === CONTAINER === */
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .container--small {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* === SECTIONS === */
+    .section {
+      padding: var(--space-xlarge) 0;
+    }
+
+    .section--red {
+      background: var(--color-red);
+      color: var(--color-white);
+    }
+
+    .section--dark {
+      background: var(--color-black);
+      color: var(--color-white);
+    }
+
+    /* === HERO === */
+    .hero {
+      padding: var(--space-xlarge) 0;
+      padding-top: calc(var(--space-xlarge) + 20px);
+    }
+
+    .hero-eyebrow {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-red);
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .hero-headline {
+      font-family: var(--font-headline);
+      font-size: clamp(64px, 10vw, 160px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.9;
+      letter-spacing: -0.01em;
+      color: var(--color-black);
+      margin-bottom: 40px;
+    }
+
+    .hero-headline em {
+      color: var(--color-red);
+      font-style: normal;
+    }
+
+    .hero-sub {
+      font-size: 20px;
+      line-height: 1.5;
+      max-width: 600px;
+      margin-bottom: 48px;
+      opacity: 0.75;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(29,29,29,0.15);
+    }
+
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .hero-meta-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.45;
+    }
+
+    .hero-meta-value {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    /* === BUTTONS === */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: var(--border-radius-pill);
+      border: 2px solid var(--color-red);
+      color: var(--color-red);
+      background: transparent;
+      font-family: var(--font-base);
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--color-red);
+      color: var(--color-white);
+    }
+
+    .btn--white {
+      border-color: var(--color-white);
+      color: var(--color-white);
+    }
+
+    .btn--white:hover {
+      background: var(--color-white);
+      color: var(--color-red);
+    }
+
+    /* === SECTION LABEL === */
+    .section-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      opacity: 0.45;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .section--red .section-label,
+    .section--dark .section-label {
+      opacity: 0.6;
+    }
+
+    /* === SECTION HEADLINE === */
+    .section-headline {
+      font-family: var(--font-headline);
+      font-size: clamp(40px, 6vw, 90px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--space-medium);
+    }
+
+    /* === INTRO TEXT === */
+    .intro-text {
+      font-size: 22px;
+      line-height: 1.55;
+      max-width: 680px;
+    }
+
+    /* === LEISTUNGEN GRID === */
+    .leistungen-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2px;
+      margin-top: var(--space-medium);
+    }
+
+    @media (min-width: 768px) {
+      .leistungen-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 1100px) {
+      .leistungen-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .leistung-item {
+      background: var(--color-white);
+      padding: 32px;
+      border-radius: var(--border-radius-default);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.2s ease;
+    }
+
+    .leistung-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .leistung-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--color-red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .leistung-icon svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: white;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .leistung-title {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .leistung-desc {
+      font-size: 14px;
+      opacity: 0.6;
+      line-height: 1.5;
+    }
+
+    /* === KONDITIONEN === */
+    .konditionen-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-top: var(--space-medium);
+    }
+
+    @media (min-width: 900px) {
+      .konditionen-layout {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+      }
+    }
+
+    .kondition-card {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: var(--border-radius-default);
+      padding: 40px;
+    }
+
+    .kondition-price {
+      font-family: var(--font-headline);
+      font-size: clamp(60px, 8vw, 110px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .kondition-price-sub {
+      font-size: 14px;
+      opacity: 0.7;
+      margin-bottom: 32px;
+    }
+
+    .kondition-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .kondition-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .kondition-list li::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      background: var(--color-yellow);
+      border-radius: 50%;
+      margin-top: 2px;
+    }
+
+    .kondition-info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .kondition-info-block {
+      border-left: 3px solid rgba(255,255,255,0.3);
+      padding-left: 20px;
+    }
+
+    .kondition-info-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.55;
+      margin-bottom: 6px;
+    }
+
+    .kondition-info-value {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    /* === TEAM === */
+    .team-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: var(--space-medium);
+    }
+
+    @media (min-width: 768px) {
+      .team-layout {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .team-card {
+      background: var(--color-white);
+      border-radius: var(--border-radius-default);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .team-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--color-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-headline);
+      font-size: 22px;
+      font-weight: 900;
+      color: white;
+      text-transform: uppercase;
+    }
+
+    .team-name {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .team-role {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-red);
+    }
+
+    .team-desc {
+      font-size: 15px;
+      opacity: 0.65;
+      line-height: 1.55;
+    }
+
+    /* === TIMELINE === */
+    .timeline {
+      margin-top: var(--space-medium);
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 32px;
+      padding: 32px 0;
+      border-bottom: 1px solid rgba(29,29,29,0.1);
+      align-items: start;
+    }
+
+    .timeline-item:last-child {
+      border-bottom: none;
+    }
+
+    .timeline-date {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.45;
+      padding-top: 4px;
+    }
+
+    .timeline-content-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .timeline-content-desc {
+      font-size: 15px;
+      opacity: 0.65;
+      line-height: 1.5;
+    }
+
+    /* === PERSPEKTIVE === */
+    .perspektive-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2px;
+      margin-top: var(--space-medium);
+    }
+
+    @media (min-width: 768px) {
+      .perspektive-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .perspektive-item {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--border-radius-default);
+      padding: 36px;
+    }
+
+    .perspektive-item-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.5;
+      margin-bottom: 16px;
+    }
+
+    .perspektive-item-title {
+      font-family: var(--font-headline);
+      font-size: 36px;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .perspektive-item-desc {
+      font-size: 15px;
+      opacity: 0.7;
+      line-height: 1.55;
+    }
+
+    /* === CTA === */
+    .cta-inner {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-inner .section-headline {
+      margin-bottom: 24px;
+    }
+
+    .cta-inner p {
+      font-size: 18px;
+      opacity: 0.75;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* === FOOTER === */
+    footer {
+      background: var(--color-black);
+      color: var(--color-white);
+      padding: 48px 24px;
+    }
+
+    .footer-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-logo {
+      font-family: var(--font-headline);
+      font-size: 20px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--color-white);
+      text-decoration: none;
+    }
+
+    .footer-logo span { color: var(--color-red); }
+
+    .footer-copy {
+      font-size: 13px;
+      opacity: 0.4;
+    }
+
+    /* === SCROLL REVEAL === */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="/" class="header-logo">Die <span>Kavallerie</span></a>
+    <span class="header-tag">Angebot &mdash; Stadtwerke T&uuml;bingen</span>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <span class="hero-eyebrow reveal">Angebot &mdash; Juli 2026</span>
+        <h1 class="hero-headline reveal">
+          Grafik &amp;<br><em>Print</em><br>f&uuml;r T&uuml;bingen.
+        </h1>
+        <p class="hero-sub reveal">
+          Wir kennen T&uuml;bingen. Wir leben T&uuml;bingen. Als lokale Kommunikationsagentur
+          f&uuml;hren wir euren Markenauftritt sorgf&auml;ltig, zuverl&auml;ssig und mit
+          h&ouml;chstem Qualit&auml;tsanspruch fort.
+        </p>
+        <a href="#konditionen" class="btn reveal">
+          Zum Angebot
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+        <div class="hero-meta reveal">
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Standort</span>
+            <span class="hero-meta-value">T&uuml;bingen</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Projektstart</span>
+            <span class="hero-meta-value">Herbst 2026</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Abrechnung</span>
+            <span class="hero-meta-value">95 EUR / Std. monatlich</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Kommunikation</span>
+            <span class="hero-meta-value">MS Teams</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEISTUNGEN -->
+    <section class="section">
+      <div class="container">
+        <span class="section-label reveal">Was wir machen</span>
+        <h2 class="section-headline reveal">Leistungen</h2>
+        <p class="intro-text reveal">
+          Von der Visitenkarte bis zur Gro&szlig;fl&auml;che &mdash; wir &uuml;bernehmen
+          die gesamte grafische Produktion und halten euren Markenauftritt
+          konsistent und hochwertig.
+        </p>
+
+        <div class="leistungen-grid">
+
+          <div class="leistung-item reveal">
+            <div class="leistung-icon">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="leistung-title">Flyer, Broschueren &amp; Folder</div>
+            <div class="leistung-desc">Printmaterialien in eurer Corporate Identity &mdash; sauber, schnell, druckfertig.</div>
+          </div>
+
+          <div class="leistung-item reveal">
+            <div class="leistung-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <div class="leistung-title">Anzeigen</div>
+            <div class="leistung-desc">Print- und Digitalanzeigen f&uuml;r regionale und &uuml;berregionale Medien.</div>
+          </div>
+
+          <div class="leistung-item reveal">
+            <div class="leistung-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div class="leistung-title">Plakate &amp; Gro&szlig;fl&auml;chen</div>
+            <div class="leistung-desc">Aufmerksamkeitsstarke Motive f&uuml;r den Au&szlig;enauftritt in T&uuml;bingen und der Region.</div>
+          </div>
+
+          <div class="leistung-item reveal">
+            <div class="leistung-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="leistung-title">Schilder &amp; Beschilderung</div>
+            <div class="leistung-desc">Orientierungssysteme und Leitsysteme im Stadtwerke-Design.</div>
+          </div>
+
+          <div class="leistung-item reveal">
+            <div class="leistung-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+            </div>
+            <div class="leistung-title">Ausstellungen &amp; Tafeln</div>
+            <div class="leistung-desc">Ausstellungsdesign und Informationstafeln f&uuml;r Events und &ouml;ffentliche R&auml;ume.</div>
+          </div>
+
+          <div class="leistung-item reveal">
+            <div class="leistung-icon">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="leistung-title">Gesch&auml;ftsausstattung</div>
+            <div class="leistung-desc">Visitenkarten, Briefpapier, E-Mail-Signaturen &mdash; alles aus einem Guss.</div>
+          </div>
+
+          <div class="leistung-item reveal">
+            <div class="leistung-icon">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="leistung-title">Messe &amp; Veranstaltung</div>
+            <div class="leistung-desc">Messeauftritte, Roll-ups, Give-aways und Eventmaterialien.</div>
+          </div>
+
+          <div class="leistung-item reveal">
+            <div class="leistung-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="leistung-title">Infografiken &amp; Illustrationen</div>
+            <div class="leistung-desc">Komplexe Inhalte visuell aufbereitet &mdash; verst&auml;ndlich und markenkonform.</div>
+          </div>
+
+          <div class="leistung-item reveal">
+            <div class="leistung-icon">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="leistung-title">Sonderprojekte</div>
+            <div class="leistung-desc">Alles, was sich nicht in eine Schublade stecken l&auml;sst &mdash; wir finden eine L&ouml;sung.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- KONDITIONEN -->
+    <section class="section section--red" id="konditionen">
+      <div class="container">
+        <span class="section-label reveal">Was es kostet</span>
+        <h2 class="section-headline reveal">Konditionen</h2>
+
+        <div class="konditionen-layout">
+          <div class="kondition-card reveal">
+            <div class="kondition-price">95&thinsp;&euro;</div>
+            <div class="kondition-price-sub">pro Stunde &mdash; monatliche Abrechnung nach Aufwand</div>
+            <ul class="kondition-list">
+              <li>Abrechnung nach Projekt- und Produktstelle</li>
+              <li>Monatliche &Uuml;bersicht aller geleisteten Stunden</li>
+              <li>Kein Retainer &mdash; ihr zahlt nur, was wir wirklich leisten</li>
+              <li>Projektabwicklung &uuml;ber MS Teams</li>
+              <li>Kurze Reaktionszeiten auch bei kurzfristigen Aufgaben</li>
+            </ul>
+          </div>
+
+          <div class="kondition-info reveal">
+            <div class="kondition-info-block">
+              <div class="kondition-info-label">Hauptverantwortung</div>
+              <div class="kondition-info-value">Eine dedizierte Hauptgrafikerin als feste Ansprechpartnerin</div>
+            </div>
+            <div class="kondition-info-block">
+              <div class="kondition-info-label">Unterst&uuml;tzung</div>
+              <div class="kondition-info-value">Bei Bedarf: Projektmanagement und Konzept aus unserem Team</div>
+            </div>
+            <div class="kondition-info-block">
+              <div class="kondition-info-label">&Uuml;bergabe</div>
+              <div class="kondition-info-value">Strukturierte &Uuml;bergabe von Hemmerich Design ab Herbst 2026</div>
+            </div>
+            <div class="kondition-info-block">
+              <div class="kondition-info-label">Briefing</div>
+              <div class="kondition-info-value">Inhaltliche Steuerung durch euer Marketingteam &mdash; wir setzen um</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="section">
+      <div class="container">
+        <span class="section-label reveal">Wie es l&auml;uft</span>
+        <h2 class="section-headline reveal">Fahrplan</h2>
+
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-date">Jetzt</div>
+            <div>
+              <div class="timeline-content-title">Kennenlernen &amp; Briefing</div>
+              <div class="timeline-content-desc">Pers&ouml;nliches Gespr&auml;ch, Einblick in bestehende Materialien und Markenrichtlinien von Hemmerich.</div>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-date">Sommer 2026</div>
+            <div>
+              <div class="timeline-content-title">Vorbereitung &amp; &Uuml;bergabe</div>
+              <div class="timeline-content-desc">Strukturierte &Uuml;bernahme aller Vorlagen, Dateien und laufenden Projekte von Hemmerich Design.</div>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-date">Herbst 2026</div>
+            <div>
+              <div class="timeline-content-title">Produktionsstart</div>
+              <div class="timeline-content-desc">Volle Kapazit&auml;t ab Herbst &mdash; eure Grafikerin ist eingespielt, die Prozesse stehen, es kann losgehen.</div>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-date">Perspektive</div>
+            <div>
+              <div class="timeline-content-title">Strategische Weiterentwicklung</div>
+              <div class="timeline-content-desc">Wenn der Zeitpunkt kommt, begleiten wir auch die Weiterentwicklung eurer Marke &mdash; von der Analyse bis zur Umsetzung.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERSPEKTIVE -->
+    <section class="section section--dark">
+      <div class="container">
+        <span class="section-label reveal">Was noch m&ouml;glich ist</span>
+        <h2 class="section-headline reveal">Perspektive</h2>
+
+        <div class="perspektive-grid">
+          <div class="perspektive-item reveal">
+            <div class="perspektive-item-label">Kundenmagazin</div>
+            <div class="perspektive-item-title">T&uuml;Welt</div>
+            <div class="perspektive-item-desc">
+              Sollte die grafische Betreuung des T&uuml;Welt-Magazins k&uuml;nftig geb&uuml;ndelt werden,
+              sind wir bereit, auch diesen Bereich zu &uuml;bernehmen &mdash; nahtlos und aus einer Hand.
+            </div>
+          </div>
+          <div class="perspektive-item reveal">
+            <div class="perspektive-item-label">Digital &amp; Redaktion</div>
+            <div class="perspektive-item-title">Blog &amp; KI-Radar</div>
+            <div class="perspektive-item-desc">
+              Themenradar, redaktionelle Unterst&uuml;tzung und KI-gest&uuml;tzte Inhaltsformate &mdash;
+              wenn ihr in die digitale Kommunikation einsteigen wollt, sind wir dabei.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-inner">
+          <span class="section-label reveal">N&auml;chster Schritt</span>
+          <h2 class="section-headline reveal">Lass uns reden.</h2>
+          <p class="reveal">
+            Wir freuen uns auf ein pers&ouml;nliches Gespr&auml;ch &mdash; am liebsten bei einem Kaffee
+            in T&uuml;bingen. Meldet euch einfach bei uns.
+          </p>
+          <div class="cta-buttons reveal">
+            <a href="mailto:leo@diekavallerie.de" class="btn">
+              E-Mail schreiben
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a href="/" class="footer-logo">Die <span>Kavallerie</span></a>
+      <span class="footer-copy">&copy; 2026 Die Kavallerie &mdash; T&uuml;bingen</span>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    var reveals = document.querySelectorAll('.reveal');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(function(el) { observer.observe(el); });
+  </script>
+
+</body>
+</html>
