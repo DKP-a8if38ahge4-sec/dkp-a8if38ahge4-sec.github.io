@@ -59,7 +59,6 @@
        TOKENS
     ============================================= */
     :root {
-      /* Colors */
       --color-white: #FFFFFF;
       --color-black: #1D1D1D;
       --color-grey-light: #F2F4F7;
@@ -69,34 +68,29 @@
       --color-bg: var(--color-grey-light);
       --color-accent: var(--color-red);
 
-      /* Fonts */
       --font-headline: 'PP Formula Condensed', 'Arial Narrow', Arial, sans-serif;
       --font-base: 'Helvetica Now Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       --font-manic: 'Manic', cursive;
 
-      /* Spacing - mobile */
       --space-small: 25px;
       --space-medium: 35px;
       --space-large: 45px;
       --space-xlarge: 90px;
 
-      /* Layout */
       --container-padding: 24px;
       --container-size-default: 1320px;
       --size-header: 80px;
 
-      /* Shapes */
       --border-radius-default: 19px;
       --border-radius-large: 35px;
       --border-radius-pill: 59px;
 
-      /* Type sizes - mobile */
       --font-size-h1: 50px;
       --font-size-h2: 40px;
       --font-size-h3: 30px;
       --font-size-sub-headline: 14px;
       --font-size-copy: 18px;
-      --font-size-button: 18px;
+      --font-size-button: 14px;
     }
 
     @media (min-width: 640px) {
@@ -126,11 +120,7 @@
       margin: 0;
       padding: 0;
     }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    html { scroll-behavior: smooth; }
     body {
       background: var(--color-grey-light);
       color: var(--color-black);
@@ -140,24 +130,18 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-
     a {
       color: var(--color-text);
       text-decoration: underline;
     }
-
-    a:hover {
-      text-decoration: none;
-    }
+    a:hover { text-decoration: none; }
 
     /* =============================================
        HEADER
     ============================================= */
     .dk-header {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: var(--size-header);
       background: var(--color-grey-light);
       display: flex;
@@ -168,19 +152,16 @@
       border-bottom: 1px solid rgba(29,29,29,0.08);
     }
 
-    .dk-header-logo {
+    /* Logo: PP Formula Condensed, weight 900, uppercase, all black, letter-spacing 0 */
+    .dk-logo {
       font-family: var(--font-headline);
       font-size: 20px;
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.01em;
+      letter-spacing: 0;
+      line-height: 1;
       color: var(--color-black);
       text-decoration: none;
-    }
-
-    .dk-header-logo em {
-      color: var(--color-red);
-      font-style: normal;
     }
 
     .dk-header-tag {
@@ -195,9 +176,7 @@
     /* =============================================
        MAIN
     ============================================= */
-    main {
-      margin-top: var(--size-header);
-    }
+    main { margin-top: var(--size-header); }
 
     /* =============================================
        CONTAINER
@@ -211,21 +190,16 @@
     /* =============================================
        SECTIONS
     ============================================= */
-    .dk-section {
-      padding: var(--space-xlarge) 0;
-    }
+    .dk-section { padding: var(--space-xlarge) 0; }
 
     .dk-section--red {
       background: var(--color-red);
       color: var(--color-white);
     }
-
-    .dk-section--red a {
-      color: var(--color-white);
-    }
+    .dk-section--red a { color: var(--color-white); }
 
     /* =============================================
-       SECTION LABEL (eyebrow)
+       EYEBROW LABEL
     ============================================= */
     .dk-label {
       display: block;
@@ -237,7 +211,6 @@
       opacity: 0.45;
       margin-bottom: var(--space-small);
     }
-
     .dk-section--red .dk-label {
       opacity: 0.65;
       color: var(--color-white);
@@ -255,7 +228,6 @@
       letter-spacing: -0.01em;
       color: var(--color-black);
     }
-
     .dk-h2 {
       font-family: var(--font-headline);
       font-size: var(--font-size-h2);
@@ -264,28 +236,12 @@
       line-height: 0.92;
       letter-spacing: -0.01em;
     }
-
-    .dk-h3 {
-      font-family: var(--font-headline);
-      font-size: var(--font-size-h3);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 0.95;
-    }
-
-    .dk-h1 em,
-    .dk-h2 em {
+    .dk-h1 em, .dk-h2 em {
       color: var(--color-red);
       font-style: normal;
     }
-
-    .dk-section--red .dk-h2 {
-      color: var(--color-white);
-    }
-
-    .dk-section--red .dk-h2 em {
-      color: var(--color-yellow);
-    }
+    .dk-section--red .dk-h2 { color: var(--color-white); }
+    .dk-section--red .dk-h2 em { color: var(--color-yellow); }
 
     /* =============================================
        BODY TEXT
@@ -296,11 +252,6 @@
       line-height: 1.5;
       max-width: 640px;
     }
-
-    .dk-body--wide {
-      max-width: 860px;
-    }
-
     .dk-section--red .dk-body {
       color: var(--color-white);
       opacity: 0.9;
@@ -312,59 +263,63 @@
     .dk-btn {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 16px 28px;
-      border-radius: var(--border-radius-pill);
-      border: 2px solid var(--color-red);
-      color: var(--color-red);
-      background: transparent;
       font-family: var(--font-base);
       font-size: var(--font-size-button);
-      font-weight: 400;
-      text-decoration: none;
+      font-weight: 700;
+      border-radius: var(--border-radius-pill);
+      border: 2px solid;
       cursor: pointer;
-      transition: background 0.2s ease, color 0.2s ease;
-      white-space: nowrap;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      line-height: 1.056em;
+      padding: 16px 52px 16px 28px;
+      position: relative;
+    }
+    .dk-btn::after {
+      content: '';
+      position: absolute;
+      right: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 17px;
+      height: 17px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
     }
 
-    .dk-btn:hover {
+    /* Red variant */
+    .dk-btn--red {
+      border-color: var(--color-red);
+      color: var(--color-red);
+      background: transparent;
+    }
+    .dk-btn--red::after {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 17.799 17.799'%3E%3Cpath d='M2.36,12.563l10.226.022L12.563,2.36h-1.91l.067,7.057L1.326,0,0,1.326,9.417,10.72,2.36,10.653Z' transform='translate(0 8.899) rotate(-45)' fill='%23FF003C'/%3E%3C/svg%3E");
+    }
+    .dk-btn--red:hover {
       background: var(--color-red);
       color: var(--color-white);
-      text-decoration: none;
+    }
+    .dk-btn--red:hover::after {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 17.799 17.799'%3E%3Cpath d='M2.36,12.563l10.226.022L12.563,2.36h-1.91l.067,7.057L1.326,0,0,1.326,9.417,10.72,2.36,10.653Z' transform='translate(0 8.899) rotate(-45)' fill='%23fff'/%3E%3C/svg%3E");
     }
 
+    /* White variant (on red bg) */
     .dk-btn--white {
       border-color: var(--color-white);
       color: var(--color-white);
+      background: transparent;
     }
-
+    .dk-btn--white::after {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 17.799 17.799'%3E%3Cpath d='M2.36,12.563l10.226.022L12.563,2.36h-1.91l.067,7.057L1.326,0,0,1.326,9.417,10.72,2.36,10.653Z' transform='translate(0 8.899) rotate(-45)' fill='%23fff'/%3E%3C/svg%3E");
+    }
     .dk-btn--white:hover {
       background: var(--color-white);
       color: var(--color-red);
     }
-
-    /* Arrow icon inside button */
-    .dk-btn-arrow {
-      display: inline-block;
-      width: 18px;
-      height: 18px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='none'%3E%3Cpath d='M3.5 9h11M10 4.5l4.5 4.5L10 13.5' stroke='%23FF003C' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-size: contain;
-      flex-shrink: 0;
-      transition: background-image 0.2s ease;
-    }
-
-    .dk-btn:hover .dk-btn-arrow {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='none'%3E%3Cpath d='M3.5 9h11M10 4.5l4.5 4.5L10 13.5' stroke='%23FFFFFF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    }
-
-    .dk-btn--white .dk-btn-arrow {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='none'%3E%3Cpath d='M3.5 9h11M10 4.5l4.5 4.5L10 13.5' stroke='%23FFFFFF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    }
-
-    .dk-btn--white:hover .dk-btn-arrow {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='none'%3E%3Cpath d='M3.5 9h11M10 4.5l4.5 4.5L10 13.5' stroke='%23FF003C' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    .dk-btn--white:hover::after {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 17.799 17.799'%3E%3Cpath d='M2.36,12.563l10.226.022L12.563,2.36h-1.91l.067,7.057L1.326,0,0,1.326,9.417,10.72,2.36,10.653Z' transform='translate(0 8.899) rotate(-45)' fill='%23FF003C'/%3E%3C/svg%3E");
     }
 
     /* =============================================
@@ -374,54 +329,30 @@
       padding: var(--space-xlarge) 0;
       padding-top: calc(var(--space-xlarge) + 20px);
     }
-
-    .dk-hero-headline {
-      margin-bottom: var(--space-medium);
-    }
-
-    .dk-hero-body {
-      margin-bottom: var(--space-medium);
-    }
+    .dk-hero-headline { margin-bottom: var(--space-medium); }
+    .dk-hero-body { margin-bottom: var(--space-medium); }
 
     .dk-hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 0;
       margin-top: var(--space-medium);
       border-top: 1px solid rgba(29,29,29,0.12);
     }
-
     .dk-hero-meta-item {
       display: flex;
       flex-direction: column;
       gap: 6px;
-      padding: var(--space-small) var(--space-small) var(--space-small) 0;
-      padding-right: var(--space-medium);
+      padding: var(--space-small) var(--space-medium) var(--space-small) 0;
     }
-
     .dk-hero-meta-label {
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       opacity: 0.4;
     }
-
     .dk-hero-meta-value {
       font-size: 16px;
       font-weight: 700;
-    }
-
-    /* =============================================
-       DIVIDER
-    ============================================= */
-    .dk-divider {
-      border: none;
-      border-top: 1px solid rgba(29,29,29,0.1);
-      margin: 0;
-    }
-
-    .dk-section--red .dk-divider {
-      border-top-color: rgba(255,255,255,0.2);
     }
 
     /* =============================================
@@ -432,19 +363,16 @@
       display: flex;
       flex-direction: column;
     }
-
     .dk-leistung-row {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 0;
+      gap: 8px;
       border-top: 1px solid rgba(29,29,29,0.1);
       padding: var(--space-small) 0;
     }
-
     .dk-leistung-row:last-child {
       border-bottom: 1px solid rgba(29,29,29,0.1);
     }
-
     @media (min-width: 768px) {
       .dk-leistung-row {
         grid-template-columns: 280px 1fr;
@@ -452,22 +380,16 @@
         gap: var(--space-medium);
       }
     }
-
     .dk-leistung-title {
       font-family: var(--font-headline);
       font-size: 28px;
       font-weight: 900;
       text-transform: uppercase;
       line-height: 1;
-      padding-bottom: 8px;
     }
-
     @media (min-width: 640px) {
-      .dk-leistung-title {
-        font-size: 38px;
-      }
+      .dk-leistung-title { font-size: 38px; }
     }
-
     .dk-leistung-desc {
       font-size: 16px;
       line-height: 1.55;
@@ -475,7 +397,7 @@
       padding-top: 4px;
     }
 
-    /* Arrow bullet for list items */
+    /* Arrow bullet list */
     .dk-list {
       list-style: none;
       display: flex;
@@ -483,7 +405,6 @@
       gap: 10px;
       margin-top: var(--space-small);
     }
-
     .dk-list li {
       display: flex;
       align-items: flex-start;
@@ -491,25 +412,23 @@
       font-size: 16px;
       line-height: 1.45;
     }
-
     .dk-list li::before {
       content: '';
       display: inline-block;
-      width: 18px;
-      height: 18px;
-      min-width: 18px;
-      margin-top: 2px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='none'%3E%3Cpath d='M3.5 9h11M10 4.5l4.5 4.5L10 13.5' stroke='%23FF003C' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      width: 17px;
+      height: 17px;
+      min-width: 17px;
+      margin-top: 3px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17.799' height='17.799' viewBox='0 0 17.799 17.799'%3E%3Cpath d='M2.36,12.563l10.226.022L12.563,2.36h-1.91l.067,7.057L1.326,0,0,1.326,9.417,10.72,2.36,10.653Z' transform='translate(0 8.899) rotate(-45)' fill='%23FF003C'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-size: contain;
     }
-
     .dk-section--red .dk-list li::before {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='none'%3E%3Cpath d='M3.5 9h11M10 4.5l4.5 4.5L10 13.5' stroke='%23FFFFFF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17.799' height='17.799' viewBox='0 0 17.799 17.799'%3E%3Cpath d='M2.36,12.563l10.226.022L12.563,2.36h-1.91l.067,7.057L1.326,0,0,1.326,9.417,10.72,2.36,10.653Z' transform='translate(0 8.899) rotate(-45)' fill='%23ffffff'/%3E%3C/svg%3E");
     }
 
     /* =============================================
-       KONDITIONEN (red section)
+       KONDITIONEN
     ============================================= */
     .dk-konditionen-layout {
       display: grid;
@@ -517,20 +436,12 @@
       gap: var(--space-large);
       margin-top: var(--space-medium);
     }
-
     @media (min-width: 900px) {
       .dk-konditionen-layout {
         grid-template-columns: 1fr 1fr;
         align-items: start;
       }
     }
-
-    .dk-price-block {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-small);
-    }
-
     .dk-price-number {
       font-family: var(--font-headline);
       font-size: clamp(80px, 12vw, 160px);
@@ -538,26 +449,28 @@
       text-transform: uppercase;
       line-height: 0.88;
       color: var(--color-white);
+      margin-bottom: 16px;
     }
-
     .dk-price-sub {
       font-size: 16px;
       opacity: 0.7;
       max-width: 340px;
       line-height: 1.45;
+      margin-bottom: var(--space-small);
     }
 
     .dk-info-blocks {
       display: flex;
       flex-direction: column;
-      gap: var(--space-small);
+      gap: 0;
     }
-
     .dk-info-block {
       border-top: 1px solid rgba(255,255,255,0.2);
-      padding-top: var(--space-small);
+      padding: var(--space-small) 0;
     }
-
+    .dk-info-block:last-child {
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
     .dk-info-block-label {
       font-size: 12px;
       text-transform: uppercase;
@@ -565,7 +478,6 @@
       opacity: 0.55;
       margin-bottom: 8px;
     }
-
     .dk-info-block-value {
       font-size: 18px;
       font-weight: 700;
@@ -581,7 +493,6 @@
       display: flex;
       flex-direction: column;
     }
-
     .dk-timeline-item {
       display: grid;
       grid-template-columns: 1fr;
@@ -589,11 +500,9 @@
       padding: var(--space-small) 0;
       border-top: 1px solid rgba(29,29,29,0.1);
     }
-
     .dk-timeline-item:last-child {
       border-bottom: 1px solid rgba(29,29,29,0.1);
     }
-
     @media (min-width: 768px) {
       .dk-timeline-item {
         grid-template-columns: 220px 1fr;
@@ -601,21 +510,18 @@
         align-items: start;
       }
     }
-
     .dk-timeline-date {
       font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       opacity: 0.4;
-      padding-top: 4px;
+      padding-top: 6px;
     }
-
     .dk-timeline-date--done {
       color: var(--color-red);
       opacity: 1;
       font-weight: 700;
     }
-
     .dk-timeline-title {
       font-family: var(--font-headline);
       font-size: 26px;
@@ -624,13 +530,9 @@
       line-height: 1;
       margin-bottom: 8px;
     }
-
     @media (min-width: 640px) {
-      .dk-timeline-title {
-        font-size: 36px;
-      }
+      .dk-timeline-title { font-size: 36px; }
     }
-
     .dk-timeline-desc {
       font-size: 16px;
       opacity: 0.6;
@@ -638,7 +540,7 @@
     }
 
     /* =============================================
-       PERSPEKTIVE (red section)
+       PERSPEKTIVE
     ============================================= */
     .dk-perspektive-grid {
       display: grid;
@@ -646,13 +548,9 @@
       gap: 2px;
       margin-top: var(--space-medium);
     }
-
     @media (min-width: 768px) {
-      .dk-perspektive-grid {
-        grid-template-columns: 1fr 1fr;
-      }
+      .dk-perspektive-grid { grid-template-columns: 1fr 1fr; }
     }
-
     .dk-perspektive-item {
       background: rgba(255,255,255,0.1);
       padding: var(--space-medium);
@@ -660,14 +558,12 @@
       flex-direction: column;
       gap: var(--space-small);
     }
-
     .dk-perspektive-label {
       font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       opacity: 0.6;
     }
-
     .dk-perspektive-title {
       font-family: var(--font-headline);
       font-size: clamp(40px, 6vw, 80px);
@@ -676,15 +572,12 @@
       line-height: 0.92;
       color: var(--color-white);
     }
-
     .dk-perspektive-desc {
       font-size: 16px;
       opacity: 0.8;
       line-height: 1.55;
       max-width: 480px;
     }
-
-    /* Proof-of-style highlight box */
     .dk-highlight-box {
       border: 1px solid var(--color-yellow);
       padding: var(--space-small);
@@ -692,14 +585,12 @@
       flex-direction: column;
       gap: 10px;
     }
-
     .dk-highlight-box-label {
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
       color: var(--color-yellow);
     }
-
     .dk-highlight-box-text {
       font-size: 15px;
       line-height: 1.55;
@@ -714,7 +605,6 @@
       color: var(--color-white);
       padding: var(--space-medium) var(--container-padding);
     }
-
     .dk-footer-inner {
       max-width: var(--container-size-default);
       margin: 0 auto;
@@ -725,18 +615,16 @@
       gap: var(--space-small);
     }
 
-    .dk-footer-logo {
+    /* Footer logo: same as header logo but white */
+    .dk-logo--footer {
       font-family: var(--font-headline);
       font-size: 20px;
       font-weight: 900;
       text-transform: uppercase;
+      letter-spacing: 0;
+      line-height: 1;
       color: var(--color-white);
       text-decoration: none;
-    }
-
-    .dk-footer-logo em {
-      color: var(--color-red);
-      font-style: normal;
     }
 
     .dk-footer-copy {
@@ -752,7 +640,6 @@
       transform: translateY(20px);
       transition: opacity 0.55s ease, transform 0.55s ease;
     }
-
     .reveal.visible {
       opacity: 1;
       transform: none;
@@ -763,21 +650,20 @@
     ============================================= */
     .mt-small  { margin-top: var(--space-small); }
     .mt-medium { margin-top: var(--space-medium); }
-    .mt-large  { margin-top: var(--space-large); }
 
   </style>
 </head>
 <body>
 
-  <!-- ==================== HEADER ==================== -->
+  <!-- HEADER -->
   <header class="dk-header">
-    <a href="/" class="dk-header-logo">DIE <em>KAVALLERIE</em></a>
+    <a href="/" class="dk-logo">Die Kavallerie</a>
     <span class="dk-header-tag">Angebot Stadtwerke T&uuml;bingen</span>
   </header>
 
   <main>
 
-    <!-- ==================== HERO ==================== -->
+    <!-- HERO -->
     <section class="dk-hero">
       <div class="dk-container">
 
@@ -795,9 +681,8 @@
           h&ouml;chstem Qualit&auml;tsanspruch fort.
         </p>
 
-        <a href="#konditionen" class="dk-btn reveal">
+        <a href="#konditionen" class="dk-btn dk-btn--red reveal">
           Zum Angebot
-          <span class="dk-btn-arrow"></span>
         </a>
 
         <div class="dk-hero-meta reveal">
@@ -822,7 +707,7 @@
       </div>
     </section>
 
-    <!-- ==================== LEISTUNGEN ==================== -->
+    <!-- LEISTUNGEN -->
     <section class="dk-section" style="padding-top: 0;">
       <div class="dk-container">
 
@@ -835,57 +720,48 @@
         </p>
 
         <div class="dk-leistungen mt-medium">
-
           <div class="dk-leistung-row reveal">
             <div class="dk-leistung-title">Flyer, Broschueren &amp; Folder</div>
             <div class="dk-leistung-desc">Printmaterialien in eurer Corporate Identity. Sauber, schnell, druckfertig.</div>
           </div>
-
           <div class="dk-leistung-row reveal">
             <div class="dk-leistung-title">Anzeigen</div>
             <div class="dk-leistung-desc">Print- und Digitalanzeigen f&uuml;r regionale und &uuml;berregionale Medien.</div>
           </div>
-
           <div class="dk-leistung-row reveal">
             <div class="dk-leistung-title">Plakate &amp; Gro&szlig;fl&auml;chen</div>
             <div class="dk-leistung-desc">Aufmerksamkeitsstarke Motive f&uuml;r den Au&szlig;enauftritt in T&uuml;bingen und der Region.</div>
           </div>
-
           <div class="dk-leistung-row reveal">
             <div class="dk-leistung-title">Schilder &amp; Beschilderung</div>
             <div class="dk-leistung-desc">Orientierungssysteme und Leitsysteme im Stadtwerke-Design.</div>
           </div>
-
           <div class="dk-leistung-row reveal">
             <div class="dk-leistung-title">Ausstellungen &amp; Tafeln</div>
             <div class="dk-leistung-desc">Ausstellungsdesign und Informationstafeln f&uuml;r Events und &ouml;ffentliche R&auml;ume.</div>
           </div>
-
           <div class="dk-leistung-row reveal">
             <div class="dk-leistung-title">Gesch&auml;ftsausstattung</div>
             <div class="dk-leistung-desc">Visitenkarten, Briefpapier, E-Mail-Signaturen. Alles aus einem Guss.</div>
           </div>
-
           <div class="dk-leistung-row reveal">
             <div class="dk-leistung-title">Messe &amp; Veranstaltung</div>
             <div class="dk-leistung-desc">Messeauftritte, Roll-ups, Give-aways und Eventmaterialien.</div>
           </div>
-
           <div class="dk-leistung-row reveal">
             <div class="dk-leistung-title">Infografiken &amp; Illustrationen</div>
             <div class="dk-leistung-desc">Komplexe Inhalte visuell aufbereitet: verst&auml;ndlich und markenkonform.</div>
           </div>
-
           <div class="dk-leistung-row reveal">
             <div class="dk-leistung-title">Sonderprojekte</div>
             <div class="dk-leistung-desc">Alles, was sich nicht in eine Schublade stecken l&auml;sst. Wir finden eine L&ouml;sung.</div>
           </div>
-
         </div>
+
       </div>
     </section>
 
-    <!-- ==================== KONDITIONEN ==================== -->
+    <!-- KONDITIONEN -->
     <section class="dk-section dk-section--red" id="konditionen">
       <div class="dk-container">
 
@@ -894,10 +770,10 @@
 
         <div class="dk-konditionen-layout">
 
-          <div class="dk-price-block reveal">
+          <div class="reveal">
             <div class="dk-price-number">95&thinsp;&euro;</div>
             <div class="dk-price-sub">pro Stunde (netto) &mdash; monatliche Abrechnung nach Aufwand</div>
-            <ul class="dk-list mt-small">
+            <ul class="dk-list">
               <li>Abrechnung nach Projekt- und Produktstelle</li>
               <li>Monatliche &Uuml;bersicht aller geleisteten Stunden</li>
               <li>Kein Retainer: ihr zahlt nur, was wir wirklich leisten</li>
@@ -905,9 +781,8 @@
               <li>Kurze Reaktionszeiten auch bei kurzfristigen Aufgaben</li>
             </ul>
             <div class="mt-medium">
-              <a href="mailto:david.c@diekavallerie.de" class="dk-btn dk-btn--white reveal">
+              <a href="mailto:david.c@diekavallerie.de" class="dk-btn dk-btn--white">
                 Angebot annehmen
-                <span class="dk-btn-arrow"></span>
               </a>
             </div>
           </div>
@@ -935,7 +810,7 @@
       </div>
     </section>
 
-    <!-- ==================== FAHRPLAN ==================== -->
+    <!-- FAHRPLAN -->
     <section class="dk-section">
       <div class="dk-container">
 
@@ -943,7 +818,6 @@
         <h2 class="dk-h2 reveal">Fahrplan</h2>
 
         <div class="dk-timeline">
-
           <div class="dk-timeline-item reveal">
             <div class="dk-timeline-date dk-timeline-date--done">Juli 2026 &#10003;</div>
             <div>
@@ -951,7 +825,6 @@
               <div class="dk-timeline-desc">Erstes Gespr&auml;ch hat stattgefunden. Wir kennen die Anforderungen, den Kontext und die Erwartungen der Stadtwerke T&uuml;bingen.</div>
             </div>
           </div>
-
           <div class="dk-timeline-item reveal">
             <div class="dk-timeline-date">September 2026</div>
             <div>
@@ -959,7 +832,6 @@
               <div class="dk-timeline-desc">Die Stadtwerke T&uuml;bingen entscheiden im September, ob DIE KAVALLERIE als Grafikagentur an Bord kommt.</div>
             </div>
           </div>
-
           <div class="dk-timeline-item reveal">
             <div class="dk-timeline-date">Herbst 2026</div>
             <div>
@@ -967,7 +839,6 @@
               <div class="dk-timeline-desc">Strukturierte &Uuml;bernahme aller Vorlagen, Dateien und laufenden Projekte. Parallel zum Ausstieg von Frau Hemmerich bis Ende 2026.</div>
             </div>
           </div>
-
           <div class="dk-timeline-item reveal">
             <div class="dk-timeline-date">Herbst 2026 &ndash; Fr&uuml;hjahr 2027</div>
             <div>
@@ -975,7 +846,6 @@
               <div class="dk-timeline-desc">Wir starten mit einer vereinbarten Probezeit von 6 Monaten. Zeit, um Vertrauen aufzubauen, Prozesse einzuspielen und gemeinsam zu wachsen.</div>
             </div>
           </div>
-
           <div class="dk-timeline-item reveal">
             <div class="dk-timeline-date">Perspektive</div>
             <div>
@@ -983,12 +853,12 @@
               <div class="dk-timeline-desc">Nach der Probezeit: volle Kapazit&auml;t, eingespieltes Team und strategische Weiterentwicklung der Marke.</div>
             </div>
           </div>
-
         </div>
+
       </div>
     </section>
 
-    <!-- ==================== PERSPEKTIVE ==================== -->
+    <!-- PERSPEKTIVE -->
     <section class="dk-section dk-section--red">
       <div class="dk-container">
 
@@ -996,7 +866,6 @@
         <h2 class="dk-h2 reveal">Perspektive</h2>
 
         <div class="dk-perspektive-grid">
-
           <div class="dk-perspektive-item reveal">
             <span class="dk-perspektive-label">Kundenmagazin</span>
             <div class="dk-perspektive-title">T&uuml;Welt</div>
@@ -1012,7 +881,6 @@
               </div>
             </div>
           </div>
-
           <div class="dk-perspektive-item reveal">
             <span class="dk-perspektive-label">Digital &amp; Redaktion</span>
             <div class="dk-perspektive-title">Blog &amp; KI-Radar</div>
@@ -1021,18 +889,18 @@
               Wenn ihr in die digitale Kommunikation einsteigen wollt, sind wir dabei.
             </p>
           </div>
-
         </div>
+
       </div>
     </section>
 
   </main>
 
-  <!-- ==================== FOOTER ==================== -->
+  <!-- FOOTER -->
   <footer class="dk-footer">
     <div class="dk-footer-inner">
-      <a href="/" class="dk-footer-logo">DIE <em>KAVALLERIE</em></a>
-      <span class="dk-footer-copy">&copy; 2026 DIE KAVALLERIE</span>
+      <a href="/" class="dk-logo--footer">Die Kavallerie</a>
+      <span class="dk-footer-copy">&copy; 2026 Die Kavallerie</span>
     </div>
   </footer>
 
