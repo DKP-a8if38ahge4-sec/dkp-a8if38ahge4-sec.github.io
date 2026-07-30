@@ -474,6 +474,54 @@
       line-height: 1.55;
     }
 
+    /* === PROOF OF STYLE === */
+    .proof-box {
+      margin-top: 28px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--color-yellow);
+      border-radius: var(--border-radius-default);
+      padding: 24px 28px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .proof-box-icon {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      background: var(--color-yellow);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .proof-box-icon svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: var(--color-black);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .proof-box-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--color-yellow);
+      margin-bottom: 6px;
+    }
+
+    .proof-box-text {
+      font-size: 15px;
+      line-height: 1.55;
+      opacity: 0.9;
+    }
+
     /* === FOOTER === */
     footer {
       background: var(--color-black);
@@ -759,6 +807,18 @@
             <div class="perspektive-item-desc">
               Sollte die grafische Betreuung des T&uuml;Welt-Magazins k&uuml;nftig geb&uuml;ndelt werden,
               sind wir bereit, auch diesen Bereich zu &uuml;bernehmen. Nahtlos und aus einer Hand.
+            </div>
+            <div class="proof-box reveal">
+              <div class="proof-box-icon">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="proof-box-label">Proof of Style</div>
+                <div class="proof-box-text">
+                  Wir gestalten 3 Doppelseiten der n&auml;chsten Ausgabe kostenfrei und unverbindlich frei
+                  als Stilprobe. So k&ouml;nnt ihr sehen, wie wir euren Auftritt denken, bevor ihr euch entscheidet.
+                </div>
+              </div>
             </div>
           </div>
           <div class="perspektive-item reveal">
