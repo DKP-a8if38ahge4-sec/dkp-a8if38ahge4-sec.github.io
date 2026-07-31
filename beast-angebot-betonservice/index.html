@@ -10,19 +10,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
 
   <style>
-    /* === TOKENS (Klett-Palette) === */
     :root {
       --black:   #0A0A0A;
       --white:   #F5F5F0;
       --accent:  #E8FF00;
       --muted:   #3A3A3A;
       --border:  #222222;
+      --card:    #111111;
       --font:    'Inter', 'Helvetica Neue', sans-serif;
       --max:     1200px;
       --radius:  4px;
     }
 
-    /* === RESET === */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -33,7 +32,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* === NAV === */
+    /* NAV */
     nav {
       display: flex;
       align-items: center;
@@ -45,7 +44,6 @@
       background-color: var(--black);
       z-index: 100;
     }
-
     .nav-logo {
       font-size: 0.7rem;
       font-weight: 700;
@@ -55,7 +53,6 @@
       text-decoration: none;
       opacity: 0.6;
     }
-
     .nav-badge {
       font-size: 0.65rem;
       font-weight: 700;
@@ -67,14 +64,13 @@
       border-radius: 2px;
     }
 
-    /* === HERO === */
+    /* HERO */
     .hero {
       padding: 5rem 2.5rem 4rem;
       border-bottom: 1px solid var(--border);
       max-width: var(--max);
       margin: 0 auto;
     }
-
     .hero-eyebrow {
       font-size: 0.65rem;
       font-weight: 700;
@@ -83,7 +79,6 @@
       color: var(--accent);
       margin-bottom: 2rem;
     }
-
     .hero-title {
       font-size: clamp(2.8rem, 7vw, 6.5rem);
       font-weight: 900;
@@ -93,18 +88,14 @@
       color: var(--white);
       margin-bottom: 2.5rem;
     }
-
     .hero-title span { color: var(--accent); }
-
     .hero-meta {
       display: flex;
       gap: 3rem;
       flex-wrap: wrap;
       margin-bottom: 3rem;
     }
-
     .hero-meta-item { display: flex; flex-direction: column; gap: 0.3rem; }
-
     .hero-meta-label {
       font-size: 0.6rem;
       font-weight: 700;
@@ -113,20 +104,17 @@
       color: var(--white);
       opacity: 0.35;
     }
-
     .hero-meta-value {
       font-size: 0.85rem;
       font-weight: 500;
       color: var(--white);
       opacity: 0.75;
     }
-
     .hero-intro {
       border-top: 1px solid var(--border);
       padding-top: 2.5rem;
       max-width: 780px;
     }
-
     .hero-intro-label {
       font-size: 0.6rem;
       font-weight: 700;
@@ -136,7 +124,6 @@
       opacity: 0.3;
       margin-bottom: 1rem;
     }
-
     .hero-intro-text {
       font-size: 1rem;
       line-height: 1.75;
@@ -144,19 +131,18 @@
       opacity: 0.65;
     }
 
-    /* === SECTION WRAPPER === */
+    /* SECTION WRAPPER */
     .section-wrapper {
       max-width: var(--max);
       margin: 0 auto;
       padding: 0 2.5rem;
     }
 
-    /* === MODULE === */
+    /* MODULE */
     .module {
       border-bottom: 1px solid var(--border);
       padding: 4rem 0;
     }
-
     .module-header {
       display: grid;
       grid-template-columns: 1fr auto;
@@ -164,7 +150,6 @@
       gap: 2rem;
       margin-bottom: 2.5rem;
     }
-
     .module-tag {
       font-size: 0.6rem;
       font-weight: 700;
@@ -173,7 +158,6 @@
       color: var(--accent);
       margin-bottom: 0.75rem;
     }
-
     .module-title {
       font-size: clamp(1.6rem, 3.5vw, 2.8rem);
       font-weight: 900;
@@ -182,7 +166,6 @@
       letter-spacing: -0.01em;
       color: var(--white);
     }
-
     .module-subtitle {
       font-size: 0.8rem;
       font-weight: 500;
@@ -192,9 +175,7 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
-
     .module-price-block { text-align: right; flex-shrink: 0; }
-
     .module-price-label {
       font-size: 0.6rem;
       font-weight: 700;
@@ -204,7 +185,6 @@
       opacity: 0.35;
       margin-bottom: 0.4rem;
     }
-
     .module-price {
       font-size: clamp(1.6rem, 3vw, 2.4rem);
       font-weight: 900;
@@ -212,22 +192,19 @@
       line-height: 1;
       white-space: nowrap;
     }
-
     .module-price-sub {
       font-size: 0.7rem;
-      font-weight: 500;
       color: var(--white);
       opacity: 0.4;
       margin-top: 0.3rem;
     }
 
-    /* === MODULE BODY === */
+    /* MODULE BODY */
     .module-body {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
     }
-
     .module-desc {
       font-size: 0.95rem;
       line-height: 1.65;
@@ -236,61 +213,7 @@
       grid-column: 1 / -1;
     }
 
-    /* === DETAIL ROWS === */
-    .detail-rows {
-      grid-column: 1 / -1;
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-
-    .detail-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 1.25rem;
-      border-bottom: 1px solid var(--border);
-      gap: 1rem;
-    }
-
-    .detail-row:last-child { border-bottom: none; }
-
-    .detail-row-label {
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--white);
-      opacity: 0.55;
-    }
-
-    .detail-row-value {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--white);
-      text-align: right;
-    }
-
-    .detail-row-value.accent { color: var(--accent); }
-
-    /* === NOTE BOX === */
-    .note-box {
-      grid-column: 1 / -1;
-      background-color: #111111;
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--accent);
-      padding: 1rem 1.25rem;
-      border-radius: 0 var(--radius) var(--radius) 0;
-    }
-
-    .note-box p {
-      font-size: 0.78rem;
-      line-height: 1.6;
-      color: var(--white);
-      opacity: 0.45;
-    }
-
-    /* === THEMEN BLOCKS === */
+    /* THEMEN GRID */
     .themen-grid {
       grid-column: 1 / -1;
       display: grid;
@@ -301,12 +224,7 @@
       border-radius: var(--radius);
       overflow: hidden;
     }
-
-    .themen-item {
-      background-color: #111111;
-      padding: 1.5rem;
-    }
-
+    .themen-item { background-color: var(--card); padding: 1.5rem; }
     .themen-item-tag {
       font-size: 0.6rem;
       font-weight: 700;
@@ -315,14 +233,12 @@
       color: var(--accent);
       margin-bottom: 0.5rem;
     }
-
     .themen-item-title {
       font-size: 0.9rem;
       font-weight: 700;
       color: var(--white);
       margin-bottom: 0.4rem;
     }
-
     .themen-item-desc {
       font-size: 0.8rem;
       line-height: 1.55;
@@ -330,7 +246,55 @@
       opacity: 0.5;
     }
 
-    /* === QUOTE === */
+    /* DETAIL ROWS */
+    .detail-rows {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      gap: 1rem;
+    }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-row-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--white);
+      opacity: 0.55;
+    }
+    .detail-row-value {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--white);
+      text-align: right;
+    }
+    .detail-row-value.accent { color: var(--accent); }
+
+    /* NOTE BOX */
+    .note-box {
+      grid-column: 1 / -1;
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .note-box p {
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: var(--white);
+      opacity: 0.45;
+    }
+
+    /* QUOTE */
     .quote-block {
       grid-column: 1 / -1;
       border-left: 3px solid var(--accent);
@@ -338,7 +302,6 @@
       background-color: #0F0F0F;
       border-radius: 0 var(--radius) var(--radius) 0;
     }
-
     .quote-block blockquote {
       font-size: 1rem;
       line-height: 1.7;
@@ -347,7 +310,6 @@
       font-style: italic;
       margin-bottom: 0.75rem;
     }
-
     .quote-source {
       font-size: 0.65rem;
       font-weight: 700;
@@ -357,87 +319,7 @@
       opacity: 0.3;
     }
 
-    /* === SUMMARY === */
-    .summary { padding: 4rem 0 5rem; }
-
-    .summary-label {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--white);
-      opacity: 0.35;
-      margin-bottom: 2rem;
-    }
-
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1px;
-      background-color: var(--border);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      margin-bottom: 2.5rem;
-    }
-
-    .summary-cell { background-color: var(--black); padding: 1.75rem 1.5rem; }
-
-    .summary-cell-label {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--white);
-      opacity: 0.35;
-      margin-bottom: 0.6rem;
-    }
-
-    .summary-cell-value {
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: var(--white);
-      line-height: 1;
-    }
-
-    .summary-cell-value.accent { color: var(--accent); }
-
-    .summary-cell-note {
-      font-size: 0.7rem;
-      color: var(--white);
-      opacity: 0.35;
-      margin-top: 0.4rem;
-    }
-
-    /* === STUNDEN TABLE === */
-    .stunden-table {
-      grid-column: 1 / -1;
-      width: 100%;
-      border-collapse: collapse;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-
-    .stunden-table tr { border-bottom: 1px solid var(--border); }
-    .stunden-table tr:last-child { border-bottom: none; }
-
-    .stunden-table td {
-      padding: 0.9rem 1.25rem;
-      font-size: 0.85rem;
-      color: var(--white);
-      opacity: 0.65;
-      background-color: #111111;
-    }
-
-    .stunden-table td:last-child {
-      text-align: right;
-      font-weight: 700;
-      color: var(--white);
-      opacity: 1;
-    }
-
-    /* === TEAM === */
+    /* TEAM */
     .team-grid {
       grid-column: 1 / -1;
       display: grid;
@@ -448,9 +330,7 @@
       border-radius: var(--radius);
       overflow: hidden;
     }
-
-    .team-card { background-color: #111111; padding: 2rem; }
-
+    .team-card { background-color: var(--card); padding: 2rem; }
     .team-name {
       font-size: 1rem;
       font-weight: 900;
@@ -459,7 +339,6 @@
       color: var(--white);
       margin-bottom: 0.2rem;
     }
-
     .team-role {
       font-size: 0.65rem;
       font-weight: 700;
@@ -468,7 +347,6 @@
       color: var(--accent);
       margin-bottom: 1rem;
     }
-
     .team-desc {
       font-size: 0.82rem;
       line-height: 1.65;
@@ -476,7 +354,77 @@
       opacity: 0.5;
     }
 
-    /* === CTA === */
+    /* STUNDEN TABLE */
+    .stunden-table {
+      grid-column: 1 / -1;
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .stunden-table tr { border-bottom: 1px solid var(--border); }
+    .stunden-table tr:last-child { border-bottom: none; }
+    .stunden-table td {
+      padding: 0.9rem 1.25rem;
+      font-size: 0.85rem;
+      color: var(--white);
+      opacity: 0.65;
+      background-color: var(--card);
+    }
+    .stunden-table td:last-child {
+      text-align: right;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: 1;
+    }
+
+    /* SUMMARY */
+    .summary { padding: 4rem 0 5rem; }
+    .summary-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0.35;
+      margin-bottom: 2rem;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background-color: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+    }
+    .summary-cell { background-color: var(--black); padding: 1.75rem 1.5rem; }
+    .summary-cell-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0.35;
+      margin-bottom: 0.6rem;
+    }
+    .summary-cell-value {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+    .summary-cell-value.accent { color: var(--accent); }
+    .summary-cell-note {
+      font-size: 0.7rem;
+      color: var(--white);
+      opacity: 0.35;
+      margin-top: 0.4rem;
+    }
+
+    /* CTA */
     .cta-block {
       display: flex;
       align-items: center;
@@ -484,11 +432,10 @@
       gap: 2rem;
       flex-wrap: wrap;
       padding: 2rem;
-      background-color: #111;
+      background-color: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
     }
-
     .cta-text {
       font-size: 0.85rem;
       color: var(--white);
@@ -496,9 +443,7 @@
       max-width: 500px;
       line-height: 1.6;
     }
-
     .cta-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-
     .cta-link {
       display: inline-block;
       font-size: 0.7rem;
@@ -511,21 +456,15 @@
       white-space: nowrap;
       transition: opacity 0.15s ease;
     }
-
     .cta-link:hover { opacity: 0.85; }
-
-    .cta-link-primary {
-      background-color: var(--accent);
-      color: var(--black);
-    }
-
+    .cta-link-primary { background-color: var(--accent); color: var(--black); }
     .cta-link-secondary {
       background-color: transparent;
       color: var(--white);
       border: 1px solid var(--border);
     }
 
-    /* === SLASH DIVIDER === */
+    /* SLASH DIVIDER */
     .slash-divider {
       font-size: 0.65rem;
       font-weight: 700;
@@ -539,7 +478,7 @@
       margin: 0 auto;
     }
 
-    /* === FOOTER === */
+    /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
       padding: 2rem 2.5rem;
@@ -549,7 +488,6 @@
       gap: 1rem;
       flex-wrap: wrap;
     }
-
     .footer-copy {
       font-size: 0.65rem;
       font-weight: 500;
@@ -558,7 +496,6 @@
       color: var(--white);
       opacity: 0.2;
     }
-
     .footer-brand {
       font-size: 0.65rem;
       font-weight: 700;
@@ -568,7 +505,7 @@
       opacity: 0.6;
     }
 
-    /* === RESPONSIVE === */
+    /* RESPONSIVE */
     @media (max-width: 700px) {
       nav { padding: 1.25rem; }
       .hero { padding: 3rem 1.25rem 2.5rem; }
@@ -629,7 +566,7 @@
 
   <div class="slash-divider">// Produkte &amp; Leistungen</div>
 
-  <!-- MODUL 01: MONITORING & NEWSLETTER AGENT -->
+  <!-- MODUL 01 -->
   <div class="section-wrapper">
     <div class="module">
       <div class="module-header">
@@ -650,11 +587,10 @@
           Der Agent &uuml;berwacht vordefinierte und abonnierte Newsletter sowie Websites (via RSS-Feed)
           zu branchenrelevanten Themen und fasst diese automatisch als w&ouml;chentlichen Digest zusammen.
           Die Ergebnisse werden per E-Mail ausgegeben, klar unterteilt in vier Themenbl&ouml;cke.
-          Zus&auml;tzlich wird ein Content-Agent angedockt, der 1x w&ouml;chentlich fertige Themenvorschl&auml;ge
-          f&uuml;r das eigene Marketing erstellt.
+          Zus&auml;tzlich wird ein Content-Agent angedockt, der 1x w&ouml;chentlich fertige
+          Themenvorschl&auml;ge f&uuml;r das eigene Marketing erstellt.
         </p>
 
-        <!-- Themenblöcke -->
         <div class="themen-grid">
           <div class="themen-item">
             <p class="themen-item-tag">Block 01</p>
@@ -682,7 +618,6 @@
           </div>
         </div>
 
-        <!-- Agenturleistungen -->
         <div class="detail-rows">
           <div class="detail-row">
             <span class="detail-row-label">Tool-Setup</span>
@@ -714,7 +649,6 @@
           </div>
         </div>
 
-        <!-- Quote -->
         <div class="quote-block">
           <blockquote>
             &bdquo;Wir bekommen w&ouml;chentlich aus den Newslettern, die wir abonniert haben,
@@ -726,8 +660,9 @@
 
         <div class="note-box">
           <p>
-            Human in the Loop: Ein Mensch schaut immer noch mal dr&uuml;ber, bevor Inhalte ver&ouml;ffentlicht werden.
-            Die KI schreibt, ihr entscheidet. Exkl. laufende Kosten (siehe Position 02).
+            Human in the Loop: Ein Mensch schaut immer noch mal dr&uuml;ber, bevor Inhalte
+            ver&ouml;ffentlicht werden. Die KI schreibt, ihr entscheidet.
+            Exkl. laufende Kosten (siehe Position 02).
           </p>
         </div>
       </div>
@@ -736,7 +671,7 @@
 
   <div class="slash-divider">// Laufende Kosten</div>
 
-  <!-- MODUL 02: LAUFENDE KOSTEN -->
+  <!-- MODUL 02 -->
   <div class="section-wrapper">
     <div class="module">
       <div class="module-header">
@@ -751,13 +686,11 @@
           <p class="module-price-sub">netto, monatlich</p>
         </div>
       </div>
-
       <div class="module-body">
         <p class="module-desc">
           Der laufende Betrieb des Agenten beinhaltet Hosting, Wartung und den Verbrauch
           der KI-Tokens. Die Kosten sind transparent und planbar.
         </p>
-
         <div class="detail-rows">
           <div class="detail-row">
             <span class="detail-row-label">n8n Hosting &amp; Wartung</span>
@@ -784,17 +717,15 @@
           <p class="module-subtitle">IHK Reutlingen &mdash; Live seit 2025</p>
         </div>
       </div>
-
       <div class="module-body">
         <p class="module-desc">
           F&uuml;r die IHK Reutlingen haben wir einen vergleichbaren Monitoring-Agent aufgebaut.
           Die Verantwortlichen erhalten t&auml;glich einen Digest aus bis zu 60 Newslettern &mdash;
-          automatisch gefiltert, zusammengefasst und nach Relevanz bewertet. Das spart wochentlich
+          automatisch gefiltert, zusammengefasst und nach Relevanz bewertet. Das spart w&ouml;chentlich
           Stunden an Recherchearbeit und liefert die Basis f&uuml;r deren eigene Newsletter,
           das WNA-Magazin und die Mitgliederkommunikation. F&uuml;r Betonservice und Talk Concrete
           funktioniert das genauso &mdash; nur mit euren Themen, euren Kan&auml;len, eurer Stimme.
         </p>
-
         <div class="detail-rows">
           <div class="detail-row">
             <span class="detail-row-label">Newsletter pro Woche, automatisch verarbeitet</span>
@@ -819,7 +750,7 @@
 
   <div class="slash-divider">// Team &amp; Stundensätze</div>
 
-  <!-- TEAM & STUNDEN -->
+  <!-- TEAM -->
   <div class="section-wrapper">
     <div class="module">
       <div class="module-header">
@@ -829,7 +760,6 @@
           <p class="module-subtitle">KI-Agentur aus T&uuml;bingen &mdash; gegr&uuml;ndet 2024</p>
         </div>
       </div>
-
       <div class="module-body">
         <p class="module-desc">
           Wir sind 2024 aus der Kavallerie heraus entstanden &mdash; einer Agentur mit rund 45 Leuten,
@@ -859,30 +789,15 @@
           </div>
         </div>
 
-        <p style="font-size:0.7rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--white); opacity:0.35; margin-top:2rem; margin-bottom:0.75rem;">
+        <p style="font-size:0.7rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--white); opacity:0.35; margin-top:2rem; margin-bottom:0.75rem; grid-column: 1 / -1;">
           Stundensätze f&uuml;r Zusatzleistungen
         </p>
         <table class="stunden-table">
-          <tr>
-            <td>Beratung / Strategie</td>
-            <td>155,&ndash; &euro;</td>
-          </tr>
-          <tr>
-            <td>Kreativdirektion</td>
-            <td>125,&ndash; &euro;</td>
-          </tr>
-          <tr>
-            <td>Konzeption / Text</td>
-            <td>125,&ndash; &euro;</td>
-          </tr>
-          <tr>
-            <td>Kreation, Art &amp; Text</td>
-            <td>105,&ndash; &euro;</td>
-          </tr>
-          <tr>
-            <td>Projektmanagement</td>
-            <td>105,&ndash; &euro;</td>
-          </tr>
+          <tr><td>Beratung / Strategie</td><td>155,&ndash; &euro;</td></tr>
+          <tr><td>Kreativdirektion</td><td>125,&ndash; &euro;</td></tr>
+          <tr><td>Konzeption / Text</td><td>125,&ndash; &euro;</td></tr>
+          <tr><td>Kreation, Art &amp; Text</td><td>105,&ndash; &euro;</td></tr>
+          <tr><td>Projektmanagement</td><td>105,&ndash; &euro;</td></tr>
         </table>
       </div>
     </div>
@@ -890,7 +805,7 @@
 
   <div class="slash-divider">// Zusammenfassung</div>
 
-  <!-- SUMMARY -->
+  <!-- SUMMARY + CTA -->
   <div class="section-wrapper">
     <div class="summary">
       <p class="summary-label">Kostenübersicht</p>
