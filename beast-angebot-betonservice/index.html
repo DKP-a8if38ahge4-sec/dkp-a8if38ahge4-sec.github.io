@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Angebot &mdash; Monitoring &amp; Newsletter Agent &mdash; The Unknown Beast</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* === TOKENS === */
+    :root {
+      --black:       #0A0A0A;
+      --white:       #FFFFFF;
+      --beast-red:   #E8002A;
+      --beast-dark:  #111111;
+      --beast-grey:  #1C1C1C;
+      --beast-mid:   #2A2A2A;
+      --beast-muted: #6B6B6B;
+      --beast-line:  rgba(255,255,255,0.1);
+      --font:        'Inter', 'Helvetica Neue', sans-serif;
+      --max:         1100px;
+      --radius:      4px;
+    }
+
+    /* === RESET === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--beast-dark);
+      color: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* === LAYOUT === */
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--beast-line);
+    }
+
+    .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--beast-red);
+      margin-bottom: 1.25rem;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 1.0625rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 680px;
+      line-height: 1.75;
+    }
+
+    /* === HEADER === */
+    header {
+      background-color: var(--beast-dark);
+      border-bottom: 1px solid var(--beast-line);
+      padding: 1.5rem 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--beast-red);
+    }
+
+    .header-meta {
+      font-size: 12px;
+      color: var(--beast-muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* === HERO === */
+    .hero {
+      padding: 7rem 0 5rem;
+      border-bottom: 1px solid var(--beast-line);
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--beast-muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 9vw, 7rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--beast-red);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: rgba(255,255,255,0.65);
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .hero-meta-item .meta-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--beast-muted);
+    }
+
+    .hero-meta-item .meta-value {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    /* === PROBLEM === */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    .problem-text p + p {
+      margin-top: 1rem;
+    }
+
+    .problem-highlight {
+      background-color: var(--beast-grey);
+      border-left: 3px solid var(--beast-red);
+      padding: 2rem;
+      border-radius: var(--radius);
+    }
+
+    .problem-highlight p {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.6;
+      max-width: none;
+    }
+
+    /* === LOESUNG === */
+    .solution-intro {
+      margin-bottom: 3rem;
+    }
+
+    .blocks-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background-color: var(--beast-line);
+      border: 1px solid var(--beast-line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+
+    .block-item {
+      background-color: var(--beast-grey);
+      padding: 2rem;
+    }
+
+    .block-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .block-item h3 {
+      font-size: 0.9375rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .block-item p {
+      font-size: 0.875rem;
+      max-width: none;
+    }
+
+    .agent-extra {
+      background-color: var(--beast-mid);
+      border: 1px solid var(--beast-red);
+      border-radius: var(--radius);
+      padding: 2rem 2.5rem;
+    }
+
+    .agent-extra h3 {
+      font-size: 1rem;
+      color: var(--beast-red);
+      margin-bottom: 0.75rem;
+    }
+
+    .agent-extra p {
+      max-width: none;
+    }
+
+    /* === LEISTUNGEN === */
+    .leistungen-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background-color: var(--beast-line);
+      border: 1px solid var(--beast-line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+
+    .leistung-item {
+      background-color: var(--beast-grey);
+      padding: 2rem;
+    }
+
+    .leistung-item .leistung-title {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--beast-red);
+      margin-bottom: 0.5rem;
+    }
+
+    .leistung-item p {
+      font-size: 0.9375rem;
+      max-width: none;
+    }
+
+    /* === REFERENZ === */
+    .referenz-box {
+      background-color: var(--beast-grey);
+      border-radius: var(--radius);
+      padding: 3rem;
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .referenz-box p {
+      max-width: none;
+    }
+
+    .referenz-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .stat-item {
+      border-left: 2px solid var(--beast-red);
+      padding-left: 1.5rem;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .stat-desc {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.25rem;
+    }
+
+    /* === PREISE === */
+    .preis-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .preis-card {
+      background-color: var(--beast-grey);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      border: 1px solid var(--beast-line);
+    }
+
+    .preis-card.featured {
+      border-color: var(--beast-red);
+      background-color: var(--beast-mid);
+    }
+
+    .preis-card .card-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--beast-red);
+      margin-bottom: 1rem;
+    }
+
+    .preis-card h3 {
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .preis-card .price-main {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      margin: 1.5rem 0 0.25rem;
+    }
+
+    .preis-card .price-unit {
+      font-size: 0.8125rem;
+      color: var(--beast-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .preis-card .price-note {
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.45);
+      border-top: 1px solid var(--beast-line);
+      padding-top: 1rem;
+      margin-top: 1rem;
+    }
+
+    .preis-card p {
+      font-size: 0.9375rem;
+      max-width: none;
+    }
+
+    .total-row {
+      margin-top: 2rem;
+      background-color: var(--beast-grey);
+      border: 1px solid var(--beast-line);
+      border-radius: var(--radius);
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .total-row .total-label {
+      font-size: 0.875rem;
+      color: var(--beast-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .total-row .total-amount {
+      font-size: 1.75rem;
+      font-weight: 900;
+      color: var(--white);
+    }
+
+    .total-row .total-sub {
+      font-size: 0.8125rem;
+      color: var(--beast-muted);
+    }
+
+    /* === STUNDENSAETZE === */
+    .stunden-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+    }
+
+    .stunden-table tr {
+      border-bottom: 1px solid var(--beast-line);
+    }
+
+    .stunden-table tr:first-child {
+      border-top: 1px solid var(--beast-line);
+    }
+
+    .stunden-table td {
+      padding: 1rem 0;
+      font-size: 0.9375rem;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .stunden-table td:last-child {
+      text-align: right;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    /* === TEAM === */
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .team-card {
+      background-color: var(--beast-grey);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+    }
+
+    .team-card .team-name {
+      font-size: 1.25rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.25rem;
+    }
+
+    .team-card .team-role {
+      font-size: 0.8125rem;
+      color: var(--beast-red);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .team-card p {
+      font-size: 0.9375rem;
+      max-width: none;
+    }
+
+    .about-intro {
+      margin-bottom: 3rem;
+    }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .tag {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid var(--beast-line);
+      border-radius: 2px;
+      padding: 0.4rem 0.9rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* === CTA === */
+    .cta-section {
+      padding: 6rem 0;
+      border-bottom: none;
+    }
+
+    .cta-inner {
+      background-color: var(--beast-red);
+      border-radius: var(--radius);
+      padding: 4rem;
+      text-align: center;
+    }
+
+    .cta-inner h2 {
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .cta-inner p {
+      color: rgba(255,255,255,0.8);
+      margin: 0 auto 2.5rem;
+      font-size: 1.0625rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: opacity 0.15s ease;
+    }
+
+    .btn:hover { opacity: 0.85; }
+
+    .btn-white {
+      background-color: var(--white);
+      color: var(--beast-red);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.5);
+    }
+
+    .angebot-nr {
+      margin-top: 2rem;
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* === FOOTER === */
+    footer {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--beast-line);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-inner p {
+      font-size: 0.8125rem;
+      color: var(--beast-muted);
+      max-width: none;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .problem-grid,
+      .referenz-box,
+      .preis-grid,
+      .team-grid,
+      .leistungen-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .blocks-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-meta {
+        gap: 1.5rem;
+      }
+
+      .cta-inner {
+        padding: 2.5rem 1.5rem;
+      }
+
+      .total-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <a href="#" class="logo">The Unknown <span>Beast</span></a>
+        <span class="header-meta">Angebot Nr. AG 26-00373 &mdash; 31. Juli 2026</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <p class="hero-eyebrow">F&uuml;r Betonservice &amp; Talk Concrete</p>
+      <h1>Weniger<br/>suchen.<br/><em>Mehr</em><br/>wissen.</h1>
+      <p class="hero-sub">
+        Ein KI-Agent, der eure Branche im Blick beh&auml;lt und euer Marketing mit frischen Themen versorgt.
+        Jede Woche. Automatisch.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="meta-label">Auftraggeber</span>
+          <span class="meta-value">FBF Betondienst GmbH / Talk Concrete</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="meta-label">Ansprechpartner</span>
+          <span class="meta-value">Denny Bakirtzis, Dr. Ulrich Lotz</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="meta-label">Anbieter</span>
+          <span class="meta-value">Die Kavallerie &amp; The Unknown Beast</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="container">
+      <p class="label">Das Problem</p>
+      <h2>Zu viel Input.<br/>Zu wenig Zeit.</h2>
+      <div class="problem-grid">
+        <div class="problem-text">
+          <p>
+            Ihr seid t&auml;glich mit Themen konfrontiert: Wirtschaftspolitik, Nachwuchs, Online-Marketing,
+            Branchentrends. Dazu kommen Newsletter, RSS-Feeds, Verbandsmeldungen &mdash; und am Ende bleibt
+            kaum Zeit, das alles zu sichten, geschweige denn daraus Inhalte zu machen.
+          </p>
+          <p style="margin-top:1rem;">
+            F&uuml;r Betontage, Betonverb&auml;nde, Talk Concrete und das Berufsf&ouml;rderungswerk bedeutet das:
+            wertvolle Themen gehen unter, Inhalte entstehen zu sp&auml;t oder gar nicht.
+          </p>
+          <p style="margin-top:1rem;">
+            Genau da setzen wir an.
+          </p>
+        </div>
+        <div class="problem-highlight">
+          <p>
+            &bdquo;Wir haben jetzt zum Beispiel eine E-Mail-Adresse, &uuml;ber die wir Newsletter abonnieren,
+            und einen Agenten, der das verwurschtelt &mdash; und hinten raus kommen schon Vorschl&auml;ge
+            f&uuml;r Posts, Blogbeitr&auml;ge, Newsletter.&ldquo;
+          </p>
+          <p style="margin-top:1rem; font-size:0.8125rem; color: rgba(255,255,255,0.45);">
+            Denny Bakirtzis, Betonservice &mdash; Konzeptgespr&auml;ch 30. Juli 2026
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOESUNG -->
+  <section>
+    <div class="container">
+      <p class="label">Die L&ouml;sung</p>
+      <h2>Euer KI-Agent.<br/>Immer on.</h2>
+      <div class="solution-intro">
+        <p>
+          Der Monitoring &amp; Newsletter Agent &uuml;berwacht abonnierte Newsletter und Websites zu
+          branchenrelevanten Themen, filtert automatisch das Relevante heraus und liefert es euch
+          w&ouml;chentlich per E-Mail &mdash; aufgeteilt in vier klar definierte Themenbl&ouml;cke.
+        </p>
+      </div>
+
+      <div class="blocks-grid">
+        <div class="block-item">
+          <div class="block-icon">&#127959;</div>
+          <h3>Branche &amp; Wirtschaftspolitik</h3>
+          <p>Gesetzgebung, Verbandsmeldungen, Marktentwicklungen &mdash; fr&uuml;hzeitig erkannt, bevor sie
+          den Bundestag erreichen.</p>
+        </div>
+        <div class="block-item">
+          <div class="block-icon">&#128227;</div>
+          <h3>Online-Marketing</h3>
+          <p>Trends, Plattform-Updates und Best Practices f&uuml;r eure digitale Kommunikation &mdash;
+          direkt aufbereitet f&uuml;r Talk Concrete.</p>
+        </div>
+        <div class="block-item">
+          <div class="block-icon">&#127891;</div>
+          <h3>Nachwuchs &amp; Fachkr&auml;fte</h3>
+          <p>Themen rund um Azubi-Gewinnung, Generation Z und Employer Branding &mdash;
+          f&uuml;r das Berufsf&ouml;rderungswerk und die Verbandskommunikation.</p>
+        </div>
+        <div class="block-item">
+          <div class="block-icon">&#128203;</div>
+          <h3>Weiteres (frei definierbar)</h3>
+          <p>Ein vierter Themenblock, den wir gemeinsam mit euch festlegen &mdash;
+          angepasst an eure aktuellen Schwerpunkte und Kampagnen.</p>
+        </div>
+      </div>
+
+      <div class="agent-extra" style="margin-top:2rem;">
+        <h3>+ Content Newsletter Agent</h3>
+        <p>
+          Zus&auml;tzlich zum Monitoring wird ein zweiter Agent angedockt, der 1x w&ouml;chentlich
+          fertige Themenvorschl&auml;ge f&uuml;r euer eigenes Marketing erstellt: Social Media Posts,
+          Newsletter-Inhalte, Blogbeitr&auml;ge &mdash; je nach Kanal und Zielgruppe, in eurem Duktus.
+          Human in the Loop: Ein Mensch schaut immer noch mal dr&uuml;ber, bevor etwas rausgeht.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEISTUNGEN -->
+  <section>
+    <div class="container">
+      <p class="label">Was wir einrichten</p>
+      <h2>Alles aus<br/>einer Hand.</h2>
+      <p>Von der Tool-Auswahl bis zum laufenden Betrieb &mdash; wir &uuml;bernehmen die gesamte Einrichtung
+      und begleiten euch im ersten Monat aktiv.</p>
+
+      <div class="leistungen-grid">
+        <div class="leistung-item">
+          <div class="leistung-title">Tool-Setup</div>
+          <p>Einrichtung von Nextcloud, Mistral und Perplexity als technische Basis des Agenten.</p>
+        </div>
+        <div class="leistung-item">
+          <div class="leistung-title">Gesamtkonzept</div>
+          <p>Gemeinsame Definition der Themenbl&ouml;cke, Quellen und Ausgabeformate passend zu euren Kan&auml;len.</p>
+        </div>
+        <div class="leistung-item">
+          <div class="leistung-title">Newsletter-Design</div>
+          <p>Individuelles Design des w&ouml;chentlichen Digests &mdash; in eurem Corporate Design.</p>
+        </div>
+        <div class="leistung-item">
+          <div class="leistung-title">n8n Workflow</div>
+          <p>Aufsetzen und Testen des vollst&auml;ndigen Automatisierungs-Workflows.</p>
+        </div>
+        <div class="leistung-item">
+          <div class="leistung-title">Projektorganisation</div>
+          <p>Klare Ansprechpartner, kurze Wege, transparente Kommunikation w&auml;hrend der Einrichtung.</p>
+        </div>
+        <div class="leistung-item">
+          <div class="leistung-title">Monitoring &amp; Optimierung</div>
+          <p>Aktive Begleitung und Feintuning im ersten Monat nach Go-live.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENZ -->
+  <section>
+    <div class="container">
+      <p class="label">Referenz</p>
+      <h2>Nicht Theorie.<br/>Praxis.</h2>
+      <p>
+        Was wir euch anbieten, l&auml;uft bereits &mdash; bei einer der gr&ouml;&szlig;ten Wirtschaftsorganisationen
+        der Region.
+      </p>
+      <div class="referenz-box">
+        <div>
+          <h3>IHK Reutlingen</h3>
+          <p>
+            F&uuml;r die IHK Reutlingen haben wir einen vergleichbaren Monitoring-Agent aufgebaut.
+            Die Verantwortlichen erhalten t&auml;glich einen Digest aus bis zu 60 Newslettern &mdash;
+            automatisch gefiltert, zusammengefasst und nach Relevanz bewertet.
+          </p>
+          <p style="margin-top:1rem;">
+            Das spart wochentlich Stunden an Recherchearbeit und liefert gleichzeitig die Basis
+            f&uuml;r deren eigene Newsletter, das WNA-Magazin und die Mitgliederkommunikation.
+          </p>
+          <p style="margin-top:1rem;">
+            F&uuml;r Betonservice und Talk Concrete funktioniert das genauso &mdash; nur mit euren
+            Themen, euren Kan&auml;len, eurer Stimme.
+          </p>
+        </div>
+        <div class="referenz-stat">
+          <div class="stat-item">
+            <div class="stat-number">200&ndash;300</div>
+            <div class="stat-desc">Newsletter pro Woche, automatisch verarbeitet</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">4</div>
+            <div class="stat-desc">Themenbl&ouml;cke, klar strukturiert und priorisiert</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">1x</div>
+            <div class="stat-desc">W&ouml;chentlicher Digest als Basis f&uuml;r eigene Inhalte</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREISE -->
+  <section>
+    <div class="container">
+      <p class="label">Investition</p>
+      <h2>Was es kostet.</h2>
+      <p>Transparente Preise, keine versteckten Kosten. Alle Betr&auml;ge netto zzgl. 19% MwSt.</p>
+
+      <div class="preis-grid">
+        <div class="preis-card featured">
+          <div class="card-label">Empfohlen</div>
+          <h3>All-in-One-Paket</h3>
+          <p>Monitoring Agent + Content Newsletter Agent in einem Paket. Einmalige Einrichtung, sofort einsatzbereit.</p>
+          <div class="price-main">5.200 &euro;</div>
+          <div class="price-unit">netto, einmalig</div>
+          <p style="font-size:0.875rem; color:rgba(255,255,255,0.55);">
+            Enthalt: Setup aller Tools, Gesamtkonzept, individuelles Newsletter-Design,
+            n8n Workflow, Projektorganisation, 1 Monat Monitoring &amp; Optimierung.
+          </p>
+          <div class="price-note">Monitoring Agent einzeln buchbar: 3.500 &euro; netto</div>
+        </div>
+
+        <div class="preis-card">
+          <div class="card-label">Laufende Kosten</div>
+          <h3>Ab Monat 2</h3>
+          <p>Hosting, Wartung und Token-Verbrauch f&uuml;r den laufenden Betrieb des Agenten.</p>
+          <div class="price-main">170 &euro;</div>
+          <div class="price-unit">netto, pro Monat</div>
+          <p style="font-size:0.875rem; color:rgba(255,255,255,0.55);">
+            n8n Hosting &amp; Wartung: 160 &euro; / Monat<br/>
+            Tokens nach Verbrauch (Perplexity, Mistral): ca. 10 &euro; / Monat
+          </p>
+          <div class="price-note">Exkl. laufende Kosten im ersten Monat (in Einrichtung enthalten)</div>
+        </div>
+      </div>
+
+      <div class="total-row">
+        <div>
+          <div class="total-label">Gesamtbetrag inkl. 19% MwSt.</div>
+          <div class="total-sub">Einmalige Einrichtung All-in-One-Paket</div>
+        </div>
+        <div class="total-amount">6.390,30 &euro;</div>
+      </div>
+
+      <p style="margin-top:1.5rem; font-size:0.875rem; color:rgba(255,255,255,0.4);">
+        Zahlbar binnen 14 Tagen nach Abnahme. Es gelten die AGB der DIE KAVALLERIE GmbH
+        unter www.diekavallerie.de/agb/
+      </p>
+    </div>
+  </section>
+
+  <!-- STUNDENSAETZE -->
+  <section>
+    <div class="container">
+      <p class="label">Zus&auml;tzliche Leistungen</p>
+      <h2>Stundensätze.</h2>
+      <p>
+        Leistungen, die &uuml;ber dieses Angebot hinausgehen, werden nach unseren agentur&uuml;blichen
+        Netto-Stundensätzen berechnet.
+      </p>
+      <table class="stunden-table">
+        <tr>
+          <td>Beratung / Strategie</td>
+          <td>155,&ndash; &euro; / Std.</td>
+        </tr>
+        <tr>
+          <td>Kreativdirektion</td>
+          <td>125,&ndash; &euro; / Std.</td>
+        </tr>
+        <tr>
+          <td>Konzeption / Text</td>
+          <td>125,&ndash; &euro; / Std.</td>
+        </tr>
+        <tr>
+          <td>Kreation, Art &amp; Text</td>
+          <td>105,&ndash; &euro; / Std.</td>
+        </tr>
+        <tr>
+          <td>Projektmanagement</td>
+          <td>105,&ndash; &euro; / Std.</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section>
+    <div class="container">
+      <p class="label">Wer wir sind</p>
+      <h2>The Unknown Beast.<br/>KI-Agentur<br/>aus T&uuml;bingen.</h2>
+      <div class="about-intro">
+        <p>
+          Wir sind 2024 aus der Kavallerie heraus entstanden &mdash; einer Agentur mit rund 45 Leuten,
+          die seit &uuml;ber 15 Jahren Technologie und Kommunikation verbindet. The Unknown Beast ist
+          unsere reine KI-Agentur: on brand statt generisch, Anwendung statt Hype, Produkte statt Stunden.
+        </p>
+        <p style="margin-top:1rem;">
+          Wir bauen eigene L&ouml;sungen, wenn der Markt keine liefert. Und wir setzen KI nur dort ein,
+          wo sie echten Mehrwert bringt &mdash; nicht weil es gerade Trend ist.
+        </p>
+        <div class="about-tags">
+          <span class="tag">On Brand statt generisch</span>
+          <span class="tag">Anwendung statt Hype</span>
+          <span class="tag">Produkte statt Stunden</span>
+          <span class="tag">Kreative statt reiner Code</span>
+        </div>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-name">Michael Friz</div>
+          <div class="team-role">Gesch&auml;ftsf&uuml;hrer &mdash; The Unknown Beast</div>
+          <p>
+            Seit &uuml;ber 14 Jahren bei der Kavallerie. Kommt aus Text, Konzept und Grafik,
+            hat das Team f&uuml;r Fotografie, Motion und 3D geleitet &mdash; und ist heute
+            vollst&auml;ndig in der KI. Er verantwortet Konzept und Umsetzung aller Beast-Produkte.
+          </p>
+        </div>
+        <div class="team-card">
+          <div class="team-name">Leonie Wandel-Haug</div>
+          <div class="team-role">Projektleitung &amp; Kontakt &mdash; Die Kavallerie</div>
+          <p>
+            Eure direkte Ansprechpartnerin bei der Kavallerie. Sie koordiniert das Projekt,
+            h&auml;lt die F&auml;den zusammen und sorgt daf&uuml;r, dass alles reibungslos l&auml;uft &mdash;
+            von der ersten Abstimmung bis zum Go-live.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-inner">
+        <h2>Bereit, diese<br/>Attacke zu reiten?</h2>
+        <p>
+          Angebot annehmen, R&uuml;ckfragen stellen oder direkt einen Termin buchen &mdash;
+          Leonie Wandel-Haug freut sich von euch zu h&ouml;ren.
+        </p>
+        <div class="cta-buttons">
+          <a href="mailto:leo@diekavallerie.de?subject=Angebot%20AG%2026-00373%20%E2%80%93%20Annahme&body=Hallo%20Leonie%2C%0A%0Awir%20nehmen%20das%20Angebot%20AG%2026-00373%20an." class="btn btn-white">
+            Angebot annehmen
+          </a>
+          <a href="mailto:leo@diekavallerie.de?subject=R%C3%BCckfrage%20Angebot%20AG%2026-00373" class="btn btn-outline">
+            R&uuml;ckfrage stellen
+          </a>
+        </div>
+        <p class="angebot-nr">Angebotsnummer: AG 26-00373 &mdash; leo@diekavallerie.de</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <p>DIE KAVALLERIE GmbH &mdash; Rosentalstra&szlig;e 8/1, 72070 T&uuml;bingen &mdash; &copy; 2026</p>
+        <p>Gesch&auml;ftsf&uuml;hrer: Bj&oslash;rn Franke, Mark Pelzer &mdash; HRB 382502</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
