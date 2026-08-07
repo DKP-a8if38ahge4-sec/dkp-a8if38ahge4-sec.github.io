@@ -16,7 +16,7 @@
       --border: #222222;
       --card: #111111;
       --muted: rgba(245, 245, 240, 0.42);
-      --bay-width: 15vw;
+      --bay-width: 22vw;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -72,29 +72,11 @@
       left: 3vw;
       bottom: 3vw;
       width: var(--bay-width);
-      min-width: 126px;
+      min-width: 170px;
       border: 1px solid var(--border);
       border-radius: 4px;
       background: var(--card);
       box-shadow: inset 0 0 0 8px rgba(10, 10, 10, 0.35);
-    }
-
-    .icon-bay::before,
-    .icon-bay::after {
-      position: absolute;
-      left: 18px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      content: '';
-    }
-
-    .icon-bay::before { top: 19px; }
-
-    .icon-bay::after {
-      bottom: 19px;
-      background: rgba(245, 245, 240, 0.28);
     }
 
     .bay-label {
@@ -222,10 +204,10 @@
     }
 
     @media (max-width: 720px) {
-      :root { --bay-width: 18vw; }
+      :root { --bay-width: 24vw; }
 
       .wallpaper { min-height: 420px; padding: 5vw; }
-      .icon-bay { top: 5vw; left: 5vw; bottom: 5vw; }
+      .icon-bay { top: 5vw; left: 5vw; bottom: 5vw; min-width: 96px; }
       .content {
         width: calc(100% - var(--bay-width) - 7vw);
         margin-left: calc(var(--bay-width) + 2vw);
