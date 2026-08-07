@@ -174,22 +174,48 @@
     h1 em { color: var(--accent); font-style: normal; }
 
     .footer-note {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 2rem;
-      padding-top: 18px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: clamp(9px, 0.75vw, 12px);
-      font-weight: 500;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 0 0;
+      border-top: 2px solid var(--accent);
+      color: var(--white);
+      font-size: clamp(12px, 0.95vw, 16px);
+      font-weight: 700;
       line-height: 1.45;
-      letter-spacing: 0.04em;
-      text-transform: lowercase;
+      letter-spacing: 0.01em;
     }
 
-    .footer-note p { max-width: 560px; margin: 0; }
-    .footer-code { color: rgba(245, 245, 240, 0.3); white-space: nowrap; }
+    .internet-signal {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      background: var(--accent);
+      color: var(--black);
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .footer-note p { max-width: 680px; margin: 0; }
+    .footer-note strong {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--accent);
+      font-size: 0.78em;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .footer-code {
+      color: rgba(245, 245, 240, 0.3);
+      font-size: clamp(9px, 0.65vw, 11px);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
 
     @media (max-width: 720px) {
       :root { --bay-width: 18vw; }
@@ -204,8 +230,13 @@
       .topline span:last-child { display: none; }
       .message { padding: 4vh 0; }
       h1 { font-size: clamp(34px, 10vw, 72px); }
-      .footer-note { display: block; font-size: 9px; }
-      .footer-code { display: block; margin-top: 12px; }
+      .footer-note {
+        grid-template-columns: auto 1fr;
+        gap: 10px;
+        font-size: 9px;
+      }
+      .internet-signal { width: 26px; height: 26px; font-size: 17px; }
+      .footer-code { grid-column: 2; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -231,7 +262,8 @@
       </div>
 
       <footer class="footer-note">
-        <p>Bitte stelle sicher, dass die Stele mit dem Internet verbunden ist.</p>
+        <span class="internet-signal" aria-hidden="true">!</span>
+        <p><strong>Internetverbindung erforderlich</strong>Bitte stelle sicher, dass die Stele mit dem Internet verbunden ist.</p>
         <span class="footer-code">PB-001 / waiting room</span>
       </footer>
     </section>
