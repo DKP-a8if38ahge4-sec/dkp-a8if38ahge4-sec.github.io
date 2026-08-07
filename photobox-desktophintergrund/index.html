@@ -100,21 +100,6 @@
       margin-left: calc(var(--bay-width) + 2vw);
     }
 
-    .topline {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-bottom: 18px;
-      border-bottom: 1px solid var(--border);
-      color: var(--muted);
-      font-size: clamp(9px, 0.72vw, 12px);
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .topline strong { color: var(--accent); }
-
     .message {
       max-width: 980px;
       margin: clamp(8vh, 11vh, 15vh) 0 0;
@@ -147,7 +132,7 @@
       font-size: clamp(42px, 7.2vw, 132px);
       font-weight: 900;
       letter-spacing: -0.075em;
-      line-height: 0.89;
+      line-height: 1.02;
       text-transform: uppercase;
     }
 
@@ -157,50 +142,33 @@
       position: absolute;
       top: 58%;
       left: 0;
-      right: 0;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 16px;
-      padding: 20px 0 0;
-      border-top: 2px solid var(--accent);
+      width: min(100%, 720px);
+      padding: 18px 22px;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      background: var(--card);
       color: var(--white);
-      font-size: clamp(12px, 0.95vw, 16px);
-      font-weight: 700;
-      line-height: 1.45;
-      letter-spacing: 0.01em;
       transform: translateY(-50%);
     }
 
-    .internet-signal {
-      display: grid;
-      width: 34px;
-      height: 34px;
-      place-items: center;
-      background: var(--accent);
-      color: var(--black);
-      font-size: 22px;
-      font-weight: 900;
-      line-height: 1;
-    }
-
-    .footer-note p { max-width: 680px; margin: 0; }
-
     .footer-note strong {
       display: block;
-      margin-bottom: 2px;
+      margin-bottom: 7px;
       color: var(--accent);
-      font-size: 0.78em;
-      letter-spacing: 0.12em;
+      font-size: clamp(10px, 0.72vw, 12px);
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      line-height: 1.2;
       text-transform: uppercase;
     }
 
-    .footer-code {
-      color: rgba(245, 245, 240, 0.3);
-      font-size: clamp(9px, 0.65vw, 11px);
+    .footer-note p {
+      max-width: 650px;
+      margin: 0;
+      color: var(--white);
+      font-size: clamp(12px, 0.95vw, 16px);
       font-weight: 500;
-      letter-spacing: 0.08em;
-      white-space: nowrap;
+      line-height: 1.5;
     }
 
     @media (max-width: 720px) {
@@ -212,18 +180,15 @@
         width: calc(100% - var(--bay-width) - 7vw);
         margin-left: calc(var(--bay-width) + 2vw);
       }
-      .topline { gap: 12px; font-size: 8px; }
-      .topline span:last-child { display: none; }
       .message { margin-top: 8vh; }
+      .message-mark { margin-bottom: 18px; }
       h1 { font-size: clamp(34px, 10vw, 72px); }
       .footer-note {
         top: 61%;
-        grid-template-columns: auto 1fr;
-        gap: 10px;
-        font-size: 9px;
+        width: 100%;
+        padding: 14px 15px;
       }
-      .internet-signal { width: 26px; height: 26px; font-size: 17px; }
-      .footer-code { grid-column: 2; }
+      .footer-note p { font-size: 9px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -238,21 +203,15 @@
     </aside>
 
     <section class="content">
-      <div class="topline" aria-label="Status">
-        <span>Photobox / <strong>Bereit</strong></span>
-        <span>Bitte einen Moment</span>
-      </div>
-
       <div class="message">
         <p class="message-mark">Systemhinweis</p>
         <h1 id="waiting-message">Bitte hab einen Moment Geduld, die Photobox wird sich in <em>K&uuml;rze</em> &ouml;ffnen.</h1>
       </div>
 
-      <footer class="footer-note">
-        <span class="internet-signal" aria-hidden="true">!</span>
-        <p><strong>Internetverbindung erforderlich</strong>Bitte stelle sicher, dass die Stele mit dem Internet verbunden ist.</p>
-        <span class="footer-code">PB-001 / waiting room</span>
-      </footer>
+      <aside class="footer-note" aria-label="Internetverbindung">
+        <strong>Internetverbindung erforderlich</strong>
+        <p>Bitte stelle sicher, dass die Stele mit dem Internet verbunden ist.</p>
+      </aside>
     </section>
   </main>
 </body>
