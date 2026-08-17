@@ -1,97 +1,373 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Photobox Anleitung</title>
+  <title>Photobox Instructions - The Unknown Beast</title>
+
   <style>
-    :root {
-      color-scheme: light;
-      --ink: #14243b;
-      --paper: #f5f0e8;
-      --accent: #0b79f7;
-      --line: #c9c0b4;
+    /* Reset */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    * { box-sizing: border-box; }
+    :root {
+      --red: #ff003c;
+      --black: #1d1d1d;
+      --paper: #f2f4f7;
+      --white: #ffffff;
+      --line: #1d1d1d;
+      --muted: #767676;
+    }
 
     body {
-      margin: 0;
+      min-height: 100vh;
       background: var(--paper);
-      color: var(--ink);
+      color: var(--black);
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    main {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 48px 24px 64px;
+    a {
+      color: inherit;
     }
 
-    .eyebrow {
-      margin: 0 0 12px;
-      color: var(--accent);
-      font-size: 13px;
+    .site-header {
+      background: var(--red);
+      color: var(--white);
+      padding: 28px 32px 34px;
+    }
+
+    .header-inner,
+    main,
+    .site-footer {
+      width: min(1180px, calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 70px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    .header-meta a {
+      text-decoration: none;
+    }
+
+    .header-meta a:hover,
+    .header-meta a:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    h1 {
+      max-width: 980px;
+      font-size: clamp(56px, 12vw, 154px);
+      font-weight: 900;
+      letter-spacing: -0.085em;
+      line-height: 0.83;
+      text-transform: uppercase;
+    }
+
+    .hero-note {
+      max-width: 420px;
+      margin-top: 32px;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    main {
+      padding: 64px 0 88px;
+    }
+
+    .section-intro {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 32px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--line);
+      margin-bottom: 24px;
+    }
+
+    .section-label {
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
     }
 
-    h1 {
-      max-width: 760px;
-      margin: 0;
-      font-size: clamp(42px, 8vw, 92px);
-      line-height: 0.94;
-      letter-spacing: -0.055em;
+    .section-count {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
     }
 
-    .intro {
-      max-width: 620px;
-      margin: 24px 0 40px;
-      font-size: 19px;
-      line-height: 1.5;
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 48px 24px;
     }
 
-    .photo-frame {
+    .gallery-item {
+      min-width: 0;
+    }
+
+    .image-wrap {
+      overflow: hidden;
+      background: var(--white);
       border: 1px solid var(--line);
-      padding: 12px;
-      background: #fff;
+      aspect-ratio: 4 / 3;
     }
 
-    .photo-frame img {
+    .image-wrap img {
       display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 220ms ease;
     }
 
-    .caption {
-      display: flex;
-      justify-content: space-between;
+    .gallery-item:hover .image-wrap img,
+    .gallery-item:focus-within .image-wrap img {
+      transform: scale(1.025);
+    }
+
+    .image-caption {
+      display: grid;
+      grid-template-columns: auto 1fr;
       gap: 16px;
       padding-top: 12px;
-      font-size: 13px;
+      border-top: 1px solid var(--line);
+      margin-top: 10px;
+    }
+
+    .image-number {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    .image-copy {
+      font-size: 14px;
       line-height: 1.4;
     }
 
-    @media (min-width: 760px) {
-      .photo-frame { max-width: 620px; }
+    .image-copy strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .site-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 20px 0 28px;
+      border-top: 2px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--red);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 700px) {
+      .site-header {
+        padding: 22px 20px 28px;
+      }
+
+      .header-inner,
+      main,
+      .site-footer {
+        width: min(100% - 40px, 1180px);
+      }
+
+      .header-meta {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 56px;
+      }
+
+      main {
+        padding: 42px 0 64px;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .site-footer {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .image-wrap img {
+        transition: none;
+      }
     }
   </style>
 </head>
 <body>
-  <main>
-    <p class="eyebrow">Photobox Instructions</p>
-    <h1>Pick your scene. Strike a pose.</h1>
-    <p class="intro">Eine kurze Referenzseite f&uuml;r die AI Photo Box. Das Bild zeigt den aktuellen Aufbau und die vier Schritte f&uuml;r Besucherinnen und Besucher.</p>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-meta">
+        <a href="../">The Unknown Beast</a>
+        <span>Photobox / Instructions</span>
+      </div>
+      <h1>Pick.<br>Pose.<br>Print.</h1>
+      <p class="hero-note">A visual guide to the AI Photo Box - one image, one moment, one print.</p>
+    </div>
+  </header>
 
-    <figure class="photo-frame">
-      <img src="./grafik.svg" alt="AI Photo Box mit Bildschirm, Kamera und den vier Nutzungsschritten Pick your scene, Strike a pose, Grab your printout sowie Scan &amp; share">
-      <figcaption class="caption">
-        <span>AI Photo Box - Referenzfoto</span>
-        <span>Photobox Instructions</span>
-      </figcaption>
-    </figure>
+  <main>
+    <div class="section-intro">
+      <p class="section-label">Image archive</p>
+      <p class="section-count">27 frames</p>
+    </div>
+
+    <section class="gallery" aria-label="Photobox image gallery">
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image.jpeg" alt="Photobox reference image 01" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">01</span><span class="image-copy"><strong>Start here</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(1).jpeg" alt="Photobox reference image 02" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">02</span><span class="image-copy"><strong>Choose a scene</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(2).jpeg" alt="Photobox reference image 03" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">03</span><span class="image-copy"><strong>Find your angle</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(3).jpeg" alt="Photobox reference image 04" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">04</span><span class="image-copy"><strong>Make it yours</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(4).jpeg" alt="Photobox reference image 05" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">05</span><span class="image-copy"><strong>Strike a pose</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(5).jpeg" alt="Photobox reference image 06" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">06</span><span class="image-copy"><strong>Hold the moment</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(6).jpeg" alt="Photobox reference image 07" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">07</span><span class="image-copy"><strong>Keep it bold</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(7).jpeg" alt="Photobox reference image 08" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">08</span><span class="image-copy"><strong>Try another look</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(8).jpeg" alt="Photobox reference image 09" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">09</span><span class="image-copy"><strong>Make a memory</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(9).jpeg" alt="Photobox reference image 10" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">10</span><span class="image-copy"><strong>Stay in frame</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(10).jpeg" alt="Photobox reference image 11" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">11</span><span class="image-copy"><strong>Push the button</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(11).jpeg" alt="Photobox reference image 12" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">12</span><span class="image-copy"><strong>Wait for it</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(12).jpeg" alt="Photobox reference image 13" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">13</span><span class="image-copy"><strong>Almost there</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(13).jpeg" alt="Photobox reference image 14" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">14</span><span class="image-copy"><strong>Grab your print</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(14).jpeg" alt="Photobox reference image 15" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">15</span><span class="image-copy"><strong>Share the result</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(15).jpeg" alt="Photobox reference image 16" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">16</span><span class="image-copy"><strong>Scan and share</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(16).jpeg" alt="Photobox reference image 17" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">17</span><span class="image-copy"><strong>Save the scene</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(17).jpeg" alt="Photobox reference image 18" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">18</span><span class="image-copy"><strong>Share the fun</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(18).jpeg" alt="Photobox reference image 19" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">19</span><span class="image-copy"><strong>Take one more</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(19).jpeg" alt="Photobox reference image 20" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">20</span><span class="image-copy"><strong>Make it count</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(20).jpeg" alt="Photobox reference image 21" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">21</span><span class="image-copy"><strong>Keep the energy</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(21).jpeg" alt="Photobox reference image 22" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">22</span><span class="image-copy"><strong>Freeze the moment</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(22).jpeg" alt="Photobox reference image 23" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">23</span><span class="image-copy"><strong>Bring the group</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(23).jpeg" alt="Photobox reference image 24" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">24</span><span class="image-copy"><strong>Own the frame</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(24).jpeg" alt="Photobox reference image 25" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">25</span><span class="image-copy"><strong>Print the memory</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(25).jpeg" alt="Photobox reference image 26" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">26</span><span class="image-copy"><strong>Take it with you</strong>Sample instruction text.</span></figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="image-wrap"><img src="Image%20(26).jpeg" alt="Photobox reference image 27" loading="lazy"></div>
+        <figcaption class="image-caption"><span class="image-number">27</span><span class="image-copy"><strong>Done.</strong>Sample instruction text.</span></figcaption>
+      </figure>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <span>The Unknown Beast</span>
+    <span>Photobox Instructions</span>
+  </footer>
 </body>
 </html>
