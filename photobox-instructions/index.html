@@ -155,7 +155,7 @@
         "Image.jpeg", "Image (1).jpeg", "Image (2).jpeg", "Image (3).jpeg", "Image (4).jpeg", "Image (5).jpeg", "Image (6).jpeg", "Image (7).jpeg", "Image (8).jpeg", "Image (9).jpeg", "Image (10).jpeg", "Image (11).jpeg", "Image (12).jpeg", "Image (13).jpeg", "Image (14).jpeg", "Image (15).jpeg", "Image (16).jpeg", "Image (17).jpeg", "Image (18).jpeg", "Image (19).jpeg", "Image (20).jpeg", "Image (21).jpeg", "Image (22).jpeg", "Image (23).jpeg", "Image (24).jpeg", "Image (25).jpeg", "Image (26).jpeg"
       ];
       var titles = [
-        "Einschalten", "System hochfahren lassen", "Photobox abwarten", "Ethernet oder bereits verbundenes WLAN",
+        "Einschalten", "System hochfahren lassen", "Photobox abwarten", "WLAN nur einmal einrichten",
         "Windows-Men&uuml; anzeigen", "Einstellungen &ouml;ffnen", "Windows-Einstellungen", "Netzwerk und Internet",
         "Netzwerk-Einstellungen", "WLAN &ouml;ffnen", "Verf&uuml;gbare Netzwerke", "WLANs anzeigen",
         "Netzwerk ausw&auml;hlen", "Verbinden", "Passwort eingeben", "Passwort eintippen",
@@ -167,7 +167,7 @@
         "Dr&uuml;cken Sie den Netzschalter.",
         "Warten Sie, bis Windows vollst&auml;ndig gestartet ist.",
         "Warten Sie, bis die Photobox-Anwendung erscheint.",
-        "Die WLAN-Verbindung muss f&uuml;r das Event-WLAN nur einmal eingerichtet werden. Ist die Stele bereits mit einem verf&uuml;gbaren WLAN verbunden und wird nur neu gestartet, k&ouml;nnen Sie direkt zu Schritt 22 gehen. Bei Ethernet-Verbindung &uuml;berspringen Sie ebenfalls die Schritte 04 bis 21 und fahren mit Schritt 22 fort.",
+        "Sie m&uuml;ssen das WLAN f&uuml;r die Veranstaltung nur bei der ersten Inbetriebnahme einrichten. Wenn die Stele nach einem Neustart automatisch wieder mit diesem WLAN verbunden ist, beginnen Sie direkt bei Schritt 22. Ist die Stele &uuml;ber ein Ethernet-Kabel verbunden, entfallen die Schritte 04 bis 21 ebenfalls. Beginnen Sie direkt bei Schritt 22.",
         "Das Windows-Startmen&uuml; wird angezeigt.",
         "Klicken Sie auf das Zahnrad-Symbol.",
         "Das Fenster Windows-Einstellungen ist ge&ouml;ffnet.",
@@ -248,8 +248,8 @@
             noticeText.className = "notice-text";
             noticeCopy.className = "notice-copy";
             noticeLabel.textContent = "Hinweis";
-            noticeText.innerHTML = "Ethernet oder<br>bereits verbundenes WLAN";
-            noticeCopy.innerHTML = "Das WLAN m&uuml;ssen Sie f&uuml;r das Event nur einmal einrichten. Ist die Stele bereits mit einem verf&uuml;gbaren WLAN verbunden und wird nur neu gestartet, gehen Sie direkt zu Schritt 22. Bei Ethernet &uuml;berspringen Sie ebenfalls die Schritte 04 bis 21.";
+            noticeText.innerHTML = "WLAN nur einmal<br>einrichten";
+            noticeCopy.innerHTML = "Sie m&uuml;ssen das WLAN f&uuml;r die Veranstaltung nur bei der ersten Inbetriebnahme einrichten. Wenn die Stele nach einem Neustart automatisch wieder mit diesem WLAN verbunden ist, beginnen Sie direkt bei Schritt 22. Ist die Stele &uuml;ber ein Ethernet-Kabel verbunden, entfallen die Schritte 04 bis 21 ebenfalls. Beginnen Sie direkt bei Schritt 22.";
             noticeWrap.appendChild(noticeLabel);
             noticeWrap.appendChild(noticeText);
             noticeWrap.appendChild(noticeCopy);
