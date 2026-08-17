@@ -147,8 +147,13 @@
       row-gap: 62px;
     }
 
-    .print-page {
+    .print-page,
+    .print-grid {
       display: contents;
+    }
+
+    .print-intro {
+      display: none;
     }
 
     .gallery-item {
@@ -259,7 +264,7 @@
 
     @page {
       size: A4 portrait;
-      margin: 12mm;
+      margin: 10mm;
     }
 
     @media print {
@@ -291,13 +296,11 @@
       }
 
       .print-page {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-rows: repeat(2, minmax(0, 1fr));
-        column-gap: 8mm;
-        row-gap: 8mm;
+        display: flex;
+        flex-direction: column;
         width: 100%;
-        height: 273mm;
+        height: 277mm;
+        position: relative;
         break-after: page;
         page-break-after: always;
       }
@@ -307,9 +310,58 @@
         page-break-after: auto;
       }
 
+      .print-intro {
+        display: block;
+        flex: 0 0 34mm;
+        padding-bottom: 5mm;
+      }
+
+      .print-intro-kicker {
+        margin-bottom: 3mm;
+        color: #777771;
+        font-size: 9pt;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .print-intro-title {
+        margin-bottom: 2mm;
+        color: #000000;
+        font-size: 28pt;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        line-height: 0.9;
+        text-transform: uppercase;
+      }
+
+      .print-intro-copy {
+        color: #777771;
+        font-size: 10pt;
+        font-weight: 600;
+        line-height: 1.2;
+      }
+
+      .print-grid {
+        display: grid;
+        flex: 1 1 auto;
+        min-height: 0;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+        column-gap: 8mm;
+        row-gap: 7mm;
+      }
+
+      .print-page:not(.first-page) .print-grid {
+        height: 100%;
+      }
+
       .gallery-item {
+        display: flex;
+        flex-direction: column;
         min-width: 0;
         min-height: 0;
+        height: 100%;
         overflow: hidden;
         break-inside: avoid;
         page-break-inside: avoid;
@@ -319,8 +371,9 @@
         display: flex;
         align-items: flex-start;
         justify-content: center;
+        flex: 1 1 auto;
+        min-height: 0;
         width: 100%;
-        height: 114mm;
         background: transparent;
       }
 
@@ -328,11 +381,12 @@
         width: auto;
         max-width: 100%;
         height: auto;
-        max-height: 114mm;
+        max-height: 100%;
         opacity: 1;
       }
 
       .image-caption {
+        flex: 0 0 14mm;
         grid-template-columns: 8mm minmax(0, 1fr);
         gap: 2mm;
         padding-top: 2.5mm;
@@ -499,7 +553,30 @@
 
       for (index = 0; index < names.length; index += 4) {
         var page = document.createElement("div");
+        var grid = document.createElement("div");
+
         page.className = "print-page";
+        grid.className = "print-grid";
+
+        if (index === 0) {
+          var intro = document.createElement("div");
+          var introKicker = document.createElement("p");
+          var introTitle = document.createElement("h2");
+          var introCopy = document.createElement("p");
+
+          page.className += " first-page";
+          intro.className = "print-intro";
+          introKicker.className = "print-intro-kicker";
+          introTitle.className = "print-intro-title";
+          introCopy.className = "print-intro-copy";
+          introKicker.textContent = "The Unknown Beast / Photobox instructions";
+          introTitle.textContent = "Make a moment.";
+          introCopy.textContent = "Pick a scene. Strike a pose. Take the result with you.";
+          intro.appendChild(introKicker);
+          intro.appendChild(introTitle);
+          intro.appendChild(introCopy);
+          page.appendChild(intro);
+        }
 
         for (offset = 0; offset < 4 && index + offset < names.length; offset += 1) {
           var itemIndex = index + offset;
@@ -529,9 +606,10 @@
           imageWrap.appendChild(image);
           figure.appendChild(imageWrap);
           figure.appendChild(caption);
-          page.appendChild(figure);
+          grid.appendChild(figure);
         }
 
+        page.appendChild(grid);
         gallery.appendChild(page);
       }
     }());
