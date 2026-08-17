@@ -657,43 +657,43 @@
       ];
 
       var titles = [
-        "Einschalten", "System hochfahren lassen", "Photobox starten lassen", "Windows-Taste dr fccken",
-        "Windows-Men fc anzeigen", "Einstellungen  f6ffnen", "Windows-Einstellungen", "Netzwerk und Internet",
-        "Netzwerk fcbersicht", "WLAN ausw e4hlen", "Verf fcgbare Netzwerke", "WLANs anzeigen",
-        "Netzwerk ausw e4hlen", "Verbinden", "Passwortfeld  f6ffnen", "WLAN-Passwort eingeben",
-        "Verbindung wird hergestellt", "Verbindung pr fcfen", "Alt + F4 vorbereiten", "Einstellungen schlie dfen",
-        "Zur Photobox zur fcckkehren", "Kamera aktivieren", "Livebild pr fcfen", "Motiv ausw e4hlen",
-        "Countdown abwarten", "Foto pr fcfen", "Ausdruck entnehmen"
+        "Einschalten", "System hochfahren lassen", "Photobox abwarten", "Windows-Taste dr&uuml;cken",
+        "Windows-Men&uuml; anzeigen", "Einstellungen &ouml;ffnen", "Windows-Einstellungen", "Netzwerk und Internet",
+        "Netzwerk-Einstellungen", "WLAN &ouml;ffnen", "Verf&uuml;gbare Netzwerke", "WLANs anzeigen",
+        "Netzwerk ausw&auml;hlen", "Verbinden", "Passwort eingeben", "Passwort eintippen",
+        "Verbindung abwarten", "Verbindung pr&uuml;fen", "Alt + F4 vorbereiten", "Einstellungen schlie&szlig;en",
+        "Photobox wieder &ouml;ffnen", "Kamera aktivieren", "Livebild pr&uuml;fen", "Motiv ausw&auml;hlen",
+        "Countdown abwarten", "Foto pr&uuml;fen", "Ausdruck entnehmen"
       ];
 
       var copies = [
-        "Dr fccken Sie den Netzschalter.",
-        "Warten Sie, bis Windows vollst e4ndig hochgefahren ist.",
-        "Warten Sie, bis die Photobox-Anwendung angezeigt wird.",
-        "Dr fccken Sie die Windows-Taste auf der verbundenen Tastatur.",
-        "Das Windows-Startmen fc wird angezeigt.",
+        "Dr&uuml;cken Sie den Netzschalter.",
+        "Warten Sie, bis Windows vollst&auml;ndig gestartet ist.",
+        "Warten Sie, bis die Photobox-Anwendung erscheint.",
+        "Dr&uuml;cken Sie die Windows-Taste auf der verbundenen Tastatur.",
+        "Das Windows-Startmen&uuml; wird angezeigt.",
         "Klicken Sie auf das Zahnrad-Symbol.",
-        "Das Fenster mit den Windows-Einstellungen ist ge f6ffnet.",
+        "Das Fenster Windows-Einstellungen ist ge&ouml;ffnet.",
         "Klicken Sie auf Netzwerk und Internet.",
         "Die Netzwerk-Einstellungen werden angezeigt.",
         "Klicken Sie auf WLAN.",
-        "Klicken Sie auf Verf fcgbare Netzwerke.",
+        "Klicken Sie auf Verf&uuml;gbare Netzwerke.",
         "Die erreichbaren WLAN-Netze werden eingeblendet.",
-        "Klicken Sie auf das gew fcnschte Netzwerk.",
-        "Klicken Sie auf Verbinden.",
-        "Das Eingabefeld f fcr das Passwort wird angezeigt.",
-        "Geben Sie das Passwort  fcber die Tastatur ein.",
-        "Warten Sie, w e4hrend Windows die Verbindung herstellt.",
-        "Pr fcfen Sie, ob das Netzwerk als verbunden angezeigt wird.",
-        "Merken Sie sich: Alt + F4 schlie dft das Fenster.",
-        "Dr fccken Sie Alt + F4, um die Einstellungen zu schlie dfen.",
+        "Klicken Sie auf das Netzwerk, das Sie verbinden m&ouml;chten.",
+        "Klicken Sie beim ausgew&auml;hlten Netzwerk auf Verbinden.",
+        "Das Eingabefeld f&uuml;r das WLAN-Passwort wird angezeigt.",
+        "Geben Sie das Passwort &uuml;ber die verbundene Tastatur ein.",
+        "Warten Sie, w&auml;hrend Windows die Verbindung herstellt.",
+        "Pr&uuml;fen Sie, ob das Netzwerk als Verbunden angezeigt wird.",
+        "Legen Sie die Finger f&uuml;r Alt + F4 auf die Tastatur.",
+        "Dr&uuml;cken Sie Alt + F4, um die Einstellungen zu schlie&szlig;en.",
         "Die Photobox-Anwendung ist wieder sichtbar.",
         "Klicken Sie auf Activate Camera.",
-        "Pr fcfen Sie, ob das Livebild der Kamera erscheint.",
-        "W e4hlen Sie das gew fcnschte Motiv.",
+        "Pr&uuml;fen Sie, ob das Livebild der Kamera erscheint.",
+        "W&auml;hlen Sie das gew&uuml;nschte Motiv aus.",
         "Bleiben Sie im Bild und warten Sie den Countdown ab.",
-        "Pr fcfen Sie das aufgenommene Foto.",
-        "Nehmen Sie den Ausdruck mit dem gew e4hlten Motiv entgegen."
+        "Pr&uuml;fen Sie das aufgenommene Foto.",
+        "Nehmen Sie den Ausdruck mit dem gew&auml;hlten Motiv entgegen."
       ];
 
       var gallery = document.querySelector(".gallery");
@@ -736,6 +736,7 @@
           var number = document.createElement("span");
           var copy = document.createElement("span");
           var title = document.createElement("strong");
+          var description = document.createElement("span");
 
           figure.className = "gallery-item";
           imageWrap.className = "image-wrap";
@@ -747,9 +748,10 @@
           image.alt = "Photobox Anleitung Schritt " + String(itemIndex + 1);
           image.loading = "eager";
           number.textContent = String(itemIndex + 1).padStart(2, "0");
-          title.textContent = titles[itemIndex];
+          title.innerHTML = titles[itemIndex];
+          description.innerHTML = copies[itemIndex];
           copy.appendChild(title);
-          copy.appendChild(document.createTextNode(copies[itemIndex]));
+          copy.appendChild(description);
           caption.appendChild(number);
           caption.appendChild(copy);
           imageWrap.appendChild(image);
