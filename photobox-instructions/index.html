@@ -16,12 +16,11 @@
     }
 
     :root {
+      --paper: #f5f5f0;
       --ink: #0a0a0a;
-      --white: #ffffff;
-      --lime: #e8ff00;
-      --soft: #f5f5f0;
-      --line: #0a0a0a;
-      --muted: #707070;
+      --acid: #e8ff00;
+      --muted: #74746f;
+      --soft: #e9e9e2;
       --font: Inter, Arial, Helvetica, sans-serif;
     }
 
@@ -31,7 +30,7 @@
 
     body {
       min-height: 100vh;
-      background: var(--white);
+      background: var(--paper);
       color: var(--ink);
       font-family: var(--font);
       -webkit-font-smoothing: antialiased;
@@ -42,8 +41,7 @@
     }
 
     .site-header {
-      border-bottom: 1px solid var(--line);
-      padding: 22px 32px 72px;
+      padding: 24px 32px 86px;
     }
 
     .header-inner,
@@ -58,7 +56,8 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      margin-bottom: 78px;
+      margin-bottom: 104px;
+      color: var(--muted);
       font-size: 10px;
       font-weight: 800;
       letter-spacing: 0.18em;
@@ -67,6 +66,7 @@
     }
 
     .header-meta a {
+      color: var(--ink);
       text-decoration: none;
     }
 
@@ -76,83 +76,86 @@
       text-underline-offset: 4px;
     }
 
-    .nav-badge {
-      padding: 6px 9px;
-      background: var(--lime);
+    .header-status {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--acid);
       border: 1px solid var(--ink);
     }
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(220px, 0.75fr);
+      grid-template-columns: minmax(0, 1.3fr) minmax(240px, 0.7fr);
       align-items: end;
-      gap: 64px;
+      gap: 72px;
     }
 
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 20px;
-      padding: 6px 8px;
-      background: var(--ink);
-      color: var(--lime);
+    .hero-kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: var(--muted);
       font-size: 10px;
       font-weight: 800;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
     }
 
     h1 {
       max-width: 850px;
-      font-size: clamp(54px, 9.5vw, 126px);
+      font-size: clamp(58px, 10vw, 134px);
       font-weight: 900;
-      letter-spacing: -0.085em;
-      line-height: 0.84;
+      letter-spacing: -0.09em;
+      line-height: 0.82;
       text-transform: uppercase;
     }
 
-    h1 span {
-      display: inline-block;
-      padding: 0 0.06em 0.04em;
-      background: var(--lime);
-    }
-
     .hero-side {
-      max-width: 330px;
-      padding-left: 20px;
-      border-left: 1px solid var(--line);
+      max-width: 350px;
+      padding-bottom: 4px;
     }
 
     .hero-side-label {
-      margin-bottom: 14px;
+      margin-bottom: 15px;
       color: var(--muted);
       font-size: 10px;
       font-weight: 800;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
     }
 
     .hero-side-copy {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
       line-height: 1.5;
     }
 
     main {
-      padding: 62px 0 92px;
+      padding: 0 0 94px;
     }
 
     .section-intro {
       display: flex;
-      align-items: end;
+      align-items: baseline;
       justify-content: space-between;
       gap: 32px;
-      padding-bottom: 15px;
-      border-bottom: 2px solid var(--line);
-      margin-bottom: 28px;
+      padding: 16px 0 18px;
+      margin-bottom: 34px;
+      background: var(--ink);
+      color: var(--paper);
     }
 
     .section-label,
     .section-count {
+      padding: 0 18px;
       font-size: 10px;
       font-weight: 800;
       letter-spacing: 0.18em;
@@ -160,13 +163,14 @@
     }
 
     .section-count {
-      color: var(--muted);
+      color: var(--acid);
     }
 
     .gallery {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 54px 24px;
+      column-gap: 28px;
+      row-gap: 62px;
     }
 
     .gallery-item {
@@ -175,21 +179,18 @@
 
     .image-wrap {
       background: var(--soft);
-      border: 1px solid var(--line);
     }
 
     .image-wrap img {
       display: block;
       width: 100%;
       height: auto;
-      aspect-ratio: auto;
-      object-fit: initial;
       transition: opacity 180ms ease;
     }
 
     .gallery-item:hover .image-wrap img,
     .gallery-item:focus-within .image-wrap img {
-      opacity: 0.82;
+      opacity: 0.78;
     }
 
     .image-caption {
@@ -197,52 +198,46 @@
       grid-template-columns: 32px minmax(0, 1fr);
       gap: 14px;
       padding-top: 12px;
-      border-top: 1px solid var(--line);
-      margin-top: 10px;
     }
 
     .image-number {
+      color: var(--muted);
       font-size: 10px;
-      font-weight: 900;
+      font-weight: 800;
       letter-spacing: 0.08em;
     }
 
     .image-copy {
+      color: var(--muted);
       font-size: 13px;
       line-height: 1.45;
     }
 
     .image-copy strong {
       display: block;
-      margin-bottom: 3px;
+      margin-bottom: 4px;
+      color: var(--ink);
       font-size: 15px;
       font-weight: 900;
       line-height: 1.05;
       text-transform: uppercase;
     }
 
-    .image-copy strong::after {
-      content: "";
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      margin-left: 7px;
-      background: var(--lime);
-      border: 1px solid var(--ink);
-      vertical-align: 2px;
-    }
-
     .site-footer {
       display: flex;
       justify-content: space-between;
       gap: 24px;
-      padding: 20px 0 28px;
-      border-top: 2px solid var(--line);
-      color: var(--muted);
+      padding: 22px 0 30px;
+      background: var(--ink);
+      color: var(--paper);
       font-size: 10px;
       font-weight: 800;
       letter-spacing: 0.18em;
       text-transform: uppercase;
+    }
+
+    .site-footer span:last-child {
+      color: var(--acid);
     }
 
     :focus-visible {
@@ -252,7 +247,7 @@
 
     @media (max-width: 760px) {
       .site-header {
-        padding: 20px 20px 48px;
+        padding: 20px 20px 58px;
       }
 
       .header-inner,
@@ -264,8 +259,8 @@
       .header-meta {
         align-items: flex-start;
         flex-direction: column;
-        gap: 10px;
-        margin-bottom: 58px;
+        gap: 12px;
+        margin-bottom: 68px;
       }
 
       .hero {
@@ -274,21 +269,28 @@
       }
 
       .hero-side {
-        max-width: 430px;
+        max-width: 420px;
       }
 
-      main {
-        padding: 42px 0 64px;
+      .section-intro {
+        margin-bottom: 28px;
+      }
+
+      .section-label,
+      .section-count {
+        padding: 0 14px;
       }
 
       .gallery {
         grid-template-columns: 1fr;
-        gap: 40px;
+        row-gap: 42px;
       }
 
       .site-footer {
         flex-direction: column;
-        gap: 8px;
+        gap: 9px;
+        padding-right: 14px;
+        padding-left: 14px;
       }
     }
 
@@ -308,13 +310,13 @@
     <div class="header-inner">
       <div class="header-meta">
         <a href="../">The Unknown Beast</a>
-        <span class="nav-badge">BEAST / TRANSFORM</span>
+        <span class="header-status"><span class="status-dot"></span>BEAST / TRANSFORM</span>
       </div>
 
       <div class="hero">
         <div>
-          <p class="eyebrow">Photobox instructions</p>
-          <h1>Make a <span>moment.</span></h1>
+          <p class="hero-kicker"><span class="status-dot"></span>Photobox instructions / 01</p>
+          <h1>Make a<br>moment.</h1>
         </div>
         <div class="hero-side">
           <p class="hero-side-label">The brief</p>
