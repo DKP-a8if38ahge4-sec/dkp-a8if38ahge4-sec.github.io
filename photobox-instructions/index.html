@@ -151,7 +151,7 @@
         "Image.jpeg", "Image (1).jpeg", "Image (2).jpeg", "Image (3).jpeg", "Image (4).jpeg", "Image (5).jpeg", "Image (6).jpeg", "Image (7).jpeg", "Image (8).jpeg", "Image (9).jpeg", "Image (10).jpeg", "Image (11).jpeg", "Image (12).jpeg", "Image (13).jpeg", "Image (14).jpeg", "Image (15).jpeg", "Image (16).jpeg", "Image (17).jpeg", "Image (18).jpeg", "Image (19).jpeg", "Image (20).jpeg", "Image (21).jpeg", "Image (22).jpeg", "Image (23).jpeg", "Image (24).jpeg", "Image (25).jpeg", "Image (26).jpeg"
       ];
       var titles = [
-        "Einschalten", "System hochfahren lassen", "Photobox abwarten", "Ethernet-Verbindung",
+        "Einschalten", "System hochfahren lassen", "Photobox abwarten", "Ethernet statt WLAN",
         "Windows-Men&uuml; anzeigen", "Einstellungen &ouml;ffnen", "Windows-Einstellungen", "Netzwerk und Internet",
         "Netzwerk-Einstellungen", "WLAN &ouml;ffnen", "Verf&uuml;gbare Netzwerke", "WLANs anzeigen",
         "Netzwerk ausw&auml;hlen", "Verbinden", "Passwort eingeben", "Passwort eintippen",
@@ -163,7 +163,7 @@
         "Dr&uuml;cken Sie den Netzschalter.",
         "Warten Sie, bis Windows vollst&auml;ndig gestartet ist.",
         "Warten Sie, bis die Photobox-Anwendung erscheint.",
-        "Ist das Ger&auml;t per Ethernet verbunden, &uuml;berspringen Sie die Schritte 04 bis 21 und fahren Sie direkt mit Schritt 22 fort.",
+        "Bei Ethernet-Verbindung k&ouml;nnen Sie die Schritte 04 bis 21 &uuml;berspringen und direkt mit Schritt 22 fortfahren.",
         "Das Windows-Startmen&uuml; wird angezeigt.",
         "Klicken Sie auf das Zahnrad-Symbol.",
         "Das Fenster Windows-Einstellungen ist ge&ouml;ffnet.",
@@ -242,7 +242,7 @@
             noticeLabel.className = "notice-label";
             noticeText.className = "notice-text";
             noticeLabel.textContent = "Hinweis";
-            noticeText.innerHTML = "Ethernet angeschlossen?<br>Direkt zu Schritt 22.";
+            noticeText.innerHTML = "Ethernet statt WLAN:<br>Direkt zu Schritt 22.";
             noticeWrap.appendChild(noticeLabel);
             noticeWrap.appendChild(noticeText);
             figure.appendChild(noticeWrap);
