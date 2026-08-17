@@ -67,7 +67,7 @@
     .section-count { color: var(--muted); font-size: 19px; line-height: 1; white-space: nowrap; }
     .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 36px; row-gap: 70px; }
     .print-page, .print-grid { display: contents; }
-    .print-intro { display: none; }
+    .print-intro, .print-support { display: none; }
     .gallery-item { min-width: 0; }
     .image-wrap { overflow: hidden; border-radius: 22px; background: var(--soft); }
     .image-wrap img { display: block; width: 100%; height: auto; transition: transform 240ms ease, opacity 180ms ease; }
@@ -95,9 +95,10 @@
       .site-header, .hero, .section-heading, .closing-cta, .site-footer { display: none; }
       main { width: 210mm; margin: 0; padding: 0; }
       .gallery { display: block; width: 210mm; }
-      .print-page { display: grid; grid-template-columns: 190mm; grid-template-rows: 29mm 248mm; width: 210mm; height: 297mm; padding: 10mm; overflow: hidden; background: #ffffff; break-after: page; page-break-after: always; }
+      .print-page { position: relative; display: grid; grid-template-columns: 190mm; grid-template-rows: 29mm 248mm; width: 210mm; height: 297mm; padding: 10mm; overflow: hidden; background: #ffffff; break-after: page; page-break-after: always; }
       .print-page:not(.first-page) { grid-template-rows: 277mm; }
       .print-page:last-child { break-after: auto; page-break-after: auto; }
+      .print-support { display: block; position: absolute; top: 3mm; right: 10mm; color: #000000; font-size: 9pt; line-height: 1; white-space: nowrap; }
       .print-intro { display: block; width: 190mm; height: 29mm; padding-bottom: 3mm; }
       .print-intro-kicker { margin-bottom: 1.5mm; color: #0b5cff; font-size: 8pt; letter-spacing: 0.13em; line-height: 1; text-transform: uppercase; }
       .print-intro-title { margin-bottom: 1mm; color: #000000; font-size: 23pt; letter-spacing: -0.03em; line-height: 0.9; text-transform: uppercase; }
@@ -199,8 +200,12 @@
       for (index = 0; index < names.length; index += 4) {
         var page = document.createElement("div");
         var grid = document.createElement("div");
+        var support = document.createElement("div");
         page.className = "print-page";
         grid.className = "print-grid";
+        support.className = "print-support";
+        support.textContent = "Support: 0173 3503619";
+        page.appendChild(support);
         if (index === 0) {
           var intro = document.createElement("div");
           var introKicker = document.createElement("p");
