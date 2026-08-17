@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --paper: #f7f7f8;
       --white: #ffffff;
@@ -22,737 +21,186 @@
       --soft: #edf0f4;
       --font: "Barlow Condensed", "Arial Narrow", sans-serif;
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      min-height: 100vh;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--font);
-      font-weight: 600;
-      -webkit-font-smoothing: antialiased;
-    }
-
+    body { min-height: 100vh; background: var(--paper); color: var(--ink); font-family: var(--font); font-weight: 600; -webkit-font-smoothing: antialiased; }
     img { max-width: 100%; }
     a { color: inherit; }
     button, a { -webkit-tap-highlight-color: transparent; }
-
-    .page-width {
-      width: min(1320px, calc(100% - 72px));
-      margin: 0 auto;
-    }
-
-    .site-header {
-      width: 100%;
-      border-top: 1px solid #e9e9ec;
-      border-bottom: 1px solid var(--line);
-      background: rgba(247, 247, 248, 0.96);
-    }
-
-    .header-inner {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: 28px;
-      min-height: 82px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      justify-self: start;
-      gap: 12px;
-      color: var(--ink);
-      font-size: 25px;
-      letter-spacing: -0.035em;
-      line-height: 1;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .brand-mark {
-      display: grid;
-      width: 36px;
-      height: 36px;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--yellow);
-      color: var(--ink);
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: -0.16em;
-      line-height: 1;
-      padding-right: 3px;
-    }
-
+    .page-width { width: min(1320px, calc(100% - 72px)); margin: 0 auto; }
+    .site-header { width: 100%; border-top: 1px solid #e9e9ec; border-bottom: 1px solid var(--line); background: rgba(247, 247, 248, 0.96); }
+    .header-inner { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 28px; min-height: 82px; }
+    .brand { display: inline-flex; align-items: center; justify-self: start; gap: 12px; color: var(--ink); font-size: 25px; letter-spacing: -0.035em; line-height: 1; text-decoration: none; white-space: nowrap; }
+    .brand-mark { display: grid; width: 36px; height: 36px; place-items: center; border-radius: 50%; background: var(--yellow); color: var(--ink); font-family: Arial, sans-serif; font-size: 12px; font-weight: 900; letter-spacing: -0.16em; line-height: 1; padding-right: 3px; }
     .brand-transform { color: var(--blue); }
-
-    .main-nav {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: clamp(20px, 2.6vw, 42px);
-      color: #3f4249;
-      font-size: 18px;
-      line-height: 1;
-    }
-
-    .main-nav a {
-      text-decoration: none;
-      transition: color 160ms ease;
-    }
-
-    .main-nav a:hover,
-    .main-nav a:focus-visible { color: var(--blue); }
-
+    .main-nav { display: flex; align-items: center; justify-content: center; gap: clamp(20px, 2.6vw, 42px); color: #3f4249; font-size: 18px; line-height: 1; }
+    .main-nav a { text-decoration: none; transition: color 160ms ease; }
+    .main-nav a:hover, .main-nav a:focus-visible { color: var(--blue); }
     .header-cta { justify-self: end; }
-
-    .button {
-      display: inline-flex;
-      min-height: 52px;
-      align-items: center;
-      justify-content: center;
-      padding: 0 28px;
-      border: 2px solid var(--ink);
-      border-radius: 999px;
-      background: transparent;
-      color: var(--ink);
-      font: inherit;
-      font-size: 20px;
-      line-height: 1;
-      text-decoration: none;
-      white-space: nowrap;
-      cursor: pointer;
-      transition: background 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
-    }
-
-    .button:hover,
-    .button:focus-visible { transform: translateY(-2px); }
-
-    .button-primary {
-      border-color: var(--blue);
-      background: var(--blue);
-      color: var(--white);
-    }
-
-    .button-primary:hover,
-    .button-primary:focus-visible {
-      border-color: var(--blue-dark);
-      background: var(--blue-dark);
-    }
-
-    .button-small {
-      min-height: 48px;
-      padding: 0 25px;
-      font-size: 19px;
-    }
-
-    .mobile-menu {
-      display: none;
-      justify-self: end;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
-      align-items: center;
-      gap: 42px;
-      min-height: 700px;
-      padding: 78px 0 92px;
-    }
-
+    .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; padding: 0 28px; border: 2px solid var(--ink); border-radius: 999px; background: transparent; color: var(--ink); font: inherit; font-size: 20px; line-height: 1; text-decoration: none; white-space: nowrap; cursor: pointer; transition: background 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease; }
+    .button:hover, .button:focus-visible { transform: translateY(-2px); }
+    .button-primary { border-color: var(--blue); background: var(--blue); color: var(--white); }
+    .button-primary:hover, .button-primary:focus-visible { border-color: var(--blue-dark); background: var(--blue-dark); }
+    .button-small { min-height: 48px; padding: 0 25px; font-size: 19px; }
+    .mobile-menu { display: none; justify-self: end; color: var(--muted); font-size: 17px; }
+    .hero { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr); align-items: center; gap: 42px; min-height: 700px; padding: 78px 0 92px; }
     .hero-copy { position: relative; z-index: 1; }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 13px;
-      margin-bottom: 42px;
-      padding: 12px 21px 13px;
-      border: 1px solid #e0e1e5;
-      border-radius: 999px;
-      background: var(--white);
-      box-shadow: 0 5px 17px rgba(15, 22, 35, 0.06);
-      color: #44474f;
-      font-size: 17px;
-      letter-spacing: 0.12em;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 11px;
-      height: 11px;
-      flex: 0 0 11px;
-      border-radius: 50%;
-      background: var(--blue);
-    }
-
-    h1 {
-      max-width: 680px;
-      font-size: clamp(65px, 8.2vw, 126px);
-      letter-spacing: -0.045em;
-      line-height: 0.82;
-      text-transform: uppercase;
-    }
-
+    .eyebrow { display: inline-flex; align-items: center; gap: 13px; margin-bottom: 42px; padding: 12px 21px 13px; border: 1px solid #e0e1e5; border-radius: 999px; background: var(--white); box-shadow: 0 5px 17px rgba(15, 22, 35, 0.06); color: #44474f; font-size: 17px; letter-spacing: 0.12em; line-height: 1; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 11px; height: 11px; flex: 0 0 11px; border-radius: 50%; background: var(--blue); }
+    h1 { max-width: 680px; font-size: clamp(65px, 8.2vw, 126px); letter-spacing: -0.045em; line-height: 0.82; text-transform: uppercase; }
     h1 .blue, h2 .blue { color: var(--blue); }
-
-    .hero-text {
-      max-width: 520px;
-      margin-top: 42px;
-      color: #4c5059;
-      font-size: clamp(23px, 2vw, 31px);
-      line-height: 1.18;
-    }
-
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-top: 42px;
-    }
-
-    .hero-visual {
-      position: relative;
-      min-height: 590px;
-    }
-
-    .hero-visual::before {
-      position: absolute;
-      top: 8%;
-      right: 16%;
-      width: 360px;
-      height: 360px;
-      border-radius: 50%;
-      background: #eef0f3;
-      content: "";
-    }
-
-    .hero-visual::after {
-      position: absolute;
-      right: 1%;
-      bottom: 5%;
-      width: 72%;
-      height: 13%;
-      border-radius: 50%;
-      background: rgba(30, 37, 48, 0.09);
-      content: "";
-      filter: blur(20px);
-    }
-
-    .hero-image {
-      position: absolute;
-      z-index: 1;
-      overflow: hidden;
-      background: var(--white);
-      box-shadow: 0 24px 46px rgba(23, 29, 40, 0.15);
-    }
-
+    .hero-text { max-width: 520px; margin-top: 42px; color: #4c5059; font-size: clamp(23px, 2vw, 31px); line-height: 1.18; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 42px; }
+    .hero-visual { position: relative; min-height: 590px; }
+    .hero-visual::before { position: absolute; top: 8%; right: 16%; width: 360px; height: 360px; border-radius: 50%; background: #eef0f3; content: ""; }
+    .hero-visual::after { position: absolute; right: 1%; bottom: 5%; width: 72%; height: 13%; border-radius: 50%; background: rgba(30, 37, 48, 0.09); content: ""; filter: blur(20px); }
+    .hero-image { position: absolute; z-index: 1; overflow: hidden; background: var(--white); box-shadow: 0 24px 46px rgba(23, 29, 40, 0.15); }
     .hero-image img { display: block; width: 100%; height: auto; }
-
-    .hero-image-main {
-      top: 3%;
-      left: 12%;
-      width: min(43%, 345px);
-      transform: rotate(-2deg);
-    }
-
-    .hero-image-side {
-      right: 0;
-      bottom: 5%;
-      width: min(61%, 490px);
-      transform: rotate(2.5deg);
-    }
-
-    .hero-badge {
-      position: absolute;
-      right: 3%;
-      top: 38%;
-      z-index: 2;
-      display: grid;
-      width: 86px;
-      height: 86px;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--yellow);
-      color: var(--ink);
-      font-size: 19px;
-      letter-spacing: 0.03em;
-      line-height: 0.88;
-      text-align: center;
-      text-transform: uppercase;
-      transform: rotate(8deg);
-    }
-
+    .hero-image-main { top: 3%; left: 12%; width: min(43%, 345px); transform: rotate(-2deg); }
+    .hero-image-side { right: 0; bottom: 5%; width: min(61%, 490px); transform: rotate(2.5deg); }
+    .hero-badge { position: absolute; right: 3%; top: 38%; z-index: 2; display: grid; width: 86px; height: 86px; place-items: center; border-radius: 50%; background: var(--yellow); color: var(--ink); font-size: 19px; letter-spacing: 0.03em; line-height: 0.88; text-align: center; text-transform: uppercase; transform: rotate(8deg); }
     .gallery-section { padding: 20px 0 120px; }
-
-    .section-heading {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 30px;
-      margin-bottom: 42px;
-    }
-
-    .section-kicker {
-      margin-bottom: 14px;
-      color: var(--blue);
-      font-size: 17px;
-      letter-spacing: 0.13em;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-
-    h2 {
-      max-width: 760px;
-      font-size: clamp(48px, 6vw, 88px);
-      letter-spacing: -0.04em;
-      line-height: 0.86;
-      text-transform: uppercase;
-    }
-
-    .section-count {
-      color: var(--muted);
-      font-size: 19px;
-      line-height: 1;
-      white-space: nowrap;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      column-gap: 36px;
-      row-gap: 70px;
-    }
-
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 42px; }
+    .section-kicker { margin-bottom: 14px; color: var(--blue); font-size: 17px; letter-spacing: 0.13em; line-height: 1; text-transform: uppercase; }
+    h2 { max-width: 760px; font-size: clamp(48px, 6vw, 88px); letter-spacing: -0.04em; line-height: 0.86; text-transform: uppercase; }
+    .section-count { color: var(--muted); font-size: 19px; line-height: 1; white-space: nowrap; }
+    .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 36px; row-gap: 70px; }
     .print-page, .print-grid { display: contents; }
     .print-intro { display: none; }
     .gallery-item { min-width: 0; }
-
-    .image-wrap {
-      overflow: hidden;
-      border-radius: 22px;
-      background: var(--soft);
-    }
-
-    .image-wrap img {
-      display: block;
-      width: 100%;
-      height: auto;
-      transition: transform 240ms ease, opacity 180ms ease;
-    }
-
-    .gallery-item:hover .image-wrap img,
-    .gallery-item:focus-within .image-wrap img {
-      opacity: 0.88;
-      transform: scale(1.015);
-    }
-
-    .text-card-body {
-      display: flex;
-      min-height: clamp(260px, 32vw, 520px);
-      flex-direction: column;
-      justify-content: center;
-      padding: 34px;
-      border-radius: 22px;
-      background: #eef0f3;
-    }
-
-    .text-card-label {
-      margin-bottom: 18px;
-      color: var(--blue);
-      font-size: 17px;
-      letter-spacing: 0.13em;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-
-    .text-card-title {
-      color: var(--ink);
-      font-size: clamp(38px, 4.4vw, 68px);
-      letter-spacing: -0.035em;
-      line-height: 0.86;
-      text-transform: uppercase;
-    }
-
-    .text-card-copy {
-      max-width: 420px;
-      margin-top: 20px;
-      color: var(--muted);
-      font-size: clamp(22px, 2vw, 30px);
-      line-height: 1.12;
-    }
-
-    .image-caption {
-      display: grid;
-      grid-template-columns: 42px minmax(0, 1fr);
-      gap: 14px;
-      padding: 17px 4px 0;
-    }
-
-    .image-number {
-      color: var(--blue);
-      font-size: 17px;
-      letter-spacing: 0.06em;
-      line-height: 1;
-    }
-
-    .image-copy {
-      color: var(--muted);
-      font-size: 19px;
-      line-height: 1.15;
-    }
-
-    .image-copy strong {
-      display: block;
-      margin-bottom: 4px;
-      color: var(--ink);
-      font-size: 25px;
-      line-height: 0.95;
-      text-transform: uppercase;
-    }
-
-    .closing-cta {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      align-items: center;
-      gap: 42px;
-      margin-bottom: 70px;
-      padding: 47px 54px 50px;
-      border-radius: 28px;
-      background: var(--blue);
-      color: var(--white);
-    }
-
-    .closing-cta h2 {
-      max-width: 620px;
-      color: var(--white);
-      font-size: clamp(48px, 5vw, 76px);
-    }
-
-    .closing-cta .button {
-      border-color: var(--white);
-      color: var(--white);
-    }
-
-    .closing-cta .button:hover,
-    .closing-cta .button:focus-visible {
-      background: var(--white);
-      color: var(--blue);
-    }
-
-    .site-footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 0 0 32px;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1;
-    }
-
+    .image-wrap { overflow: hidden; border-radius: 22px; background: var(--soft); }
+    .image-wrap img { display: block; width: 100%; height: auto; transition: transform 240ms ease, opacity 180ms ease; }
+    .gallery-item:hover .image-wrap img, .gallery-item:focus-within .image-wrap img { opacity: 0.88; transform: scale(1.015); }
+    .notice-wrap { display: flex; min-height: 280px; aspect-ratio: 4 / 3; flex-direction: column; align-items: flex-start; justify-content: center; padding: 34px; border: 2px solid var(--blue); border-radius: 22px; background: #eaf0ff; color: var(--ink); }
+    .notice-label { margin-bottom: 16px; color: var(--blue); font-size: 17px; letter-spacing: 0.14em; line-height: 1; text-transform: uppercase; }
+    .notice-text { max-width: 330px; font-size: clamp(30px, 3.2vw, 47px); letter-spacing: -0.03em; line-height: 0.9; text-transform: uppercase; }
+    .image-caption { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 14px; padding: 17px 4px 0; }
+    .image-number { color: var(--blue); font-size: 17px; letter-spacing: 0.06em; line-height: 1; }
+    .image-copy { color: var(--muted); font-size: 19px; line-height: 1.15; }
+    .image-copy strong { display: block; margin-bottom: 4px; color: var(--ink); font-size: 25px; line-height: 0.95; text-transform: uppercase; }
+    .closing-cta { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 42px; margin-bottom: 70px; padding: 47px 54px 50px; border-radius: 28px; background: var(--blue); color: var(--white); }
+    .closing-cta h2 { max-width: 620px; color: var(--white); font-size: clamp(48px, 5vw, 76px); }
+    .closing-cta .button { border-color: var(--white); color: var(--white); }
+    .closing-cta .button:hover, .closing-cta .button:focus-visible { background: var(--white); color: var(--blue); }
+    .site-footer { display: flex; justify-content: space-between; gap: 24px; padding: 0 0 32px; color: var(--muted); font-size: 16px; line-height: 1; }
     :focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
-
-    @media (max-width: 960px) {
-      .main-nav { gap: 18px; font-size: 16px; }
-      .brand { font-size: 22px; }
-      .brand-mark { width: 32px; height: 32px; }
-      .header-cta .button { padding: 0 19px; font-size: 17px; }
-      .hero { grid-template-columns: minmax(0, 0.85fr) minmax(340px, 1.15fr); gap: 18px; }
-      .hero-visual { min-height: 510px; }
-      .hero-badge { width: 72px; height: 72px; font-size: 16px; }
-    }
-
-    @media (max-width: 760px) {
-      .page-width { width: min(100% - 40px, 1320px); }
-      .header-inner { grid-template-columns: 1fr auto; min-height: 72px; }
-      .main-nav, .header-cta { display: none; }
-      .mobile-menu { display: block; }
-      .hero { grid-template-columns: 1fr; gap: 54px; min-height: 0; padding: 56px 0 72px; }
-      .eyebrow { margin-bottom: 28px; font-size: 14px; }
-      h1 { font-size: clamp(57px, 17vw, 94px); }
-      .hero-text { margin-top: 30px; font-size: 25px; }
-      .button-row { margin-top: 30px; }
-      .button { min-height: 49px; padding: 0 21px; font-size: 18px; }
-      .hero-visual { min-height: 460px; margin: 0 -8px; }
-      .hero-visual::before { top: 5%; right: 11%; width: 250px; height: 250px; }
-      .hero-image-main { left: 8%; width: 46%; }
-      .hero-image-side { right: 1%; bottom: 4%; width: 62%; }
-      .hero-badge { right: 1%; top: 39%; width: 66px; height: 66px; font-size: 14px; }
-      .gallery-section { padding: 8px 0 78px; }
-      .section-heading { align-items: start; flex-direction: column; gap: 18px; margin-bottom: 30px; }
-      h2 { font-size: clamp(46px, 14vw, 74px); }
-      .gallery { grid-template-columns: 1fr; row-gap: 46px; }
-      .text-card-body { min-height: 330px; padding: 28px; }
-      .image-caption { padding-top: 13px; }
-      .closing-cta { grid-template-columns: 1fr; gap: 27px; margin-bottom: 52px; padding: 34px 27px 38px; border-radius: 22px; }
-      .closing-cta h2 { font-size: 52px; }
-      .site-footer { flex-direction: column; gap: 10px; font-size: 15px; }
-    }
-
+    @media (max-width: 960px) { .main-nav { gap: 18px; font-size: 16px; } .brand { font-size: 22px; } .brand-mark { width: 32px; height: 32px; } .header-cta .button { padding: 0 19px; font-size: 17px; } .hero { grid-template-columns: minmax(0, 0.85fr) minmax(340px, 1.15fr); gap: 18px; } .hero-visual { min-height: 510px; } .hero-badge { width: 72px; height: 72px; font-size: 16px; } }
+    @media (max-width: 760px) { .page-width { width: min(100% - 40px, 1320px); } .header-inner { grid-template-columns: 1fr auto; min-height: 72px; } .main-nav, .header-cta { display: none; } .mobile-menu { display: block; } .hero { grid-template-columns: 1fr; gap: 54px; min-height: 0; padding: 56px 0 72px; } .eyebrow { margin-bottom: 28px; font-size: 14px; } h1 { font-size: clamp(57px, 17vw, 94px); } .hero-text { margin-top: 30px; font-size: 25px; } .button-row { margin-top: 30px; } .button { min-height: 49px; padding: 0 21px; font-size: 18px; } .hero-visual { min-height: 460px; margin: 0 -8px; } .hero-visual::before { top: 5%; right: 11%; width: 250px; height: 250px; } .hero-image-main { left: 8%; width: 46%; } .hero-image-side { right: 1%; bottom: 4%; width: 62%; } .hero-badge { right: 1%; top: 39%; width: 66px; height: 66px; font-size: 14px; } .gallery-section { padding: 8px 0 78px; } .section-heading { align-items: start; flex-direction: column; gap: 18px; margin-bottom: 30px; } h2 { font-size: clamp(46px, 14vw, 74px); } .gallery { grid-template-columns: 1fr; row-gap: 46px; } .image-caption { padding-top: 13px; } .notice-wrap { min-height: 240px; padding: 26px; } .notice-text { font-size: 41px; } .closing-cta { grid-template-columns: 1fr; gap: 27px; margin-bottom: 52px; padding: 34px 27px 38px; border-radius: 22px; } .closing-cta h2 { font-size: 52px; } .site-footer { flex-direction: column; gap: 10px; font-size: 15px; } }
     @page { size: A4 portrait; margin: 0; }
-
     @media print {
       html, body { width: 210mm; min-height: 0; margin: 0; background: #ffffff; }
       body { color: #000000; }
       .site-header, .hero, .section-heading, .closing-cta, .site-footer { display: none; }
       main { width: 210mm; margin: 0; padding: 0; }
       .gallery { display: block; width: 210mm; }
-
-      .print-page {
-        display: grid;
-        grid-template-columns: 190mm;
-        grid-template-rows: 29mm 248mm;
-        width: 210mm;
-        height: 297mm;
-        padding: 10mm;
-        overflow: hidden;
-        background: #ffffff;
-        break-after: page;
-        page-break-after: always;
-      }
-
+      .print-page { display: grid; grid-template-columns: 190mm; grid-template-rows: 29mm 248mm; width: 210mm; height: 297mm; padding: 10mm; overflow: hidden; background: #ffffff; break-after: page; page-break-after: always; }
       .print-page:not(.first-page) { grid-template-rows: 277mm; }
       .print-page:last-child { break-after: auto; page-break-after: auto; }
-
-      .print-intro {
-        display: block;
-        width: 190mm;
-        height: 29mm;
-        padding-bottom: 3mm;
-      }
-
-      .print-intro-kicker {
-        margin-bottom: 1.5mm;
-        color: #0b5cff;
-        font-size: 8pt;
-        letter-spacing: 0.13em;
-        line-height: 1;
-        text-transform: uppercase;
-      }
-
-      .print-intro-title {
-        margin-bottom: 1mm;
-        color: #000000;
-        font-size: 23pt;
-        letter-spacing: -0.03em;
-        line-height: 0.9;
-        text-transform: uppercase;
-      }
-
+      .print-intro { display: block; width: 190mm; height: 29mm; padding-bottom: 3mm; }
+      .print-intro-kicker { margin-bottom: 1.5mm; color: #0b5cff; font-size: 8pt; letter-spacing: 0.13em; line-height: 1; text-transform: uppercase; }
+      .print-intro-title { margin-bottom: 1mm; color: #000000; font-size: 23pt; letter-spacing: -0.03em; line-height: 0.9; text-transform: uppercase; }
       .print-intro-copy { color: #555963; font-size: 9pt; line-height: 1.1; }
-
-      .print-grid {
-        display: grid;
-        grid-template-columns: 91mm 91mm;
-        grid-template-rows: 120.5mm 120.5mm;
-        column-gap: 8mm;
-        row-gap: 7mm;
-        width: 190mm;
-        height: 248mm;
-        min-height: 0;
-      }
-
-      .print-page:not(.first-page) .print-grid {
-        grid-template-rows: 135mm 135mm;
-        height: 277mm;
-      }
-
-      .gallery-item {
-        display: grid;
-        grid-template-rows: minmax(0, 1fr) 14mm;
-        width: 91mm;
-        height: 100%;
-        min-width: 0;
-        min-height: 0;
-        overflow: hidden;
-        break-inside: avoid;
-        page-break-inside: avoid;
-      }
-
-      .image-wrap,
-      .text-card-body {
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        width: 91mm;
-        height: 100%;
-        min-width: 0;
-        min-height: 0;
-        overflow: hidden;
-        border-radius: 0;
-      }
-
-      .image-wrap { background: transparent; }
-
-      .text-card-body {
-        display: block;
-        padding: 8mm;
-        background: #eef0f3;
-      }
-
-      .text-card-label {
-        margin-bottom: 4mm;
-        font-size: 9pt;
-      }
-
-      .text-card-title {
-        font-size: 20pt;
-        line-height: 0.9;
-      }
-
-      .text-card-copy {
-        margin-top: 4mm;
-        font-size: 11pt;
-        line-height: 1.1;
-      }
-
-      .image-wrap img {
-        display: block;
-        width: auto;
-        max-width: 91mm;
-        height: auto;
-        max-height: 100%;
-        opacity: 1;
-        transform: none;
-      }
-
-      .image-caption {
-        display: grid;
-        grid-template-columns: 8mm minmax(0, 1fr);
-        gap: 2mm;
-        width: 91mm;
-        height: 14mm;
-        padding: 2mm 0 0;
-      }
-
+      .print-grid { display: grid; grid-template-columns: 91mm 91mm; grid-template-rows: 120.5mm 120.5mm; column-gap: 8mm; row-gap: 7mm; width: 190mm; height: 248mm; min-height: 0; }
+      .print-page:not(.first-page) .print-grid { grid-template-rows: 135mm 135mm; height: 277mm; }
+      .gallery-item { display: grid; grid-template-rows: minmax(0, 1fr) 14mm; width: 91mm; height: 100%; min-width: 0; min-height: 0; overflow: hidden; break-inside: avoid; page-break-inside: avoid; }
+      .image-wrap, .notice-wrap { display: flex; align-items: flex-start; justify-content: center; width: 91mm; height: 100%; min-width: 0; min-height: 0; overflow: hidden; border-radius: 0; background: transparent; }
+      .notice-wrap { align-items: flex-start; justify-content: flex-start; padding: 12mm; border: 1.2pt solid #0b5cff; background: #eaf0ff; }
+      .notice-label { margin-bottom: 5mm; font-size: 9pt; }
+      .notice-text { max-width: 72mm; font-size: 22pt; line-height: 0.9; }
+      .image-wrap img { display: block; width: auto; max-width: 91mm; height: auto; max-height: 100%; opacity: 1; transform: none; }
+      .image-caption { display: grid; grid-template-columns: 8mm minmax(0, 1fr); gap: 2mm; width: 91mm; height: 14mm; padding: 2mm 0 0; }
       .image-number { color: #0b5cff; font-size: 9pt; }
       .image-copy { color: #555963; font-size: 10pt; line-height: 1.08; }
       .image-copy strong { margin-bottom: 1mm; color: #000000; font-size: 11pt; line-height: 1; }
     }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .button, .main-nav a, .image-wrap img { transition: none; }
-    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .button, .main-nav a, .image-wrap img { transition: none; } }
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="page-width header-inner">
-      <a class="brand" href="../" aria-label="BEAST TRANSFORM Startseite">
-        <span class="brand-mark" aria-hidden="true">www</span>
-        <span>BEAST<span class="brand-transform">/TRANSFORM</span></span>
-      </a>
-      <nav class="main-nav" aria-label="Hauptnavigation">
-        <a href="#guide">Start</a>
-        <a href="#gallery">Schritte</a>
-        <a href="#contact">Druck</a>
-      </nav>
+      <a class="brand" href="../" aria-label="BEAST TRANSFORM Startseite"><span class="brand-mark" aria-hidden="true">www</span><span>BEAST<span class="brand-transform">/TRANSFORM</span></span></a>
+      <nav class="main-nav" aria-label="Hauptnavigation"><a href="#guide">Start</a><a href="#gallery">Schritte</a><a href="#contact">Druck</a></nav>
       <button class="button button-primary button-small header-cta" type="button" onclick="window.print()">Druckversion</button>
       <span class="mobile-menu">Men&uuml;</span>
     </div>
   </header>
-
   <main>
     <section class="page-width hero" id="guide">
       <div class="hero-copy">
         <p class="eyebrow">Photobox f&uuml;r Events</p>
         <h1>Photobox<br>einschalten.<br><span class="blue">Starten.</span></h1>
         <p class="hero-text">Diese Anleitung f&uuml;hrt Sie vom Einschalten &uuml;ber die WLAN-Verbindung bis zum ersten Ausdruck mit Motiv.</p>
-        <div class="button-row">
-          <a class="button button-primary" href="#gallery">Zu den Schritten</a>
-          <button class="button" type="button" onclick="window.print()">Druckversion &ouml;ffnen</button>
-        </div>
+        <div class="button-row"><a class="button button-primary" href="#gallery">Zu den Schritten</a><button class="button" type="button" onclick="window.print()">Druckversion &ouml;ffnen</button></div>
       </div>
       <div class="hero-visual" aria-label="Auswahl von Photobox-Schritten">
-        <figure class="hero-image hero-image-main">
-          <img src="Image.jpeg" alt="Photobox einschalten">
-        </figure>
-        <figure class="hero-image hero-image-side">
-          <img src="Image (1).jpeg" alt="Photobox startet">
-        </figure>
+        <figure class="hero-image hero-image-main"><img src="Image.jpeg" alt="Photobox einschalten"></figure>
+        <figure class="hero-image hero-image-side"><img src="Image (1).jpeg" alt="Photobox startet"></figure>
         <div class="hero-badge">27<br>Schritte</div>
       </div>
     </section>
-
     <section class="page-width gallery-section" id="gallery">
-      <div class="section-heading">
-        <div>
-          <p class="section-kicker">Schritt-f&uuml;r-Schritt-Anleitung</p>
-          <h2>Von Strom<br>bis <span class="blue">Ausdruck.</span></h2>
-        </div>
-        <p class="section-count">27 Schritte / Setup bis Ausdruck</p>
-      </div>
+      <div class="section-heading"><div><p class="section-kicker">Schritt-f&uuml;r-Schritt-Anleitung</p><h2>Von Strom<br>bis <span class="blue">Ausdruck.</span></h2></div><p class="section-count">27 Schritte / Setup bis Ausdruck</p></div>
       <div class="gallery" aria-label="Photobox Schritt-f&uuml;r-Schritt-Anleitung"></div>
     </section>
-
-    <section class="page-width closing-cta" id="contact">
-      <h2>Die Photobox ist jetzt bereit.</h2>
-      <button class="button" type="button" onclick="window.print()">Druckversion &ouml;ffnen</button>
-    </section>
+    <section class="page-width closing-cta" id="contact"><h2>Die Photobox ist jetzt bereit.</h2><button class="button" type="button" onclick="window.print()">Druckversion &ouml;ffnen</button></section>
   </main>
-
-  <footer class="page-width site-footer">
-    <span>BEAST/TRANSFORM</span>
-    <span>Photobox Inbetriebnahme</span>
-  </footer>
-
+  <footer class="page-width site-footer"><span>BEAST/TRANSFORM</span><span>Photobox Inbetriebnahme</span></footer>
   <script>
     (function () {
-      var items = [
-        { number: 1, image: "Image.jpeg", title: "Einschalten", copy: "Dr&uuml;cken Sie den Netzschalter." },
-        { number: 2, image: "Image (1).jpeg", title: "System hochfahren lassen", copy: "Warten Sie, bis Windows vollst&auml;ndig gestartet ist." },
-        { number: 3, image: "Image (2).jpeg", title: "Photobox abwarten", copy: "Warten Sie, bis die Photobox-Anwendung erscheint." },
-        { number: 4, note: true, title: "Ethernet oder WLAN?", copy: "Bei Ethernet-Verbindung direkt zu Schritt 22 springen. Bei WLAN: Windows-Taste dr&uuml;cken und mit Schritt 05 fortfahren." },
-        { number: 5, image: "Image (4).jpeg", title: "Windows-Men&uuml; anzeigen", copy: "Das Windows-Startmen&uuml; wird angezeigt." },
-        { number: 6, image: "Image (5).jpeg", title: "Einstellungen &ouml;ffnen", copy: "Klicken Sie auf das Zahnrad-Symbol." },
-        { number: 7, image: "Image (6).jpeg", title: "Windows-Einstellungen", copy: "Das Fenster Windows-Einstellungen ist ge&ouml;ffnet." },
-        { number: 8, image: "Image (7).jpeg", title: "Netzwerk und Internet", copy: "Klicken Sie auf Netzwerk und Internet." },
-        { number: 9, image: "Image (8).jpeg", title: "Netzwerk-Einstellungen", copy: "Die Netzwerk-Einstellungen werden angezeigt." },
-        { number: 10, image: "Image (9).jpeg", title: "WLAN &ouml;ffnen", copy: "Klicken Sie auf WLAN." },
-        { number: 11, image: "Image (10).jpeg", title: "Verf&uuml;gbare Netzwerke", copy: "Klicken Sie auf Verf&uuml;gbare Netzwerke." },
-        { number: 12, image: "Image (11).jpeg", title: "WLANs anzeigen", copy: "Die erreichbaren WLAN-Netze werden eingeblendet." },
-        { number: 13, image: "Image (12).jpeg", title: "Netzwerk ausw&auml;hlen", copy: "Klicken Sie auf das Netzwerk, das Sie verbinden m&ouml;chten." },
-        { number: 14, image: "Image (13).jpeg", title: "Verbinden", copy: "Klicken Sie beim ausgew&auml;hlten Netzwerk auf Verbinden." },
-        { number: 15, image: "Image (14).jpeg", title: "Passwort eingeben", copy: "Das Eingabefeld f&uuml;r das WLAN-Passwort wird angezeigt." },
-        { number: 16, image: "Image (15).jpeg", title: "Passwort eintippen", copy: "Geben Sie das Passwort &uuml;ber die verbundene Tastatur ein." },
-        { number: 17, image: "Image (16).jpeg", title: "Verbindung abwarten", copy: "Warten Sie, w&auml;hrend Windows die Verbindung herstellt." },
-        { number: 18, image: "Image (17).jpeg", title: "Verbindung pr&uuml;fen", copy: "Pr&uuml;fen Sie, ob das Netzwerk als Verbunden angezeigt wird." },
-        { number: 19, image: "Image (18).jpeg", title: "Alt + F4 vorbereiten", copy: "Legen Sie die Finger f&uuml;r Alt + F4 auf die Tastatur." },
-        { number: 20, image: "Image (19).jpeg", title: "Einstellungen schlie&szlig;en", copy: "Dr&uuml;cken Sie Alt + F4, um die Einstellungen zu schlie&szlig;en." },
-        { number: 21, image: "Image (20).jpeg", title: "Photobox wieder &ouml;ffnen", copy: "Die Photobox-Anwendung ist wieder sichtbar." },
-        { number: 22, image: "Image (21).jpeg", title: "Kamera aktivieren", copy: "Klicken Sie auf Activate Camera." },
-        { number: 23, image: "Image (22).jpeg", title: "Livebild pr&uuml;fen", copy: "Pr&uuml;fen Sie, ob das Livebild der Kamera erscheint." },
-        { number: 24, image: "Image (23).jpeg", title: "Motiv ausw&auml;hlen", copy: "W&auml;hlen Sie das gew&uuml;nschte Motiv aus." },
-        { number: 25, image: "Image (24).jpeg", title: "Countdown abwarten", copy: "Bleiben Sie im Bild und warten Sie den Countdown ab." },
-        { number: 26, image: "Image (25).jpeg", title: "Foto pr&uuml;fen", copy: "Pr&uuml;fen Sie das aufgenommene Foto." },
-        { number: 27, image: "Image (26).jpeg", title: "Ausdruck entnehmen", copy: "Nehmen Sie den Ausdruck mit dem gew&auml;hlten Motiv entgegen." }
+      var names = [
+        "Image.jpeg", "Image (1).jpeg", "Image (2).jpeg", "Image (3).jpeg", "Image (4).jpeg", "Image (5).jpeg", "Image (6).jpeg", "Image (7).jpeg", "Image (8).jpeg", "Image (9).jpeg", "Image (10).jpeg", "Image (11).jpeg", "Image (12).jpeg", "Image (13).jpeg", "Image (14).jpeg", "Image (15).jpeg", "Image (16).jpeg", "Image (17).jpeg", "Image (18).jpeg", "Image (19).jpeg", "Image (20).jpeg", "Image (21).jpeg", "Image (22).jpeg", "Image (23).jpeg", "Image (24).jpeg", "Image (25).jpeg", "Image (26).jpeg"
       ];
-
+      var titles = [
+        "Einschalten", "System hochfahren lassen", "Photobox abwarten", "Ethernet-Verbindung",
+        "Windows-Men&uuml; anzeigen", "Einstellungen &ouml;ffnen", "Windows-Einstellungen", "Netzwerk und Internet",
+        "Netzwerk-Einstellungen", "WLAN &ouml;ffnen", "Verf&uuml;gbare Netzwerke", "WLANs anzeigen",
+        "Netzwerk ausw&auml;hlen", "Verbinden", "Passwort eingeben", "Passwort eintippen",
+        "Verbindung abwarten", "Verbindung pr&uuml;fen", "Alt + F4 vorbereiten", "Einstellungen schlie&szlig;en",
+        "Photobox wieder &ouml;ffnen", "Kamera aktivieren", "Livebild pr&uuml;fen", "Motiv ausw&auml;hlen",
+        "Countdown abwarten", "Foto pr&uuml;fen", "Ausdruck entnehmen"
+      ];
+      var copies = [
+        "Dr&uuml;cken Sie den Netzschalter.",
+        "Warten Sie, bis Windows vollst&auml;ndig gestartet ist.",
+        "Warten Sie, bis die Photobox-Anwendung erscheint.",
+        "Ist das Ger&auml;t per Ethernet verbunden, &uuml;berspringen Sie die Schritte 04 bis 21 und fahren Sie direkt mit Schritt 22 fort.",
+        "Das Windows-Startmen&uuml; wird angezeigt.",
+        "Klicken Sie auf das Zahnrad-Symbol.",
+        "Das Fenster Windows-Einstellungen ist ge&ouml;ffnet.",
+        "Klicken Sie auf Netzwerk und Internet.",
+        "Die Netzwerk-Einstellungen werden angezeigt.",
+        "Klicken Sie auf WLAN.",
+        "Klicken Sie auf Verf&uuml;gbare Netzwerke.",
+        "Die erreichbaren WLAN-Netze werden eingeblendet.",
+        "Klicken Sie auf das Netzwerk, das Sie verbinden m&ouml;chten.",
+        "Klicken Sie beim ausgew&auml;hlten Netzwerk auf Verbinden.",
+        "Das Eingabefeld f&uuml;r das WLAN-Passwort wird angezeigt.",
+        "Geben Sie das Passwort &uuml;ber die verbundene Tastatur ein.",
+        "Warten Sie, w&auml;hrend Windows die Verbindung herstellt.",
+        "Pr&uuml;fen Sie, ob das Netzwerk als Verbunden angezeigt wird.",
+        "Legen Sie die Finger f&uuml;r Alt + F4 auf die Tastatur.",
+        "Dr&uuml;cken Sie Alt + F4, um die Einstellungen zu schlie&szlig;en.",
+        "Die Photobox-Anwendung ist wieder sichtbar.",
+        "Klicken Sie auf Activate Camera.",
+        "Pr&uuml;fen Sie, ob das Livebild der Kamera erscheint.",
+        "W&auml;hlen Sie das gew&uuml;nschte Motiv aus.",
+        "Bleiben Sie im Bild und warten Sie den Countdown ab.",
+        "Pr&uuml;fen Sie das aufgenommene Foto.",
+        "Nehmen Sie den Ausdruck mit dem gew&auml;hlten Motiv entgegen."
+      ];
       var gallery = document.querySelector(".gallery");
       var index;
       var offset;
-
-      for (index = 0; index < items.length; index += 4) {
+      for (index = 0; index < names.length; index += 4) {
         var page = document.createElement("div");
         var grid = document.createElement("div");
-
         page.className = "print-page";
         grid.className = "print-grid";
-
         if (index === 0) {
           var intro = document.createElement("div");
           var introKicker = document.createElement("p");
           var introTitle = document.createElement("h2");
           var introCopy = document.createElement("p");
-
           page.className += " first-page";
           intro.className = "print-intro";
           introKicker.className = "print-intro-kicker";
@@ -766,62 +214,51 @@
           intro.appendChild(introCopy);
           page.appendChild(intro);
         }
-
-        for (offset = 0; offset < 4 && index + offset < items.length; offset += 1) {
-          var item = items[index + offset];
+        for (offset = 0; offset < 4 && index + offset < names.length; offset += 1) {
+          var itemIndex = index + offset;
           var figure = document.createElement("figure");
           var caption = document.createElement("figcaption");
           var number = document.createElement("span");
           var copy = document.createElement("span");
           var title = document.createElement("strong");
           var description = document.createElement("span");
-
-          figure.className = item.note ? "gallery-item text-card" : "gallery-item";
+          figure.className = "gallery-item";
           caption.className = "image-caption";
           number.className = "image-number";
           copy.className = "image-copy";
-
-          number.textContent = String(item.number).padStart(2, "0");
-          title.innerHTML = item.title;
-          description.innerHTML = item.copy;
+          number.textContent = String(itemIndex + 1).padStart(2, "0");
+          title.innerHTML = titles[itemIndex];
+          description.innerHTML = copies[itemIndex];
           copy.appendChild(title);
           copy.appendChild(description);
-
-          if (item.note) {
-            var textBody = document.createElement("div");
-            var textLabel = document.createElement("p");
-            var textTitle = document.createElement("p");
-            var textCopy = document.createElement("p");
-
-            textBody.className = "text-card-body";
-            textLabel.className = "text-card-label";
-            textTitle.className = "text-card-title";
-            textCopy.className = "text-card-copy";
-            textLabel.textContent = "Hinweis zur Verbindung";
-            textTitle.innerHTML = item.title;
-            textCopy.innerHTML = item.copy;
-            textBody.appendChild(textLabel);
-            textBody.appendChild(textTitle);
-            textBody.appendChild(textCopy);
-            figure.appendChild(textBody);
+          caption.appendChild(number);
+          caption.appendChild(copy);
+          if (itemIndex === 3) {
+            var noticeWrap = document.createElement("div");
+            var noticeLabel = document.createElement("span");
+            var noticeText = document.createElement("strong");
+            figure.className += " notice-item";
+            noticeWrap.className = "notice-wrap";
+            noticeLabel.className = "notice-label";
+            noticeText.className = "notice-text";
+            noticeLabel.textContent = "Hinweis";
+            noticeText.innerHTML = "Ethernet angeschlossen?<br>Direkt zu Schritt 22.";
+            noticeWrap.appendChild(noticeLabel);
+            noticeWrap.appendChild(noticeText);
+            figure.appendChild(noticeWrap);
           } else {
             var imageWrap = document.createElement("div");
             var image = document.createElement("img");
-
             imageWrap.className = "image-wrap";
-            image.src = encodeURI(item.image);
-            image.alt = "Photobox Anleitung Schritt " + String(item.number);
+            image.src = encodeURI(names[itemIndex]);
+            image.alt = "Photobox Anleitung Schritt " + String(itemIndex + 1);
             image.loading = "eager";
             imageWrap.appendChild(image);
             figure.appendChild(imageWrap);
           }
-
-          caption.appendChild(number);
-          caption.appendChild(copy);
           figure.appendChild(caption);
           grid.appendChild(figure);
         }
-
         page.appendChild(grid);
         gallery.appendChild(page);
       }
