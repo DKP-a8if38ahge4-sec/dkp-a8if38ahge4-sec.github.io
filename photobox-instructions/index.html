@@ -3,16 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Photobox - BEAST/TRANSFORM</title>
+  <title>Photobox Inbetriebnahme - BEAST/TRANSFORM</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --paper: #f7f7f8;
@@ -27,9 +23,7 @@
       --font: "Barlow Condensed", "Arial Narrow", sans-serif;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       min-height: 100vh;
@@ -40,18 +34,9 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    img {
-      max-width: 100%;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    button,
-    a {
-      -webkit-tap-highlight-color: transparent;
-    }
+    img { max-width: 100%; }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
 
     .page-width {
       width: min(1320px, calc(100% - 72px));
@@ -102,9 +87,7 @@
       padding-right: 3px;
     }
 
-    .brand-transform {
-      color: var(--blue);
-    }
+    .brand-transform { color: var(--blue); }
 
     .main-nav {
       display: flex;
@@ -122,13 +105,9 @@
     }
 
     .main-nav a:hover,
-    .main-nav a:focus-visible {
-      color: var(--blue);
-    }
+    .main-nav a:focus-visible { color: var(--blue); }
 
-    .header-cta {
-      justify-self: end;
-    }
+    .header-cta { justify-self: end; }
 
     .button {
       display: inline-flex;
@@ -150,9 +129,7 @@
     }
 
     .button:hover,
-    .button:focus-visible {
-      transform: translateY(-2px);
-    }
+    .button:focus-visible { transform: translateY(-2px); }
 
     .button-primary {
       border-color: var(--blue);
@@ -188,10 +165,7 @@
       padding: 78px 0 92px;
     }
 
-    .hero-copy {
-      position: relative;
-      z-index: 1;
-    }
+    .hero-copy { position: relative; z-index: 1; }
 
     .eyebrow {
       display: inline-flex;
@@ -227,9 +201,7 @@
       text-transform: uppercase;
     }
 
-    h1 .blue {
-      color: var(--blue);
-    }
+    h1 .blue, h2 .blue { color: var(--blue); }
 
     .hero-text {
       max-width: 520px;
@@ -282,11 +254,7 @@
       box-shadow: 0 24px 46px rgba(23, 29, 40, 0.15);
     }
 
-    .hero-image img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
+    .hero-image img { display: block; width: 100%; height: auto; }
 
     .hero-image-main {
       top: 3%;
@@ -322,9 +290,7 @@
       transform: rotate(8deg);
     }
 
-    .gallery-section {
-      padding: 20px 0 120px;
-    }
+    .gallery-section { padding: 20px 0 120px; }
 
     .section-heading {
       display: flex;
@@ -344,7 +310,7 @@
     }
 
     h2 {
-      max-width: 690px;
+      max-width: 760px;
       font-size: clamp(48px, 6vw, 88px);
       letter-spacing: -0.04em;
       line-height: 0.86;
@@ -365,18 +331,9 @@
       row-gap: 70px;
     }
 
-    .print-page,
-    .print-grid {
-      display: contents;
-    }
-
-    .print-intro {
-      display: none;
-    }
-
-    .gallery-item {
-      min-width: 0;
-    }
+    .print-page, .print-grid { display: contents; }
+    .print-intro { display: none; }
+    .gallery-item { min-width: 0; }
 
     .image-wrap {
       overflow: hidden;
@@ -465,207 +422,52 @@
       line-height: 1;
     }
 
-    :focus-visible {
-      outline: 3px solid var(--blue);
-      outline-offset: 4px;
-    }
+    :focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
 
     @media (max-width: 960px) {
-      .main-nav {
-        gap: 18px;
-        font-size: 16px;
-      }
-
-      .brand {
-        font-size: 22px;
-      }
-
-      .brand-mark {
-        width: 32px;
-        height: 32px;
-      }
-
-      .header-cta .button {
-        padding: 0 19px;
-        font-size: 17px;
-      }
-
-      .hero {
-        grid-template-columns: minmax(0, 0.85fr) minmax(340px, 1.15fr);
-        gap: 18px;
-      }
-
-      .hero-visual {
-        min-height: 510px;
-      }
-
-      .hero-badge {
-        width: 72px;
-        height: 72px;
-        font-size: 16px;
-      }
+      .main-nav { gap: 18px; font-size: 16px; }
+      .brand { font-size: 22px; }
+      .brand-mark { width: 32px; height: 32px; }
+      .header-cta .button { padding: 0 19px; font-size: 17px; }
+      .hero { grid-template-columns: minmax(0, 0.85fr) minmax(340px, 1.15fr); gap: 18px; }
+      .hero-visual { min-height: 510px; }
+      .hero-badge { width: 72px; height: 72px; font-size: 16px; }
     }
 
     @media (max-width: 760px) {
-      .page-width {
-        width: min(100% - 40px, 1320px);
-      }
-
-      .header-inner {
-        grid-template-columns: 1fr auto;
-        min-height: 72px;
-      }
-
-      .main-nav,
-      .header-cta {
-        display: none;
-      }
-
-      .mobile-menu {
-        display: block;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        gap: 54px;
-        min-height: 0;
-        padding: 56px 0 72px;
-      }
-
-      .eyebrow {
-        margin-bottom: 28px;
-        font-size: 14px;
-      }
-
-      h1 {
-        font-size: clamp(57px, 17vw, 94px);
-      }
-
-      .hero-text {
-        margin-top: 30px;
-        font-size: 25px;
-      }
-
-      .button-row {
-        margin-top: 30px;
-      }
-
-      .button {
-        min-height: 49px;
-        padding: 0 21px;
-        font-size: 18px;
-      }
-
-      .hero-visual {
-        min-height: 460px;
-        margin: 0 -8px;
-      }
-
-      .hero-visual::before {
-        top: 5%;
-        right: 11%;
-        width: 250px;
-        height: 250px;
-      }
-
-      .hero-image-main {
-        left: 8%;
-        width: 46%;
-      }
-
-      .hero-image-side {
-        right: 1%;
-        bottom: 4%;
-        width: 62%;
-      }
-
-      .hero-badge {
-        right: 1%;
-        top: 39%;
-        width: 66px;
-        height: 66px;
-        font-size: 14px;
-      }
-
-      .gallery-section {
-        padding: 8px 0 78px;
-      }
-
-      .section-heading {
-        align-items: start;
-        flex-direction: column;
-        gap: 18px;
-        margin-bottom: 30px;
-      }
-
-      h2 {
-        font-size: clamp(46px, 14vw, 74px);
-      }
-
-      .gallery {
-        grid-template-columns: 1fr;
-        row-gap: 46px;
-      }
-
-      .image-caption {
-        padding-top: 13px;
-      }
-
-      .closing-cta {
-        grid-template-columns: 1fr;
-        gap: 27px;
-        margin-bottom: 52px;
-        padding: 34px 27px 38px;
-        border-radius: 22px;
-      }
-
-      .closing-cta h2 {
-        font-size: 52px;
-      }
-
-      .site-footer {
-        flex-direction: column;
-        gap: 10px;
-        font-size: 15px;
-      }
+      .page-width { width: min(100% - 40px, 1320px); }
+      .header-inner { grid-template-columns: 1fr auto; min-height: 72px; }
+      .main-nav, .header-cta { display: none; }
+      .mobile-menu { display: block; }
+      .hero { grid-template-columns: 1fr; gap: 54px; min-height: 0; padding: 56px 0 72px; }
+      .eyebrow { margin-bottom: 28px; font-size: 14px; }
+      h1 { font-size: clamp(57px, 17vw, 94px); }
+      .hero-text { margin-top: 30px; font-size: 25px; }
+      .button-row { margin-top: 30px; }
+      .button { min-height: 49px; padding: 0 21px; font-size: 18px; }
+      .hero-visual { min-height: 460px; margin: 0 -8px; }
+      .hero-visual::before { top: 5%; right: 11%; width: 250px; height: 250px; }
+      .hero-image-main { left: 8%; width: 46%; }
+      .hero-image-side { right: 1%; bottom: 4%; width: 62%; }
+      .hero-badge { right: 1%; top: 39%; width: 66px; height: 66px; font-size: 14px; }
+      .gallery-section { padding: 8px 0 78px; }
+      .section-heading { align-items: start; flex-direction: column; gap: 18px; margin-bottom: 30px; }
+      h2 { font-size: clamp(46px, 14vw, 74px); }
+      .gallery { grid-template-columns: 1fr; row-gap: 46px; }
+      .image-caption { padding-top: 13px; }
+      .closing-cta { grid-template-columns: 1fr; gap: 27px; margin-bottom: 52px; padding: 34px 27px 38px; border-radius: 22px; }
+      .closing-cta h2 { font-size: 52px; }
+      .site-footer { flex-direction: column; gap: 10px; font-size: 15px; }
     }
 
-    @page {
-      size: A4 portrait;
-      margin: 0;
-    }
+    @page { size: A4 portrait; margin: 0; }
 
     @media print {
-      html,
-      body {
-        width: 210mm;
-        min-height: 0;
-        margin: 0;
-        background: #ffffff;
-      }
-
-      body {
-        color: #000000;
-      }
-
-      .site-header,
-      .hero,
-      .section-heading,
-      .closing-cta,
-      .site-footer {
-        display: none;
-      }
-
-      main {
-        width: 210mm;
-        margin: 0;
-        padding: 0;
-      }
-
-      .gallery {
-        display: block;
-        width: 210mm;
-      }
+      html, body { width: 210mm; min-height: 0; margin: 0; background: #ffffff; }
+      body { color: #000000; }
+      .site-header, .hero, .section-heading, .closing-cta, .site-footer { display: none; }
+      main { width: 210mm; margin: 0; padding: 0; }
+      .gallery { display: block; width: 210mm; }
 
       .print-page {
         display: grid;
@@ -680,14 +482,8 @@
         page-break-after: always;
       }
 
-      .print-page:not(.first-page) {
-        grid-template-rows: 277mm;
-      }
-
-      .print-page:last-child {
-        break-after: auto;
-        page-break-after: auto;
-      }
+      .print-page:not(.first-page) { grid-template-rows: 277mm; }
+      .print-page:last-child { break-after: auto; page-break-after: auto; }
 
       .print-intro {
         display: block;
@@ -714,11 +510,7 @@
         text-transform: uppercase;
       }
 
-      .print-intro-copy {
-        color: #555963;
-        font-size: 9pt;
-        line-height: 1.1;
-      }
+      .print-intro-copy { color: #555963; font-size: 9pt; line-height: 1.1; }
 
       .print-grid {
         display: grid;
@@ -780,35 +572,14 @@
         padding: 2mm 0 0;
       }
 
-      .image-number {
-        color: #0b5cff;
-        font-size: 9pt;
-      }
-
-      .image-copy {
-        color: #555963;
-        font-size: 10pt;
-        line-height: 1.08;
-      }
-
-      .image-copy strong {
-        margin-bottom: 1mm;
-        color: #000000;
-        font-size: 11pt;
-        line-height: 1;
-      }
+      .image-number { color: #0b5cff; font-size: 9pt; }
+      .image-copy { color: #555963; font-size: 10pt; line-height: 1.08; }
+      .image-copy strong { margin-bottom: 1mm; color: #000000; font-size: 11pt; line-height: 1; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      .button,
-      .main-nav a,
-      .image-wrap img {
-        transition: none;
-      }
+      html { scroll-behavior: auto; }
+      .button, .main-nav a, .image-wrap img { transition: none; }
     }
   </style>
 </head>
@@ -820,13 +591,11 @@
         <span>BEAST<span class="brand-transform">/TRANSFORM</span></span>
       </a>
       <nav class="main-nav" aria-label="Hauptnavigation">
-        <a href="#guide">Funktionen</a>
-        <a href="#gallery">Beispiele</a>
-        <a href="#overlay">Overlay</a>
-        <a href="#cases">Cases</a>
-        <a href="#faq">FAQ</a>
+        <a href="#guide">Start</a>
+        <a href="#gallery">Schritte</a>
+        <a href="#contact">Druck</a>
       </nav>
-      <a class="button button-primary button-small header-cta" href="#contact">Termin buchen</a>
+      <button class="button button-primary button-small header-cta" type="button" onclick="window.print()">Druckversion</button>
       <span class="mobile-menu">Men&uuml;</span>
     </div>
   </header>
@@ -835,44 +604,44 @@
     <section class="page-width hero" id="guide">
       <div class="hero-copy">
         <p class="eyebrow">Photobox f&uuml;r Events</p>
-        <h1>Das Photobox-<br>Erlebnis, <span class="blue">von dem alle erz&auml;hlen.</span></h1>
-        <p class="hero-text">Ein Fingertipp auf die Photobox - und schon entsteht ein Bild, das im Raum bleibt, auf Papier landet oder direkt geteilt wird.</p>
+        <h1>Photobox<br>einschalten.<br><span class="blue">Starten.</span></h1>
+        <p class="hero-text">Diese Anleitung f&uuml;hrt Sie vom Einschalten &uuml;ber die WLAN-Verbindung bis zum ersten Ausdruck mit Motiv.</p>
         <div class="button-row">
-          <a class="button button-primary" href="#gallery">Beispiele ansehen</a>
-          <button class="button" type="button" onclick="window.print()">Druckansicht &ouml;ffnen</button>
+          <a class="button button-primary" href="#gallery">Zu den Schritten</a>
+          <button class="button" type="button" onclick="window.print()">Druckversion &ouml;ffnen</button>
         </div>
       </div>
-      <div class="hero-visual" aria-label="Auswahl von Photobox-Momenten">
+      <div class="hero-visual" aria-label="Auswahl von Photobox-Schritten">
         <figure class="hero-image hero-image-main">
-          <img src="Image.jpeg" alt="Photobox Moment bei einem Event">
+          <img src="Image.jpeg" alt="Photobox einschalten">
         </figure>
         <figure class="hero-image hero-image-side">
-          <img src="Image (1).jpeg" alt="Beispiel f&uuml;r ein Photobox Bild">
+          <img src="Image (1).jpeg" alt="Photobox startet">
         </figure>
-        <div class="hero-badge">27<br>Momente</div>
+        <div class="hero-badge">27<br>Schritte</div>
       </div>
     </section>
 
     <section class="page-width gallery-section" id="gallery">
       <div class="section-heading">
         <div>
-          <p class="section-kicker">Beispiele aus dem Archiv</p>
-          <h2>Jeder Rahmen<br>ein <span class="blue">Erlebnis.</span></h2>
+          <p class="section-kicker">Schritt-f&uuml;r-Schritt-Anleitung</p>
+          <h2>Von Strom<br>bis <span class="blue">Ausdruck.</span></h2>
         </div>
-        <p class="section-count">27 Bilder / native Formate</p>
+        <p class="section-count">27 Schritte / Setup bis Ausdruck</p>
       </div>
-      <div class="gallery" aria-label="Photobox Bildarchiv"></div>
+      <div class="gallery" aria-label="Photobox Schritt-f&uuml;r-Schritt-Anleitung"></div>
     </section>
 
     <section class="page-width closing-cta" id="contact">
-      <h2>Bereit f&uuml;r den n&auml;chsten Moment?</h2>
-      <a class="button" href="mailto:david.c@diekavallerie.de">Unverbindlich anfragen</a>
+      <h2>Die Photobox ist jetzt bereit.</h2>
+      <button class="button" type="button" onclick="window.print()">Druckversion &ouml;ffnen</button>
     </section>
   </main>
 
   <footer class="page-width site-footer">
     <span>BEAST/TRANSFORM</span>
-    <span>Photobox Instructions</span>
+    <span>Photobox Inbetriebnahme</span>
   </footer>
 
   <script>
@@ -888,23 +657,43 @@
       ];
 
       var titles = [
-        "Hier starten", "Eine Szene waehlen", "Blick finden", "Dein Moment",
-        "Pose halten", "Im Rahmen bleiben", "Mutig bleiben", "Noch ein Look",
-        "Erinnerung schaffen", "Im Bild bleiben", "Ausloesen", "Kurz warten",
-        "Fast geschafft", "Druck holen", "Ergebnis teilen", "Digital mitnehmen",
-        "Szene sichern", "Zusammen teilen", "Noch einmal", "Den Moment halten",
-        "Energie behalten", "Moment einfrieren", "Alle mitnehmen", "Rahmen setzen",
-        "Erinnerung drucken", "Mitnehmen", "Fertig"
+        "Einschalten", "System hochfahren lassen", "Photobox starten lassen", "Windows-Taste dr fccken",
+        "Windows-Men fc anzeigen", "Einstellungen  f6ffnen", "Windows-Einstellungen", "Netzwerk und Internet",
+        "Netzwerk fcbersicht", "WLAN ausw e4hlen", "Verf fcgbare Netzwerke", "WLANs anzeigen",
+        "Netzwerk ausw e4hlen", "Verbinden", "Passwortfeld  f6ffnen", "WLAN-Passwort eingeben",
+        "Verbindung wird hergestellt", "Verbindung pr fcfen", "Alt + F4 vorbereiten", "Einstellungen schlie dfen",
+        "Zur Photobox zur fcckkehren", "Kamera aktivieren", "Livebild pr fcfen", "Motiv ausw e4hlen",
+        "Countdown abwarten", "Foto pr fcfen", "Ausdruck entnehmen"
       ];
 
       var copies = [
-        "Finde deinen Startpunkt.", "Finde den passenden Look.", "Bewege dich in den Rahmen.", "Bring deine Energie mit.",
-        "Halte den Moment.", "Bleib im Bild.", "Probier etwas Unerwartetes.", "Es gibt keine falsche Version.",
-        "Mach es erinnerungswuerdig.", "Blick nach vorn.", "Die Photobox macht den Rest.", "Dein Bild kommt gleich.",
-        "Ein letzter Blick.", "Nimm das Original mit.", "Zeig das Ergebnis.", "Scanne und teile.",
-        "Behalte die gute Version.", "Mach Platz fuer alle.", "Eines ist nie genug.", "Gib noch etwas dazu.",
-        "Nicht zu viel nachdenken.", "Einfach passieren lassen.", "Zusammen ist besser.", "Dieser Rahmen gehoert dir.",
-        "Mach es greifbar.", "Nimm den Moment mit.", "Das ist es."
+        "Dr fccken Sie den Netzschalter.",
+        "Warten Sie, bis Windows vollst e4ndig hochgefahren ist.",
+        "Warten Sie, bis die Photobox-Anwendung angezeigt wird.",
+        "Dr fccken Sie die Windows-Taste auf der verbundenen Tastatur.",
+        "Das Windows-Startmen fc wird angezeigt.",
+        "Klicken Sie auf das Zahnrad-Symbol.",
+        "Das Fenster mit den Windows-Einstellungen ist ge f6ffnet.",
+        "Klicken Sie auf Netzwerk und Internet.",
+        "Die Netzwerk-Einstellungen werden angezeigt.",
+        "Klicken Sie auf WLAN.",
+        "Klicken Sie auf Verf fcgbare Netzwerke.",
+        "Die erreichbaren WLAN-Netze werden eingeblendet.",
+        "Klicken Sie auf das gew fcnschte Netzwerk.",
+        "Klicken Sie auf Verbinden.",
+        "Das Eingabefeld f fcr das Passwort wird angezeigt.",
+        "Geben Sie das Passwort  fcber die Tastatur ein.",
+        "Warten Sie, w e4hrend Windows die Verbindung herstellt.",
+        "Pr fcfen Sie, ob das Netzwerk als verbunden angezeigt wird.",
+        "Merken Sie sich: Alt + F4 schlie dft das Fenster.",
+        "Dr fccken Sie Alt + F4, um die Einstellungen zu schlie dfen.",
+        "Die Photobox-Anwendung ist wieder sichtbar.",
+        "Klicken Sie auf Activate Camera.",
+        "Pr fcfen Sie, ob das Livebild der Kamera erscheint.",
+        "W e4hlen Sie das gew fcnschte Motiv.",
+        "Bleiben Sie im Bild und warten Sie den Countdown ab.",
+        "Pr fcfen Sie das aufgenommene Foto.",
+        "Nehmen Sie den Ausdruck mit dem gew e4hlten Motiv entgegen."
       ];
 
       var gallery = document.querySelector(".gallery");
@@ -929,9 +718,9 @@
           introKicker.className = "print-intro-kicker";
           introTitle.className = "print-intro-title";
           introCopy.className = "print-intro-copy";
-          introKicker.textContent = "BEAST/TRANSFORM / Photobox / 27 Bilder";
-          introTitle.textContent = "Das Photobox-Erlebnis.";
-          introCopy.textContent = "Ein kurzer Blick auf die Momente, die aus einem Event eine Erinnerung machen.";
+          introKicker.textContent = "BEAST/TRANSFORM / Photobox / 27 Schritte";
+          introTitle.textContent = "Photobox in Betrieb nehmen.";
+          introCopy.textContent = "Folgen Sie den Bildern von der WLAN-Verbindung bis zum gedruckten Foto.";
           intro.appendChild(introKicker);
           intro.appendChild(introTitle);
           intro.appendChild(introCopy);
@@ -955,7 +744,7 @@
           copy.className = "image-copy";
 
           image.src = encodeURI(names[itemIndex]);
-          image.alt = "Photobox Beispielbild " + String(itemIndex + 1);
+          image.alt = "Photobox Anleitung Schritt " + String(itemIndex + 1);
           image.loading = "eager";
           number.textContent = String(itemIndex + 1).padStart(2, "0");
           title.textContent = titles[itemIndex];
