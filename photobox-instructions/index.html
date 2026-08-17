@@ -105,6 +105,7 @@
       .print-grid { display: grid; grid-template-columns: 91mm 91mm; grid-template-rows: 120.5mm 120.5mm; column-gap: 8mm; row-gap: 7mm; width: 190mm; height: 248mm; min-height: 0; }
       .print-page:not(.first-page) .print-grid { grid-template-rows: 135mm 135mm; height: 277mm; }
       .gallery-item { display: grid; grid-template-rows: minmax(0, 1fr) 14mm; width: 91mm; height: 100%; min-width: 0; min-height: 0; overflow: hidden; break-inside: avoid; page-break-inside: avoid; }
+      .notice-item { grid-template-rows: 1fr; }
       .image-wrap, .notice-wrap { display: flex; align-items: flex-start; justify-content: center; width: 91mm; height: 100%; min-width: 0; min-height: 0; overflow: hidden; border-radius: 0; background: transparent; }
       .notice-wrap { align-items: flex-start; justify-content: flex-start; padding: 9mm; border: 1.2pt solid #0b5cff; background: #eaf0ff; }
       .notice-label { margin-bottom: 4mm; font-size: 9pt; }
@@ -263,8 +264,8 @@
             image.loading = "eager";
             imageWrap.appendChild(image);
             figure.appendChild(imageWrap);
+            figure.appendChild(caption);
           }
-          figure.appendChild(caption);
           grid.appendChild(figure);
         }
         page.appendChild(grid);
