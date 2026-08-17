@@ -144,6 +144,10 @@
       row-gap: 62px;
     }
 
+    .print-page {
+      display: contents;
+    }
+
     .gallery-item {
       min-width: 0;
     }
@@ -249,6 +253,103 @@
       }
     }
 
+    @page {
+      size: A4 portrait;
+      margin: 12mm;
+    }
+
+    @media print {
+      html,
+      body {
+        width: auto;
+        min-height: 0;
+        background: #ffffff;
+      }
+
+      body {
+        color: #000000;
+      }
+
+      .site-header,
+      .site-footer,
+      .archive-head {
+        display: none;
+      }
+
+      main {
+        width: auto;
+        padding: 0;
+        margin: 0;
+      }
+
+      .gallery {
+        display: block;
+      }
+
+      .print-page {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+        column-gap: 8mm;
+        row-gap: 10mm;
+        width: 100%;
+        height: 273mm;
+        break-after: page;
+        page-break-after: always;
+      }
+
+      .print-page:last-child {
+        break-after: auto;
+        page-break-after: auto;
+      }
+
+      .gallery-item {
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .image-wrap {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        width: 100%;
+        height: 119mm;
+        background: transparent;
+      }
+
+      .image-wrap img {
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        max-height: 119mm;
+        opacity: 1;
+      }
+
+      .image-caption {
+        grid-template-columns: 8mm minmax(0, 1fr);
+        gap: 2mm;
+        padding-top: 2.5mm;
+      }
+
+      .image-number {
+        font-size: 7pt;
+      }
+
+      .image-copy {
+        font-size: 7pt;
+        line-height: 1.3;
+      }
+
+      .image-copy strong {
+        margin-bottom: 1mm;
+        font-size: 8pt;
+        line-height: 1.05;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
@@ -285,121 +386,148 @@
       <p class="archive-count">27 frames</p>
     </div>
 
-    <section class="gallery" aria-label="Photobox image gallery">
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image.jpeg" alt="Photobox reference image 01" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">01</span><span class="image-copy"><strong>Start here</strong>Choose your starting point.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(1).jpeg" alt="Photobox reference image 02" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">02</span><span class="image-copy"><strong>Choose a scene</strong>Find the look that fits.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(2).jpeg" alt="Photobox reference image 03" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">03</span><span class="image-copy"><strong>Find your angle</strong>Move into the frame.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(3).jpeg" alt="Photobox reference image 04" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">04</span><span class="image-copy"><strong>Make it yours</strong>Add your own energy.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(4).jpeg" alt="Photobox reference image 05" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">05</span><span class="image-copy"><strong>Strike a pose</strong>Hold the moment.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(5).jpeg" alt="Photobox reference image 06" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">06</span><span class="image-copy"><strong>Hold the moment</strong>Stay in the frame.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(6).jpeg" alt="Photobox reference image 07" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">07</span><span class="image-copy"><strong>Keep it bold</strong>Try something unexpected.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(7).jpeg" alt="Photobox reference image 08" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">08</span><span class="image-copy"><strong>Try another look</strong>There is no wrong version.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(8).jpeg" alt="Photobox reference image 09" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">09</span><span class="image-copy"><strong>Make a memory</strong>Make it worth keeping.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(9).jpeg" alt="Photobox reference image 10" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">10</span><span class="image-copy"><strong>Stay in frame</strong>Keep your eyes up.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(10).jpeg" alt="Photobox reference image 11" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">11</span><span class="image-copy"><strong>Push the button</strong>Let the machine work.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(11).jpeg" alt="Photobox reference image 12" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">12</span><span class="image-copy"><strong>Wait for it</strong>Your image is coming.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(12).jpeg" alt="Photobox reference image 13" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">13</span><span class="image-copy"><strong>Almost there</strong>One last check.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(13).jpeg" alt="Photobox reference image 14" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">14</span><span class="image-copy"><strong>Grab your print</strong>Take the physical one.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(14).jpeg" alt="Photobox reference image 15" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">15</span><span class="image-copy"><strong>Share the result</strong>Pass it on.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(15).jpeg" alt="Photobox reference image 16" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">16</span><span class="image-copy"><strong>Scan and share</strong>Take it digital.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(16).jpeg" alt="Photobox reference image 17" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">17</span><span class="image-copy"><strong>Save the scene</strong>Keep the good version.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(17).jpeg" alt="Photobox reference image 18" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">18</span><span class="image-copy"><strong>Share the fun</strong>Make room for everyone.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(18).jpeg" alt="Photobox reference image 19" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">19</span><span class="image-copy"><strong>Take one more</strong>Because one is never enough.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(19).jpeg" alt="Photobox reference image 20" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">20</span><span class="image-copy"><strong>Make it count</strong>Give it a little more.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(20).jpeg" alt="Photobox reference image 21" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">21</span><span class="image-copy"><strong>Keep the energy</strong>Do not overthink it.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(21).jpeg" alt="Photobox reference image 22" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">22</span><span class="image-copy"><strong>Freeze the moment</strong>Let it happen.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(22).jpeg" alt="Photobox reference image 23" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">23</span><span class="image-copy"><strong>Bring the group</strong>Better together.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(23).jpeg" alt="Photobox reference image 24" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">24</span><span class="image-copy"><strong>Own the frame</strong>This one is yours.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(24).jpeg" alt="Photobox reference image 25" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">25</span><span class="image-copy"><strong>Print the memory</strong>Make it tangible.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(25).jpeg" alt="Photobox reference image 26" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">26</span><span class="image-copy"><strong>Take it with you</strong>Carry the moment on.</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <div class="image-wrap"><img src="Image%20(26).jpeg" alt="Photobox reference image 27" loading="lazy"></div>
-        <figcaption class="image-caption"><span class="image-number">27</span><span class="image-copy"><strong>Done.</strong>That is the one.</span></figcaption>
-      </figure>
-    </section>
+    <section class="gallery" aria-label="Photobox image gallery"></section>
   </main>
 
   <footer class="site-footer">
     <span>The Unknown Beast</span>
     <span>Photobox Instructions</span>
   </footer>
+
+  <script>
+    (function () {
+      var names = [
+        'Image.jpeg',
+        'Image (1).jpeg',
+        'Image (2).jpeg',
+        'Image (3).jpeg',
+        'Image (4).jpeg',
+        'Image (5).jpeg',
+        'Image (6).jpeg',
+        'Image (7).jpeg',
+        'Image (8).jpeg',
+        'Image (9).jpeg',
+        'Image (10).jpeg',
+        'Image (11).jpeg',
+        'Image (12).jpeg',
+        'Image (13).jpeg',
+        'Image (14).jpeg',
+        'Image (15).jpeg',
+        'Image (16).jpeg',
+        'Image (17).jpeg',
+        'Image (18).jpeg',
+        'Image (19).jpeg',
+        'Image (20).jpeg',
+        'Image (21).jpeg',
+        'Image (22).jpeg',
+        'Image (23).jpeg',
+        'Image (24).jpeg',
+        'Image (25).jpeg',
+        'Image (26).jpeg'
+      ];
+
+      var titles = [
+        'Start here',
+        'Choose a scene',
+        'Find your angle',
+        'Make it yours',
+        'Strike a pose',
+        'Hold the moment',
+        'Keep it bold',
+        'Try another look',
+        'Make a memory',
+        'Stay in frame',
+        'Push the button',
+        'Wait for it',
+        'Almost there',
+        'Grab your print',
+        'Share the result',
+        'Scan and share',
+        'Save the scene',
+        'Share the fun',
+        'Take one more',
+        'Make it count',
+        'Keep the energy',
+        'Freeze the moment',
+        'Bring the group',
+        'Own the frame',
+        'Print the memory',
+        'Take it with you',
+        'Done.'
+      ];
+
+      var copies = [
+        'Choose your starting point.',
+        'Find the look that fits.',
+        'Move into the frame.',
+        'Add your own energy.',
+        'Hold the moment.',
+        'Stay in the frame.',
+        'Try something unexpected.',
+        'There is no wrong version.',
+        'Make it worth keeping.',
+        'Keep your eyes up.',
+        'Let the machine work.',
+        'Your image is coming.',
+        'One last check.',
+        'Take the physical one.',
+        'Pass it on.',
+        'Take it digital.',
+        'Keep the good version.',
+        'Make room for everyone.',
+        'Because one is never enough.',
+        'Give it a little more.',
+        'Do not overthink it.',
+        'Let it happen.',
+        'Better together.',
+        'This one is yours.',
+        'Make it tangible.',
+        'Carry the moment on.',
+        'That is the one.'
+      ];
+
+      var gallery = document.querySelector('.gallery');
+      var index;
+      var offset;
+
+      for (index = 0; index < names.length; index += 4) {
+        var page = document.createElement('div');
+        page.className = 'print-page';
+
+        for (offset = 0; offset < 4 && index + offset < names.length; offset += 1) {
+          var itemIndex = index + offset;
+          var figure = document.createElement('figure');
+          var imageWrap = document.createElement('div');
+          var image = document.createElement('img');
+          var caption = document.createElement('figcaption');
+          var number = document.createElement('span');
+          var copy = document.createElement('span');
+          var title = document.createElement('strong');
+
+          figure.className = 'gallery-item';
+          imageWrap.className = 'image-wrap';
+          caption.className = 'image-caption';
+          number.className = 'image-number';
+          copy.className = 'image-copy';
+
+          image.src = encodeURI(names[itemIndex]);
+          image.alt = 'Photobox reference image ' + String(itemIndex + 1);
+          image.loading = 'eager';
+          number.textContent = String(itemIndex + 1).padStart(2, '0');
+          title.textContent = titles[itemIndex];
+          copy.appendChild(title);
+          copy.appendChild(document.createTextNode(copies[itemIndex]));
+          caption.appendChild(number);
+          caption.appendChild(copy);
+          imageWrap.appendChild(image);
+          figure.appendChild(imageWrap);
+          figure.appendChild(caption);
+          page.appendChild(figure);
+        }
+
+        gallery.appendChild(page);
+      }
+    }());
+  </script>
 </body>
 </html>
