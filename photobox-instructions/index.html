@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photobox Anleitung</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #14243b;
+      --paper: #f5f0e8;
+      --accent: #0b79f7;
+      --line: #c9c0b4;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(42px, 8vw, 92px);
+      line-height: 0.94;
+      letter-spacing: -0.055em;
+      text-transform: uppercase;
+    }
+
+    .intro {
+      max-width: 620px;
+      margin: 24px 0 40px;
+      font-size: 19px;
+      line-height: 1.5;
+    }
+
+    .photo-frame {
+      border: 1px solid var(--line);
+      padding: 12px;
+      background: #fff;
+    }
+
+    .photo-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 12px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    @media (min-width: 760px) {
+      .photo-frame { max-width: 620px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Photobox Instructions</p>
+    <h1>Pick your scene. Strike a pose.</h1>
+    <p class="intro">Eine kurze Referenzseite f&uuml;r die AI Photo Box. Das Bild zeigt den aktuellen Aufbau und die vier Schritte f&uuml;r Besucherinnen und Besucher.</p>
+
+    <figure class="photo-frame">
+      <img src="./grafik.png" alt="AI Photo Box mit Bildschirm, Kamera und den vier Nutzungsschritten Pick your scene, Strike a pose, Grab your printout sowie Scan &amp; share">
+      <figcaption class="caption">
+        <span>AI Photo Box - Referenzfoto</span>
+        <span>Photobox Instructions</span>
+      </figcaption>
+    </figure>
+  </main>
+</body>
+</html>
