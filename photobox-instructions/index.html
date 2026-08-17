@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Photobox Instructions - The Unknown Beast</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&display=swap" rel="stylesheet">
 
   <style>
-    /* Reset */
     *,
     *::before,
     *::after {
@@ -20,7 +22,7 @@
       --ink: #0b0b0b;
       --muted: #777771;
       --soft: #e5e5df;
-      --font: Inter, Arial, Helvetica, sans-serif;
+      --font: "Barlow Condensed", "Arial Narrow", sans-serif;
     }
 
     html {
@@ -32,6 +34,7 @@
       background: var(--paper);
       color: var(--ink);
       font-family: var(--font);
+      font-weight: 600;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -57,8 +60,8 @@
       gap: 24px;
       margin-bottom: 104px;
       color: var(--muted);
-      font-size: 10px;
-      font-weight: 800;
+      font-size: 12px;
+      font-weight: 600;
       letter-spacing: 0.18em;
       line-height: 1.3;
       text-transform: uppercase;
@@ -87,8 +90,8 @@
     .archive-label,
     .archive-count {
       color: var(--muted);
-      font-size: 10px;
-      font-weight: 800;
+      font-size: 12px;
+      font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
     }
@@ -100,7 +103,7 @@
     h1 {
       max-width: 850px;
       font-size: clamp(58px, 10vw, 134px);
-      font-weight: 900;
+      font-weight: 600;
       letter-spacing: -0.09em;
       line-height: 0.82;
       text-transform: uppercase;
@@ -116,9 +119,9 @@
     }
 
     .hero-side-copy {
-      font-size: 16px;
+      font-size: 20px;
       font-weight: 600;
-      line-height: 1.5;
+      line-height: 1.35;
     }
 
     main {
@@ -177,23 +180,24 @@
 
     .image-number {
       color: var(--muted);
-      font-size: 10px;
-      font-weight: 800;
+      font-size: 12px;
+      font-weight: 600;
       letter-spacing: 0.08em;
     }
 
     .image-copy {
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.45;
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.25;
     }
 
     .image-copy strong {
       display: block;
       margin-bottom: 4px;
       color: var(--ink);
-      font-size: 15px;
-      font-weight: 900;
+      font-size: 19px;
+      font-weight: 600;
       line-height: 1.05;
       text-transform: uppercase;
     }
@@ -204,8 +208,8 @@
       gap: 24px;
       padding: 22px 0 30px;
       color: var(--muted);
-      font-size: 10px;
-      font-weight: 800;
+      font-size: 12px;
+      font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
@@ -291,7 +295,7 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-template-rows: repeat(2, minmax(0, 1fr));
         column-gap: 8mm;
-        row-gap: 10mm;
+        row-gap: 8mm;
         width: 100%;
         height: 273mm;
         break-after: page;
@@ -316,7 +320,7 @@
         align-items: flex-start;
         justify-content: center;
         width: 100%;
-        height: 119mm;
+        height: 114mm;
         background: transparent;
       }
 
@@ -324,7 +328,7 @@
         width: auto;
         max-width: 100%;
         height: auto;
-        max-height: 119mm;
+        max-height: 114mm;
         opacity: 1;
       }
 
@@ -335,17 +339,20 @@
       }
 
       .image-number {
-        font-size: 7pt;
+        font-size: 9pt;
+        font-weight: 600;
       }
 
       .image-copy {
-        font-size: 7pt;
-        line-height: 1.3;
+        font-size: 10pt;
+        font-weight: 600;
+        line-height: 1.15;
       }
 
       .image-copy strong {
         margin-bottom: 1mm;
-        font-size: 8pt;
+        font-size: 11pt;
+        font-weight: 600;
         line-height: 1.05;
       }
     }
@@ -397,123 +404,123 @@
   <script>
     (function () {
       var names = [
-        'Image.jpeg',
-        'Image (1).jpeg',
-        'Image (2).jpeg',
-        'Image (3).jpeg',
-        'Image (4).jpeg',
-        'Image (5).jpeg',
-        'Image (6).jpeg',
-        'Image (7).jpeg',
-        'Image (8).jpeg',
-        'Image (9).jpeg',
-        'Image (10).jpeg',
-        'Image (11).jpeg',
-        'Image (12).jpeg',
-        'Image (13).jpeg',
-        'Image (14).jpeg',
-        'Image (15).jpeg',
-        'Image (16).jpeg',
-        'Image (17).jpeg',
-        'Image (18).jpeg',
-        'Image (19).jpeg',
-        'Image (20).jpeg',
-        'Image (21).jpeg',
-        'Image (22).jpeg',
-        'Image (23).jpeg',
-        'Image (24).jpeg',
-        'Image (25).jpeg',
-        'Image (26).jpeg'
+        "Image.jpeg",
+        "Image (1).jpeg",
+        "Image (2).jpeg",
+        "Image (3).jpeg",
+        "Image (4).jpeg",
+        "Image (5).jpeg",
+        "Image (6).jpeg",
+        "Image (7).jpeg",
+        "Image (8).jpeg",
+        "Image (9).jpeg",
+        "Image (10).jpeg",
+        "Image (11).jpeg",
+        "Image (12).jpeg",
+        "Image (13).jpeg",
+        "Image (14).jpeg",
+        "Image (15).jpeg",
+        "Image (16).jpeg",
+        "Image (17).jpeg",
+        "Image (18).jpeg",
+        "Image (19).jpeg",
+        "Image (20).jpeg",
+        "Image (21).jpeg",
+        "Image (22).jpeg",
+        "Image (23).jpeg",
+        "Image (24).jpeg",
+        "Image (25).jpeg",
+        "Image (26).jpeg"
       ];
 
       var titles = [
-        'Start here',
-        'Choose a scene',
-        'Find your angle',
-        'Make it yours',
-        'Strike a pose',
-        'Hold the moment',
-        'Keep it bold',
-        'Try another look',
-        'Make a memory',
-        'Stay in frame',
-        'Push the button',
-        'Wait for it',
-        'Almost there',
-        'Grab your print',
-        'Share the result',
-        'Scan and share',
-        'Save the scene',
-        'Share the fun',
-        'Take one more',
-        'Make it count',
-        'Keep the energy',
-        'Freeze the moment',
-        'Bring the group',
-        'Own the frame',
-        'Print the memory',
-        'Take it with you',
-        'Done.'
+        "Start here",
+        "Choose a scene",
+        "Find your angle",
+        "Make it yours",
+        "Strike a pose",
+        "Hold the moment",
+        "Keep it bold",
+        "Try another look",
+        "Make a memory",
+        "Stay in frame",
+        "Push the button",
+        "Wait for it",
+        "Almost there",
+        "Grab your print",
+        "Share the result",
+        "Scan and share",
+        "Save the scene",
+        "Share the fun",
+        "Take one more",
+        "Make it count",
+        "Keep the energy",
+        "Freeze the moment",
+        "Bring the group",
+        "Own the frame",
+        "Print the memory",
+        "Take it with you",
+        "Done."
       ];
 
       var copies = [
-        'Choose your starting point.',
-        'Find the look that fits.',
-        'Move into the frame.',
-        'Add your own energy.',
-        'Hold the moment.',
-        'Stay in the frame.',
-        'Try something unexpected.',
-        'There is no wrong version.',
-        'Make it worth keeping.',
-        'Keep your eyes up.',
-        'Let the machine work.',
-        'Your image is coming.',
-        'One last check.',
-        'Take the physical one.',
-        'Pass it on.',
-        'Take it digital.',
-        'Keep the good version.',
-        'Make room for everyone.',
-        'Because one is never enough.',
-        'Give it a little more.',
-        'Do not overthink it.',
-        'Let it happen.',
-        'Better together.',
-        'This one is yours.',
-        'Make it tangible.',
-        'Carry the moment on.',
-        'That is the one.'
+        "Choose your starting point.",
+        "Find the look that fits.",
+        "Move into the frame.",
+        "Add your own energy.",
+        "Hold the moment.",
+        "Stay in the frame.",
+        "Try something unexpected.",
+        "There is no wrong version.",
+        "Make it worth keeping.",
+        "Keep your eyes up.",
+        "Let the machine work.",
+        "Your image is coming.",
+        "One last check.",
+        "Take the physical one.",
+        "Pass it on.",
+        "Take it digital.",
+        "Keep the good version.",
+        "Make room for everyone.",
+        "Because one is never enough.",
+        "Give it a little more.",
+        "Do not overthink it.",
+        "Let it happen.",
+        "Better together.",
+        "This one is yours.",
+        "Make it tangible.",
+        "Carry the moment on.",
+        "That is the one."
       ];
 
-      var gallery = document.querySelector('.gallery');
+      var gallery = document.querySelector(".gallery");
       var index;
       var offset;
 
       for (index = 0; index < names.length; index += 4) {
-        var page = document.createElement('div');
-        page.className = 'print-page';
+        var page = document.createElement("div");
+        page.className = "print-page";
 
         for (offset = 0; offset < 4 && index + offset < names.length; offset += 1) {
           var itemIndex = index + offset;
-          var figure = document.createElement('figure');
-          var imageWrap = document.createElement('div');
-          var image = document.createElement('img');
-          var caption = document.createElement('figcaption');
-          var number = document.createElement('span');
-          var copy = document.createElement('span');
-          var title = document.createElement('strong');
+          var figure = document.createElement("figure");
+          var imageWrap = document.createElement("div");
+          var image = document.createElement("img");
+          var caption = document.createElement("figcaption");
+          var number = document.createElement("span");
+          var copy = document.createElement("span");
+          var title = document.createElement("strong");
 
-          figure.className = 'gallery-item';
-          imageWrap.className = 'image-wrap';
-          caption.className = 'image-caption';
-          number.className = 'image-number';
-          copy.className = 'image-copy';
+          figure.className = "gallery-item";
+          imageWrap.className = "image-wrap";
+          caption.className = "image-caption";
+          number.className = "image-number";
+          copy.className = "image-copy";
 
           image.src = encodeURI(names[itemIndex]);
-          image.alt = 'Photobox reference image ' + String(itemIndex + 1);
-          image.loading = 'eager';
-          number.textContent = String(itemIndex + 1).padStart(2, '0');
+          image.alt = "Photobox reference image " + String(itemIndex + 1);
+          image.loading = "eager";
+          number.textContent = String(itemIndex + 1).padStart(2, "0");
           title.textContent = titles[itemIndex];
           copy.appendChild(title);
           copy.appendChild(document.createTextNode(copies[itemIndex]));
