@@ -25,26 +25,28 @@
     }
 
     .sheet {
-      width: 297mm;
-      height: 210mm;
+      width: 210mm;
+      height: 297mm;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 10mm;
+      gap: 14mm;
       background: #ffffff;
+      transform: rotate(90deg);
+      transform-origin: center center;
     }
 
     .logo {
       display: block;
-      width: 62mm;
+      width: 105mm;
       height: auto;
       filter: grayscale(1) contrast(1.4);
     }
 
     .description {
       margin: 0;
-      font-size: 18px;
+      font-size: 28px;
       line-height: 1;
       font-weight: 700;
       letter-spacing: -0.03em;
@@ -56,7 +58,10 @@
     }
 
     @media print {
+      html,
       body {
+        width: 297mm;
+        height: 210mm;
         padding: 0;
       }
     }
@@ -67,9 +72,8 @@
       }
 
       .sheet {
-        width: 100%;
-        min-height: calc(100vh - 24px);
-        height: auto;
+        width: min(100%, 210mm);
+        height: min(141.4vw, 297mm);
       }
     }
   </style>
