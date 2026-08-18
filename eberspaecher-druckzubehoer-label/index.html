@@ -3,15 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Druckerzubeh&ouml;r - Ebersp&auml;cher</title>
+  <title>Eberspaecher Label</title>
   <style>
-    :root {
-      --ink: #111111;
-      --muted: #6c6c6c;
-      --paper: #ffffff;
-      --rule: #d6d6d6;
-    }
-
     * {
       box-sizing: border-box;
     }
@@ -20,159 +13,41 @@
     body {
       margin: 0;
       min-height: 100%;
-      background: #eeeeee;
-      color: var(--ink);
-      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
     }
 
     body {
       display: grid;
       place-items: center;
-      padding: 32px;
+      padding: 18mm;
+      color: #111111;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     .sheet {
-      position: relative;
       width: 210mm;
       height: 297mm;
-      overflow: hidden;
-      background: var(--paper);
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
-      padding: 19mm 18mm 17mm;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .sheet::before,
-    .sheet::after {
-      content: '';
-      position: absolute;
-      pointer-events: none;
-    }
-
-    .sheet::before {
-      top: 12mm;
-      right: 12mm;
-      width: 22mm;
-      height: 22mm;
-      border-top: 1px solid var(--ink);
-      border-right: 1px solid var(--ink);
-    }
-
-    .sheet::after {
-      left: 12mm;
-      bottom: 12mm;
-      width: 22mm;
-      height: 22mm;
-      border-left: 1px solid var(--ink);
-      border-bottom: 1px solid var(--ink);
-    }
-
-    .masthead {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8mm;
+      justify-content: center;
+      gap: 10mm;
+      background: #ffffff;
     }
 
-    .brand-mark {
+    .logo {
       display: block;
-      width: 61mm;
+      width: 62mm;
       height: auto;
-      filter: grayscale(1) contrast(1.5);
+      filter: grayscale(1) contrast(1.4);
     }
 
-    .top-rule {
-      width: 100%;
-      border: 0;
-      border-top: 2px solid var(--ink);
+    .description {
       margin: 0;
-    }
-
-    .edition {
-      align-self: stretch;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: var(--muted);
-      font-size: 8px;
+      font-size: 18px;
+      line-height: 1;
       font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-    }
-
-    .hero {
-      margin-top: auto;
-      margin-bottom: auto;
-      text-align: center;
-    }
-
-    .eyebrow {
-      margin: 0 0 9mm;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.36em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      max-width: 150mm;
-      margin: 0 auto;
-      font-size: clamp(38px, 7vw, 72px);
-      line-height: 0.88;
-      font-weight: 900;
-      letter-spacing: -0.075em;
-      text-transform: uppercase;
-    }
-
-    .hero-line {
-      width: 31mm;
-      border: 0;
-      border-top: 5px solid var(--ink);
-      margin: 12mm auto 10mm;
-    }
-
-    .descriptor {
-      max-width: 105mm;
-      margin: 0 auto;
-      font-size: 12px;
-      line-height: 1.6;
-      color: var(--muted);
-    }
-
-    .footer {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: end;
-      gap: 8mm;
-      padding-top: 8mm;
-      border-top: 1px solid var(--rule);
-    }
-
-    .footer-note {
-      margin: 0;
-      color: var(--muted);
-      font-size: 8px;
-      line-height: 1.5;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .signature {
-      margin: 0;
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      white-space: nowrap;
-    }
-
-    .footer-code {
-      justify-self: end;
-      margin: 0;
-      color: var(--muted);
-      font-family: "Courier New", monospace;
-      font-size: 8px;
-      letter-spacing: 0.14em;
+      letter-spacing: -0.03em;
     }
 
     @page {
@@ -181,17 +56,8 @@
     }
 
     @media print {
-      html,
-      body {
-        background: var(--paper);
-      }
-
       body {
         padding: 0;
-      }
-
-      .sheet {
-        box-shadow: none;
       }
     }
 
@@ -201,46 +67,17 @@
       }
 
       .sheet {
-        width: min(100%, 210mm);
+        width: 100%;
+        min-height: calc(100vh - 24px);
         height: auto;
-        min-height: 297mm;
-        padding: 16mm 13mm 14mm;
-      }
-
-      .footer {
-        grid-template-columns: 1fr;
-        gap: 5mm;
-      }
-
-      .footer-code {
-        justify-self: start;
       }
     }
   </style>
 </head>
 <body>
-  <main class="sheet" aria-label="A4-Etikett f&uuml;r Druckerzubeh&ouml;r">
-    <header class="masthead">
-      <img class="brand-mark" src="https://www.eberspaecher.com/fileadmin/ebe_templates/gfx/eberspaecher-logo.svg" alt="Ebersp&auml;cher">
-      <hr class="top-rule">
-      <div class="edition" aria-label="Produktkategorie">
-        <span>Original equipment</span>
-        <span>Print essentials</span>
-      </div>
-    </header>
-
-    <section class="hero" aria-labelledby="label-title">
-      <p class="eyebrow">Ebersp&auml;cher / Sortiment</p>
-      <h1 id="label-title">Drucker<br>zubeh&ouml;r</h1>
-      <hr class="hero-line">
-      <p class="descriptor">Alles, was Papier in Bewegung bringt - pr&auml;zise ausgew&auml;hlt und sauber gekennzeichnet.</p>
-    </section>
-
-    <footer class="footer">
-      <p class="footer-note">Schwarz auf Wei&szlig;<br>Format A4</p>
-      <p class="signature">Druckerzubeh&ouml;r</p>
-      <p class="footer-code">EBE / 04</p>
-    </footer>
+  <main class="sheet" aria-label="Eberspaecher Druckerzubehoer Label">
+    <img class="logo" src="https://www.eberspaecher.com/fileadmin/ebe_templates/gfx/eberspaecher-logo.svg" alt="Eberspaecher">
+    <p class="description">Druckerzubeh&ouml;r</p>
   </main>
 </body>
 </html>
