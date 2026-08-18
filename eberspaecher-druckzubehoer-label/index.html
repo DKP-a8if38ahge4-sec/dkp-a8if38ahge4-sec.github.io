@@ -19,15 +19,16 @@
     body {
       display: grid;
       place-items: center;
-      padding: 18mm;
+      width: 210mm;
+      height: 297mm;
       color: #111111;
       font-family: Arial, Helvetica, sans-serif;
     }
 
     .sheet {
       position: relative;
-      width: 210mm;
-      height: 297mm;
+      width: 297mm;
+      height: 210mm;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -106,16 +107,19 @@
 
     @media screen and (max-width: 760px) {
       body {
-        padding: 12px;
+        width: 100vw;
+        height: 100vh;
       }
 
       .sheet {
-        width: min(100%, 210mm);
-        height: min(141.4vw, 297mm);
+        width: 141.4vh;
+        height: 100vh;
+        max-width: none;
+        max-height: none;
       }
 
       .logo {
-        width: 72%;
+        width: 52%;
       }
 
       .description {
