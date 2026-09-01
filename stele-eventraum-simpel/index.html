@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Herzlich Wilkommen - Eventraum</title>
+  <style>
+    /* Brand fonts from the Die Kavallerie design system. */
+    @font-face {
+      font-family: "PP Formula Condensed";
+      src: url("../dk-designsystem/assets/fonts/DK_PPFormula_93_Black.woff2") format("woff2"),
+           url("../dk-designsystem/assets/fonts/DK_PPFormula_93_Black.woff") format("woff");
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --red: #FF003C;
+      --white: #FFFFFF;
+      --black: #1D1D1D;
+      --headline: "PP Formula Condensed", "Arial Narrow", sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      display: grid;
+      min-height: 100svh;
+      place-items: center;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .stele {
+      position: relative;
+      width: min(100vw, 56.25svh);
+      height: min(100svh, 177.7777778vw);
+      overflow: hidden;
+      container-type: inline-size;
+      background: var(--red);
+      color: var(--white);
+      isolation: isolate;
+    }
+
+    .welcome {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      padding-top: 10%;
+      text-align: center;
+    }
+
+    .welcome h1 {
+      width: 100%;
+      margin: 0;
+      color: var(--white);
+      font-family: var(--headline);
+      font-size: 8.9cqw;
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      line-height: 0.79;
+      text-transform: none;
+    }
+
+    .welcome-line {
+      display: block;
+      white-space: nowrap;
+    }
+
+    .brand-lockup {
+      position: absolute;
+      right: auto;
+      bottom: 4.4%;
+      left: 4.6%;
+      width: 33.333333%;
+    }
+
+    .brand-lockup p {
+      width: 100%;
+      margin: 0;
+      color: var(--white);
+      font-family: var(--headline);
+      font-size: 5.9cqw;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 0.78;
+      text-transform: uppercase;
+    }
+
+    .peace-mark {
+      position: absolute;
+      bottom: 4.1%;
+      left: 50%;
+      display: grid;
+      width: 20.8%;
+      aspect-ratio: 1;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--white);
+      transform: translateX(-50%);
+    }
+
+    .peace-mark img {
+      display: block;
+      width: 62%;
+      height: 62%;
+      object-fit: contain;
+    }
+
+    @media (max-width: 640px) {
+      .stele {
+        width: 100vw;
+        height: 177.7777778vw;
+        max-height: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="stele" aria-label="Willkommensstele">
+    <section class="welcome" aria-labelledby="welcome-title">
+      <h1 id="welcome-title">
+        <span class="welcome-line">Herzlich Wilkommen</span>
+        <span class="welcome-line">Sabine Franz,</span>
+        <span class="welcome-line">Michael Schneider &amp;</span>
+        <span class="welcome-line">Kai Bendziula</span>
+      </h1>
+    </section>
+
+    <div class="brand-lockup" aria-label="Die Kavallerie">
+      <p>DIE KAVALLERIE</p>
+    </div>
+
+    <div class="peace-mark">
+      <img src="../dk-designsystem/assets/img/peace.png" alt="Peace">
+    </div>
+  </main>
+</body>
+</html>
