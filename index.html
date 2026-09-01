@@ -281,11 +281,6 @@
     </section>
   </main>
 
-  <footer id="site-footer" hidden>
-    <p>Tempor&auml;rer Hinweis: Diese Seite ist absichtlich nicht echt passwortgesichert. Sie dient nur als leichte Anti-Crawling-Barriere; sensible Daten liegen hier nicht.</p>
-    <p>&copy; Die Kavallerie</p>
-  </footer>
-
   <script>
     (function () {
       'use strict';
@@ -310,7 +305,6 @@
       var content = document.getElementById('project-content');
       var projectList = document.getElementById('project-list');
       var siteHeader = document.getElementById('site-header');
-      var siteFooter = document.getElementById('site-footer');
 
       function renderProjects() {
         projects.forEach(function (project) {
@@ -339,13 +333,26 @@
         });
       }
 
+      function renderFooter() {
+        var footer = document.createElement('footer');
+        var notice = document.createElement('p');
+        var copyright = document.createElement('p');
+
+        footer.id = 'site-footer';
+        notice.textContent = 'Tempor\u00e4rer Hinweis: Diese Seite ist absichtlich nicht echt passwortgesichert. Sie dient nur als leichte Anti-Crawling-Barriere; sensible Daten liegen hier nicht.';
+        copyright.innerHTML = '&copy; Die Kavallerie';
+        footer.appendChild(notice);
+        footer.appendChild(copyright);
+        document.body.appendChild(footer);
+      }
+
       form.addEventListener('submit', function (event) {
         event.preventDefault();
 
         if (passwordInput.value === ACCESS_PASSWORD) {
           renderProjects();
+          renderFooter();
           siteHeader.hidden = false;
-          siteFooter.hidden = false;
           gate.hidden = true;
           content.hidden = false;
           passwordInput.value = '';
