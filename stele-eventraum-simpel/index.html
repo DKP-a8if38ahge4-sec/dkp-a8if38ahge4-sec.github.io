@@ -17,7 +17,6 @@
 
     :root {
       --red: #FF003C;
-      --white: #FFFFFF;
       --pale: #F2F5F8;
       --headline: "PP Formula Condensed", "Arial Narrow", sans-serif;
     }
@@ -51,7 +50,7 @@
       overflow: hidden;
       container-type: inline-size;
       background: var(--red);
-      color: var(--white);
+      color: var(--pale);
       isolation: isolate;
     }
 
@@ -67,7 +66,7 @@
     .welcome h1 {
       width: 100%;
       margin: 0;
-      color: var(--white);
+      color: var(--pale);
       font-family: var(--headline);
       font-size: 8.9cqw;
       font-weight: 900;
@@ -82,13 +81,16 @@
     }
 
     .peace-mark {
+      position: absolute;
+      bottom: 0;
+      left: 75%;
       display: grid;
       width: 20.8%;
       aspect-ratio: 1;
-      margin: 2.5% auto 0;
       place-items: center;
       border-radius: 50%;
       background: var(--pale);
+      transform: translateX(-50%);
     }
 
     .peace-mark img {
@@ -109,7 +111,7 @@
     .brand-lockup p {
       width: 100%;
       margin: 0;
-      color: var(--white);
+      color: var(--pale);
       font-family: var(--headline);
       font-size: 5.9cqw;
       font-weight: 900;
