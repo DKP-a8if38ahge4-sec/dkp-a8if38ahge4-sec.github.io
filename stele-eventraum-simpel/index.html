@@ -18,6 +18,7 @@
     :root {
       --red: #FF003C;
       --white: #FFFFFF;
+      --pale: #F2F5F8;
       --black: #1D1D1D;
       --headline: "PP Formula Condensed", "Arial Narrow", sans-serif;
     }
@@ -80,6 +81,23 @@
       white-space: nowrap;
     }
 
+    .peace-mark {
+      display: grid;
+      width: 20.8%;
+      aspect-ratio: 1;
+      margin: 2.5% auto 0;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--pale);
+    }
+
+    .peace-mark img {
+      display: block;
+      width: 62%;
+      height: 62%;
+      object-fit: contain;
+    }
+
     .brand-lockup {
       position: absolute;
       right: auto;
@@ -98,26 +116,6 @@
       letter-spacing: -0.02em;
       line-height: 0.78;
       text-transform: uppercase;
-    }
-
-    .peace-mark {
-      position: absolute;
-      bottom: 4.1%;
-      left: 50%;
-      display: grid;
-      width: 20.8%;
-      aspect-ratio: 1;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--white);
-      transform: translateX(-50%);
-    }
-
-    .peace-mark img {
-      display: block;
-      width: 62%;
-      height: 62%;
-      object-fit: contain;
     }
 
     @media (max-width: 640px) {
@@ -147,14 +145,14 @@
         <span class="welcome-line">MICHAEL SCHNEIDER &amp;</span>
         <span class="welcome-line">KAI BENDZIULA</span>
       </h1>
+
+      <div class="peace-mark">
+        <img src="../dk-designsystem/assets/img/peace.png" alt="PEACE">
+      </div>
     </section>
 
     <div class="brand-lockup" aria-label="DIE KAVALLERIE">
       <p>DIE KAVALLERIE</p>
-    </div>
-
-    <div class="peace-mark">
-      <img src="../dk-designsystem/assets/img/peace.png" alt="PEACE">
     </div>
   </main>
 </body>
