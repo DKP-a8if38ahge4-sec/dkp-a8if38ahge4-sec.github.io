@@ -7,14 +7,40 @@
   <title>Projekte - Die Kavallerie</title>
   <style>
     /* Temporary client-side gate only - this is not real authentication. */
+    @font-face {
+      font-family: "PP Formula Condensed";
+      src: url("./dk-designsystem/assets/fonts/DK_PPFormula_93_Black.woff2") format("woff2"),
+           url("./dk-designsystem/assets/fonts/DK_PPFormula_93_Black.woff") format("woff");
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Helvetica Now Display";
+      src: url("./dk-designsystem/assets/fonts/HelveticaNowDisplay-Regular.woff2") format("woff2"),
+           url("./dk-designsystem/assets/fonts/HelveticaNowDisplay-Regular.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Helvetica Now Display";
+      src: url("./dk-designsystem/assets/fonts/DK_HelveticaNow_Text_75_Bold.otf") format("opentype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
     :root {
       --color-bg: #f2f4f7;
       --color-text: #1d1d1d;
       --color-accent: #ff003c;
       --color-white: #ffffff;
       --color-border: #1d1d1d;
-      --font-base: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      --font-headline: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --font-base: "Helvetica Now Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --font-headline: "PP Formula Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 
     *,
@@ -54,8 +80,8 @@
       font-family: var(--font-headline);
       font-size: clamp(3.2rem, 9vw, 5rem);
       font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 0.95;
+      letter-spacing: -0.01em;
+      line-height: 0.85;
       text-transform: uppercase;
     }
 
@@ -86,8 +112,8 @@
       font-family: var(--font-headline);
       font-size: clamp(2.2rem, 6vw, 4rem);
       font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 0.95;
+      letter-spacing: -0.01em;
+      line-height: 0.85;
       text-transform: uppercase;
     }
 
@@ -194,8 +220,8 @@
       font-family: var(--font-headline);
       font-size: clamp(1.35rem, 4vw, 2.5rem);
       font-weight: 900;
-      letter-spacing: -0.03em;
-      line-height: 1;
+      letter-spacing: -0.01em;
+      line-height: 0.85;
       text-transform: uppercase;
     }
 
@@ -285,7 +311,7 @@
     (function () {
       'use strict';
 
-      var ACCESS_PASSWORD = 'D13kava77er1!';
+      var ACCESS_PASSWORD = 'D13kava77er1e!';
       var projects = [
         { name: 'Beispielseite', path: './beispielseite/' },
         { name: 'Katzen', path: './katzen/' },
