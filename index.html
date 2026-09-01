@@ -256,7 +256,7 @@
 </head>
 <body>
   <!-- This page is intentionally not securely password protected. It contains no sensitive data and only deters casual crawling. -->
-  <header>
+  <header id="site-header" hidden>
     <div class="header-inner">
       <h1>Projekte</h1>
     </div>
@@ -276,12 +276,12 @@
     </section>
 
     <section id="project-content" hidden aria-labelledby="project-title">
-      <p class="section-label" id="project-title">Alle Projekte</p>
+      <p class="section-label" id="project-title" tabindex="-1">Alle Projekte</p>
       <nav class="project-list" id="project-list" aria-label="Projekt&uuml;bersicht"></nav>
     </section>
   </main>
 
-  <footer>
+  <footer id="site-footer" hidden>
     <p>Tempor&auml;rer Hinweis: Diese Seite ist absichtlich nicht echt passwortgesichert. Sie dient nur als leichte Anti-Crawling-Barriere; sensible Daten liegen hier nicht.</p>
     <p>&copy; Die Kavallerie</p>
   </footer>
@@ -290,7 +290,7 @@
     (function () {
       'use strict';
 
-      var ACCESS_PASSWORD = 'D13kava77er1e!';
+      var ACCESS_PASSWORD = 'D13kava77er1!';
       var projects = [
         { name: 'Beispielseite', path: './beispielseite/' },
         { name: 'Katzen', path: './katzen/' },
@@ -309,6 +309,8 @@
       var gate = document.getElementById('password-gate');
       var content = document.getElementById('project-content');
       var projectList = document.getElementById('project-list');
+      var siteHeader = document.getElementById('site-header');
+      var siteFooter = document.getElementById('site-footer');
 
       function renderProjects() {
         projects.forEach(function (project) {
@@ -342,6 +344,8 @@
 
         if (passwordInput.value === ACCESS_PASSWORD) {
           renderProjects();
+          siteHeader.hidden = false;
+          siteFooter.hidden = false;
           gate.hidden = true;
           content.hidden = false;
           passwordInput.value = '';
