@@ -285,7 +285,7 @@
     (function () {
       'use strict';
 
-      var ACCESS_PASSWORD = 'D13kava77er1e!';
+      var ACCESS_PASSWORD = 'D13kava77er1!';
       var projects = [
         { name: 'Beispielseite', path: './beispielseite/' },
         { name: 'Katzen', path: './katzen/' },
@@ -339,7 +339,7 @@
         var copyright = document.createElement('p');
 
         footer.id = 'site-footer';
-        notice.textContent = 'Tempor\u00e4rer Hinweis: Diese Seite ist absichtlich nicht echt passwortgesichert. Sie dient nur als leichte Anti-Crawling-Barriere; sensible Daten liegen hier nicht.';
+        notice.textContent = 'Hinweis: Diese Seite verwendet eine clientseitige Passwortabfrage. Das Passwort wird im Browser gepr\u00fcft, daher bietet dieser Schutz keine echte Zugriffskontrolle. Auf dieser Seite werden keine sensiblen Daten gespeichert.';
         copyright.innerHTML = '&copy; Die Kavallerie';
         footer.appendChild(notice);
         footer.appendChild(copyright);
