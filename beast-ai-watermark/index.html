@@ -83,25 +83,34 @@
     }
 
     .mark {
-      align-items: flex-start;
+      align-items: stretch;
       display: flex;
       flex-direction: column;
       justify-content: center;
       min-height: 220px;
+      width: fit-content;
+      max-width: 100%;
     }
 
     .mark strong {
-      font-size: clamp(42px, 7vw, 78px);
-      letter-spacing: -0.08em;
-      line-height: 0.82;
+      display: block;
+      font-family: Impact, "Arial Black", Arial, Helvetica, sans-serif;
+      font-size: clamp(40px, 6.5vw, 72px);
+      font-weight: 900;
+      letter-spacing: -0.055em;
+      line-height: 0.9;
+      white-space: nowrap;
     }
 
     .mark span {
+      align-self: stretch;
       color: var(--accent);
-      font-size: 14px;
+      display: block;
+      font-size: clamp(15px, 1.6vw, 18px);
       font-weight: 700;
-      letter-spacing: 0.06em;
-      margin-top: 12px;
+      letter-spacing: 0.14em;
+      margin-top: 16px;
+      text-align: right;
       text-transform: uppercase;
     }
 
@@ -129,7 +138,7 @@
       <article class="variant">
         <div class="variant-label">English</div>
         <div class="mark" aria-label="Beast AI Generated">
-          <strong>*Beast AI</strong>
+          <strong>Beast AI</strong>
           <span>Generated</span>
         </div>
       </article>
@@ -137,7 +146,7 @@
       <article class="variant">
         <div class="variant-label">Deutsch</div>
         <div class="mark" aria-label="Beast KI Generiert">
-          <strong>*Beast KI</strong>
+          <strong>Beast KI</strong>
           <span>Generiert</span>
         </div>
       </article>
