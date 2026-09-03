@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="900" height="300" viewBox="0 0 900 300">
+  <title>Beast AI watermark variants</title>
+  <defs>
+    <style>
+      .title { fill: #f4f1ea; font-family: Arial Black, Arial, Helvetica, sans-serif; font-size: 124px; font-weight: 900; letter-spacing: -4px; }
+      .subtitle { fill: #d7ff38; font-family: Arial, Helvetica, sans-serif; font-size: 38px; font-weight: 700; letter-spacing: 7px; }
+    </style>
+  </defs>
+
+  <symbol id="beast-en" viewBox="0 0 900 300">
+    <text class="title" x="44" y="142">Beast AI</text>
+    <text class="subtitle" x="44" y="218">Generated</text>
+  </symbol>
+
+  <symbol id="beast-de" viewBox="0 0 900 300">
+    <text class="title" x="44" y="142">Beast KI</text>
+    <text class="subtitle" x="44" y="218">Generiert</text>
+  </symbol>
+
+  <symbol id="plain-en" viewBox="0 0 900 300">
+    <text class="title" x="44" y="142">AI</text>
+    <text class="subtitle" x="44" y="218">Generated</text>
+  </symbol>
+
+  <symbol id="plain-de" viewBox="0 0 900 300">
+    <text class="title" x="44" y="142">KI</text>
+    <text class="subtitle" x="44" y="218">Generiert</text>
+  </symbol>
+</svg>
