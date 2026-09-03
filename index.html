@@ -1,16 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projekte - Die Kavallerie</title>
   <style>
     /* Temporary client-side gate only - this is not real authentication. */
     @font-face {
       font-family: "PP Formula Condensed";
-      src: url("./dk-designsystem/assets/fonts/DK_PPFormula_93_Black.woff2") format("woff2"),
-           url("./dk-designsystem/assets/fonts/DK_PPFormula_93_Black.woff") format("woff");
+      src: url("./dk-designsystem/assets/fonts/DK_PPFormula_93_Black.woff2") format("woff2"), url("./dk-designsystem/assets/fonts/DK_PPFormula_93_Black.woff") format("woff");
       font-weight: 900;
       font-style: normal;
       font-display: swap;
@@ -18,8 +16,7 @@
 
     @font-face {
       font-family: "Helvetica Now Display";
-      src: url("./dk-designsystem/assets/fonts/HelveticaNowDisplay-Regular.woff2") format("woff2"),
-           url("./dk-designsystem/assets/fonts/HelveticaNowDisplay-Regular.woff") format("woff");
+      src: url("./dk-designsystem/assets/fonts/HelveticaNowDisplay-Regular.woff2") format("woff2"), url("./dk-designsystem/assets/fonts/HelveticaNowDisplay-Regular.woff") format("woff");
       font-weight: 400;
       font-style: normal;
       font-display: swap;
@@ -43,9 +40,7 @@
       --font-headline: "PP Formula Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -66,9 +61,7 @@
       color: var(--color-white);
     }
 
-    .header-inner,
-    main,
-    footer {
+    .header-inner, main, footer {
       width: 100%;
       max-width: 1100px;
       margin-right: auto;
@@ -254,9 +247,7 @@
     }
 
     @media (max-width: 640px) {
-      header,
-      main,
-      footer {
+      header, main, footer {
         padding-right: 1.25rem;
         padding-left: 1.25rem;
       }
@@ -271,9 +262,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
+      *, *::before, *::after {
         scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
       }
@@ -281,29 +270,28 @@
   </style>
 </head>
 <body>
-  <!-- This page is intentionally not securely password protected. It contains no sensitive data and only deters casual crawling. -->
   <header id="site-header" hidden>
     <div class="header-inner">
-      <h1>Projekte</h1>
+      <h1 id="project-title" tabindex="-1">Projekte</h1>
     </div>
   </header>
 
   <main>
-    <section class="gate" id="password-gate" aria-labelledby="gate-title">
+    <section id="password-gate" class="gate" aria-labelledby="gate-title">
       <p class="section-label">Interner Bereich</p>
       <h2 id="gate-title">Passwort erforderlich</h2>
       <p class="gate-copy">Gib das Passwort ein, um die Projekt&uuml;bersicht zu &ouml;ffnen.</p>
-      <form class="password-form" id="password-form">
+      <form id="password-form" class="password-form">
         <label for="password">Passwort</label>
         <input id="password" name="password" type="password" autocomplete="current-password" required>
         <button type="submit">&Ouml;ffnen</button>
       </form>
-      <p class="form-message" id="form-message" role="alert" aria-live="polite"></p>
+      <p id="form-message" class="form-message" role="alert" aria-live="polite"></p>
     </section>
 
-    <section id="project-content" hidden aria-labelledby="project-title">
-      <p class="section-label" id="project-title" tabindex="-1">Alle Projekte</p>
-      <nav class="project-list" id="project-list" aria-label="Projekt&uuml;bersicht"></nav>
+    <section id="project-content" hidden aria-labelledby="project-list-title">
+      <p id="project-list-title" class="section-label">Alle Projekte</p>
+      <nav id="project-list" class="project-list" aria-label="Projekt&uuml;bersicht"></nav>
     </section>
   </main>
 
@@ -322,7 +310,8 @@
         { name: 'Photobox Desktop Hintergrund', path: './photobox-desktophintergrund/' },
         { name: 'Photobox Instructions', path: './photobox-instructions/' },
         { name: 'Eberspaecher Druckerzubehoer Label', path: './eberspaecher-druckzubehoer-label/' },
-        { name: 'Stele Eventraum Simpel', path: './stele-eventraum-simpel/' }
+        { name: 'Stele Eventraum Simpel', path: './stele-eventraum-simpel/' },
+        { name: 'Beast AI Watermark', path: './beast-ai-watermark/' }
       ];
 
       var form = document.getElementById('password-form');
@@ -366,7 +355,7 @@
         var copyright = document.createElement('p');
 
         footer.id = 'site-footer';
-        notice.textContent = 'Hinweis: Diese Seite verwendet eine clientseitige Passwortabfrage. Das Passwort wird im Browser gepr\u00fcft, daher bietet dieser Schutz keine echte Zugriffskontrolle. Auf dieser Seite werden keine sensiblen Daten gespeichert.';
+        notice.textContent = 'Hinweis: Diese Seite verwendet eine clientseitige Passwortabfrage. Das Passwort wird im Browser geprueft, daher bietet dieser Schutz keine echte Zugriffskontrolle. Auf dieser Seite werden keine sensiblen Daten gespeichert.';
         copyright.innerHTML = '&copy; Die Kavallerie';
         footer.appendChild(notice);
         footer.appendChild(copyright);
