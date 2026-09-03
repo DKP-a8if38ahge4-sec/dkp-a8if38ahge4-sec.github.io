@@ -84,7 +84,7 @@
     }
 
     .mark {
-      align-items: center;
+      align-items: flex-start;
       display: flex;
       flex: 1;
       justify-content: center;
@@ -93,20 +93,17 @@
     }
 
     .mark img {
-      border: 1px solid var(--line);
       display: block;
       height: auto;
       max-width: 100%;
     }
 
     .mark.landscape img {
-      aspect-ratio: 3 / 1;
       width: min(100%, 520px);
     }
 
     .mark.portrait img {
-      aspect-ratio: 7 / 12;
-      width: min(100%, 210px);
+      width: min(100%, 164px);
     }
 
     @media (max-width: 720px) {
