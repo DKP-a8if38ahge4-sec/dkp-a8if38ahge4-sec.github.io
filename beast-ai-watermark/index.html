@@ -72,8 +72,12 @@
     .variant {
       display: flex;
       flex-direction: column;
-      min-height: 420px;
+      min-height: 220px;
       padding: 24px;
+    }
+
+    .variant.portrait-card {
+      min-height: 300px;
     }
 
     .variant-label {
@@ -87,7 +91,7 @@
       align-items: flex-start;
       display: flex;
       flex: 1;
-      justify-content: center;
+      justify-content: flex-start;
       min-width: 0;
       padding: 28px 0 8px;
     }
@@ -96,14 +100,15 @@
       display: block;
       height: auto;
       max-width: 100%;
+      width: auto;
     }
 
     .mark.landscape img {
-      width: min(100%, 520px);
+      width: min(100%, 480px);
     }
 
     .mark.portrait img {
-      width: min(100%, 164px);
+      width: min(100%, 180px);
     }
 
     @media (max-width: 720px) {
@@ -114,10 +119,6 @@
 
       .variants {
         grid-template-columns: 1fr;
-      }
-
-      .variant {
-        min-height: 380px;
       }
     }
   </style>
@@ -145,14 +146,14 @@
         </div>
       </article>
 
-      <article class="variant">
+      <article class="variant portrait-card">
         <div class="variant-label">Variant 2 / Non-Beast branded / English</div>
         <div class="mark portrait">
           <img src="./ai-generated.svg" alt="AI Generated">
         </div>
       </article>
 
-      <article class="variant">
+      <article class="variant portrait-card">
         <div class="variant-label">Variant 2 / Non-Beast branded / Deutsch</div>
         <div class="mark portrait">
           <img src="./ki-generiert.svg" alt="KI Generiert">
