@@ -60,7 +60,7 @@
       font-size: 16px;
       line-height: 1.5;
       margin: 0;
-      max-width: 520px;
+      max-width: 560px;
     }
 
     .variants {
@@ -70,8 +70,9 @@
     }
 
     .variant {
-      border: 1px solid var(--line);
-      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      min-height: 420px;
       padding: 24px;
     }
 
@@ -83,23 +84,29 @@
     }
 
     .mark {
-      align-items: flex-start;
+      align-items: center;
       display: flex;
-      flex-direction: column;
+      flex: 1;
       justify-content: center;
-      min-height: 220px;
-      width: 100%;
+      min-width: 0;
+      padding: 28px 0 8px;
     }
 
     .mark img {
+      border: 1px solid var(--line);
       display: block;
       height: auto;
       max-width: 100%;
+    }
+
+    .mark.landscape img {
+      aspect-ratio: 3 / 1;
       width: min(100%, 520px);
     }
 
-    .mark.plain img {
-      width: min(100%, 360px);
+    .mark.portrait img {
+      aspect-ratio: 7 / 12;
+      width: min(100%, 210px);
     }
 
     @media (max-width: 720px) {
@@ -111,6 +118,10 @@
       .variants {
         grid-template-columns: 1fr;
       }
+
+      .variant {
+        min-height: 380px;
+      }
     }
   </style>
 </head>
@@ -119,34 +130,34 @@
     <header class="intro">
       <div class="eyebrow">Beast AI / Watermark</div>
       <h1>Heavy signal.<br>Zero noise.</h1>
-      <p>Four minimal watermark directions - branded and non-branded, each in English and German.</p>
+      <p>Two watermark formats - Beast branded in landscape and non-Beast branded in portrait, each in English and German.</p>
     </header>
 
     <section class="variants" aria-label="Logo variants">
       <article class="variant">
-        <div class="variant-label">Beast branded / English</div>
-        <div class="mark">
+        <div class="variant-label">Variant 1 / Beast branded / English</div>
+        <div class="mark landscape">
           <img src="./beast-ai-generated.svg" alt="Beast AI Generated">
         </div>
       </article>
 
       <article class="variant">
-        <div class="variant-label">Beast branded / Deutsch</div>
-        <div class="mark">
+        <div class="variant-label">Variant 1 / Beast branded / Deutsch</div>
+        <div class="mark landscape">
           <img src="./beast-ki-generiert.svg" alt="Beast KI Generiert">
         </div>
       </article>
 
       <article class="variant">
-        <div class="variant-label">Non-Beast branded / English</div>
-        <div class="mark plain">
+        <div class="variant-label">Variant 2 / Non-Beast branded / English</div>
+        <div class="mark portrait">
           <img src="./ai-generated.svg" alt="AI Generated">
         </div>
       </article>
 
       <article class="variant">
-        <div class="variant-label">Non-Beast branded / Deutsch</div>
-        <div class="mark plain">
+        <div class="variant-label">Variant 2 / Non-Beast branded / Deutsch</div>
+        <div class="mark portrait">
           <img src="./ki-generiert.svg" alt="KI Generiert">
         </div>
       </article>
