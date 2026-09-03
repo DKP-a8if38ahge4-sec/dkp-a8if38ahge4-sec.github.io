@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="360" height="140" viewBox="0 0 360 140" role="img" aria-labelledby="title description">
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="142" viewBox="0 0 480 142" role="img" aria-labelledby="title description">
   <title id="title">Beast KI Generiert</title>
-  <desc id="description">Beast KI watermark in German inside a compact transparent landscape rectangle.</desc>
+  <desc id="description">Beast KI watermark in German in a compact transparent landscape rectangle.</desc>
   <text x="0" y="90" fill="#f4f1ea" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="90" font-weight="900" letter-spacing="-3">Beast KI</text>
-  <text x="0" y="132" fill="#d7ff38" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" letter-spacing="4">Generiert</text>
+  <text x="0" y="137" fill="#d7ff38" font-family="Arial, Helvetica, sans-serif" font-size="90" font-weight="700" letter-spacing="4">Generiert</text>
 </svg>
