@@ -91,14 +91,14 @@
       width: 100%;
     }
 
-    .mark img {
+    .mark svg {
       display: block;
       height: auto;
       max-width: 100%;
       width: min(100%, 520px);
     }
 
-    .mark.plain img {
+    .mark.plain svg {
       width: min(100%, 360px);
     }
 
@@ -126,28 +126,36 @@
       <article class="variant">
         <div class="variant-label">Beast branded / English</div>
         <div class="mark">
-          <img src="./watermarks.svg#beast-en" alt="Beast AI Generated">
+          <svg viewBox="0 0 900 300" role="img" aria-label="Beast AI Generated">
+            <use href="./watermarks.svg#beast-en"></use>
+          </svg>
         </div>
       </article>
 
       <article class="variant">
         <div class="variant-label">Beast branded / Deutsch</div>
         <div class="mark">
-          <img src="./watermarks.svg#beast-de" alt="Beast KI Generiert">
+          <svg viewBox="0 0 900 300" role="img" aria-label="Beast KI Generiert">
+            <use href="./watermarks.svg#beast-de"></use>
+          </svg>
         </div>
       </article>
 
       <article class="variant">
         <div class="variant-label">Non-Beast branded / English</div>
         <div class="mark plain">
-          <img src="./watermarks.svg#plain-en" alt="AI Generated">
+          <svg viewBox="0 0 900 300" role="img" aria-label="AI Generated">
+            <use href="./watermarks.svg#plain-en"></use>
+          </svg>
         </div>
       </article>
 
       <article class="variant">
         <div class="variant-label">Non-Beast branded / Deutsch</div>
         <div class="mark plain">
-          <img src="./watermarks.svg#plain-de" alt="KI Generiert">
+          <svg viewBox="0 0 900 300" role="img" aria-label="KI Generiert">
+            <use href="./watermarks.svg#plain-de"></use>
+          </svg>
         </div>
       </article>
     </section>
