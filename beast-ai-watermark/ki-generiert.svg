@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300" role="img" aria-labelledby="title description">
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="720" viewBox="0 0 420 720" role="img" aria-labelledby="title description">
   <title id="title">KI Generiert</title>
-  <desc id="description">Non-Beast branded KI Wasserzeichen auf Deutsch.</desc>
-  <text x="44" y="142" fill="#f4f1ea" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="124" font-weight="900" letter-spacing="-4">KI</text>
-  <text x="44" y="218" fill="#d7ff38" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" letter-spacing="7">Generiert</text>
+  <desc id="description">Non-Beast branded KI Wasserzeichen auf Deutsch im Hochformat.</desc>
+  <rect width="420" height="720" fill="#111111"/>
+  <text x="42" y="290" fill="#f4f1ea" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="154" font-weight="900" letter-spacing="-5">KI</text>
+  <text x="42" y="370" fill="#d7ff38" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" letter-spacing="6">Generiert</text>
 </svg>
