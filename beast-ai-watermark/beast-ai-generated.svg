@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300" role="img" aria-labelledby="title description">
   <title id="title">Beast AI Generated</title>
-  <desc id="desc">Beast branded English AI watermark.</desc>
-  <text x="48" y="138" fill="#f4f1ea" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="118" font-weight="900" letter-spacing="-4">Beast AI</text>
-  <text x="48" y="218" fill="#d7ff38" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" letter-spacing="7">Generated</text>
+  <desc id="description">Beast AI watermark in English, contained in a landscape rectangle.</desc>
+  <text x="44" y="142" fill="#f4f1ea" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="124" font-weight="900" letter-spacing="-4">Beast AI</text>
+  <text x="44" y="218" fill="#d7ff38" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" letter-spacing="7">Generated</text>
 </svg>
