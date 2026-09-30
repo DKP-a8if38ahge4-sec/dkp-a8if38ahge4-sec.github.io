@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RNK Instagram 2026 &mdash; Strategische Einsch&auml;tzung</title>
+  <style>
+    @font-face {
+      font-family: "PP Formula Condensed";
+      src: url("../dk-designsystem/assets/fonts/DK_PPFormula_93_Black.woff2") format("woff2"),
+           url("../dk-designsystem/assets/fonts/DK_PPFormula_93_Black.woff") format("woff");
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Helvetica Now Display";
+      src: url("../dk-designsystem/assets/fonts/HelveticaNowDisplay-Regular.woff2") format("woff2"),
+           url("../dk-designsystem/assets/fonts/HelveticaNowDisplay-Regular.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Helvetica Now Display";
+      src: url("../dk-designsystem/assets/fonts/DK_HelveticaNow_Text_75_Bold.otf") format("opentype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --red: #ff003c;
+      --black: #1d1d1d;
+      --grey: #f2f4f7;
+      --white: #ffffff;
+      --font-head: "PP Formula Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --font-base: "Helvetica Now Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--grey);
+      color: var(--black);
+      font-family: var(--font-base);
+      font-size: 17px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      transition: background 0.3s;
+    }
+    .nav.scrolled { background: var(--grey); }
+    .nav-logo {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 20px;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+    }
+    .nav-tag {
+      margin-left: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+      opacity: 0.8;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 80px 40px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(60px, 10vw, 140px);
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 0.92;
+      max-width: 900px;
+    }
+    .hero-title span { color: var(--red); }
+    .hero-sub {
+      margin-top: 32px;
+      font-size: clamp(16px, 2vw, 20px);
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      line-height: 1.5;
+    }
+    .hero-grid {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      opacity: 0.04;
+      background-image: repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,255,255,0.5) 79px, rgba(255,255,255,0.5) 80px),
+                        repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,0.5) 79px, rgba(255,255,255,0.5) 80px);
+    }
+
+    /* SECTION WRAPPER */
+    .section {
+      padding: 90px 40px;
+    }
+    .section--red {
+      background: var(--red);
+      color: var(--white);
+    }
+    .section--dark {
+      background: var(--black);
+      color: var(--white);
+    }
+    .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* SECTION LABEL */
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.45;
+      margin-bottom: 16px;
+    }
+
+    /* HEADLINES */
+    .h-xl {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(44px, 6vw, 80px);
+      text-transform: uppercase;
+      line-height: 0.95;
+      margin-bottom: 40px;
+    }
+    .h-lg {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(32px, 4vw, 54px);
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    /* PRO/CON GRID */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 40px;
+    }
+    .col-card {
+      background: var(--white);
+      padding: 40px;
+    }
+    .col-card--dark {
+      background: var(--black);
+      color: var(--white);
+    }
+    .col-card--red {
+      background: var(--red);
+      color: var(--white);
+    }
+    .col-card-label {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 20px;
+    }
+    .col-card-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(28px, 3vw, 42px);
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    .list-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .list-items li {
+      padding-left: 20px;
+      position: relative;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .list-items li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.4;
+    }
+
+    /* ACCORDION */
+    .accordion {
+      margin-top: 40px;
+      border-top: 1px solid rgba(0,0,0,0.12);
+    }
+    .accordion-item {
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+    }
+    .accordion-trigger {
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 0;
+      text-align: left;
+    }
+    .accordion-num {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--red);
+      min-width: 32px;
+      opacity: 0.7;
+    }
+    .accordion-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(22px, 3vw, 40px);
+      text-transform: uppercase;
+      color: var(--black);
+      line-height: 1;
+      flex: 1;
+    }
+    .accordion-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+    .accordion-icon.open { transform: rotate(90deg); }
+    .accordion-body {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.35s ease, padding 0.3s;
+      padding: 0 0 0 52px;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--black);
+    }
+    .accordion-body.open {
+      max-height: 800px;
+      padding: 0 0 28px 52px;
+    }
+    .accordion-body p + p { margin-top: 12px; }
+    .accordion-body ul {
+      margin-top: 12px;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .accordion-body ul li { font-size: 15px; line-height: 1.5; }
+
+    /* RECOMMENDATION BOX */
+    .rec-box {
+      background: var(--red);
+      color: var(--white);
+      padding: 60px;
+      margin-top: 60px;
+    }
+    .rec-box .h-lg { color: var(--white); margin-bottom: 20px; }
+    .rec-box p { font-size: 18px; line-height: 1.6; max-width: 680px; opacity: 0.9; }
+    .rec-box p + p { margin-top: 14px; }
+
+    /* RESOURCES TABLE */
+    .res-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 40px;
+    }
+    .res-card {
+      background: var(--white);
+      padding: 36px 32px;
+    }
+    .res-card-num {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 48px;
+      text-transform: uppercase;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .res-card-label {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 18px;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+    .res-card-copy { font-size: 14px; line-height: 1.55; opacity: 0.7; }
+
+    /* NEXT STEPS */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-top: 40px;
+    }
+    .step {
+      background: var(--white);
+      padding: 36px 40px;
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+    }
+    .step-num {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 52px;
+      text-transform: uppercase;
+      color: var(--red);
+      line-height: 1;
+      min-width: 60px;
+    }
+    .step-content {}
+    .step-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 24px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .step-copy { font-size: 15px; line-height: 1.55; opacity: 0.75; }
+
+    /* FOOTER */
+    .footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 48px 40px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-logo {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 28px;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .footer-meta {
+      font-size: 13px;
+      opacity: 0.4;
+      line-height: 1.6;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav { padding: 0 20px; }
+      .hero { padding: 80px 20px 48px; }
+      .section { padding: 60px 20px; }
+      .two-col { grid-template-columns: 1fr; }
+      .res-grid { grid-template-columns: 1fr; }
+      .step { flex-direction: column; gap: 12px; }
+      .rec-box { padding: 40px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="../" class="nav-logo">Die Kavallerie</a>
+    <span class="nav-tag">RNK &mdash; Instagram 2026</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <p class="hero-eyebrow">Landratsamt Rhein-Neckar-Kreis &mdash; Arbeitgebermarke WIR. DER KREIS.</p>
+    <h1 class="hero-title">Instagram<br/><span>Strategie</span><br/>2026</h1>
+    <p class="hero-sub">Strategische Einsch&auml;tzung zur Kanalfrage: Weiter auf meinrnk oder eigener Auftritt?</p>
+  </section>
+
+  <!-- AUSGANGSLAGE -->
+  <section class="section">
+    <div class="inner">
+      <p class="section-label">Kontext</p>
+      <h2 class="h-xl">Die Lage</h2>
+      <p style="max-width:680px; font-size:18px; line-height:1.65;">
+        Die Arbeitgebermarke <strong>WIR. DER KREIS.</strong> bespielt bisher den gemeinsamen Instagram-Kanal
+        <em>meinrnk</em> mit emotionalen, nahbaren Inhalten. Neue Vorgaben der Pressestelle verbieten
+        k&uuml;nftig genau diese Inhalte: keine internen Feiern, keine eigenen Weihnachts- oder Ostergr&uuml;&szlig;e.
+        Das trifft den Kern von Employer Branding auf Instagram.
+      </p>
+    </div>
+  </section>
+
+  <!-- PRO/CON meinrnk -->
+  <section class="section" style="background:var(--white); padding-top:0;">
+    <div class="inner">
+      <p class="section-label">Frage 1</p>
+      <h2 class="h-xl">Weiter auf meinrnk?</h2>
+      <div class="two-col">
+        <div class="col-card">
+          <p class="col-card-label">Daf&uuml;r</p>
+          <p class="col-card-title">Vorteile</p>
+          <ul class="list-items">
+            <li>Bestehende Reichweite nutzen &mdash; kein Kaltstart</li>
+            <li>Ressourcenschonung: kein doppeltes Community Management</li>
+            <li>Sichtbarkeit durch Kontext: RNK-affines Publikum bereits vorhanden</li>
+            <li>Potenzielle Bewerber:innen unter Bürger:innen erreichbar</li>
+          </ul>
+        </div>
+        <div class="col-card col-card--dark">
+          <p class="col-card-label">Dagegen</p>
+          <p class="col-card-title">Nachteile</p>
+          <ul class="list-items">
+            <li>Tonalitätskonflikt: Bürgerkommunikation &ne; Arbeitgebermarke</li>
+            <li>Kein eigenständiges Markenprofil &mdash; WIR. DER KREIS. bleibt Anhang</li>
+            <li>Emotionale Inhalte weggebrochen &mdash; was bleibt, ist ein schwarzes Brett</li>
+            <li>Keine eigene Community aufbaubar</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRO/CON EIGENER KANAL -->
+  <section class="section">
+    <div class="inner">
+      <p class="section-label">Frage 2 &amp; 3</p>
+      <h2 class="h-xl">Eigener Kanal?</h2>
+      <div class="two-col">
+        <div class="col-card col-card--red">
+          <p class="col-card-label">Vorteile</p>
+          <p class="col-card-title">Daf&uuml;r spricht</p>
+          <ul class="list-items">
+            <li>Volle Kontrolle &uuml;ber Inhalt und Ton &mdash; keine Pressestellen-Abh&auml;ngigkeit</li>
+            <li>Eigenst&auml;ndige Markenidentit&auml;t: WIR. DER KREIS. als Protagonist</li>
+            <li>Zielgruppengenauigkeit: Follower = aktiv Interessierte</li>
+            <li>Alle emotionalen Formate m&ouml;glich: Team-Events, Weihnachten, Azubi-Storys</li>
+            <li>Saubere Messbarkeit eigener EB-KPIs</li>
+            <li>Zukunftsf&auml;hig: ausbaubar Richtung Reels, TikTok, LinkedIn-Verzahnung</li>
+          </ul>
+        </div>
+        <div class="col-card">
+          <p class="col-card-label">Nachteile</p>
+          <p class="col-card-title">Dagegen spricht</p>
+          <ul class="list-items">
+            <li>Kaltstart: null Follower, null Algorithmus-Momentum</li>
+            <li>Doppelter Aufwand: zwei Kan&auml;le, zwei Redaktionspl&auml;ne</li>
+            <li>Geteilte Sichtbarkeit in der Aufbauphase</li>
+            <li>Institutionelles Commitment n&ouml;tig &mdash; sporadischer Betrieb schadet der Marke</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCORDION: Fragen 4-6 -->
+  <section class="section" style="background:var(--white);">
+    <div class="inner">
+      <p class="section-label">Fragen 4 &ndash; 6</p>
+      <h2 class="h-xl">Im Detail</h2>
+      <div class="accordion" id="accordion">
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            <span class="accordion-num">04</span>
+            <span class="accordion-title">Herausforderungen &amp; Zeitrahmen</span>
+            <div class="accordion-icon">
+              <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+                <path d="M2.36,12.563l10.226.022L12.563,2.36h-1.91l.067,7.057L1.326,0,0,1.326,9.417,10.72,2.36,10.653Z" transform="translate(0 8.899) rotate(-45)" fill="#1D1D1D"/>
+              </svg>
+            </div>
+          </button>
+          <div class="accordion-body">
+            <p><strong>Realistischer Zeitrahmen: 12&ndash;18 Monate</strong> f&uuml;r eine organisch gewachsene, engagierte Community mit relevanter Reichweite &mdash; bei konsequenter, strategischer Bespielung.</p>
+            <p>Die gr&ouml;&szlig;ten H&uuml;rden:</p>
+            <ul>
+              <li><strong>Algorithmus:</strong> Instagram bevorzugt Accounts mit Kontinuit&auml;t und Engagement. Unregelm&auml;&szlig;ige Posts werden systematisch bestraft.</li>
+              <li><strong>Content-Differenzierung:</strong> Viele Landkreise sind inzwischen auf Instagram. WIR. DER KREIS. braucht eine erkennbare eigene Haltung, kein generisches Beh&ouml;rden-Feed.</li>
+              <li><strong>Vertrauen aufbauen:</strong> Authentizit&auml;t ist das Kapital eines EB-Kanals. Das entsteht nicht durch Hochglanz, sondern durch echte Einblicke.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            <span class="accordion-num">05</span>
+            <span class="accordion-title">Content-Frequenz &amp; Formate</span>
+            <div class="accordion-icon">
+              <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+                <path d="M2.36,12.563l10.226.022L12.563,2.36h-1.91l.067,7.057L1.326,0,0,1.326,9.417,10.72,2.36,10.653Z" transform="translate(0 8.899) rotate(-45)" fill="#1D1D1D"/>
+              </svg>
+            </div>
+          </button>
+          <div class="accordion-body">
+            <p>F&uuml;r organischen Aufbau: <strong>mindestens 3&ndash;4 Posts pro Woche</strong> (Reels &gt; Carousels &gt; statische Posts nach Algorithmus-Relevanz).</p>
+            <p>Inhaltsarten, die auf einem EB-Kanal funktionieren:</p>
+            <ul>
+              <li><strong>Employee Stories (1&times;/Woche):</strong> Ein Gesicht, ein Job, ein echter Satz</li>
+              <li><strong>Behind the Scenes (1&times;/Woche):</strong> B&uuml;roalltag, Projekte, Events</li>
+              <li><strong>Benefits &amp; Fakten (1&times;/Monat):</strong> Stark visuell aufbereitet</li>
+              <li><strong>Recruiting-Posts (1&ndash;2&times;/Woche):</strong> Stellen in WIR. DER KREIS.-Tonalität, nicht als PDF-Screenshot</li>
+              <li><strong>Saisonale Inhalte:</strong> Weihnachten, Azubi-Start, Teamevents &mdash; genau das, was auf meinrnk wegf&auml;llt</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            <span class="accordion-num">06</span>
+            <span class="accordion-title">Ressourcen: Personell &amp; finanziell</span>
+            <div class="accordion-icon">
+              <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+                <path d="M2.36,12.563l10.226.022L12.563,2.36h-1.91l.067,7.057L1.326,0,0,1.326,9.417,10.72,2.36,10.653Z" transform="translate(0 8.899) rotate(-45)" fill="#1D1D1D"/>
+              </svg>
+            </div>
+          </button>
+          <div class="accordion-body">
+            <p>Mit dem bestehenden Team (David 87,8%, Kathrin 20%, Joy f&uuml;r Content-Beitr&auml;ge) ist ein eigener Kanal <strong>machbar, aber eng.</strong></p>
+            <p>Realistischer interner Aufwand pro Woche:</p>
+            <ul>
+              <li>Redaktionsplanung &amp; Briefing: ca. 3&ndash;4h (David)</li>
+              <li>Shooting, Texten, Posten: ca. 2&ndash;3h (Joy / Kathrin)</li>
+              <li>Community Management: ca. 1&ndash;2h</li>
+              <li>Monatliches Reporting &amp; Strategie-Review: ca. 2h</li>
+            </ul>
+            <p style="margin-top:12px;">Gesamt: ca. <strong>6&ndash;9h/Woche</strong> intern &mdash; bei wachsendem Kanal eher mehr.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RESSOURCEN OVERVIEW -->
+  <section class="section section--dark">
+    <div class="inner">
+      <p class="section-label" style="color:rgba(255,255,255,0.45);">Aufwand auf einen Blick</p>
+      <h2 class="h-xl" style="color:var(--white);">Was es braucht</h2>
+      <div class="res-grid">
+        <div class="res-card">
+          <div class="res-card-num">12&ndash;18</div>
+          <div class="res-card-label">Monate Aufbauzeit</div>
+          <p class="res-card-copy">F&uuml;r eine organisch gewachsene, engagierte Community mit relevanter Reichweite.</p>
+        </div>
+        <div class="res-card">
+          <div class="res-card-num">3&ndash;4</div>
+          <div class="res-card-label">Posts pro Woche</div>
+          <p class="res-card-copy">Mindestfrequenz f&uuml;r algorithmische Sichtbarkeit. Reels priorisieren.</p>
+        </div>
+        <div class="res-card">
+          <div class="res-card-num">6&ndash;9h</div>
+          <div class="res-card-label">Intern pro Woche</div>
+          <p class="res-card-copy">Realistischer Betriebsaufwand f&uuml;r Planung, Produktion und Community Management.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNSERE UNTERSTUETZUNG -->
+  <section class="section">
+    <div class="inner">
+      <p class="section-label">Frage 7</p>
+      <h2 class="h-xl">Wie wir unterst&uuml;tzen</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <div class="step-title">Kanalstrategie &amp; Konzept</div>
+            <p class="step-copy">Einmalige Entwicklung der strategischen Grundlage: Positionierung, Zielgruppen, Contentprinzipien, Tonalität &mdash; passend zur Arbeitgebermarke WIR. DER KREIS.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <div class="step-title">Redaktionsplan &amp; Formatentwicklung</div>
+            <p class="step-copy">Aufbau eines praxistauglichen Redaktionsplans und eines Contentformat-Systems, das euer Team selbst&auml;ndig betreiben kann.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <div class="step-title">Kickstart-Produktion</div>
+            <p class="step-copy">Produktion von Basisinhalten (Reels, Fotostrecken, Vorlagen) als Startpaket &mdash; damit der Kanal von Tag eins mit Qualit&auml;t startet.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <div class="step-title">Laufendes Sparring</div>
+            <p class="step-copy">Monatliche oder quartalsweise konzeptionelle Begleitung: Strategie-Reviews, Content-Feedback, Trend-Einsch&auml;tzungen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMPFEHLUNG -->
+  <section class="section" style="background:var(--white);">
+    <div class="inner">
+      <p class="section-label">Unsere Empfehlung</p>
+      <h2 class="h-xl">Eigener Kanal &mdash;<br/>aber richtig.</h2>
+      <div class="rec-box">
+        <h3 class="h-lg">Klare Haltung.</h3>
+        <p>Die Pressestellen-Einschr&auml;nkung ist kein Problem, das sich wegdiskutieren l&auml;sst. Sie trifft den Kern von Instagram-Employer-Branding: N&auml;he, Authentizit&auml;t, Emotion. Wer das nicht zeigen darf, hat auf einem Beh&ouml;rdengesamtkanal keine echte Heimat mehr.</p>
+        <p>Gleichzeitig: Ein eigener Kanal kostet Ressourcen und braucht Geduld. Er darf nicht halbherzig gestartet werden. Besser gut vorbereitet beginnen als schnell anfangen und schneller aufh&ouml;ren.</p>
+        <p><strong>Unser Vorschlag f&uuml;r den n&auml;chsten Schritt:</strong> Wir entwickeln gemeinsam eine schl&uuml;ssige Kanalstrategie inkl. Contentformat-System, definieren klare KPIs und kalkulieren ein realistisches Kickstart-Paket &mdash; bevor der erste Post geht.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Die Kavallerie</div>
+        <p class="footer-meta" style="margin-top:8px;">Agentur f&uuml;r Technologie und Gesellschaft</p>
+      </div>
+      <div class="footer-meta" style="text-align:right;">
+        <p>Erstellt f&uuml;r: Landratsamt Rhein-Neckar-Kreis</p>
+        <p>Ansprechpartnerin: Leonie Wandel-Haug</p>
+        <p>September 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* Nav scroll effect */
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 30) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }, { passive: true });
+
+    /* Accordion */
+    function toggleAccordion(trigger) {
+      var body = trigger.nextElementSibling;
+      var icon = trigger.querySelector('.accordion-icon');
+      var isOpen = body.classList.contains('open');
+      /* close all */
+      document.querySelectorAll('.accordion-body').forEach(function(b) {
+        b.classList.remove('open');
+      });
+      document.querySelectorAll('.accordion-icon').forEach(function(i) {
+        i.classList.remove('open');
+      });
+      /* open clicked if it was closed */
+      if (!isOpen) {
+        body.classList.add('open');
+        icon.classList.add('open');
+      }
+    }
+  </script>
+
+</body>
+</html>
